@@ -1,6 +1,6 @@
 # Hermes BN: полная установка на новый Mac с Apple Silicon
 
-Дата комплекта: 17 октября 2026 года. Текущий публичный выпуск: `public-2026-10-17-gsd-udr-r2`.
+Дата комплекта: 17 октября 2026 года. Исполняемая подготовка проверена на macOS 26.5.1 (25F80), arm64; совместимость с более ранней macOS требует отдельной проверки. Текущий публичный выпуск: `public-2026-10-17-gsd-udr-r2`.
 
 Репозиторий: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public
 
@@ -213,9 +213,9 @@ python3 deployment/prepare-udr.py \
 Откройте следующую точную исходную последовательность внутри установки:
 
 1. `$UDR_ROOT/source/docs/setup/README.md`.
-2. `$UDR_ROOT/source/HERMES_KNOWLEDGE_WORK_PLATFORM_SPEC.md`, `HERMES_ZERO_TO_DEPLOYMENT_ROADMAP.md`, `HERMES_DEPLOYMENT_AGENT_HANDOFF_PROMPT.md` — найдите по имени в `source`, если в этой поставке документ расположен в подпапке.
+2. `$UDR_ROOT/source/docs/setup/HERMES_KNOWLEDGE_WORK_PLATFORM_SPEC.md`, `$UDR_ROOT/source/docs/setup/HERMES_ZERO_TO_DEPLOYMENT_ROADMAP.md`, `$UDR_ROOT/source/docs/setup/HERMES_DEPLOYMENT_AGENT_HANDOFF_PROMPT.md`.
 3. Руководства `$UDR_ROOT/source/docs/setup/ru/01-platform-and-hermes.md` … `11-mirage.md` по порядку.
-4. Текущие `$BN_DEST/CURRENT-SETUP.md`, `CURRENT-VERSIONS.json` и `$BN_DEST/Руководства/06-…`, `07-…`, `08-…` уточняют местную конфигурацию и приёмку.
+4. Текущие `$BN_DEST/CURRENT-SETUP.md`, `CURRENT-VERSIONS.json` и `$BN_DEST/Руководства/06-Службы память GSD UDR.md`, `07-Аккаунты и защищённый ввод.md`, `08-Приёмка и восстановление.md` уточняют местную конфигурацию и приёмку.
 
 Существующие программы уже включены; команды исходных руководств по скачиванию/установке применяются только к действительно отсутствующим компонентам. Не заменяйте установленную закреплённую пару более новыми пакетами автоматически.
 

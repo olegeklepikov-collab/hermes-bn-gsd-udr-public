@@ -1,0 +1,10 @@
+parts/
+*.part-*
+*.partial
+*.agekey
+.env
+auth.json
+mcp-tokens.json
+__pycache__/
+.DS_Store
+*.download-partial

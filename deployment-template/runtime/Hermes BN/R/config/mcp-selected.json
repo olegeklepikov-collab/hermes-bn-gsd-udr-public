@@ -1,0 +1,25 @@
+{
+  "command": "__HERMES_BN_ROOT__/R/bin/mcp-server-bn",
+  "args": [],
+  "enabled": true,
+  "connect_timeout": 60,
+  "tool_timeout": 600,
+  "tools": {
+    "include": [
+      "btw_tool_cran_search",
+      "btw_tool_cran_versions",
+      "btw_tool_cran_package",
+      "btw_tool_docs_package_news",
+      "btw_tool_docs_package_help_topics",
+      "btw_tool_docs_help_page",
+      "btw_tool_docs_available_vignettes",
+      "btw_tool_docs_vignette",
+      "btw_tool_env_describe_data_frame",
+      "btw_tool_env_describe_environment",
+      "btw_tool_run_r",
+      "btw_tool_sessioninfo_is_package_installed",
+      "btw_tool_sessioninfo_platform",
+      "btw_tool_sessioninfo_package"
+    ]
+  }
+}

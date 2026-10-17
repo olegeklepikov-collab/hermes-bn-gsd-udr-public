@@ -1,0 +1,5 @@
+Sys.setenv(R_LIBS_USER="__HERMES_BN_R_RUNTIME__/library-native")
+.libPaths(c(Sys.getenv("R_LIBS_USER"),.libPaths()))
+setwd("__HERMES_BN_ROOT__/R/projects/default")
+options(repos=c(CRAN="https://cloud.r-project.org"))
+cat("Hermes BN native R project: ",R.home(),"\n")

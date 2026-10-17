@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+source '__HERMES_BN_ROOT__/Dolt/environment.sh'
+exec "$HERMES_BN_ROOT/Dolt/runtime/bin/python" "$HERMES_BN_ROOT/Dolt/workspace_mcp.py"

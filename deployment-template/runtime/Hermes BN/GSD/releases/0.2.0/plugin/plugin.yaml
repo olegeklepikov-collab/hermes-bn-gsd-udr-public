@@ -1,0 +1,10 @@
+name: bn-gsd
+version: 0.2.0
+description: GSD 3.0.3 с обязательным контролем и настоящими ролями Hermes.
+requires_hermes: ">=0.21.5"
+provides_tools:
+  - gsd_research
+  - gsd_work
+  - gsd_analyze
+  - gsd_runtime_status
+  - gsd_status

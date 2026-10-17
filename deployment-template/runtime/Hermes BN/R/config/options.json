@@ -1,0 +1,74 @@
+[
+  {
+    "name": "R / Rscript",
+    "selected": true,
+    "use": "Местное выполнение скриптов и пакетные расчёты",
+    "url": "https://www.r-project.org/"
+  },
+  {
+    "name": "mcptools + btw, stdio MCP",
+    "selected": true,
+    "use": "Расчёты, объекты, документация и графика из Hermes",
+    "url": "https://posit-dev.github.io/mcptools/articles/server.html"
+  },
+  {
+    "name": "btw groups docs/env/sessioninfo/cran/run",
+    "selected": true,
+    "use": "14 исследовательских методов; другие группы рассмотрены отдельно",
+    "url": "https://posit-dev.github.io/btw/reference/btw_tools.html"
+  },
+  {
+    "name": "renv",
+    "selected": true,
+    "use": "Фиксация и восстановление библиотек проекта",
+    "url": "https://rstudio.github.io/renv/articles/renv.html"
+  },
+  {
+    "name": "R Markdown / knitr / Pandoc",
+    "selected": true,
+    "use": "Воспроизводимые самостоятельные HTML-отчёты",
+    "url": "https://rmarkdown.rstudio.com/"
+  },
+  {
+    "name": "RStudio / Positron + interactive R session",
+    "selected": false,
+    "use": "Общая интерактивная рабочая среда; отдельная настройка сеансов",
+    "url": "https://posit-dev.github.io/mcptools/articles/server.html"
+  },
+  {
+    "name": "HTTP MCP / Posit Connect",
+    "selected": false,
+    "use": "Сетевое и многопользовательское развёртывание с отдельным управлением доступом",
+    "url": "https://github.com/posit-dev/mcptools"
+  },
+  {
+    "name": "R as MCP client / ellmer / btw chat",
+    "selected": false,
+    "use": "Самостоятельное приложение R с языковой моделью; отдельное подключение провайдера",
+    "url": "https://ellmer.tidyverse.org/"
+  },
+  {
+    "name": "Quarto / Jupyter IRkernel",
+    "selected": false,
+    "use": "Многоформатные блокноты и публикации; добавляются по формату работы",
+    "url": "https://quarto.org/"
+  },
+  {
+    "name": "Shiny",
+    "selected": false,
+    "use": "Собственные интерактивные аналитические приложения",
+    "url": "https://shiny.posit.co/"
+  },
+  {
+    "name": "reticulate / Python interoperability",
+    "selected": false,
+    "use": "Программный обмен R/Python при отдельной задаче",
+    "url": "https://rstudio.github.io/reticulate/"
+  },
+  {
+    "name": "Specialized CRAN / Bioconductor / Stan / sf / Arrow",
+    "selected": false,
+    "use": "Специализированные исследования, MCMC, пространственные и крупные колоночные данные; не установлены в текущий набор",
+    "url": "https://cran.r-project.org/web/views/"
+  }
+]

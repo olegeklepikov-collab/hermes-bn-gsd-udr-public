@@ -1,0 +1,22 @@
+#!/bin/bash
+source '__HERMES_BN_ROOT__/environment.sh'
+export ASREVIEW_PATH="$HERMES_BN_ROOT/ASReview/projects"
+export HF_HOME="$HERMES_BN_ROOT/ASReview/cache/huggingface"
+export TORCH_HOME="$HERMES_BN_ROOT/ASReview/cache/torch"
+export MPLCONFIGDIR="$HERMES_BN_ROOT/ASReview/cache/matplotlib"
+export KERAS_HOME="$HERMES_BN_ROOT/ASReview/cache/keras"
+export KERAS_BACKEND=torch
+export HF_HUB_DISABLE_IMPLICIT_TOKEN=1
+export HF_HUB_DISABLE_TELEMETRY=1
+export TOKENIZERS_PARALLELISM=false
+export OMP_NUM_THREADS=2
+export OPENBLAS_NUM_THREADS=2
+export VECLIB_MAXIMUM_THREADS=2
+export ASREVIEW_LAB_TASK_MANAGER_HOST=127.0.0.1
+export ASREVIEW_LAB_TASK_MANAGER_PORT=60695
+export ASREVIEW_LAB_TASK_MANAGER_WORKERS=1
+unset HF_TOKEN HUGGING_FACE_HUB_TOKEN
+export SYNERGY_PATH="$HERMES_BN_ROOT/ASReview/datasets/synergy-classic"
+export SYNERGY_SET=synergy
+export SYNERGY_VERSION=1.0
+cd "$HERMES_BN_ROOT/ASReview"

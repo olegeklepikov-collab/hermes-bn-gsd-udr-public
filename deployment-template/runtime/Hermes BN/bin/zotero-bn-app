@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+source '__HERMES_BN_ROOT__/environment.sh'
+exec "$HERMES_BN_ROOT/Zotero/app/Zotero.app/Contents/MacOS/zotero" -profile "$HERMES_BN_ROOT/Zotero/profile" -no-remote "$@"

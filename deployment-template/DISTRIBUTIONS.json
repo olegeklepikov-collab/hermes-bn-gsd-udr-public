@@ -1,0 +1,48 @@
+[
+  {
+    "filename": "beads_1.3.1_darwin_arm64.tar.gz",
+    "url": "https://github.com/gastownhall/beads/releases/download/v1.3.1/beads_1.3.1_darwin_arm64.tar.gz",
+    "digest": "sha256:508ba807996e2b9c992c538a6f405f2fc7d2e16cf8b4e5b0d1bf9fe860367007",
+    "size": 48439442,
+    "sha256": "508ba807996e2b9c992c538a6f405f2fc7d2e16cf8b4e5b0d1bf9fe860367007",
+    "bytes": 48439442,
+    "verification": "official GitHub asset digest and release checksum list"
+  },
+  {
+    "filename": "beads_1.3.1_linux_amd64.tar.gz",
+    "url": "https://github.com/gastownhall/beads/releases/download/v1.3.1/beads_1.3.1_linux_amd64.tar.gz",
+    "digest": "sha256:3219443a9734b89b93fb16ee8d65844759fa1b3cd3cf139c606b7353cfb0715c",
+    "size": 53304363,
+    "sha256": "3219443a9734b89b93fb16ee8d65844759fa1b3cd3cf139c606b7353cfb0715c",
+    "bytes": 53304363,
+    "verification": "official GitHub asset digest and release checksum list"
+  },
+  {
+    "filename": "beads_1.3.1_windows_amd64.zip",
+    "url": "https://github.com/gastownhall/beads/releases/download/v1.3.1/beads_1.3.1_windows_amd64.zip",
+    "digest": "sha256:48cd82e1d3e311c9bf9a5d6d67ad1a8542ae13d4e20c5bfb527656c5e666af76",
+    "size": 54131010,
+    "sha256": "48cd82e1d3e311c9bf9a5d6d67ad1a8542ae13d4e20c5bfb527656c5e666af76",
+    "bytes": 54131010,
+    "verification": "official GitHub asset digest and release checksum list"
+  },
+  {
+    "filename": "checksums.txt",
+    "url": "https://github.com/gastownhall/beads/releases/download/v1.3.1/checksums.txt",
+    "digest": "sha256:8c4f1d28c26b179e471534c16712aef66ba57e3060ca339a6601b919ec3ab204",
+    "size": 881,
+    "sha256": "8c4f1d28c26b179e471534c16712aef66ba57e3060ca339a6601b919ec3ab204",
+    "bytes": 881,
+    "verification": "official HTTPS download; locally recorded SHA256"
+  },
+  {
+    "filename": "cpython-3.14.6-macos-arm64.tar.gz",
+    "url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20260718/cpython-3.14.6%2B20260718-aarch64-apple-darwin-install_only_stripped.tar.gz",
+    "digest": null,
+    "size": null,
+    "local_repack": true,
+    "sha256": "a931d25c06434af1a940d63c272b81d07a6d29ddf210a3ec1fa4024e7afc222c",
+    "bytes": 25615003,
+    "verification": "Local repack of the actual qualified managed Python 3.14.6 installation; upstream archive could not be downloaded again (403/404); not an upstream signature claim"
+  }
+]

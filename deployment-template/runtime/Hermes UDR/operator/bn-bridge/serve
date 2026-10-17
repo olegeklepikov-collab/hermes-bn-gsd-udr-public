@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+source '__HERMES_UDR_ROOT__/environment.sh'
+export HERMES_HOME='__HERMES_UDR_ROOT__/operator/bn-bridge/profile'
+exec '__HERMES_UDR_ROOT__/software/hermes/.venv/bin/python' '__HERMES_UDR_ROOT__/operator/bn-bridge/server.py'

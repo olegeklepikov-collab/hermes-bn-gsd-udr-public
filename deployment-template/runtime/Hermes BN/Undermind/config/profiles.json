@@ -1,0 +1,247 @@
+{
+  "orientation": {
+    "purpose": "Сведения о подключённом аккаунте и правила сервиса",
+    "command": "call",
+    "name": "get_orientation",
+    "arguments": {}
+  },
+  "discovery": {
+    "purpose": "Смысловой поиск литературы",
+    "command": "call",
+    "name": "search_papers",
+    "arguments": {
+      "search_type": "semantic",
+      "limit": 10,
+      "offset": 0,
+      "detail_level": "standard"
+    }
+  },
+  "workspace-library": {
+    "purpose": "Поиск среди ранее полученных работ",
+    "command": "call",
+    "name": "search_papers",
+    "arguments": {
+      "search_type": "library",
+      "limit": 10,
+      "offset": 0,
+      "detail_level": "standard"
+    }
+  },
+  "forward-citations": {
+    "purpose": "Работы, цитирующие заданные статьи",
+    "command": "call",
+    "name": "search_papers",
+    "arguments": {
+      "search_type": "citations",
+      "limit": 10,
+      "offset": 0,
+      "detail_level": "standard"
+    }
+  },
+  "backward-references": {
+    "purpose": "Работы, на которые ссылаются заданные статьи",
+    "command": "call",
+    "name": "search_papers",
+    "arguments": {
+      "search_type": "references",
+      "limit": 10,
+      "offset": 0,
+      "detail_level": "standard"
+    }
+  },
+  "recent": {
+    "purpose": "Новые работы среди выбранных смысловых кандидатов",
+    "command": "call",
+    "name": "search_papers",
+    "arguments": {
+      "search_type": "semantic",
+      "sort_override": "year_descending",
+      "limit": 10,
+      "detail_level": "standard"
+    }
+  },
+  "open-pdf": {
+    "purpose": "Поиск работ с доступным PDF",
+    "command": "call",
+    "name": "search_papers",
+    "arguments": {
+      "search_type": "semantic",
+      "has_pdf": true,
+      "limit": 10,
+      "detail_level": "standard"
+    }
+  },
+  "starred-library": {
+    "purpose": "Поиск отмеченных работ в библиотеке",
+    "command": "call",
+    "name": "search_papers",
+    "arguments": {
+      "search_type": "library",
+      "is_starred": true,
+      "limit": 10
+    }
+  },
+  "uploaded-library": {
+    "purpose": "Поиск пользовательских PDF в явно выбранном пространстве",
+    "command": "call",
+    "name": "search_papers",
+    "arguments": {
+      "search_type": "library",
+      "is_user_uploaded": true,
+      "limit": 10
+    }
+  },
+  "author-disambiguation": {
+    "purpose": "Работы автора с уточнением его личности",
+    "command": "call",
+    "name": "find_papers_by_author",
+    "arguments": {}
+  },
+  "bibliography-lookup": {
+    "purpose": "Разрешение DOI, названий и библиографических записей",
+    "command": "call",
+    "name": "lookup_papers_by_metadata",
+    "arguments": {}
+  },
+  "paper-record": {
+    "purpose": "Метаданные, DOI и доступность текста",
+    "command": "call",
+    "name": "get_paper_info",
+    "arguments": {
+      "show_doi": true,
+      "show_locations": true,
+      "detail_level": "full"
+    }
+  },
+  "read-pdfs": {
+    "purpose": "Вопросы к полному PDF; до четырёх работ",
+    "command": "call",
+    "name": "read_pdfs",
+    "arguments": {}
+  },
+  "pdf-links": {
+    "purpose": "Временные частные ссылки для скачивания имеющихся PDF",
+    "command": "call",
+    "name": "get_pdf_download_links",
+    "arguments": {}
+  },
+  "business-review": {
+    "purpose": "Научные основания деловых решений и технологий",
+    "command": "call",
+    "name": "launch_deep_search",
+    "arguments": {
+      "folder_path": "/business/"
+    }
+  },
+  "academic-review": {
+    "purpose": "Академический обзор по самостоятельной цели",
+    "command": "call",
+    "name": "launch_deep_search",
+    "arguments": {
+      "folder_path": "/academic/"
+    }
+  },
+  "general-review": {
+    "purpose": "Обзор научной литературы по общей исследовательской цели",
+    "command": "call",
+    "name": "launch_deep_search",
+    "arguments": {
+      "folder_path": "/general/"
+    }
+  },
+  "research-status": {
+    "purpose": "Краткий статус углублённого поиска",
+    "command": "call",
+    "name": "inspect_deep_searches",
+    "arguments": {
+      "status_only": true
+    }
+  },
+  "research-results": {
+    "purpose": "Результаты, ранжирование и научное обобщение",
+    "command": "call",
+    "name": "inspect_deep_searches",
+    "arguments": {
+      "limit": 20,
+      "offset": 0,
+      "detail_level": "standard"
+    }
+  },
+  "research-page": {
+    "purpose": "Дополнительная страница работ без повторного обобщения",
+    "command": "call",
+    "name": "inspect_deep_searches",
+    "arguments": {
+      "papers_only": true,
+      "limit": 20,
+      "offset": 0,
+      "detail_level": "standard"
+    }
+  },
+  "search-view": {
+    "purpose": "Ссылка либо карточка одного исследования",
+    "command": "call",
+    "name": "display_deep_search_results",
+    "arguments": {}
+  },
+  "references-view": {
+    "purpose": "Ссылки либо карточка отобранных работ",
+    "command": "call",
+    "name": "display_references",
+    "arguments": {}
+  },
+  "upload-guidance": {
+    "purpose": "Ссылка для самостоятельной разрешённой загрузки PDF",
+    "command": "call",
+    "name": "suggest_pdf_uploads",
+    "arguments": {}
+  },
+  "folder-tree": {
+    "purpose": "Дерево папок",
+    "command": "call",
+    "name": "inspect_folders",
+    "arguments": {
+      "folders": []
+    }
+  },
+  "folder-papers": {
+    "purpose": "Содержимое папки и отбор работ",
+    "command": "call",
+    "name": "inspect_folders",
+    "arguments": {
+      "limit": 20,
+      "offset": 0,
+      "detail_level": "standard"
+    }
+  },
+  "read-reports": {
+    "purpose": "Чтение сохранённых заметок и отчётов",
+    "command": "call",
+    "name": "inspect_files",
+    "arguments": {}
+  },
+  "write-report": {
+    "purpose": "Создание или правка отчёта с ключами цитирования",
+    "command": "call",
+    "name": "write_file",
+    "arguments": {}
+  },
+  "curate-papers": {
+    "purpose": "Добавление работ в папку",
+    "command": "call",
+    "name": "add_papers_to_folder",
+    "arguments": {}
+  },
+  "mark-papers": {
+    "purpose": "Отметка значимых работ",
+    "command": "call",
+    "name": "star_papers",
+    "arguments": {}
+  },
+  "fulltext-eligibility": {
+    "purpose": "Проверка точных условий по полным PDF выбранных кандидатов; не поиск по полнотекстовому индексу",
+    "command": "call",
+    "name": "read_pdfs",
+    "arguments": {}
+  }
+}

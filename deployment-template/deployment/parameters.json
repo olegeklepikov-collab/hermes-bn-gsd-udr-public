@@ -1,0 +1,17 @@
+{
+  "contact_email": "",
+  "telegram_owner_id": "",
+  "BN_bot_name": "",
+  "UDR_bot_name": "",
+  "timezone": "UTC",
+  "model_provider": "choose on target",
+  "model_name": "choose on target",
+  "embedding_provider": "choose on target",
+  "embedding_model": "choose on target",
+  "platforms": [
+    "macos-arm64",
+    "linux-x86_64",
+    "windows-x86_64"
+  ],
+  "old_accounts_or_acceptance_inherited": false
+}

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "required": {
+    "tool": [
+      "bn-udr-host",
+      "bn-gsd",
+      "bn-common-memory"
+    ],
+    "tool_result": [
+      "bn-udr-host",
+      "bn-gsd",
+      "bn-common-memory"
+    ],
+    "llm": [
+      "bn-udr-host",
+      "bn-gsd",
+      "bn-common-memory"
+    ],
+    "auxiliary": [
+      "bn-udr-host",
+      "bn-gsd",
+      "bn-common-memory"
+    ]
+  },
+  "timeout_seconds": 60
+}

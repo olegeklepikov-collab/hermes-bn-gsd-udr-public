@@ -1,0 +1,8 @@
+mcp_servers:
+  context:
+    command: <INSTANCE_ROOT>/hermes-agent/venv/bin/python
+    args:
+      - <INSTANCE_ROOT>/Memory/releases/1.2.3/bn_memory/server.py
+      - <INSTANCE_ROOT>/Memory/settings.json
+    enabled: true
+    timeout: 360

@@ -1,0 +1,20 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Volumes/Builds/packages/sonoma-arm64/Rlib/4.6/00LOCK-xfun/00new/xfun/libs/xfun.so'
+relocations:
+  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _base64_encode_impl, symObjAddr: 0x0, symBinAddr: 0x1240, symSize: 0x140 }
+  - { offset: 0x3F, size: 0x8, addend: 0x0, symName: _base64_table, symObjAddr: 0x504, symBinAddr: 0x1AAC, symSize: 0x0 }
+  - { offset: 0x73, size: 0x8, addend: 0x0, symName: _padding, symObjAddr: 0x545, symBinAddr: 0x1AED, symSize: 0x0 }
+  - { offset: 0x88, size: 0x8, addend: 0x0, symName: _upadding, symObjAddr: 0x546, symBinAddr: 0x1AEE, symSize: 0x0 }
+  - { offset: 0xA9, size: 0x8, addend: 0x0, symName: _base64_reverse_table, symObjAddr: 0x548, symBinAddr: 0x1AF0, symSize: 0x0 }
+  - { offset: 0xDA, size: 0x8, addend: 0x0, symName: _base64_encode_impl, symObjAddr: 0x0, symBinAddr: 0x1240, symSize: 0x140 }
+  - { offset: 0x151, size: 0x8, addend: 0x0, symName: _base64_decode_impl, symObjAddr: 0x140, symBinAddr: 0x1380, symSize: 0x1C0 }
+  - { offset: 0x20F, size: 0x8, addend: 0x0, symName: _base64_enc, symObjAddr: 0x300, symBinAddr: 0x1540, symSize: 0x100 }
+  - { offset: 0x4D9, size: 0x8, addend: 0x0, symName: _base64_dec, symObjAddr: 0x400, symBinAddr: 0x1640, symSize: 0x104 }
+  - { offset: 0x6DA, size: 0x8, addend: 0x0, symName: _base64_table, symObjAddr: 0x504, symBinAddr: 0x1AAC, symSize: 0x0 }
+  - { offset: 0x764, size: 0x8, addend: 0x0, symName: _R_init_xfun, symObjAddr: 0x0, symBinAddr: 0x1780, symSize: 0x3C }
+  - { offset: 0x78B, size: 0x8, addend: 0x0, symName: _CallEntries, symObjAddr: 0x40, symBinAddr: 0x4008, symSize: 0x0 }
+  - { offset: 0x815, size: 0x8, addend: 0x0, symName: _R_init_xfun, symObjAddr: 0x0, symBinAddr: 0x1780, symSize: 0x3C }
+  - { offset: 0x996, size: 0x8, addend: 0x0, symName: _rand_lcg, symObjAddr: 0x0, symBinAddr: 0x17C0, symSize: 0xDC }
+  - { offset: 0x9BC, size: 0x8, addend: 0x0, symName: _rand_lcg, symObjAddr: 0x0, symBinAddr: 0x17C0, symSize: 0xDC }
+...

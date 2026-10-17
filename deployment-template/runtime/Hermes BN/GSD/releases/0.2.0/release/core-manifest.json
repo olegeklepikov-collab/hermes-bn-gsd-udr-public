@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "hermes_commit": "f97608f178d1ffeca59860195ab7da295f7c8e5f",
+  "files": {
+    "agent/agent_runtime_helpers.py": "b6454ff58e70702a45cd50e67f1ccc542d134c8cf4fa74d65dec9463c3c029f6",
+    "agent/auxiliary_client.py": "bf5d1d6c627acb4a3800a1e065b491400bf265910fa19ff1850955552fa572c8",
+    "agent/auxiliary_hooks.py": "11f21c90a80806bbd9bddfffd3cd6f8ceb12fc14dbc10ab331699321a2b0a9af",
+    "agent/codex_responses_adapter.py": "8923e37047274207d8867f5ae92ad308ebaa5ee27f55fb2df5139a2ad8f3115a",
+    "agent/subagent_lifecycle.py": "1b6059e8c02b29d96019721460dc06a8c015b55529465807c9e6466d43d8643b",
+    "agent/tool_executor.py": "f34672aea4869e04ceec2927b01d2eabf17f5b600e58d6db79c2abac7d0c6b4c",
+    "agent/transports/codex.py": "02b5cb1ba5603bb86fee315947a364f17678333e8f24b57bf4876aa1adcc292b",
+    "agent/turn_api_error.py": "e7a67dba179c22aaa6815007a5937585567cb28c95fd8ff23ad600893fe37c41",
+    "hermes_cli/execution_control.py": "3fb53a5076c5ae23edc65f363431e3f07e55ef121606734ecea299c949a2c393",
+    "hermes_cli/middleware.py": "44ef8c3cfcc123c035c06889ca11702d33930090d49c2e5555c3210230e61d70",
+    "hermes_cli/plugins.py": "801443d5381491b8e1eba65045511fe213d1b4082b7ab97a0a69cd3aa7be3a51",
+    "hermes_cli/update_cmd.py": "fd72a988b41dc2eed630c2e5c238353448a6270bef3497cbd772c0bb21aab299",
+    "hermes_cli/update_contract.py": "de3d8a26d2f613937b884c609f8fa47c6a0a24a17b5d12fd1136a90472c98d30",
+    "model_tools.py": "f1fe87dead7dc84607ec16a213a1b7a10834b24f682ad0d7858c1133c1d072d0",
+    "tools/connectors/dispatch.py": "ecee1f5c046a85cfe320c5928f179130b735033646646c3332101441e8123d0d",
+    "tools/delegate_tool_toolsets.py": "4ddf4635352d324ee1b73845c4fb7a2f496605111f67c9549ad028e068efee8d",
+    "tools/registry.py": "0582075a400593234268882739d5f2386c3ccff9043f17ee54cd33b69759e335"
+  }
+}

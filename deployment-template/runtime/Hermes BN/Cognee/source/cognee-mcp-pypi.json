@@ -1,0 +1,27 @@
+{
+  "version": "0.5.7",
+  "requires_python": "<3.14,>=3.10",
+  "requires_dist": [
+    "cognee[docs,neo4j,postgres-binary]<2.0.0,>=1.5.4",
+    "dateparser<2,>=1.2",
+    "fastmcp<4.0.0,>=3.4.0",
+    "httpx<1.0.0,>=0.27.0",
+    "mcp<2.0.0,>=1.24.0",
+    "torch>=2.0.0",
+    "uv<1.0.0,>=0.6.3"
+  ],
+  "files": [
+    {
+      "filename": "cognee_mcp-0.5.7-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/29/99/16e12b55009dcd3679cb6599c8aa7a4b7125de4f7937f330fa313b2be8b4/cognee_mcp-0.5.7-py3-none-any.whl",
+      "sha256": "f53a8e07b5935ccd1c180df6fc56f37f8c46c809ed0bb69441eb5212cd4e3e2e",
+      "size": 51042
+    },
+    {
+      "filename": "cognee_mcp-0.5.7.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/10/93/cc9867100d483380740007e55f3377d7d4c525cce1d34e3e297372cfd744/cognee_mcp-0.5.7.tar.gz",
+      "sha256": "410d51f54ce6981e32d366ce94a677c62c2dfd50a1222068e3c688bf70e3df96",
+      "size": 501667
+    }
+  ]
+}

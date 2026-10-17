@@ -1,0 +1,396 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# PubMed: operations.json
+
+Это переносимый справочный контракт/каталог. Он не содержит действующее подключение или права аккаунта. `${...}` обозначает значение целевой установки; оно заменяется с сохранением требуемого JSON-типа. Состав методов и ограничения сверяются с устанавливаемой версией.
+
+```json
+{
+  "pubmed_search": {
+    "description": "Поиск PubMed: PMID, число совпадений, перевод запроса, предупреждения и история. Не полный текст.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "term": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retmax": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "retstart": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sort": {
+          "type": "string"
+        },
+        "datetype": {
+          "type": "string",
+          "enum": [
+            "pdat",
+            "edat",
+            "mdat"
+          ]
+        },
+        "mindate": {
+          "type": "string"
+        },
+        "maxdate": {
+          "type": "string"
+        },
+        "reldate": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "usehistory": {
+          "type": "string",
+          "enum": [
+            "y",
+            "n"
+          ]
+        },
+        "WebEnv": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "term"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pubmed_summary": {
+    "description": "Краткая библиографическая запись по PMID или сохранённой истории.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "WebEnv": {
+          "type": "string"
+        },
+        "query_key": {
+          "type": "string"
+        },
+        "retmax": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "retstart": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "WebEnv",
+            "query_key"
+          ]
+        }
+      ]
+    }
+  },
+  "pubmed_fetch": {
+    "description": "Полные библиографические записи и аннотации, MeSH и связи исправлений. Не полный текст статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "WebEnv": {
+          "type": "string"
+        },
+        "query_key": {
+          "type": "string"
+        },
+        "retmax": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "retstart": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "WebEnv",
+            "query_key"
+          ]
+        }
+      ]
+    }
+  },
+  "pubmed_links": {
+    "description": "Похожие, цитируемые или цитирующие записи PubMed. Сеть может быть неполной.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "linkname": {
+          "type": "string",
+          "enum": [
+            "pubmed_pubmed",
+            "pubmed_pubmed_citedin",
+            "pubmed_pubmed_refs"
+          ]
+        },
+        "cmd": {
+          "type": "string",
+          "enum": [
+            "neighbor",
+            "neighbor_score",
+            "neighbor_history",
+            "llinks",
+            "prlinks",
+            "acheck"
+          ]
+        },
+        "WebEnv": {
+          "type": "string"
+        },
+        "query_key": {
+          "type": "string"
+        },
+        "max_links": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pubmed_info": {
+    "description": "Поля и допустимые связи базы PubMed.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "pubmed_spell": {
+    "description": "Подсказки исправления поискового запроса.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "term": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "term"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pubmed_history": {
+    "description": "Временная история PMID на сервере NCBI для пакетного получения.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "WebEnv": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pubmed_citation_match": {
+    "description": "Разрешение строк journal|year|volume|page|author|key через ECitMatch.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "bdata": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "bdata"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pmc_metadata": {
+    "description": "Разрешить PMCID/PMID/DOI и проверить актуальную версию, лицензию и ссылки PMC Cloud. Не чтение статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pmc_sections": {
+    "description": "Список разделов и таблиц доступного JATS XML с версией и лицензией.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pmc_read": {
+    "description": "Прочитать заданный раздел или ограниченный фрагмент текущего полного текста PMC.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_chars": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 50000
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pmc_table": {
+    "description": "Прочитать таблицу по идентификатору или номеру: строки, подпись и примечания.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        },
+        "table_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier",
+        "table_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pmc_pdf_status": {
+    "description": "Проверить доступность PDF и первые байты без сохранения и без заявления о чтении.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "pubmed_export": {
+    "description": "Создать местную производную библиографию CSV, RIS или BibTeX по данным PubMed.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "csv",
+            "ris",
+            "bibtex"
+          ]
+        },
+        "date_basis": {
+          "type": "string",
+          "enum": [
+            "bibliographic",
+            "electronic"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "format"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "service_status": {
+    "description": "Проверить режим и настройки без раскрытия ключа и контактной почты.",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    }
+  }
+}
+```

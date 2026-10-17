@@ -1,0 +1,4 @@
+#!/bin/bash
+set -eu
+source '__HERMES_BN_ROOT__/environment.sh'
+exec "$HERMES_BN_ROOT/bin/hermes-bn" gateway "${1:-status}"

@@ -1,0 +1,13 @@
+{
+  "url": "https://agenttools.wolfram.com/mcp",
+  "enabled": true,
+  "connect_timeout": 45,
+  "tool_timeout": 180,
+  "tools": {
+    "include": [
+      "WolframContext",
+      "WolframAlpha",
+      "WolframLanguageEvaluator"
+    ]
+  }
+}

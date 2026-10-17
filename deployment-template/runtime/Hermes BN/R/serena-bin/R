@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+export R_LIBS_USER='__HERMES_BN_ROOT__/R/serena-library'
+# R rejects a temporary directory containing spaces. Resolve the existing
+# independently configured R temporary directory, not the BN path alias.
+r_serena_tmp=$(CDPATH= cd -- '__HERMES_BN_ROOT__/R/runtime-temp' && pwd -P)
+case "$r_serena_tmp" in *[[:space:]]*) echo 'R temporary directory must not contain whitespace' >&2; exit 2;; esac
+export TMPDIR="$r_serena_tmp"
+export TMP="$r_serena_tmp"
+export TEMP="$r_serena_tmp"
+exec /Library/Frameworks/R.framework/Resources/bin/R "$@"

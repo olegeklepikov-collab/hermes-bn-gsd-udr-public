@@ -1,0 +1,2590 @@
+{
+  "starter_search": {
+    "product": "starter",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-starter/v2",
+    "path": "/documents",
+    "fields": {
+      "path": [],
+      "query": [
+        "db",
+        "q",
+        "limit",
+        "page",
+        "sortField",
+        "modifiedTimeSpan",
+        "publishTimeSpan",
+        "tcModifiedTimeSpan",
+        "detail",
+        "edition"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "db": "WOS",
+      "limit": 3,
+      "page": 1
+    },
+    "description": "Query Web of Science documents\n. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "db": {
+          "type": "string",
+          "enum": [
+            "BCI",
+            "BIOABS",
+            "BIOSIS",
+            "CCC",
+            "DIIDW",
+            "DRCI",
+            "MEDLINE",
+            "PPRN",
+            "RC",
+            "WOK",
+            "WOS",
+            "ZOOREC"
+          ],
+          "default": "WOS",
+          "maxLength": 8000,
+          "description": "Web of Science Database abbreviation\n* WOS - Web of Science Core collection\n* BIOABS - Biological Abstracts\n* BCI - BIOSIS Citation Index\n* BIOSIS - BIOSIS Previews\n* CCC - Current Contents Connect\n* DIIDW - Derwent Innovations Index\n* DRCI - Data Citation Index\n* MEDLINE - MEDLINE The U.S. National Library of Medicine® (NLM®) premier life sciences database.\n* ZOOREC - Zoological Records\n* PPRN - Preprint Citation Index\n* RC -  Research Commons\n* WOK - All databases\n"
+        },
+        "q": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Web of Science advanced [advanced search query builder](https://webofscience.help.clarivate.com/en-us/Content/advanced-search.html). The supported field tags are listed in description."
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 50,
+          "description": "set the limit of records on the page (1-50)"
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "set the result page"
+        },
+        "sortField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Order by field(s). Field name and order by clause separated by '+', use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by comma. Supported fields:\n\n* **LD** - Load Date\n* **PY** - Publication Year\n* **RS** - Relevance\n* **TC** - Times Cited\n"
+        },
+        "modifiedTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Defines a date range in which the results were most recently modified. Beginning and end dates must be specified in the yyyy-mm-dd format separated by '+' or ' ', e.g. 2023-01-01+2023-12-31. This parameter is not compatible with the all databases search, i.e. db=WOK is not compatible with this parameter."
+        },
+        "publishTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Defines a date range in which the results were published. Beginning and end dates must be specified in the yyyy-mm-dd format separated by '+' or ' ', e.g. 2023-01-01+2023-12-31. This parameter cannot be combined with modifiedTimeSpan"
+        },
+        "tcModifiedTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Defines a date range in which times cited counts were modified. Beginning and end dates must be specified in the yyyy-mm-dd format separated by '+' or ' ', e.g. 2023-01-01+2023-12-31. This parameter is not compatible with the all databases search, i.e. db=WOK is not compatible with this parameter."
+        },
+        "detail": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "it will returns the full data by default, if detail=short it returns the limited data"
+        },
+        "edition": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Edition(s) to be searched. If null, user permissions will be substituted. Must include the name of the collection and edition name separated by '+' or ' ', ex: WOS+SCI. Multiple editions are separated by ','. Editions available for collection (WOS) - AHCI,CCR,IC,ISSHP,ISTP,SCI,SSCI,BHCI,BSCI and ESCI."
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "q"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "starter_document": {
+    "product": "starter",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-starter/v2",
+    "path": "/documents/{uid}",
+    "fields": {
+      "path": [
+        "uid"
+      ],
+      "query": [
+        "detail"
+      ],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get Web of Science document by Accesssion Number (UID). Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Web of Science unique identifier (Accession Number)"
+        },
+        "detail": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "it will returns the full data by default, if detail=short it returns the limited data"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "uid"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "starter_journals": {
+    "product": "starter",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-starter/v2",
+    "path": "/journals",
+    "fields": {
+      "path": [],
+      "query": [
+        "issn"
+      ],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Query Journals by ISSN. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "issn": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Query Journal by ISSN"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "starter_journal": {
+    "product": "starter",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-starter/v2",
+    "path": "/journals/{id}",
+    "fields": {
+      "path": [
+        "id"
+      ],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get Journal by ID. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": ""
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_search": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/",
+    "fields": {
+      "path": [],
+      "query": [
+        "databaseId",
+        "lang",
+        "usrQuery",
+        "edition",
+        "publishTimeSpan",
+        "loadTimeSpan",
+        "createdTimeSpan",
+        "modifiedTimeSpan",
+        "tcModifiedTimeSpan",
+        "count",
+        "firstRecord",
+        "sortField",
+        "viewField",
+        "optionView",
+        "optionOther",
+        "links"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR",
+      "databaseId": "WOS"
+    },
+    "description": "Submits a user query and returns results. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "databaseId": {
+          "type": "string",
+          "enum": [
+            "WOS",
+            "BCI",
+            "BIOABS",
+            "BIOSIS",
+            "CABI",
+            "CCC",
+            "CSCD",
+            "DCI",
+            "DIIDW",
+            "FSTA",
+            "GRANTS",
+            "INSPEC",
+            "MEDLINE",
+            "PPRN",
+            "PQDT",
+            "RC",
+            "SCIELO",
+            "WOK",
+            "ZOOREC"
+          ],
+          "maxLength": 8000,
+          "description": "Database to search. WOK represents all databases."
+        },
+        "lang": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "\"Language of search. This element can take only one value for WOS (core collection): en for English. If no language is specified, English is passed by default. Only for specific regional databases other languages are supported.\""
+        },
+        "usrQuery": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "User query for requesting data, ex: TS=(cadmium). The query parser will return errors for invalid queries."
+        },
+        "edition": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Edition(s) to be searched. If null, user permissions will be substituted. Must include the name of the collection and edition name separated by '+' or ' ', ex: WOS+SCI. Multiple editions are separated by ','. Editions available for collection (WOS) - AHCI,CCR,IC,ISSHP,ISTP,SCI,SSCI,BHCI,BSCI and ESCI."
+        },
+        "publishTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "This element specifies a range of publication dates. If publishTimeSpan is used, the loadTimeSpan, createdTimeSpan and, modifiedTimeSpan parameter must be omitted. If publishTimeSpan, loadTimeSpan, createdTimeSpan, and modifiedTimeSpan are omitted, then the maximum time span will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31."
+        },
+        "loadTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Load time span (otherwise described as symbolic time span) defines a range of load dates. The load date is the date a record was added to the database. If load date is specified, the publishTimeSpan, createdTimeSpan and, modifiedTimeSpan parameter must be omitted. If both publishTimeSpan, loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Any of D/W/M/Y prefixed with a number where D-Day, M-Month, W-Week, Y-Year allowed. Acceptable value range for Day(0-6), Week(1-52), Month(1-12) and Year(0-10), ex: 5D,30W,10M,8Y."
+        },
+        "createdTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Created time span (otherwise described as symbolic time span) defines a range of creation dates. The create date is the date a record was created. If create date is specified, the modifiedTimeSpan, loadTimeSpan and, publishTimeSpan parameter must be omitted. If createdTimeSpan, loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31."
+        },
+        "modifiedTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Modified time span (otherwise described as symbolic time span) defines a range of modified dates. The modified date is the date a record was most recently modified in the database. If modified date is specified, the publishTimeSpan, loadTimeSpan and, createdTimeSpan parameter must be omitted. If modifiedTimeSpan and loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31. This parameter is not allowed with databaseId=WOK."
+        },
+        "tcModifiedTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Times Cited Modified time span (otherwise described as symbolic time span) defines a range of tc modified dates. The tc modified date is the date a record was most recently modified in the database. If tc modified date is specified, the publishTimeSpan, loadTimeSpan and, createdTimeSpan, modifiedTimeSpan parameter must be omitted. If modifiedTimeSpan and loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31. This parameter is not allowed with databaseId=WOK."
+        },
+        "count": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "description": "Number of records to return, must be 0-100.",
+          "maximum": 100
+        },
+        "firstRecord": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specific record, if any within the result set to return. Cannot be less than 1 and greater than 100000."
+        },
+        "sortField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Order by field(s). Field name and order by clause separated by '+'  or ' ', use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by comma."
+        },
+        "viewField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Parameter to limit records to selected fields. Because many fields are uniquely identified by a combination of element and attribute, you may not be able to limit record content to a precise degree. For example, the viewField parameter 'titles' will always return document titles, publication names (both full and abbreviated), and book titles. You cannot limit retrieval to only document (item) titles or only publication (source) titles because item and source are attribute values, not elements. You cannot include attributes in viewField parameters. Collection name and field name(s) separated by '+'  or ' ' ex: WOS+titles+addresses, where titles and addresses represent fields.If collection name is missing, the database id will be used, e.g. databaseId=WOS&viewfield=title+addresses is equivalent to databaseId=WOS&viewfield=WOS+title+addresses."
+        },
+        "optionView": {
+          "type": "string",
+          "enum": [
+            "FR",
+            "SR",
+            "FS"
+          ],
+          "default": "FR",
+          "maxLength": 8000,
+          "description": "Document detail:\n  * `FR` - Retrieves all metadata of the document (also known as FullRecord)\n  * `SR` - Retrieves a short version of the document that would not count against the quota.\n              The response fields are similar to the [Web of Science Starter API](https://developer.clarivate.com/apis/wos-starter) fields.\n  * `FS` - Custom Field Selection - must be combined with query parameter `viewField`. It is automatically selected if `viewField` is used.\n"
+        },
+        "optionOther": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Other option(s) of result representation. HL and On/Off separated by '+'  or ' ' where HL=HighLight: ex. HL+On."
+        },
+        "links": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Flag to return gateway links(Source and Citing) for each record returned in response. Default is false"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "databaseId",
+        "usrQuery"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_search_post": {
+    "product": "expanded",
+    "method": "POST",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/",
+    "fields": {
+      "path": [],
+      "query": [],
+      "body": [
+        "databaseId",
+        "lang",
+        "usrQuery",
+        "edition",
+        "publishTimeSpan",
+        "loadTimeSpan",
+        "createdTimeSpan",
+        "modifiedTimeSpan",
+        "tcModifiedTimeSpan",
+        "count",
+        "firstRecord",
+        "sortField",
+        "viewField",
+        "optionView",
+        "optionOther"
+      ]
+    },
+    "defaults": {
+      "databaseId": "WOS",
+      "firstRecord": 1,
+      "optionView": "SR",
+      "count": 3
+    },
+    "description": "Submits a user query and returns results. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "databaseId": {
+          "description": "Database to search. Must be a valid collection ID, ex: BCI/BIOABS/BIOSIS/CABI/CCC/CSCD/DCI/DIIDW/FSTA/GRANTS/INSPEC/MEDLINE/PPRN/PQDT/RC/SCIELO/WOK/WOS/ZOOREC. WOK represents all databases",
+          "type": "string",
+          "default": "WOS",
+          "maxLength": 8000
+        },
+        "lang": {
+          "description": "Language of search. This element can take only one value: en for English",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "usrQuery": {
+          "description": "User query for requesting data, ex: TS=(cadmium). The query parser will return errors for invalid queries",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "edition": {
+          "description": "Edition(s) to be searched. If null, user permissions will be substituted. Must include the name of the collection and edition name separated by +, ex: WOS+SCI. Multiple editions are separated by ','. Editions available for collection(WOS) - AHCI,CCR,IC,ISSHP,ISTP,SCI,SSCI,BHCI,BSCI and ESCI",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "publishTimeSpan": {
+          "description": "This element specifies a range of publication dates. If publishedTimeSpan is used, the loadTimeSpan parameter must be omitted. If publishedTimeSpan and loadTimeSpan are both omitted, then the maximum time span will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by +, ex: 1993-01-01+2009-12-31",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "loadTimeSpan": {
+          "description": "Load time span (otherwise described as symbolic time span) defines a range of load dates. The load date is the date a record was added to the collection. If load date is specified, the publishTimeSpan parameter must be omitted. If both publishTimeSpan and loadTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Any of D/W/M/Y prefixed with a number where D-Day, M-Month, W-Week, Y-Year allowed. Acceptable value range for Day(0-6), Week(1-52), Month(1-12) and Year(0-10), ex: 5D,30W,10M,8Y",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "createdTimeSpan": {
+          "description": "Created time span (otherwise described as symbolic time span) defines a range of creation dates. The create date is the date a record was created. If create date is specified, the modifiedTimeSpan, loadTimeSpan and, publishTimeSpan parameter must be omitted. If createdTimeSpan, loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31.",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "modifiedTimeSpan": {
+          "description": "Modified time span (otherwise described as symbolic time span) defines a range of modified dates. The modified date is the date a record was most recently modified in the database. If modified date is specified, the publishTimeSpan, loadTimeSpan and, createdTimeSpan parameter must be omitted. If modifiedTimeSpan and loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31. This parameter is not allowed with databaseId=WOK.",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "tcModifiedTimeSpan": {
+          "description": "Times Cited Modified time span (otherwise described as symbolic time span) defines a range of tc modified dates. The tc modified date is the date a record was most recently modified in the database. If tc modified date is specified, the publishTimeSpan, loadTimeSpan and, createdTimeSpan, modifiedTimeSpan parameter must be omitted. If modifiedTimeSpan and loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31. This parameter is not allowed with databaseId=WOK.",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "count": {
+          "description": "Number of records to return, must be 0-100",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "firstRecord": {
+          "description": "Specific record, if any within the result set to return. Cannot be less than 1",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1
+        },
+        "sortField": {
+          "description": "Order by field(s). Field name and order by clause separated by +, use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by ,",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "viewField": {
+          "description": "Parameter to limit records to selected fields. Because many fields are uniquely identified by a combination of element and attribute, you may not be able to limit record content to a precise degree. For example, the viewField parameter 'titles' will always return document titles, publication names (both full and abbreviated), and book titles. You cannot limit retrieval to only document (item) titles or only publication (source) titles because item and source are attribute values, not elements. You cannot include attributes in viewField parameters. Collection name and field name(s) separated by + ex: WOS+titles+addresses, where titles and addresses represent fields.If collection name is missing, the database id will be used, e.g. databaseId=WOS&viewfield=title+addresses is equivalent to databaseId=WOS&viewfield=WOS+title+addresses.",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "optionView": {
+          "description": "Document detail:\n  * `FR` - Retrieves all metadata of the document (also known as FullRecord)\n  * `SR` - Retrieves a short version of the document that would not count against the quota.\n              The response fields are similar to the [Web of Science Starter API](https://developer.clarivate.com/apis/wos-starter) fields.\n  * `FS` - Custom Field Selection - must be combined with query parameter `viewField`. It is automatically selected if `viewField` is used.\n",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "optionOther": {
+          "description": "Other option(s) of result representation. RI and On/Off separated by + where RI-RecordIDs, ex: RI+On",
+          "type": "string",
+          "maxLength": 8000
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "databaseId",
+        "usrQuery",
+        "count",
+        "firstRecord"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_document": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/id/{uniqueId}",
+    "fields": {
+      "path": [
+        "uniqueId"
+      ],
+      "query": [
+        "databaseId",
+        "lang",
+        "viewField",
+        "optionView",
+        "optionOther",
+        "links"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "optionView": "SR",
+      "databaseId": "WOS"
+    },
+    "description": "Find record(s) by specific id. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "databaseId": {
+          "type": "string",
+          "enum": [
+            "WOS",
+            "BCI",
+            "BIOABS",
+            "BIOSIS",
+            "CABI",
+            "CCC",
+            "CSCD",
+            "DCI",
+            "DIIDW",
+            "FSTA",
+            "GRANTS",
+            "INSPEC",
+            "MEDLINE",
+            "PPRN",
+            "PQDT",
+            "RC",
+            "SCIELO",
+            "WOK",
+            "ZOOREC"
+          ],
+          "maxLength": 8000,
+          "description": "Database to search. WOK represents all databases."
+        },
+        "lang": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Language of search. This element can take only one value: en for English. If no language is specified, English is passed by default."
+        },
+        "uniqueId": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Primary item(s) id to be searched, ex: WOS:000270372400005. Cannot be null or an empty string. Multiple values are separated by comma."
+        },
+        "viewField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Parameter to limit records to selected fields. Because many fields are uniquely identified by a combination of element and attribute, you may not be able to limit record content to a precise degree. For example, the viewField parameter 'titles' will always return document titles, publication names (both full and abbreviated), and book titles. You cannot limit retrieval to only document (item) titles or only publication (source) titles because item and source are attribute values, not elements. You cannot include attributes in viewField parameters. Collection name and field name(s) separated by '+'  or ' ' ex: WOS+titles+addresses, where titles and addresses represent fields.If collection name is missing, the database id will be used, e.g. databaseId=WOS&viewfield=title+addresses is equivalent to databaseId=WOS&viewfield=WOS+title+addresses."
+        },
+        "optionView": {
+          "type": "string",
+          "enum": [
+            "FR",
+            "SR",
+            "FS"
+          ],
+          "default": "FR",
+          "maxLength": 8000,
+          "description": "Document detail:\n  * `FR` - Retrieves all metadata of the document (also known as FullRecord)\n  * `SR` - Retrieves a short version of the document that would not count against the quota.\n              The response fields are similar to the [Web of Science Starter API](https://developer.clarivate.com/apis/wos-starter) fields.\n  * `FS` - Custom Field Selection - must be combined with query parameter `viewField`. It is automatically selected if `viewField` is used.\n"
+        },
+        "optionOther": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Other option(s) of result representation. HL and On/Off separated by '+'  or ' ' where HL=HighLight: ex. HL+On."
+        },
+        "links": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Flag to return gateway links(Source and Citing) for each record returned in response. Default is false"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "databaseId",
+        "uniqueId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_query_page": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/query/{queryId}",
+    "fields": {
+      "path": [
+        "queryId"
+      ],
+      "query": [
+        "count",
+        "firstRecord",
+        "sortField",
+        "viewField",
+        "optionView",
+        "optionOther",
+        "links"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR"
+    },
+    "description": "Fetch record(s) by query identifier. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "queryId": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Retrieve records based on query identifier."
+        },
+        "count": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "description": "Number of records to return, must be 0-100.",
+          "maximum": 100
+        },
+        "firstRecord": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specific record, if any within the result set to return. Cannot be less than 1 and greater than 100000."
+        },
+        "sortField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Order by field(s). Field name and order by clause separated by '+'  or ' ', use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by comma. If sortField was set on the original query, this parameter should be set as sorting is not a property of the query."
+        },
+        "viewField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Parameter to limit records to selected fields. Because many fields are uniquely identified by a combination of element and attribute, you may not be able to limit record content to a precise degree. For example, the viewField parameter 'titles' will always return document titles, publication names (both full and abbreviated), and book titles. You cannot limit retrieval to only document (item) titles or only publication (source) titles because item and source are attribute values, not elements. You cannot include attributes in viewField parameters. Collection name and field name(s) separated by '+'  or ' ' ex: WOS+titles+addresses, where titles and addresses represent fields.If collection name is missing, the database id will be used, e.g. databaseId=WOS&viewfield=title+addresses is equivalent to databaseId=WOS&viewfield=WOS+title+addresses."
+        },
+        "optionView": {
+          "type": "string",
+          "enum": [
+            "FR",
+            "SR",
+            "FS"
+          ],
+          "default": "FR",
+          "maxLength": 8000,
+          "description": "Document detail:\n  * `FR` - Retrieves all metadata of the document (also known as FullRecord)\n  * `SR` - Retrieves a short version of the document that would not count against the quota.\n              The response fields are similar to the [Web of Science Starter API](https://developer.clarivate.com/apis/wos-starter) fields.\n  * `FS` - Custom Field Selection - must be combined with query parameter `viewField`. It is automatically selected if `viewField` is used.\n"
+        },
+        "optionOther": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Other option(s) of result representation. HL and On/Off separated by '+'  or ' ' where HL=HighLight: ex. HL+On."
+        },
+        "links": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Flag to return gateway links(Source and Citing) for each record returned in response. Default is false"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "queryId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_record_ids": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/recordids/{queryId}",
+    "fields": {
+      "path": [
+        "queryId"
+      ],
+      "query": [
+        "count",
+        "firstRecord",
+        "sortField"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "count": 3,
+      "firstRecord": 1
+    },
+    "description": "Return IDs of records for a given query by a query identifier. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "queryId": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Query identifier for which to return results."
+        },
+        "count": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "description": "Number of record identifiers to return, number between 1-100.",
+          "maximum": 100
+        },
+        "firstRecord": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specific record, if any within the result set to return. number between 1-100,000."
+        },
+        "sortField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Order by field(s). Field name and order by clause separated by '+'  or ' ', use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by comma."
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "queryId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_related": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/related",
+    "fields": {
+      "path": [],
+      "query": [
+        "databaseId",
+        "lang",
+        "uniqueId",
+        "edition",
+        "publishTimeSpan",
+        "modifiedTimeSpan",
+        "tcModifiedTimeSpan",
+        "refId",
+        "count",
+        "firstRecord",
+        "sortField",
+        "viewField",
+        "optionView",
+        "optionOther",
+        "links"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR",
+      "databaseId": "WOS"
+    },
+    "description": "Identify related records. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "databaseId": {
+          "type": "string",
+          "enum": [
+            "WOS",
+            "BCI",
+            "BIOABS",
+            "BIOSIS",
+            "CABI",
+            "CCC",
+            "CSCD",
+            "DCI",
+            "DIIDW",
+            "FSTA",
+            "GRANTS",
+            "INSPEC",
+            "MEDLINE",
+            "PPRN",
+            "PQDT",
+            "RC",
+            "SCIELO",
+            "WOK",
+            "ZOOREC"
+          ],
+          "maxLength": 8000,
+          "description": "Database to search. WOK represents all databases."
+        },
+        "lang": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Language of search. This element can take only one value: en for English. If no language is specified, English is passed by default."
+        },
+        "uniqueId": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Primary item id to be searched, ex: WOS:000270372400005. Cannot be null or an empty string."
+        },
+        "edition": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Edition(s) to be searched. If null, user permissions will be substituted. Must include the name of the collection and edition name separated by '+'  or ' ', ex: WOS+SCI. Multiple editions are separated by ','. Editions available for collection(WOS) - AHCI,CCR,IC,ISSHP,ISTP,SCI,SSCI,BHCI,BSCI and ESCI."
+        },
+        "publishTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "This element specifies a range of publication dates. If publishTimeSpan is omitted, then the maximum time span will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+'  or ' ', ex: 1993-01-01+2009-12-31."
+        },
+        "modifiedTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Modified time span (otherwise described as symbolic time span) defines a range of modified dates. The modified date is the date a record was most recently modified in the database. If modified date is specified, the publishTimeSpan, loadTimeSpan and, createdTimeSpan parameter must be omitted. If modifiedTimeSpan and loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31. This parameter is not allowed with databaseId=WOK."
+        },
+        "tcModifiedTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Times Cited Modified time span (otherwise described as symbolic time span) defines a range of tc modified dates. The tc modified date is the date a record was most recently modified in the database. If tc modified date is specified, the publishTimeSpan, loadTimeSpan and, createdTimeSpan, modifiedTimeSpan parameter must be omitted. If modifiedTimeSpan and loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31. This parameter is not allowed with databaseId=WOK."
+        },
+        "refId": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "References for the parent record which are used to find related records. Multiple values are separated by comma."
+        },
+        "count": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "description": "Number of records to return, must be 0-100.",
+          "maximum": 100
+        },
+        "firstRecord": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specific record, if any within the result set to return. Cannot be less than 1 and greater than 100000."
+        },
+        "sortField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Order by field(s). Field name and order by clause separated by '+'  or ' ', use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by comma."
+        },
+        "viewField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Parameter to limit records to selected fields. Because many fields are uniquely identified by a combination of element and attribute, you may not be able to limit record content to a precise degree. For example, the viewField parameter 'titles' will always return document titles, publication names (both full and abbreviated), and book titles. You cannot limit retrieval to only document (item) titles or only publication (source) titles because item and source are attribute values, not elements. You cannot include attributes in viewField parameters. Collection name and field name(s) separated by '+' or ' ' ex: WOS+titles+addresses, where titles and addresses represent fields.If collection name is missing, the database id will be used, e.g. databaseId=WOS&viewfield=title+addresses is equivalent to databaseId=WOS&viewfield=WOS+title+addresses."
+        },
+        "optionView": {
+          "type": "string",
+          "enum": [
+            "FR",
+            "SR",
+            "FS"
+          ],
+          "default": "FR",
+          "maxLength": 8000,
+          "description": "Document detail:\n  * `FR` - Retrieves all metadata of the document (also known as FullRecord)\n  * `SR` - Retrieves a short version of the document that would not count against the quota.\n              The response fields are similar to the [Web of Science Starter API](https://developer.clarivate.com/apis/wos-starter) fields.\n  * `FS` - Custom Field Selection - must be combined with query parameter `viewField`. It is automatically selected if `viewField` is used.\n"
+        },
+        "optionOther": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Other option(s) of result representation. HL and On/Off separated by '+' or ' ' where HL=HighLight: ex. HL+On."
+        },
+        "links": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Flag to return gateway links(Source and Citing) for each record returned in response. Default is false"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "databaseId",
+        "uniqueId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_citing": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/citing",
+    "fields": {
+      "path": [],
+      "query": [
+        "databaseId",
+        "lang",
+        "uniqueId",
+        "edition",
+        "publishTimeSpan",
+        "modifiedTimeSpan",
+        "tcModifiedTimeSpan",
+        "count",
+        "firstRecord",
+        "sortField",
+        "viewField",
+        "optionView",
+        "optionOther",
+        "links"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR",
+      "databaseId": "WOS"
+    },
+    "description": "Find citing items. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "databaseId": {
+          "type": "string",
+          "enum": [
+            "WOS",
+            "BCI",
+            "BIOABS",
+            "BIOSIS",
+            "CABI",
+            "CCC",
+            "CSCD",
+            "DCI",
+            "DIIDW",
+            "FSTA",
+            "GRANTS",
+            "INSPEC",
+            "MEDLINE",
+            "PPRN",
+            "PQDT",
+            "RC",
+            "SCIELO",
+            "WOK",
+            "ZOOREC"
+          ],
+          "maxLength": 8000,
+          "description": "Database to search. WOK represents all databases."
+        },
+        "lang": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Language of search. This element can take only one value: en for English. If no language is specified, English is passed by default."
+        },
+        "uniqueId": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Primary item id to be searched, ex: WOS:000270372400005. Cannot be null or an empty string."
+        },
+        "edition": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Edition(s) to be searched. If null, user permissions will be substituted. Must include the name of the collection and edition name separated by '+' or ' ', ex: WOS+SCI. Multiple editions are separated by ','. Editions available for collection(WOS) - AHCI,CCR,IC,ISSHP,ISTP,SCI,SSCI,BHCI,BSCI and ESCI."
+        },
+        "publishTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "This element specifies a range of publication dates. If publishTimeSpan is omitted, then the maximum time span will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31."
+        },
+        "modifiedTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Modified time span (otherwise described as symbolic time span) defines a range of modified dates. The modified date is the date a record was most recently modified in the database. If modified date is specified, the publishTimeSpan, loadTimeSpan and, createdTimeSpan parameter must be omitted. If modifiedTimeSpan and loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31. This parameter is not allowed with databaseId=WOK."
+        },
+        "tcModifiedTimeSpan": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Times Cited Modified time span (otherwise described as symbolic time span) defines a range of tc modified dates. The tc modified date is the date a record was most recently modified in the database. If tc modified date is specified, the publishTimeSpan, loadTimeSpan and, createdTimeSpan, modifiedTimeSpan parameter must be omitted. If modifiedTimeSpan and loadTimeSpan, createdTimeSpan, and modifyTimeSpan are omitted, the maximum publication date will be inferred from the editions data. Beginning and end dates should be specified in the yyyy-mm-dd format separated by '+' or ' ', ex: 1993-01-01+2009-12-31. This parameter is not allowed with databaseId=WOK."
+        },
+        "count": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "description": "Number of records to return, must be 0-100.",
+          "maximum": 100
+        },
+        "firstRecord": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specific record, if any within the result set to return. Cannot be less than 1 and greater than 100000."
+        },
+        "sortField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Order by field(s). Field name and order by clause separated by '+' or ' ', use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by comma."
+        },
+        "viewField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Parameter to limit records to selected fields. Because many fields are uniquely identified by a combination of element and attribute, you may not be able to limit record content to a precise degree. For example, the viewField parameter 'titles' will always return document titles, publication names (both full and abbreviated), and book titles. You cannot limit retrieval to only document (item) titles or only publication (source) titles because item and source are attribute values, not elements. You cannot include attributes in viewField parameters. Collection name and field name(s) separated by '+' or ' ' ex: WOS+titles+addresses, where titles and addresses represent fields.If collection name is missing, the database id will be used, e.g. databaseId=WOS&viewfield=title+addresses is equivalent to databaseId=WOS&viewfield=WOS+title+addresses."
+        },
+        "optionView": {
+          "type": "string",
+          "enum": [
+            "FR",
+            "SR",
+            "FS"
+          ],
+          "default": "FR",
+          "maxLength": 8000,
+          "description": "Document detail:\n  * `FR` - Retrieves all metadata of the document (also known as FullRecord)\n  * `SR` - Retrieves a short version of the document that would not count against the quota.\n              The response fields are similar to the [Web of Science Starter API](https://developer.clarivate.com/apis/wos-starter) fields.\n  * `FS` - Custom Field Selection - must be combined with query parameter `viewField`. It is automatically selected if `viewField` is used.\n"
+        },
+        "optionOther": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Other option(s) of result representation. HL and On/Off separated by '+' or ' ' where HL=HighLight: ex. HL+On."
+        },
+        "links": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Flag to return gateway links(Source and Citing) for each record returned in response. Default is false"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "databaseId",
+        "uniqueId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_references": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/references",
+    "fields": {
+      "path": [],
+      "query": [
+        "databaseId",
+        "lang",
+        "uniqueId",
+        "count",
+        "firstRecord",
+        "sortField",
+        "optionOther"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "count": 3,
+      "firstRecord": 1,
+      "databaseId": "WOS"
+    },
+    "description": "Find cited references by id. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "databaseId": {
+          "type": "string",
+          "enum": [
+            "WOS",
+            "BCI",
+            "BIOABS",
+            "BIOSIS",
+            "CABI",
+            "CCC",
+            "CSCD",
+            "DCI",
+            "DIIDW",
+            "FSTA",
+            "GRANTS",
+            "INSPEC",
+            "MEDLINE",
+            "PPRN",
+            "PQDT",
+            "RC",
+            "SCIELO",
+            "WOK",
+            "ZOOREC"
+          ],
+          "maxLength": 8000,
+          "description": "Database to search. WOK represents all databases."
+        },
+        "lang": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Language of search. This element can take only one value: en for English. If no language is specified, English is passed by default."
+        },
+        "uniqueId": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Primary item id to be searched, ex: WOS:000270372400005. Cannot be null or an empty string."
+        },
+        "count": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "description": "Number of records to return, must be 0-100.",
+          "maximum": 100
+        },
+        "firstRecord": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specific record, if any within the result set to return. Cannot be less than 1 and greater than 100000."
+        },
+        "sortField": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Order by field(s). Field name and order by clause separated by '+' or ' ', use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by comma."
+        },
+        "optionOther": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Other option(s) of result representation. HL and On/Off separated by '+' or ' ' where HL=HighLight: ex. HL+On."
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "databaseId",
+        "uniqueId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_category_context": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/category-context/{uniqueId}",
+    "fields": {
+      "path": [
+        "uniqueId"
+      ],
+      "query": [
+        "min",
+        "maxCat",
+        "scope"
+      ],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get categorization context about the citing/cited references of a given document. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "uniqueId": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Primary item id to be searched, ex: WOS:000270372400005. Cannot be null or an empty string."
+        },
+        "min": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Minimum number of citings/references to be considered"
+        },
+        "maxCat": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Maximum number of categories to retrieve"
+        },
+        "scope": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Used to define the objects that should be returned. Valid values are C/R/A/CR/RC/RA/AR/CA/AC/CRA where R = Cited paper set, C = Citing paper set and A = Aggregation of Citing AND Cited paper sets. Default is CRA."
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "uniqueId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "expanded_citation_report": {
+    "product": "expanded",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "path": "/citation-report/{queryId}",
+    "fields": {
+      "path": [
+        "queryId"
+      ],
+      "query": [
+        "reportLevel",
+        "startYear",
+        "endYear"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "reportLevel": "WOS",
+      "startYear": "1900",
+      "endYear": "Current Year"
+    },
+    "description": "citation report. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "queryId": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Retrieve citation report based on query identifier."
+        },
+        "reportLevel": {
+          "type": "string",
+          "default": "WOS",
+          "maxLength": 8000,
+          "description": "Accepts collection names separated by comma. Example values are 'WOS', 'AllDB', or 'WOS,AllDB' case insensitive. Supply WOS for a report based on documents from the Web of Science Core Collection, and AllDB for a report based on all databases."
+        },
+        "startYear": {
+          "type": "string",
+          "default": "1900",
+          "maxLength": 8000,
+          "description": "String containing starting citingYear DefaultValue 1900"
+        },
+        "endYear": {
+          "type": "string",
+          "default": "Current Year",
+          "maxLength": 8000,
+          "description": "String containing end citingYear DefaultValue Current year"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "queryId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "researcher_search": {
+    "product": "researcher",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-researcher",
+    "path": "/researchers",
+    "fields": {
+      "path": [],
+      "query": [
+        "q",
+        "page",
+        "limit",
+        "sort",
+        "sortOrder"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1,
+      "limit": 3,
+      "sortOrder": "DESC"
+    },
+    "description": "Search researchers. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "q": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Query syntax for searching and filtering Researchers. The search logic is described in the section [Search](#search)."
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 1 to 50",
+          "maximum": 50
+        },
+        "sort": {
+          "type": "string",
+          "enum": [
+            "NumberOfDocuments",
+            "PrimaryAffiliation",
+            "LastName"
+          ],
+          "maxLength": 8000,
+          "description": "Sort by the following attributes. If the value is not provided the records will be sorted by relevance"
+        },
+        "sortOrder": {
+          "type": "string",
+          "enum": [
+            "ASC",
+            "DESC"
+          ],
+          "default": "DESC",
+          "maxLength": 8000,
+          "description": "Sorting order. If sorting by relevance, value must be DESC."
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "researcher_profile": {
+    "product": "researcher",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-researcher",
+    "path": "/researchers/{rid}",
+    "fields": {
+      "path": [
+        "rid"
+      ],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get detailed information for a Researcher. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "rid": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "ResearcherID"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "rid"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "researcher_peer_reviews": {
+    "product": "researcher",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-researcher",
+    "path": "/researchers/{rid}/peer-reviews",
+    "fields": {
+      "path": [
+        "rid"
+      ],
+      "query": [
+        "reviewType",
+        "page"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1
+    },
+    "description": "Get peer reviews list for a researcher. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "rid": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "ResearcherID"
+        },
+        "reviewType": {
+          "type": "string",
+          "enum": [
+            "post",
+            "pre"
+          ],
+          "maxLength": 8000,
+          "description": "Review type allows a user to specifiy if only pre-publication (i.e. standard) reviews or post-publication reviews should be returned. Omitting the parameter returns both."
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "rid"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "researcher_documents": {
+    "product": "researcher",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-researcher",
+    "path": "/researchers/{rid}/documents",
+    "fields": {
+      "path": [
+        "rid"
+      ],
+      "query": [
+        "nonIndexed",
+        "page",
+        "limit",
+        "collections"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "nonIndexed": false,
+      "page": 1,
+      "limit": 3
+    },
+    "description": "Get documents published by a researcher. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "rid": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Web of Science ResearcherID"
+        },
+        "nonIndexed": {
+          "type": "boolean",
+          "default": false,
+          "description": "Retrieve only papers that are not indexed in the Web of Science"
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 1 to 50",
+          "maximum": 50
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": []
+          },
+          "description": "Collection of DB's"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "rid"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_search": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/journals",
+    "fields": {
+      "path": [],
+      "query": [
+        "q",
+        "edition",
+        "categoryCode",
+        "jcrYear",
+        "jif",
+        "jifPercentile",
+        "jifQuartile",
+        "jci",
+        "jciQuartile",
+        "jciPercentile",
+        "page",
+        "limit"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1,
+      "limit": 3
+    },
+    "description": "Search and filter across JCR Journals. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "q": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Free-text search by journal name (e.g. *Nature Genetics*), JCR abbreviation (e.g. *NAT GENET*), publisher (e.g. *PUBLIC LIBRARY SCIENCE*) or [ISSN / eISSN code](https://www.issn.org/understanding-the-issn/what-is-an-issn/) (e.g. *1061-4036*)\n\nThe search logic is described in the section [Search](#search)."
+        },
+        "edition": {
+          "type": "string",
+          "enum": [
+            "SCIE",
+            "SSCI",
+            "AHCI",
+            "ESCI"
+          ],
+          "maxLength": 8000,
+          "description": "Filter by Web of Science Citation Index. The following indexes (editions) are presented:\n- SCIE - Science Citation Index Expanded\n- SSCI - Social Sciences Citation Index\n- AHCI - Arts & Humanities Citation Index\n- ESCI - Emerging Sources Citation Index\n\nMultiple values are allowed, separated by a semicolon ( **;** )"
+        },
+        "categoryCode": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Filter journals by category identifiers.\n\nEach journal in JCR is assigned to at least one of the subject categories, indicating a general area of science or the social sciences. Journals may be included in more than one subject category.\n\nMultiple values are allowed, separated by a semicolon ( **;** )"
+        },
+        "jcrYear": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Filter by Journal Citation Report year (from 1997).\n\n**NOTE:** The filter **jcrYear** is mandatory while using **jif**, **jifPercentile**, **jifQuartile**, and **jci** filters\n\nOnly one value is allowed."
+        },
+        "jif": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Filter by [Journal Impact Factor](http://jcr.help.clarivate.com/Content/jcr3-glossary.htm) (JIF).\n\n**NOTE:** The filter **jcrYear** is mandatory while using **jif** filter\n\nFilter logic is described in the section [Filter by range](#range)"
+        },
+        "jifPercentile": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Filter by [Journal Impact Factor Percentile](http://jcr.help.clarivate.com/Content/glossary-journal-impact-factor-percentile.htm), ranging from 0 to 100\n\n**NOTE:** The filter **jcrYear** is mandatory while using **jifPercentile** filter\n\nFilter logic is described in the section [Filter by range](#range)"
+        },
+        "jifQuartile": {
+          "type": "string",
+          "enum": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "maxLength": 8000,
+          "description": "Filter by JIF quartile rank for a category, from highest to lowest based on their JIF value: <br />Q1 is represented by the top 25% of journals in the category; <br />Q2 is occupied by journals in the 25 to 50% group; <br />Q3 is occupied by journals in the 50 to 75% group; <br />Q4 is occupied by journals in the 75 to 100% group.\n\n**NOTE:** The filter **jcrYear** is mandatory while using **jifQuartile** filter\n\nMultiple values are allowed, separated by a semicolon ( **;** )"
+        },
+        "jci": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Filter by [Journal Citation Indicator](http://jcr.help.clarivate.com/Content/jcr3-glossary.htm) (JCI).\n\n**NOTE:** The filter **jcrYear** is mandatory while using **jci** filter\n\nFilter logic is described in the section [Filter by range](#range)"
+        },
+        "jciQuartile": {
+          "type": "string",
+          "enum": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "maxLength": 8000,
+          "description": "Filter by JCI quartile rank for a category, from highest to lowest based on their JCI value:\nQ1 is represented by the top 25% of journals in the category;\nQ2 is occupied by journals in the 25 to 50% group;\nQ3 is occupied by journals in the 50 to 75% group;\nQ4 is occupied by journals in the 75 to 100% group.\n\n**NOTE:** The filter **jcrYear** is mandatory while using **jciQuartile** filter\n\nMultiple values are allowed, separated by a semicolon ( **;** )"
+        },
+        "jciPercentile": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Filter by Journal Citation Indicator (JCI) percentile, ranging from 0 to 100\n\n**NOTE:** The filter **jcrYear** is mandatory while using **jciPercentile** filter\n\nFilter logic is described in the section [Filter by range](#range)"
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 1 to 50",
+          "maximum": 50
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "journals_journal": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/journals/{id}",
+    "fields": {
+      "path": [
+        "id"
+      ],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get journal by id. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Journal unique identifier\n\nCurrently an identifier is a JCR abbreviation, where blank spaces are substituted with underscores (e.g. *PLOS ONE* Journal has the ID **PLOS_ONE**)"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_year_report": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/journals/{id}/reports/year/{year}",
+    "fields": {
+      "path": [
+        "id",
+        "year"
+      ],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get journal metrics for a year. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Journal unique identifier\n\nCurrently an identifier is a JCR abbreviation, where blank spaces are substituted with underscores (e.g. *PLOS ONE* Journal has the ID **PLOS_ONE**)"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Journal Citation Report year (jcrYear)"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id",
+        "year"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_cited": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/journals/{id}/cited/year/{year}",
+    "fields": {
+      "path": [
+        "id",
+        "year"
+      ],
+      "query": [
+        "page",
+        "limit"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1,
+      "limit": 3
+    },
+    "description": "Get journals that cite the journal for the JCR year. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Journal unique identifier"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Journal Citation Report Year (from 1997)"
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 1 to 50",
+          "maximum": 50
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id",
+        "year"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_citing": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/journals/{id}/citing/year/{year}",
+    "fields": {
+      "path": [
+        "id",
+        "year"
+      ],
+      "query": [
+        "page",
+        "limit"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1,
+      "limit": 3
+    },
+    "description": "Get journals that were cited by the journal for the JCR year. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Journal unique identifier"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "A citing Year"
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 1 to 50",
+          "maximum": 50
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id",
+        "year"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_history": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/journals/{id}/history",
+    "fields": {
+      "path": [
+        "id"
+      ],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get journal changes by id. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Journal unique identifier\n\nCurrently an identifier is a JCR abbreviation, where blank spaces are substituted with underscores (e.g. *PLOS ONE* Journal has the ID **PLOS_ONE**)"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_categories": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/categories",
+    "fields": {
+      "path": [],
+      "query": [
+        "q",
+        "edition",
+        "jcrYear",
+        "page",
+        "limit"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1,
+      "limit": 3
+    },
+    "description": "Search and filter across the journal categories. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "q": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Free-text search by category name.\n\nSearch logic is described in the section [Search](#search)."
+        },
+        "edition": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Filter by Web of Sceince Citation Index. The following indexes (editions) are presented:\n- SCIE - Science Citation Index Expanded (ournals across more than 170 disciplines)\n- SSCI - Social Sciences Citation Index (journals across more than 50 social science disciplines)\n\nMultiple values are allowed, separated by semicolon ( **;** )"
+        },
+        "jcrYear": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Filter by Category Citation Report year (from 2003).\n\nOnly one value is allowed."
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 1 to 50",
+          "maximum": 50
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "journals_category": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/categories/{id}",
+    "fields": {
+      "path": [
+        "id"
+      ],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get a category. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Category ID, consisting of a two-letter category code and four-letter edition, separated by **_** (i.e., ***RZ_SSCI*** or ***IP_SCIE***)"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_category_year_report": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/categories/{id}/reports/year/{year}",
+    "fields": {
+      "path": [
+        "id",
+        "year"
+      ],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get category metrics for a year. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Category ID"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Category report year"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id",
+        "year"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_category_cited": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/categories/{id}/cited/year/{year}",
+    "fields": {
+      "path": [
+        "id",
+        "year"
+      ],
+      "query": [
+        "page",
+        "limit"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1,
+      "limit": 3
+    },
+    "description": "Get journals that cite all journals in the category for the JCR year. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Category ID"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "JCR Year (from 2003)"
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 1 to 50",
+          "maximum": 50
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id",
+        "year"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_category_citing": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/categories/{id}/citing/year/{year}",
+    "fields": {
+      "path": [
+        "id",
+        "year"
+      ],
+      "query": [
+        "page",
+        "limit"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1,
+      "limit": 3
+    },
+    "description": "Get journals that were cited by all journals from the category for the JCR year. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Category ID"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "JCR Year (from 2003)"
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 1 to 50",
+          "maximum": 50
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "id",
+        "year"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "journals_last_updated": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/last-updated",
+    "fields": {
+      "path": [],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Date of the last content update. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "journals_title_changes": {
+    "product": "journals",
+    "method": "GET",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "path": "/journals/history/title",
+    "fields": {
+      "path": [],
+      "query": [
+        "changeYear",
+        "page",
+        "limit"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "page": 1,
+      "limit": 3
+    },
+    "description": "Journal title changes by year. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "changeYear": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The year to receive summary title change data for"
+        },
+        "page": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "description": "Specifying a page to retrieve"
+        },
+        "limit": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "description": "Number of returned results, ranging from 0 to 50",
+          "maximum": 50
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "incites_institution_metrics": {
+    "product": "incites",
+    "method": "GET",
+    "base_url": "https://incites-api.clarivate.com/api/incites",
+    "path": "/DocumentLevelMetricsByInstitutionId/json",
+    "fields": {
+      "path": [],
+      "query": [
+        "year",
+        "recordcount",
+        "startingrecord",
+        "ver",
+        "schema",
+        "esci"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "schema": "wos",
+      "esci": "n"
+    },
+    "description": "Get metrics by institution Id. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "year": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Your response will contain records published starting in this year. Must be at least 1980"
+        },
+        "recordcount": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "This is the maximum number of records that will be returned per request. Must be less than the limit placed on the developer key (default maximum is 100)",
+          "maximum": 100
+        },
+        "startingrecord": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Starting index of Records returned. Used when number of Records required exceeds limit on single request. Starts at Index 1"
+        },
+        "ver": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Always set to 2"
+        },
+        "schema": {
+          "type": "string",
+          "default": "wos",
+          "maxLength": 8000,
+          "description": "Retrieves schema specific metrics after passing over the corresponding code. Returns WoS categories if absent."
+        },
+        "esci": {
+          "type": "string",
+          "default": "n",
+          "maxLength": 8000,
+          "description": "Flag to return InCites baseline metrics with Emerging Sources Citation Index (ESCI) content. Accepts y/n case insensitive values only. y - returns InCites metrics with ESCI index, n - returns InCites metrics without ESCI index"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "year",
+        "recordcount",
+        "startingrecord",
+        "ver"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "incites_institution_count": {
+    "product": "incites",
+    "method": "GET",
+    "base_url": "https://incites-api.clarivate.com/api/incites",
+    "path": "/DocumentLevelMetricsByInstitutionIdRecordCount/json",
+    "fields": {
+      "path": [],
+      "query": [
+        "year"
+      ],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get metrics count by year. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "year": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Your response will contain records published starting in this year. Must be at least 1980"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "year"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "incites_document_metrics": {
+    "product": "incites",
+    "method": "GET",
+    "base_url": "https://incites-api.clarivate.com/api/incites",
+    "path": "/DocumentLevelMetricsByUT/json",
+    "fields": {
+      "path": [],
+      "query": [
+        "UT",
+        "ver",
+        "schema",
+        "esci"
+      ],
+      "body": []
+    },
+    "defaults": {
+      "schema": "wos",
+      "esci": "n"
+    },
+    "description": "Get metrics by UT. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "UT": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Submit a comma delimited list of UT values and get InCites metrics in the response. A valid UT is 15 alphanumeric digits. All trailing 0's must be left in the UT, and there should be no spaces between UTs. If there is no data for a UT or an invalid UT is entered, that UT will be ignored in the response. A limit of 100 UTs may be submitted per request. To see sample API results, use one or more of the following UTs 000352040700014,000353267900023,000346982900018,000346342200004"
+        },
+        "ver": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Always set to 2"
+        },
+        "schema": {
+          "type": "string",
+          "default": "wos",
+          "maxLength": 8000,
+          "description": "Retrieves schema specific metrics after passing over the corresponding code. Returns WoS categories if absent."
+        },
+        "esci": {
+          "type": "string",
+          "default": "n",
+          "maxLength": 8000,
+          "description": "Flag to return InCites baseline metrics with Emerging Sources Citation Index (ESCI) content. Accepts y/n case insensitive values only. y - returns InCites metrics with ESCI index, n - returns InCites metrics without ESCI index"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "UT",
+        "ver"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "incites_validate_uids": {
+    "product": "incites",
+    "method": "GET",
+    "base_url": "https://incites-api.clarivate.com/api/incites",
+    "path": "/CheckValidUTs/json",
+    "fields": {
+      "path": [],
+      "query": [
+        "UT"
+      ],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get invalid UTs. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "UT": {
+          "type": "string",
+          "maxLength": 8000,
+          "description": "Submit a comma delimited list of UT values and get InCites metrics in the response. A valid UT is 15 alphanumeric digits. All trailing 0's must be left in the UT, and there should be no spaces between UTs. If there is no data for a UT or an invalid UT is entered, that UT will be ignored in the response. A limit of 100 UTs may be submitted per request. To see sample API results, use one or more of the following UTs 000352040700014,000353267900023,000346982900018,000346342200004"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [
+        "UT"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "incites_last_updated": {
+    "product": "incites",
+    "method": "GET",
+    "base_url": "https://incites-api.clarivate.com/api/incites",
+    "path": "/InCitesLastUpdated/json",
+    "fields": {
+      "path": [],
+      "query": [],
+      "body": []
+    },
+    "defaults": {},
+    "description": "Get last updated information. Требуются отдельное разрешение на ИИ и ключ; полные метаданные не равны тексту статьи.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "academic",
+            "business",
+            "general"
+          ],
+          "default": "academic",
+          "description": "Назначение должно быть разрешено письменным соглашением."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  }
+}

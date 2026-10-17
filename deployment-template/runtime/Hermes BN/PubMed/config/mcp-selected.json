@@ -1,0 +1,26 @@
+{
+  "command": "__HERMES_BN_ROOT__/bin/pubmed-bn-mcp",
+  "args": [],
+  "connect_timeout": 30,
+  "tool_timeout": 150,
+  "enabled": true,
+  "tools": {
+    "include": [
+      "pubmed_search",
+      "pubmed_summary",
+      "pubmed_fetch",
+      "pubmed_links",
+      "pubmed_info",
+      "pubmed_spell",
+      "pubmed_history",
+      "pubmed_citation_match",
+      "pmc_metadata",
+      "pmc_sections",
+      "pmc_read",
+      "pmc_table",
+      "pmc_pdf_status",
+      "pubmed_export",
+      "service_status"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+source '__HERMES_BN_ROOT__/ASReview/environment.sh'
+exec "$HERMES_BN_ROOT/ASReview/runtime/bin/asreview" "$@"

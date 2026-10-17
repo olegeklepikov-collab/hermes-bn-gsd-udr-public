@@ -1,0 +1,52 @@
+{
+  "Explore Literature": {
+    "url": "https://pendar.ai/app/chat/",
+    "guide": "Help → User guides → What is Explore Literature?",
+    "price_as_listed": 3,
+    "prompt": "Find and rank papers on [topic]. Period: [only if required]. Separate journal articles, reviews, preprints and theses. State query, sources and whether the digest reads abstracts only."
+  },
+  "Deep Research": {
+    "url": "https://pendar.ai/app/chat/",
+    "guide": "Help → User guides → What is Deep Research?",
+    "price_as_listed": 12,
+    "prompt": "Research [question] for [business/academic/general purpose]. System/context: [details]; constraints: [details]; period: [if required]. Compare mechanisms, methods and conflicting evidence. Give citations and identify which full texts or fragments were actually read."
+  },
+  "Validate a Claim": {
+    "url": "https://pendar.ai/app/chat/",
+    "price_as_listed": 3,
+    "prompt": "Evaluate evidence for this single claim: [claim]. Separate supporting, contradicting and indirect sources; report design, context and limitations. A bibliography match alone does not verify the claim."
+  },
+  "Analyze Research Landscape": {
+    "url": "https://pendar.ai/app/chat/",
+    "price_as_listed": 7,
+    "breadth_options": [
+      "Broad",
+      "Balanced",
+      "Strict"
+    ],
+    "default_breadth": "Balanced",
+    "prompt": "Map [short topic]: clusters, trends, gaps and acknowledged funding. State corpus and matching rules; distinguish substantive gaps from missing index coverage. Start with Balanced breadth."
+  },
+  "Chat with Papers": {
+    "url": "https://pendar.ai/app/chat/",
+    "price_as_listed": "PDF upload: 1 per run; other costs depend on current product",
+    "prompt": "From the lawfully provided PDFs, answer [questions], citing pages and versions. Compare findings in a table and state exact reading scope. Do not infer whole-paper reading from selected passages."
+  },
+  "Create Literature Review": {
+    "url": "https://pendar.ai/app/chat/",
+    "price_as_listed": "7 up to 15 papers; +1 per five extra papers",
+    "formats": [
+      "Simplify",
+      "Review article",
+      "Introduction for a scientific paper",
+      "Literature review for an NSF/NIH proposal"
+    ],
+    "prompt": "Synthesize the processed PDFs for [purpose and format]. Separate findings, limitations, conflicting evidence and gaps. Verify bibliography. State disclosure of AI assistance as applicable."
+  },
+  "Schedule Briefing": {
+    "url": "https://pendar.ai/app/newsletters/calendar/",
+    "price_as_listed": "Up to 3 briefings free for 6 months; 6 briefings advertised at $4/month",
+    "activated": false,
+    "instructions": "Only after an explicit scheduling/subscription request: review title, field, include/exclude terms and day of month, then confirm the actual current terms before activating."
+  }
+}

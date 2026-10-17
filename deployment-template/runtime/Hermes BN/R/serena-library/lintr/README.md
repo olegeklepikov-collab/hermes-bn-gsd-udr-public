@@ -1,0 +1,145 @@
+---
+output:
+  rmarkdown::github_document:
+    pandoc_args: ["--wrap=none"]
+---
+
+# lintr <img src="man/figures/logo.png" align="right" width="240" />
+
+[![R build status](https://github.com/r-lib/lintr/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/lintr/actions)
+[![codecov.io](https://codecov.io/gh/r-lib/lintr/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/r-lib/lintr?branch=main)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/lintr)](https://cran.r-project.org/package=lintr)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.07240/status.svg)](https://doi.org/10.21105/joss.07240)
+
+`{lintr}` provides [static code analysis for R](https://en.wikipedia.org/wiki/Static_program_analysis). It checks for adherence to a given style, identifying syntax errors and possible semantic issues, then reports them to you so you can take action.
+
+For example, given a file `bad.R` with the following contents:
+
+
+``` r
+my_func = function(x){
+    if(x > 0){
+        print("Positive")
+    }
+    else {
+        print("Not positive")
+    }
+    return(T)
+}
+```
+
+Running `lintr::lint()` on this file would produce the following output:
+```R
+lintr::lint("bad.R")
+```
+
+
+```
+bad.R:1:9: style: [assignment_linter] Use one of <-, <<- for assignment, not =.
+my_func = function(x){
+        ^
+bad.R:1:22: style: [brace_linter] There should be a space before an opening curly brace.
+my_func = function(x){
+                     ^
+bad.R:1:22: style: [paren_body_linter] Put a space between a right parenthesis and a body expression.
+my_func = function(x){
+                     ^
+bad.R:2:4: style: [indentation_linter] Indentation should be 2 spaces but is 4 spaces.
+    if(x > 0){
+  ~^
+bad.R:2:7: style: [spaces_left_parentheses_linter] Place a space before left parenthesis, except in a function call.
+    if(x > 0){
+      ^
+bad.R:2:14: style: [brace_linter] There should be a space before an opening curly brace.
+    if(x > 0){
+             ^
+bad.R:2:14: style: [paren_body_linter] Put a space between a right parenthesis and a body expression.
+    if(x > 0){
+             ^
+bad.R:3:8: style: [indentation_linter] Indentation should be 4 spaces but is 8 spaces.
+        print("Positive")
+    ~~~^
+bad.R:4:4: style: [indentation_linter] Indentation should be 2 spaces but is 4 spaces.
+    }
+  ~^
+bad.R:5:5: style: [brace_linter] `else` should come on the same line as the previous `}`.
+    else {
+    ^~~~
+bad.R:6:8: style: [indentation_linter] Indentation should be 4 spaces but is 8 spaces.
+        print("Not positive")
+    ~~~^
+bad.R:7:4: style: [indentation_linter] Indentation should be 2 spaces but is 4 spaces.
+    }
+  ~^
+bad.R:8:5: style: [return_linter] Use implicit return behavior; explicit return() is not needed.
+    return(T)
+    ^~~~~~
+bad.R:8:13: style: [T_and_F_symbol_linter] Use TRUE instead of the symbol T.
+    return(T)
+           ~^
+bad.R:10:1: style: [trailing_blank_lines_linter] Remove trailing blank lines.
+
+^
+```
+
+`{lintr}` is complementary to [the `{styler}` package](https://github.com/r-lib/styler) which automatically restyles code, eliminating some of the problems that `{lintr}` can detect.
+
+## Installation
+
+Install the stable version from CRAN:
+
+```R
+install.packages("lintr")
+```
+
+Or the development version from GitHub:
+
+```R
+# install.packages("remotes")
+remotes::install_github("r-lib/lintr")
+```
+
+## Usage
+
+And then you can create a configuration file and run selected linters:
+
+```R
+lintr::use_lintr(type = "tidyverse")
+
+# in a project:
+lintr::lint_dir()
+
+# in a package:
+lintr::lint_package()
+```
+
+To see a list of linters included for each configuration:
+
+```R
+# tidyverse (default)
+names(lintr::linters_with_defaults())
+
+# full
+names(lintr::all_linters())
+```
+
+### Setting up GitHub Actions
+
+`{usethis}` provides helper functions to generate lint workflows for GitHub Actions:
+
+```R
+# in a project:
+usethis::use_github_action("lint-project")
+
+# in a package:
+usethis::use_github_action("lint")
+```
+
+You can also run lintr during continuous integration or within your IDE or text editor. See `vignette("continuous-integration")` and `vignette("editors")` for more details.
+
+Without further configuration, this will run the [default linters](https://lintr.r-lib.org/reference/default_linters.html). See `vignette("lintr")` to learn how to modify these defaults.
+
+## Code of Conduct
+
+Please note that the lintr project is released with a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). By contributing to this project, you agree to abide by its terms.

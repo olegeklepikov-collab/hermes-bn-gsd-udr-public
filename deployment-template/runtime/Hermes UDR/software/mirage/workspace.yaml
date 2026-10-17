@@ -1,0 +1,9 @@
+mode: READ
+runtimes:
+- vfs
+mounts:
+  /data:
+    resource: disk
+    mode: READ
+    config:
+      root: __HERMES_UDR_ROOT__/state/mirage/data

@@ -1,0 +1,48 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Справка Beads: set-state
+
+Сохранённая внешняя документация. Копия адаптирована для переносимости: локальные пути и демонстрационные реквизиты/объекты заменены параметрами; содержимое не является конфигурацией готового аккаунта. Она описывает продукты, версии и варианты доступа, а не состояние какого-либо аккаунта. Примеры ОС, тарифов, путей и лимитов выбираются по целевой установке; числовые условия проверяются у поставщика перед использованием. Даты и исходная терминология могут относиться к версии справки.
+
+---
+
+
+---
+title: "bd set-state"
+description: "Atomically set operational state on an issue."
+---
+
+{/* AUTO-GENERATED: do not edit manually */}
+
+Generated from `bd help --doc set-state`.
+
+Atomically set operational state on an issue.
+
+This command:
+1. Creates an event bead recording the state change (source of truth)
+2. Removes any existing label for the dimension
+3. Adds the new dimension:value label (fast lookup cache)
+
+State labels follow the convention &lt;dimension&gt;:&lt;value&gt;, for example:
+  patrol:active, patrol:muted
+  mode:normal, mode:degraded
+  health:healthy, health:failing
+
+Examples:
+  bd set-state agent-abc patrol=muted --reason "Investigating stuck worker"
+  bd set-state agent-abc mode=degraded --reason "High error rate detected"
+  bd set-state agent-abc health=healthy
+
+The --reason flag provides context for the event bead (recommended).
+
+```
+bd set-state <issue-id> <dimension>=<value> [flags]
+```
+
+**Flags:**
+
+```
+      --reason string   Reason for the state change (recorded in event)
+```

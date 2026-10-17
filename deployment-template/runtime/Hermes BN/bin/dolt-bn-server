@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+source '__HERMES_BN_ROOT__/Dolt/environment.sh'
+printf '%s\n' "$$" > "$HERMES_BN_ROOT/Dolt/config/server.pid"
+exec "$HERMES_BN_ROOT/Dolt/bin/dolt" sql-server --config "$HERMES_BN_ROOT/Dolt/config/server.yaml"

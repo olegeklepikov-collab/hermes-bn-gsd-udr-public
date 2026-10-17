@@ -1,0 +1,6 @@
+{
+  "rest_search_licensed": false,
+  "default_collection_visibility": "private",
+  "automatic_alerts": false,
+  "optional_user_intent_attribution": false
+}

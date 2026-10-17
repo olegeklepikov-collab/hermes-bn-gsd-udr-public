@@ -1,0 +1,11 @@
+{
+  "entries": 450562,
+  "counts": {
+    "directory": 49159,
+    "file": 382065,
+    "symlink": 19338
+  },
+  "logical_file_bytes": 29923042137,
+  "extended_attributes": false,
+  "manifest_sha256": "7c74044360072c3729a39218620d47825dec367f3d5026d49518cd4d957f51d2"
+}

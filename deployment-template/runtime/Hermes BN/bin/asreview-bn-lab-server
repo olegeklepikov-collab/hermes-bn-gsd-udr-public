@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+source '__HERMES_BN_ROOT__/ASReview/environment.sh'
+export HF_HUB_OFFLINE=1
+printf '%s\n' "$$" > "$HERMES_BN_ROOT/ASReview/config/lab.pid"
+exec "$HERMES_BN_ROOT/ASReview/runtime/bin/asreview" lab --host 127.0.0.1 --port 60694 --port-retries 0 --no-browser --skip-update-check

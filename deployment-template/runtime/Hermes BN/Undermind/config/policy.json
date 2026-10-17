@@ -1,0 +1,14 @@
+{
+  "parallel_deep_searches": 1,
+  "pdfs_per_call_default": 4,
+  "pdfs_per_call_max": 4,
+  "default_page_size": 10,
+  "deep_search_poll_seconds": 20,
+  "automatic_alerts": false,
+  "private_uploads_require_explicit_user_instruction": true,
+  "publisher_metadata_verification": true,
+  "prefer_fulltext_evidence_when_available": true,
+  "require_explicit_research_evidence_basis": true,
+  "candidate_then_fulltext_verification": true,
+  "record_pdf_version": true
+}

@@ -1,0 +1,1699 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Dolt: official-mcp-catalog.json
+
+Это переносимый справочный контракт/каталог. Он не содержит действующее подключение или права аккаунта. `${...}` обозначает значение целевой установки; оно заменяется с сохранением требуемого JSON-типа. Состав методов и ограничения сверяются с устанавливаемой версией.
+
+```json
+{
+  "tools": {
+    "_meta": null,
+    "ttlMs": 0,
+    "cacheScope": "private",
+    "nextCursor": null,
+    "tools": [
+      {
+        "name": "add_dolt_remote",
+        "title": null,
+        "description": "Adds a remote to the Dolt server.",
+        "inputSchema": {
+          "properties": {
+            "remote_name": {
+              "description": "The name of the remote to add.",
+              "type": "string"
+            },
+            "remote_url": {
+              "description": "The URL of the remote to add.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "remote_name",
+            "remote_url"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "add_dolt_test",
+        "title": null,
+        "description": "Adds or updates a row in the dolt_tests table.",
+        "inputSchema": {
+          "properties": {
+            "assertion_comparator": {
+              "description": "Comparator: == | != | < | > | <= | >=",
+              "type": "string"
+            },
+            "assertion_type": {
+              "description": "Assertion type: expected_rows | expected_columns | expected_single_value",
+              "type": "string"
+            },
+            "assertion_value": {
+              "description": "Optional assertion value; set empty for NULL",
+              "type": "string"
+            },
+            "query": {
+              "description": "Read-only SQL to validate",
+              "type": "string"
+            },
+            "test_group": {
+              "description": "Optional test_group for grouping tests",
+              "type": "string"
+            },
+            "test_name": {
+              "description": "Unique test_name identifier",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "test_name",
+            "query",
+            "assertion_type",
+            "assertion_comparator"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "alter_table",
+        "title": null,
+        "description": "Alters a table.",
+        "inputSchema": {
+          "properties": {
+            "query": {
+              "description": "The ALTER TABLE statement to run.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "query"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "clone_database",
+        "title": null,
+        "description": "Clones a database from the specified remote URL.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "description": "The local name of the cloned database.",
+              "type": "string"
+            },
+            "remote_url": {
+              "description": "The url of the remote database to clone.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "remote_url"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "_meta": null
+      },
+      {
+        "name": "create_database",
+        "title": null,
+        "description": "Creates a database in the Dolt server.",
+        "inputSchema": {
+          "properties": {
+            "database": {
+              "description": "The name of the database to create.",
+              "type": "string"
+            },
+            "if_not_exists": {
+              "description": "If true will only create the specified database if it does not exist in the Dolt server.",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "database"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "create_dolt_branch",
+        "title": null,
+        "description": "Creates a new branch from the specified original branch.",
+        "inputSchema": {
+          "properties": {
+            "force": {
+              "description": "If true, will force the creation of the new branch even if it already exists.",
+              "type": "boolean"
+            },
+            "new_branch": {
+              "description": "The name of the new branch.",
+              "type": "string"
+            },
+            "original_branch": {
+              "description": "The name of the branch to copy.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "original_branch",
+            "new_branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "create_dolt_branch_from_head",
+        "title": null,
+        "description": "Creates a new branch from current HEAD.",
+        "inputSchema": {
+          "properties": {
+            "force": {
+              "description": "If true, will force the creation of the new branch even if it already exists.",
+              "type": "boolean"
+            },
+            "new_branch": {
+              "description": "The name of the new branch.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "new_branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "create_dolt_commit",
+        "title": null,
+        "description": "Creates a Dolt commit with the specified message.",
+        "inputSchema": {
+          "properties": {
+            "message": {
+              "description": "The message to use in the Dolt commit.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "message"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "create_table",
+        "title": null,
+        "description": "Creates a table.",
+        "inputSchema": {
+          "properties": {
+            "query": {
+              "description": "The CREATE TABLE statement to run.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "query"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "delete_dolt_branch",
+        "title": null,
+        "description": "Deletes a branch.",
+        "inputSchema": {
+          "properties": {
+            "branch": {
+              "description": "The name of the branch to delete.",
+              "type": "string"
+            },
+            "force": {
+              "description": "If true, will force the deletion of the specified branch even if it has uncommitted changes.",
+              "type": "boolean"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "describe_table",
+        "title": null,
+        "description": "Describes a table in the current database.",
+        "inputSchema": {
+          "properties": {
+            "table": {
+              "description": "The name of the table to describe.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "table"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "dolt_fetch_all_branches",
+        "title": null,
+        "description": "Fetches all branches from the remote.",
+        "inputSchema": {
+          "properties": {
+            "remote_name": {
+              "description": "The name of the remote to fetch all branches from.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "remote_name"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "_meta": null
+      },
+      {
+        "name": "dolt_fetch_branch",
+        "title": null,
+        "description": "Fetches the specified branch from the remote.",
+        "inputSchema": {
+          "properties": {
+            "branch": {
+              "description": "The name of the remote branch to fetch.",
+              "type": "string"
+            },
+            "remote_name": {
+              "description": "The name of the remote to fetch the branch from.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "remote_name",
+            "branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "_meta": null
+      },
+      {
+        "name": "dolt_pull_branch",
+        "title": null,
+        "description": "Pulls the specified branch from the remote.",
+        "inputSchema": {
+          "properties": {
+            "branch": {
+              "description": "The name of the remote branch to pull.",
+              "type": "string"
+            },
+            "force": {
+              "description": "If true, the specified branch is force pulled.",
+              "type": "boolean"
+            },
+            "remote_name": {
+              "description": "The name of the remote to pull the branch from.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "remote_name",
+            "branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": true
+        },
+        "_meta": null
+      },
+      {
+        "name": "dolt_push_branch",
+        "title": null,
+        "description": "Pushes the specified branch to the remote.",
+        "inputSchema": {
+          "properties": {
+            "branch": {
+              "description": "The name of the local branch to push.",
+              "type": "string"
+            },
+            "force": {
+              "description": "If true, the specified branch is force pushed.",
+              "type": "boolean"
+            },
+            "remote_name": {
+              "description": "The name of the remote to push the branch to.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "remote_name",
+            "branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": true
+        },
+        "_meta": null
+      },
+      {
+        "name": "dolt_reset_hard",
+        "title": null,
+        "description": "Hard resets the branch HEAD, staging area, and working set to the specified revision, discarding uncommitted changes.",
+        "inputSchema": {
+          "properties": {
+            "revision": {
+              "description": "The revision to reset to (a branch name, commit sha, or ancestor spec such as 'HEAD~1'). Table names are not valid revisions.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "revision"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "dolt_reset_soft",
+        "title": null,
+        "description": "Moves the branch HEAD to the specified revision, leaving the staging area and working set unchanged. To unstage tables instead, use the unstage_table or unstage_all_tables tools.",
+        "inputSchema": {
+          "properties": {
+            "revision": {
+              "description": "The revision to move the branch HEAD to (a branch name, commit sha, or ancestor spec such as 'HEAD~1'). Table names are not valid revisions.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "revision"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "drop_database",
+        "title": null,
+        "description": "Drops a database in the Dolt server.",
+        "inputSchema": {
+          "properties": {
+            "database": {
+              "description": "The name of the database to drop.",
+              "type": "string"
+            },
+            "if_exists": {
+              "description": "If true will only drop the specified database if it exists in the Dolt server.",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "database"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "drop_table",
+        "title": null,
+        "description": "Drops the specified table.",
+        "inputSchema": {
+          "properties": {
+            "if_exists": {
+              "description": "If true will only drop the specified table if it exists.",
+              "type": "boolean"
+            },
+            "table": {
+              "description": "The name of the table to drop.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "table"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "exec",
+        "title": null,
+        "description": "Executes a WRITE query.",
+        "inputSchema": {
+          "properties": {
+            "query": {
+              "description": "The query to run.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "query"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "get_dolt_merge_status",
+        "title": null,
+        "description": "Get the current merge status of the checked out branch.",
+        "inputSchema": {
+          "properties": {
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "kill_process",
+        "title": null,
+        "description": "Kill a running process by id (KILL [QUERY] <id>).",
+        "inputSchema": {
+          "properties": {
+            "kill_query": {
+              "description": "If true, uses KILL QUERY <id> instead of KILL <id>.",
+              "type": "boolean"
+            },
+            "process_id": {
+              "description": "The process id to kill (from SHOW PROCESSLIST). Must be a positive integer.",
+              "type": "number"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "process_id"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "list_databases",
+        "title": null,
+        "description": "Lists all databases in the Dolt server.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "list_dolt_branches",
+        "title": null,
+        "description": "Lists all Dolt branches.",
+        "inputSchema": {
+          "properties": {
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "list_dolt_commits",
+        "title": null,
+        "description": "Lists all Dolt commits on the current branch, newest to oldest.",
+        "inputSchema": {
+          "properties": {
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "list_dolt_diff_changes_by_table_name",
+        "title": null,
+        "description": "Lists dolt_diff changes for the specified table between two Dolt commits.",
+        "inputSchema": {
+          "properties": {
+            "from_commit": {
+              "description": "The 'from' commit of the Dolt diff.",
+              "type": "string"
+            },
+            "hash_of_from_commit": {
+              "description": "The 'from' commit of the Dolt diff.",
+              "type": "string"
+            },
+            "hash_of_to_commit": {
+              "description": "The 'from' commit of the Dolt diff.",
+              "type": "string"
+            },
+            "table": {
+              "description": "The name of the table.",
+              "type": "string"
+            },
+            "to_commit": {
+              "description": "The 'from' commit of the Dolt diff.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "table"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "list_dolt_diff_changes_in_date_range",
+        "title": null,
+        "description": "Creates a new branch from the specified original branch.",
+        "inputSchema": {
+          "properties": {
+            "end": {
+              "description": "The end date of the range in the format 'YYYY-MM-DD'.",
+              "type": "string"
+            },
+            "start": {
+              "description": "The start date of the range in the format 'YYYY-MM-DD'.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "start",
+            "end"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "list_dolt_diff_changes_in_working_set",
+        "title": null,
+        "description": "Lists all dolt_diff changes in the current working set.",
+        "inputSchema": {
+          "properties": {
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "list_dolt_remotes",
+        "title": null,
+        "description": "Lists the Dolt server's remotes.",
+        "inputSchema": {
+          "properties": {
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "merge_dolt_branch",
+        "title": null,
+        "description": "Merges the specified branch into the currently checked out branch.",
+        "inputSchema": {
+          "properties": {
+            "branch": {
+              "description": "The name of the branch to merge into the currently checked out branch.",
+              "type": "string"
+            },
+            "message": {
+              "description": "The message for the Dolt commit resulting from a successful merge.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "merge_dolt_branch_no_fast_forward",
+        "title": null,
+        "description": "Performs a non fast-foward merge of the specified branch into the currently checked out branch.",
+        "inputSchema": {
+          "properties": {
+            "branch": {
+              "description": "The name of the branch to merge into the currently checked out branch.",
+              "type": "string"
+            },
+            "message": {
+              "description": "The message for the Dolt commit resulting from a successful merge.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "move_dolt_branch",
+        "title": null,
+        "description": "Moves/renames a branch from the specified original branch to the provided new name.",
+        "inputSchema": {
+          "properties": {
+            "force": {
+              "description": "If true, will force the original branch to be moved to its new name even if a branch of that name already exists.",
+              "type": "boolean"
+            },
+            "new_name": {
+              "description": "The new name of the branch.",
+              "type": "string"
+            },
+            "old_name": {
+              "description": "The name of the branch to move/rename.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "old_name",
+            "new_name"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "query",
+        "title": null,
+        "description": "Executes a READ query.",
+        "inputSchema": {
+          "properties": {
+            "query": {
+              "description": "The query to run.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_branch",
+            "working_database",
+            "query"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "remove_dolt_remote",
+        "title": null,
+        "description": "Removes a remote from the Dolt server.",
+        "inputSchema": {
+          "properties": {
+            "remote_name": {
+              "description": "The name of the remote to remove.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "remote_name"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "remove_dolt_test",
+        "title": null,
+        "description": "Removes a row from the dolt_tests table.",
+        "inputSchema": {
+          "properties": {
+            "test_name": {
+              "description": "Unique test_name identifier",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "test_name"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "run_dolt_tests",
+        "title": null,
+        "description": "Runs dolt_tests via SELECT * FROM dolt_test_run(). Optionally filter by test name or group.",
+        "inputSchema": {
+          "properties": {
+            "target": {
+              "description": "Optional filter: '*' for all, a specific test_name, or a test_group. If omitted, runs all tests.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_branch",
+            "working_database"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "select_active_branch",
+        "title": null,
+        "description": "Displays the currently checked out branch.",
+        "inputSchema": {
+          "properties": {
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "select_version",
+        "title": null,
+        "description": "Displays the version of the Dolt server.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "show_create_table",
+        "title": null,
+        "description": "Shows the schema of the specified table.",
+        "inputSchema": {
+          "properties": {
+            "table": {
+              "description": "The name of the table.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_branch",
+            "working_database",
+            "table"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "show_processlist",
+        "title": null,
+        "description": "Show the server process list (SHOW [FULL] PROCESSLIST).",
+        "inputSchema": {
+          "properties": {
+            "full": {
+              "description": "If true, uses SHOW FULL PROCESSLIST.",
+              "type": "boolean"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_branch",
+            "working_database"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "show_tables",
+        "title": null,
+        "description": "Show tables in the current database.",
+        "inputSchema": {
+          "properties": {
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_branch",
+            "working_database"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "stage_all_tables_for_dolt_commit",
+        "title": null,
+        "description": "Stages a table for a Dolt commit.",
+        "inputSchema": {
+          "properties": {
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "stage_table_for_dolt_commit",
+        "title": null,
+        "description": "Stages a table for a Dolt commit.",
+        "inputSchema": {
+          "properties": {
+            "table": {
+              "description": "The name of the table to stage.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "table"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "unstage_all_tables",
+        "title": null,
+        "description": "Removes all staged tables from the staging area.",
+        "inputSchema": {
+          "properties": {
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      },
+      {
+        "name": "unstage_table",
+        "title": null,
+        "description": "Removes a staged table from the staging area.",
+        "inputSchema": {
+          "properties": {
+            "table": {
+              "description": "The name of the table to remove from the staging area.",
+              "type": "string"
+            },
+            "working_branch": {
+              "description": "The name of the working branch to checkout prior to making the tool call.",
+              "type": "string"
+            },
+            "working_database": {
+              "description": "The name of the database to use prior to making the tool call.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "working_database",
+            "working_branch",
+            "table"
+          ],
+          "type": "object"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": {
+          "title": null,
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "_meta": null
+      }
+    ],
+    "resultType": "complete"
+  }
+}
+```

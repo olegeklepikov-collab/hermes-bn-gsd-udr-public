@@ -1,0 +1,17 @@
+{
+  "url": "https://scholar-sidekick.com/api/mcp",
+  "connect_timeout": 45,
+  "tool_timeout": 180,
+  "enabled": true,
+  "tools": {
+    "include": [
+      "verifyCitation",
+      "auditBibliography",
+      "checkRetraction",
+      "checkOpenAccess",
+      "resolveIdentifier",
+      "formatCitation",
+      "exportCitation"
+    ]
+  }
+}

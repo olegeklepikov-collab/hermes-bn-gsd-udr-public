@@ -1,0 +1,393 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# PubMed: profiles.json
+
+Это переносимый шаблон параметров. Он не содержит действующее подключение или права аккаунта. `${...}` обозначает значение целевой установки; оно заменяется с сохранением требуемого JSON-типа. Состав методов и ограничения сверяются с устанавливаемой версией.
+
+```json
+{
+  "pubmed_search": {
+    "name": "pubmed_search",
+    "arguments": {},
+    "purpose": "Поиск PubMed: PMID, число совпадений, перевод запроса, предупреждения и история. Не полный текст."
+  },
+  "pubmed_summary": {
+    "name": "pubmed_summary",
+    "arguments": {},
+    "purpose": "Краткая библиографическая запись по PMID или сохранённой истории."
+  },
+  "pubmed_fetch": {
+    "name": "pubmed_fetch",
+    "arguments": {},
+    "purpose": "Полные библиографические записи и аннотации, MeSH и связи исправлений. Не полный текст статьи."
+  },
+  "pubmed_links": {
+    "name": "pubmed_links",
+    "arguments": {},
+    "purpose": "Похожие, цитируемые или цитирующие записи PubMed. Сеть может быть неполной."
+  },
+  "pubmed_info": {
+    "name": "pubmed_info",
+    "arguments": {},
+    "purpose": "Поля и допустимые связи базы PubMed."
+  },
+  "pubmed_spell": {
+    "name": "pubmed_spell",
+    "arguments": {},
+    "purpose": "Подсказки исправления поискового запроса."
+  },
+  "pubmed_history": {
+    "name": "pubmed_history",
+    "arguments": {},
+    "purpose": "Временная история PMID на сервере NCBI для пакетного получения."
+  },
+  "pubmed_citation_match": {
+    "name": "pubmed_citation_match",
+    "arguments": {},
+    "purpose": "Разрешение строк journal|year|volume|page|author|key через ECitMatch."
+  },
+  "pmc_metadata": {
+    "name": "pmc_metadata",
+    "arguments": {},
+    "purpose": "Разрешить PMCID/PMID/DOI и проверить актуальную версию, лицензию и ссылки PMC Cloud. Не чтение статьи."
+  },
+  "pmc_sections": {
+    "name": "pmc_sections",
+    "arguments": {},
+    "purpose": "Список разделов и таблиц доступного JATS XML с версией и лицензией."
+  },
+  "pmc_read": {
+    "name": "pmc_read",
+    "arguments": {},
+    "purpose": "Прочитать заданный раздел или ограниченный фрагмент текущего полного текста PMC."
+  },
+  "pmc_table": {
+    "name": "pmc_table",
+    "arguments": {},
+    "purpose": "Прочитать таблицу по идентификатору или номеру: строки, подпись и примечания."
+  },
+  "pmc_pdf_status": {
+    "name": "pmc_pdf_status",
+    "arguments": {},
+    "purpose": "Проверить доступность PDF и первые байты без сохранения и без заявления о чтении."
+  },
+  "pubmed_export": {
+    "name": "pubmed_export",
+    "arguments": {},
+    "purpose": "Создать местную производную библиографию CSV, RIS или BibTeX по данным PubMed."
+  },
+  "service_status": {
+    "name": "service_status",
+    "arguments": {},
+    "purpose": "Проверить режим и настройки без раскрытия ключа и контактной почты."
+  },
+  "business-research": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Научные основания бизнеса, труда и обучения в пределах корпуса PubMed."
+  },
+  "academic-review": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Обнаружение литературы и дальнейший отбор."
+  },
+  "general-research": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Биомедицинские, психологические и смежные исследовательские вопросы."
+  },
+  "recent-publications": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "pub date"
+    },
+    "purpose": "Свежие работы без произвольного исключающего периода."
+  },
+  "count-only": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 0
+    },
+    "purpose": "Точное число совпадений текущего запроса, не оценка полноты корпуса."
+  },
+  "search-history": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "usehistory": "y"
+    },
+    "purpose": "История для пакетного получения; учитывать ограничение PubMed."
+  },
+  "doi-lookup": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10
+    },
+    "purpose": "DOI в поле DOI.",
+    "term_template": "{doi}[doi]"
+  },
+  "title-lookup": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10
+    },
+    "purpose": "Поиск названия.",
+    "term_template": "\"{title}\"[Title]"
+  },
+  "author-lookup": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10
+    },
+    "purpose": "Автор по имени, инициалы и тёзки проверяются отдельно.",
+    "term_template": "{author}[Author]"
+  },
+  "affiliation-lookup": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10
+    },
+    "purpose": "Организация в опубликованных сведениях, не текущая должность.",
+    "term_template": "{affiliation}[Affiliation]"
+  },
+  "systematic-reviews": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Систематические обзоры; не гарантия качества.",
+    "term_template": "({topic}) AND systematic[sb]"
+  },
+  "meta-analyses": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Метаанализы; индексация может задерживаться.",
+    "term_template": "({topic}) AND \"Meta-Analysis\"[Publication Type]"
+  },
+  "randomized-trials": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Рандомизированные исследования; новые записи могут не иметь метки.",
+    "term_template": "({topic}) AND \"Randomized Controlled Trial\"[Publication Type]"
+  },
+  "observational-studies": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Наблюдательные исследования.",
+    "term_template": "({topic}) AND \"Observational Study\"[Publication Type]"
+  },
+  "clinical-trials": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Клинические испытания.",
+    "term_template": "({topic}) AND \"Clinical Trial\"[Publication Type]"
+  },
+  "practice-guidelines": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Рекомендации с проверкой даты и организации.",
+    "term_template": "({topic}) AND \"Practice Guideline\"[Publication Type]"
+  },
+  "reviews": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Обзоры.",
+    "term_template": "({topic}) AND \"Review\"[Publication Type]"
+  },
+  "free-fulltext": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Ссылки на свободный текст, не подтверждение лицензии.",
+    "term_template": "({topic}) AND free full text[sb]"
+  },
+  "with-abstract": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Записи с аннотацией.",
+    "term_template": "({topic}) AND hasabstract"
+  },
+  "indexed-medline": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Только MEDLINE; исключает часть свежих записей.",
+    "term_template": "({topic}) AND medline[sb]"
+  },
+  "preprints": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Препринты; не считать рецензированными статьями.",
+    "term_template": "({topic}) AND preprint[pt]"
+  },
+  "retracted-publications": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10,
+      "sort": "relevance"
+    },
+    "purpose": "Поиск меток отзыва с проверкой связанной записи.",
+    "term_template": "({topic}) AND \"Retracted Publication\"[Publication Type]"
+  },
+  "sensitive-review": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10
+    },
+    "purpose": "Дополняет индексные типы словами в названии/аннотации.",
+    "term_template": "({topic}) AND (systematic[sb] OR \"systematic review\"[Title/Abstract] OR \"meta-analysis\"[Title/Abstract])"
+  },
+  "mesh-and-titleabstract": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10
+    },
+    "purpose": "Проверить действующий MeSH и переведённый запрос.",
+    "term_template": "(\"{mesh}\"[MeSH Terms] OR \"{topic}\"[Title/Abstract])"
+  },
+  "proximity-query": {
+    "name": "pubmed_search",
+    "arguments": {
+      "retmax": 10
+    },
+    "purpose": "Поддерживаемая PubMed близость слов; words и distance задаются явно.",
+    "term_template": "\"{words}\"[Title/Abstract:~{distance}]"
+  },
+  "similar-articles": {
+    "name": "pubmed_links",
+    "arguments": {
+      "linkname": "pubmed_pubmed"
+    },
+    "purpose": "Похожие работы, а не цитирования."
+  },
+  "forward-citations": {
+    "name": "pubmed_links",
+    "arguments": {
+      "linkname": "pubmed_pubmed_citedin"
+    },
+    "purpose": "Цитирующие записи; сеть неполная."
+  },
+  "backward-references": {
+    "name": "pubmed_links",
+    "arguments": {
+      "linkname": "pubmed_pubmed_refs"
+    },
+    "purpose": "Список литературы, доступный в индексе; не все ссылки мира."
+  },
+  "related-with-scores": {
+    "name": "pubmed_links",
+    "arguments": {
+      "linkname": "pubmed_pubmed",
+      "cmd": "neighbor_score"
+    },
+    "purpose": "Похожие записи и оценки близости."
+  },
+  "full-bibliographic-record": {
+    "name": "pubmed_fetch",
+    "arguments": {},
+    "purpose": "Аннотации, авторы, DOI/PMCID, типы, MeSH и исправления."
+  },
+  "corrections-check": {
+    "name": "pubmed_fetch",
+    "arguments": {},
+    "purpose": "Связи Retraction/Erratum/Concern и виды публикации."
+  },
+  "pmc-license-and-version": {
+    "name": "pmc_metadata",
+    "arguments": {},
+    "purpose": "Версия, лицензия, флаги доступности и отзыва."
+  },
+  "pmc-methods-reading": {
+    "name": "pmc_read",
+    "arguments": {
+      "max_chars": 12000
+    },
+    "purpose": "После pmc_sections выбрать точный раздел методов."
+  },
+  "pmc-results-reading": {
+    "name": "pmc_read",
+    "arguments": {
+      "max_chars": 12000
+    },
+    "purpose": "Выбранный раздел результатов, не вся статья."
+  },
+  "pmc-bounded-reading": {
+    "name": "pmc_read",
+    "arguments": {
+      "offset": 0,
+      "max_chars": 12000
+    },
+    "purpose": "Чтение фрагмента тела JATS с has_more и границами."
+  },
+  "pmc-table-reading": {
+    "name": "pmc_table",
+    "arguments": {},
+    "purpose": "Структура таблицы, подпись и примечания."
+  },
+  "export-csv": {
+    "name": "pubmed_export",
+    "arguments": {
+      "format": "csv",
+      "date_basis": "bibliographic"
+    },
+    "purpose": "Производная локальная библиография; проверять предупреждения о датах."
+  },
+  "export-ris": {
+    "name": "pubmed_export",
+    "arguments": {
+      "format": "ris",
+      "date_basis": "bibliographic"
+    },
+    "purpose": "Производная локальная библиография; проверять предупреждения о датах."
+  },
+  "export-bibtex": {
+    "name": "pubmed_export",
+    "arguments": {
+      "format": "bibtex",
+      "date_basis": "bibliographic"
+    },
+    "purpose": "Производная локальная библиография; проверять предупреждения о датах."
+  }
+}
+```

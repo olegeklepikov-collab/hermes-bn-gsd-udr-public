@@ -1,0 +1,19 @@
+log_level: info
+log_format: text
+data_dir: __HERMES_BN_ROOT__/Dolt/databases
+privilege_file: __HERMES_BN_ROOT__/Dolt/local-state/server/privileges.db
+branch_control_file: __HERMES_BN_ROOT__/Dolt/local-state/server/branch_control.db
+behavior:
+  read_only: false
+  autocommit: true
+  disable_client_multi_statements: true
+  event_scheduler: 'OFF'
+listener:
+  host: 127.0.0.1
+  port: 33697
+  max_connections: 20
+  read_timeout_millis: 60000
+  write_timeout_millis: 60000
+  socket: __HERMES_BN_ROOT__/tmp/dolt-bn.sock
+system_variables: {}
+cfg_dir: __HERMES_BN_ROOT__/Dolt/local-state/server

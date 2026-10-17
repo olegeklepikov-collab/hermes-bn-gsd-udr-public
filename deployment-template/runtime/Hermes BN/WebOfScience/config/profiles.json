@@ -1,0 +1,380 @@
+{
+  "academic-discovery": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 3
+    },
+    "template": {
+      "q": "TS=({topic})"
+    }
+  },
+  "business-discovery": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 3,
+      "purpose": "business"
+    },
+    "template": {
+      "q": "TS=({topic})"
+    }
+  },
+  "general-discovery": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 3,
+      "purpose": "general"
+    },
+    "template": {
+      "q": "TS=({topic})"
+    }
+  },
+  "doi-lookup": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 2
+    },
+    "template": {
+      "q": "DO=({doi})"
+    }
+  },
+  "exact-title": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 3
+    },
+    "template": {
+      "q": "TI=(\"{title}\")"
+    }
+  },
+  "author-discovery": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 3
+    },
+    "template": {
+      "q": "AU=({author})"
+    }
+  },
+  "publication-period": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 3
+    },
+    "template": {
+      "q": "TS=({topic}) AND PY=({year_from}-{year_to})"
+    }
+  },
+  "reviews": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 3
+    },
+    "template": {
+      "q": "TS=({topic}) AND DT=(Review)"
+    }
+  },
+  "expanded-abstracts-and-funding": {
+    "name": "expanded_search",
+    "arguments": {
+      "databaseId": "WOS",
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "FR"
+    },
+    "template": {
+      "usrQuery": "TS=({topic})"
+    }
+  },
+  "expanded-short-discovery": {
+    "name": "expanded_search",
+    "arguments": {
+      "databaseId": "WOS",
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR"
+    },
+    "template": {
+      "usrQuery": "TS=({topic})"
+    }
+  },
+  "expanded-reproducible-query": {
+    "name": "expanded_search_post",
+    "arguments": {
+      "databaseId": "WOS",
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR"
+    }
+  },
+  "expanded-publication-period": {
+    "name": "expanded_search",
+    "arguments": {
+      "databaseId": "WOS",
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR"
+    },
+    "template": {
+      "usrQuery": "TS=({topic}) AND PY=({year_from}-{year_to})"
+    }
+  },
+  "starter-search": {
+    "name": "starter_search",
+    "arguments": {
+      "db": "WOS",
+      "limit": 3,
+      "page": 1
+    }
+  },
+  "starter-document": {
+    "name": "starter_document",
+    "arguments": {}
+  },
+  "starter-journals": {
+    "name": "starter_journals",
+    "arguments": {}
+  },
+  "starter-journal": {
+    "name": "starter_journal",
+    "arguments": {}
+  },
+  "expanded-search": {
+    "name": "expanded_search",
+    "arguments": {
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR",
+      "databaseId": "WOS"
+    }
+  },
+  "expanded-search-post": {
+    "name": "expanded_search_post",
+    "arguments": {
+      "databaseId": "WOS",
+      "firstRecord": 1,
+      "optionView": "SR",
+      "count": 3
+    }
+  },
+  "expanded-document": {
+    "name": "expanded_document",
+    "arguments": {
+      "optionView": "SR",
+      "databaseId": "WOS"
+    }
+  },
+  "expanded-query-page": {
+    "name": "expanded_query_page",
+    "arguments": {
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR"
+    }
+  },
+  "expanded-record-ids": {
+    "name": "expanded_record_ids",
+    "arguments": {
+      "count": 3,
+      "firstRecord": 1
+    }
+  },
+  "expanded-related": {
+    "name": "expanded_related",
+    "arguments": {
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR",
+      "databaseId": "WOS"
+    }
+  },
+  "expanded-citing": {
+    "name": "expanded_citing",
+    "arguments": {
+      "count": 3,
+      "firstRecord": 1,
+      "optionView": "SR",
+      "databaseId": "WOS"
+    }
+  },
+  "expanded-references": {
+    "name": "expanded_references",
+    "arguments": {
+      "count": 3,
+      "firstRecord": 1,
+      "databaseId": "WOS"
+    }
+  },
+  "expanded-category-context": {
+    "name": "expanded_category_context",
+    "arguments": {}
+  },
+  "expanded-citation-report": {
+    "name": "expanded_citation_report",
+    "arguments": {
+      "reportLevel": "WOS",
+      "startYear": "1900",
+      "endYear": "Current Year"
+    }
+  },
+  "researcher-search": {
+    "name": "researcher_search",
+    "arguments": {
+      "page": 1,
+      "limit": 3,
+      "sortOrder": "DESC"
+    }
+  },
+  "researcher-profile": {
+    "name": "researcher_profile",
+    "arguments": {}
+  },
+  "researcher-peer-reviews": {
+    "name": "researcher_peer_reviews",
+    "arguments": {
+      "page": 1
+    }
+  },
+  "researcher-documents": {
+    "name": "researcher_documents",
+    "arguments": {
+      "nonIndexed": false,
+      "page": 1,
+      "limit": 3
+    }
+  },
+  "journals-search": {
+    "name": "journals_search",
+    "arguments": {
+      "page": 1,
+      "limit": 3
+    }
+  },
+  "journals-journal": {
+    "name": "journals_journal",
+    "arguments": {}
+  },
+  "journals-year-report": {
+    "name": "journals_year_report",
+    "arguments": {}
+  },
+  "journals-cited": {
+    "name": "journals_cited",
+    "arguments": {
+      "page": 1,
+      "limit": 3
+    }
+  },
+  "journals-citing": {
+    "name": "journals_citing",
+    "arguments": {
+      "page": 1,
+      "limit": 3
+    }
+  },
+  "journals-history": {
+    "name": "journals_history",
+    "arguments": {}
+  },
+  "journals-categories": {
+    "name": "journals_categories",
+    "arguments": {
+      "page": 1,
+      "limit": 3
+    }
+  },
+  "journals-category": {
+    "name": "journals_category",
+    "arguments": {}
+  },
+  "journals-category-year-report": {
+    "name": "journals_category_year_report",
+    "arguments": {}
+  },
+  "journals-category-cited": {
+    "name": "journals_category_cited",
+    "arguments": {
+      "page": 1,
+      "limit": 3
+    }
+  },
+  "journals-category-citing": {
+    "name": "journals_category_citing",
+    "arguments": {
+      "page": 1,
+      "limit": 3
+    }
+  },
+  "journals-last-updated": {
+    "name": "journals_last_updated",
+    "arguments": {}
+  },
+  "journals-title-changes": {
+    "name": "journals_title_changes",
+    "arguments": {
+      "page": 1,
+      "limit": 3
+    }
+  },
+  "incites-institution-metrics": {
+    "name": "incites_institution_metrics",
+    "arguments": {
+      "schema": "wos",
+      "esci": "n"
+    }
+  },
+  "incites-institution-count": {
+    "name": "incites_institution_count",
+    "arguments": {}
+  },
+  "incites-document-metrics": {
+    "name": "incites_document_metrics",
+    "arguments": {
+      "schema": "wos",
+      "esci": "n"
+    }
+  },
+  "incites-validate-uids": {
+    "name": "incites_validate_uids",
+    "arguments": {}
+  },
+  "incites-last-updated": {
+    "name": "incites_last_updated",
+    "arguments": {}
+  },
+  "researcher-affiliation": {
+    "name": "researcher_search",
+    "arguments": {
+      "limit": 3
+    },
+    "template": {
+      "q": "OG~\"{organization}\""
+    }
+  },
+  "journals-quartile": {
+    "name": "journals_search",
+    "arguments": {
+      "jifQuartile": "Q1",
+      "limit": 3
+    }
+  },
+  "journals-explicit-year": {
+    "name": "journals_year_report",
+    "arguments": {}
+  },
+  "incites-normalized-impact": {
+    "name": "incites_document_metrics",
+    "arguments": {
+      "ver": 2,
+      "schema": "wos",
+      "esci": "y"
+    }
+  }
+}

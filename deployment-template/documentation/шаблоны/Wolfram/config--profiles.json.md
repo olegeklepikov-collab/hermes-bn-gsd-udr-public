@@ -1,0 +1,340 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Wolfram: profiles.json
+
+Это переносимый шаблон параметров. Он не содержит действующее подключение или права аккаунта. `${...}` обозначает значение целевой установки; оно заменяется с сохранением требуемого JSON-типа. Состав методов и ограничения сверяются с устанавливаемой версией.
+
+```json
+{
+  "context-math": {
+    "name": "WolframContext",
+    "arguments": {
+      "context": "Symbolic and numerical mathematics, assumptions and solution domains, exact versus approximate results."
+    },
+    "purpose": "Symbolic and numerical mathematics, assumptions and solution domains, exact versus approximate results.",
+    "needs_owner_parameters": [
+      "context should describe the actual task, up to 250 words"
+    ]
+  },
+  "context-data": {
+    "name": "WolframContext",
+    "arguments": {
+      "context": "Statistical analysis with uncertainty, effect sizes, confidence intervals, regression, sampling and diagnostics."
+    },
+    "purpose": "Statistical analysis with uncertainty, effect sizes, confidence intervals, regression, sampling and diagnostics.",
+    "needs_owner_parameters": [
+      "context should describe the actual task, up to 250 words"
+    ]
+  },
+  "context-units": {
+    "name": "WolframContext",
+    "arguments": {
+      "context": "Dimensional analysis, unit conversion, quantities, physical constants and interpretation of natural-language inputs."
+    },
+    "purpose": "Dimensional analysis, unit conversion, quantities, physical constants and interpretation of natural-language inputs.",
+    "needs_owner_parameters": [
+      "context should describe the actual task, up to 250 words"
+    ]
+  },
+  "context-scenarios": {
+    "name": "WolframContext",
+    "arguments": {
+      "context": "Calculations for private research using explicit synthetic cash flows, rates, sensitivity and break-even assumptions."
+    },
+    "purpose": "Calculations for private research using explicit synthetic cash flows, rates, sensitivity and break-even assumptions.",
+    "needs_owner_parameters": [
+      "context should describe the actual task, up to 250 words"
+    ]
+  },
+  "context-knowledge": {
+    "name": "WolframContext",
+    "arguments": {
+      "context": "Curated scientific, demographic and geographic data, provenance, reference date and missing values."
+    },
+    "purpose": "Curated scientific, demographic and geographic data, provenance, reference date and missing values.",
+    "needs_owner_parameters": [
+      "context should describe the actual task, up to 250 words"
+    ]
+  },
+  "context-graphics": {
+    "name": "WolframContext",
+    "arguments": {
+      "context": "Charts and plots in Wolfram Language, proper axes and units, remote image links and reproducible code."
+    },
+    "purpose": "Charts and plots in Wolfram Language, proper axes and units, remote image links and reproducible code.",
+    "needs_owner_parameters": [
+      "context should describe the actual task, up to 250 words"
+    ]
+  },
+  "context-simulation": {
+    "name": "WolframContext",
+    "arguments": {
+      "context": "Reproducible Monte Carlo simulation using fixed seeds, probability distributions and uncertainty estimates."
+    },
+    "purpose": "Reproducible Monte Carlo simulation using fixed seeds, probability distributions and uncertainty estimates.",
+    "needs_owner_parameters": [
+      "context should describe the actual task, up to 250 words"
+    ]
+  },
+  "context-optimization": {
+    "name": "WolframContext",
+    "arguments": {
+      "context": "Constrained mathematical optimization, assumptions, feasibility, global versus local optima and verification."
+    },
+    "purpose": "Constrained mathematical optimization, assumptions, feasibility, global versus local optima and verification.",
+    "needs_owner_parameters": [
+      "context should describe the actual task, up to 250 words"
+    ]
+  },
+  "alpha-math": {
+    "name": "WolframAlpha",
+    "arguments": {},
+    "purpose": "Уравнения, интегралы и вычислительные ответы по естественному запросу.",
+    "needs_owner_parameters": [
+      "query"
+    ],
+    "context_first": true
+  },
+  "alpha-units": {
+    "name": "WolframAlpha",
+    "arguments": {},
+    "purpose": "Преобразование величин и единиц с проверкой толкования.",
+    "needs_owner_parameters": [
+      "query"
+    ],
+    "context_first": true
+  },
+  "alpha-entities": {
+    "name": "WolframAlpha",
+    "arguments": {},
+    "purpose": "Свойства сущностей и сравнение с указанием типа.",
+    "needs_owner_parameters": [
+      "query"
+    ],
+    "context_first": true
+  },
+  "alpha-time-geography": {
+    "name": "WolframAlpha",
+    "arguments": {},
+    "purpose": "Даты, расстояния, географические и демографические данные.",
+    "needs_owner_parameters": [
+      "query"
+    ],
+    "context_first": true
+  },
+  "alpha-chemistry": {
+    "name": "WolframAlpha",
+    "arguments": {},
+    "purpose": "Химические вещества, формулы, свойства и единицы.",
+    "needs_owner_parameters": [
+      "query"
+    ],
+    "context_first": true
+  },
+  "alpha-astronomy": {
+    "name": "WolframAlpha",
+    "arguments": {},
+    "purpose": "Астрономические сущности, величины и определённые даты.",
+    "needs_owner_parameters": [
+      "query"
+    ],
+    "context_first": true
+  },
+  "alpha-finance-economics": {
+    "name": "WolframAlpha",
+    "arguments": {},
+    "purpose": "Справочные экономические показатели; дата и источник обязательны. Производственный режим требует уточнения условий.",
+    "needs_owner_parameters": [
+      "query"
+    ],
+    "context_first": true
+  },
+  "alpha-history-culture": {
+    "name": "WolframAlpha",
+    "arguments": {},
+    "purpose": "Справочные даты, события и сведения о культуре.",
+    "needs_owner_parameters": [
+      "query"
+    ],
+    "context_first": true
+  },
+  "compute-exact-symbolic": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "Solve, Reduce, Integrate, Simplify; явные области и предположения.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-numerical-precision": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 60
+    },
+    "purpose": "N, NIntegrate, NSolve; точность данных и вычисления задаются отдельно.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-linear-algebra": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "LinearSolve, Eigenvalues, SingularValueDecomposition и проверка невязки.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-descriptive-statistics": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 15
+    },
+    "purpose": "Mean, Median, Variance, Quantile; пропуски и объём выборки.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-confidence-intervals": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "Доверительные интервалы; распределение, уровень и предположения.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-regression": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 60
+    },
+    "purpose": "LinearModelFit и NonlinearModelFit; коэффициенты, неопределённость и остатки.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-hypothesis-effect-size": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "Проверки гипотез и величины эффекта; определения и поправки.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-probability-distributions": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "PDF, CDF, Quantile; параметры и диапазоны распределений.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-constrained-optimization": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 60
+    },
+    "purpose": "Minimize, Maximize, NMinimize; ограничения и проверка решения.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-differential-equations": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 60
+    },
+    "purpose": "DSolveValue и NDSolveValue; начальные условия, метод и погрешность.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-seeded-simulation": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 60
+    },
+    "purpose": "SeedRandom, RandomVariate; воспроизводимость и число повторений.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-cashflow-scenarios": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "Синтетические денежные потоки, ставки, дисконтирование и чувствительность.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-time-series": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 60
+    },
+    "purpose": "TimeSeries, MovingAverage, Forecast; частота, даты, проверка вне выборки.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-plots": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "Plot, ListPlot, Histogram и графические ссылки; оси, единицы, легенда.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-graphs-networks": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "Graph, FindShortestPath, GraphDistance; веса и ориентированность.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  },
+  "compute-structured-results": {
+    "name": "WolframLanguageEvaluator",
+    "arguments": {
+      "timeConstraint": 30
+    },
+    "purpose": "ExportString[..., \"RawJSON\"] и CSV; явные имена полей и единицы.",
+    "needs_owner_parameters": [
+      "code"
+    ],
+    "context_first": true
+  }
+}
+```

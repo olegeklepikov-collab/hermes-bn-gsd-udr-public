@@ -1,0 +1,33 @@
+{
+  "source_package": "life-sciences-literature 0.1.5",
+  "files": [
+    {
+      "file": "scripts/literature_source_contract.py",
+      "sha256": "8ba81cf09f9ef69cf4b9bdd8a9b7cd4cf32a143e404d5f71b5cb57ca4fd7a1cd"
+    },
+    {
+      "file": "references/source-links.json",
+      "sha256": "354b0771fce7f1ac65d027aefed631520d212c167fd99af543cad5c49610e599"
+    },
+    {
+      "file": "references/source-presentation.md",
+      "sha256": "b30d71e2290042cb63f820bcd6f4e7d9465481f085daa6ba0978be2290b1199b"
+    },
+    {
+      "file": "skills/ncbi-entrez-skill/scripts/ncbi_entrez.py",
+      "sha256": "62ab008b58600ea7d79f305501012481b604648ce45c88e52d4e9f5265289f90"
+    },
+    {
+      "file": "skills/ncbi-entrez-skill/SKILL.md",
+      "sha256": "4920552d9f1ce149f40ea878a59958937384e0b1fad50eccc832247a1e5e1249"
+    },
+    {
+      "file": "skills/ncbi-pmc-skill/scripts/ncbi_pmc.py",
+      "sha256": "1fd4f29f45f724edb4a4abb14ab73b390d435becde011999488b095a3c0716c7"
+    },
+    {
+      "file": "skills/ncbi-pmc-skill/SKILL.md",
+      "sha256": "70e189c31f0a3d4e471b9bec2568da6dffadc326b1add622ebeb4696a4e7a20a"
+    }
+  ]
+}

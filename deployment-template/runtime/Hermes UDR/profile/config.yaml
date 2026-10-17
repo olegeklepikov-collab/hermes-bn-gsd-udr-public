@@ -1,0 +1,183 @@
+model:
+  default: gpt-6.1-sol
+  provider: openai-codex
+  stream: true
+  context_length: 1050000
+agent:
+  max_turns: 40
+  reasoning_effort: high
+terminal:
+  backend: local
+  cwd: __HERMES_UDR_ROOT__/workspace/default
+web:
+  search_backend: tavily
+  extract_backend: tavily
+  keyless_fallback: true
+  provider_tier:
+    tavily: free
+auxiliary:
+  vision:
+    provider: codex
+    model: gpt-6.1-sol
+    reasoning_effort: high
+  compression:
+    provider: codex
+    model: gpt-6.1-sol
+    reasoning_effort: high
+  title_generation:
+    provider: codex
+    model: gpt-6.1-sol
+    reasoning_effort: high
+  curator:
+    provider: codex
+    model: gpt-6.1-sol
+    reasoning_effort: high
+  background_review:
+    enabled: false
+    provider: codex
+    model: gpt-6.1-sol
+    reasoning_effort: high
+  moa_reference:
+    provider: codex
+    model: gpt-6.1-sol
+    reasoning_effort: high
+  web_extract:
+    provider: codex
+    model: gpt-6.1-sol
+    reasoning_effort: high
+  session_search:
+    provider: codex
+    model: gpt-6.1-sol
+    reasoning_effort: high
+delegation:
+  model: gpt-6.1-sol
+  provider: openai-codex
+  inherit_mcp_toolsets: false
+  max_iterations: 30
+  reasoning_effort: high
+  max_concurrent_children: 4
+  max_spawn_depth: 1
+plugins:
+  enabled: []
+  disabled:
+  - hermes-foundation-bridge
+  - udr-runtime-policy
+  - ultra-deep-research
+  entries:
+    ultra-deep-research:
+      allow_tool_override: false
+      enabled: false
+    hermes-foundation-bridge:
+      allow_tool_override: false
+      enabled: false
+monitoring:
+  install_id: 0a09e603-9e1d-4561-95fc-3cda4d3a2cc1
+  gateway_health_export:
+    enabled: true
+  export:
+    otlp:
+      enabled: true
+      endpoint: http://127.0.0.1:62418/v1/traces
+_config_version: 45
+research:
+  integration_mode: standalone
+  workspace_root: __HERMES_UDR_ROOT__/workspace/research-runs
+mcp_servers:
+  agentmemory:
+    command: /opt/homebrew/opt/node@24/bin/node
+    args:
+    - __HERMES_UDR_ROOT__/software/agentmemory/node_modules/@agentmemory/agentmemory/dist/cli.mjs
+    - mcp
+    - --tools
+    - core
+    env:
+      AGENTMEMORY_URL: http://127.0.0.1:62411
+    enabled: false
+    tools:
+      include:
+      - memory_save
+      - memory_recall
+      - memory_smart_search
+  mirage_local:
+    command: __HERMES_UDR_ROOT__/software/mirage/.venv/bin/mirage
+    args:
+    - mcp
+    - __HERMES_UDR_ROOT__/software/mirage/workspace.yaml
+    enabled: false
+    tools:
+      include:
+      - read
+      - ls
+      - grep
+  zvec:
+    command: __HERMES_UDR_ROOT__/software/zvec/bin/python
+    args:
+    - -m
+    - zvec_mcp
+    enabled: false
+    tools:
+      include:
+      - open_collection
+      - get_collection_info
+      - fetch_documents
+      - vector_query
+      - multi_vector_query
+  serena:
+    command: __HERMES_UDR_ROOT__/software/serena/bin/serena
+    args:
+    - start-mcp-server
+    - --transport
+    - stdio
+    - --project
+    - __HERMES_UDR_ROOT__/workspace
+    - --add-mode
+    - no-memories
+    enabled: false
+    tools:
+      include:
+      - get_current_config
+      - find_file
+      - list_dir
+      - read_file
+      - search_for_pattern
+      - get_symbols_overview
+      - find_symbol
+      - find_referencing_symbols
+    env:
+      PATH: __HERMES_UDR_ROOT__/software/bin:/opt/homebrew/opt/node@24/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  graphiti:
+    url: http://127.0.0.1:62400/mcp/
+    enabled: false
+    tools:
+      include:
+      - search_memory_facts
+      - search_nodes
+      - get_episodes
+platform_toolsets:
+  cli:
+  - research
+  - delegation
+  - skills
+  - mirage_local
+  - zvec
+  - serena
+  - graphiti
+  - web
+  - todo
+  - udr_role
+  telegram:
+  - research
+  - delegation
+  - skills
+  - mirage_local
+  - zvec
+  - serena
+  - graphiti
+  - web
+  - todo
+  - udr_role
+platforms: {}
+gateway:
+  standalone: true
+memory:
+  provider: local

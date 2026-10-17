@@ -1,0 +1,8 @@
+name: udr-runtime-policy
+version: 0.1.0
+description: Native role-scoped workspace and command boundary for Hermes UDR.
+author: Hermes UDR operator
+provides_tools:
+  - udr_workspace
+  - udr_command
+  - udr_effect

@@ -1,0 +1,17 @@
+{
+  "base_url": "http://127.0.0.1:23119/api/",
+  "server_id": "__ZOTERO_SERVER_ID__",
+  "app_version": "10.0.6",
+  "profile": "__HERMES_BN_ROOT__/Zotero/profile",
+  "data": "__HERMES_BN_ROOT__/Zotero/data",
+  "library_scope": {
+    "type": "user",
+    "id": 0
+  },
+  "sync_account_bound": false,
+  "import_roots": [
+    "__HERMES_BN_ROOT__/Zotero/inbox",
+    "__HERMES_BN_ROOT__/data/workspace"
+  ],
+  "output_root": "__HERMES_BN_ROOT__/Zotero/exports"
+}

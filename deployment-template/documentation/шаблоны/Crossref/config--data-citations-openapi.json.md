@@ -1,0 +1,288 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Crossref: data-citations-openapi.json
+
+Это переносимый справочный контракт/каталог. Он не содержит действующее подключение или права аккаунта. `${...}` обозначает значение целевой установки; оно заменяется с сохранением требуемого JSON-типа. Состав методов и ограничения сверяются с устанавливаемой версией.
+
+```json
+{
+  "openapi": "3.1.0",
+  "components": {
+    "schemas": {
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message-type": {
+            "type": "string"
+          },
+          "message": {
+            "$ref": "#/components/schemas/Message"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      },
+      "Item": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "relation",
+          "subject",
+          "object"
+        ],
+        "properties": {
+          "timestamp": {
+            "$ref": "#/components/schemas/OffsetDateTime",
+            "type": "string"
+          },
+          "relation": {
+            "type": "string",
+            "description": "The relation type between the subject and object."
+          },
+          "subject": {
+            "$ref": "#/components/schemas/Subject",
+            "type": "object",
+            "description": "The subject (or source) of the relationship."
+          },
+          "object": {
+            "$ref": "#/components/schemas/Object",
+            "type": "object",
+            "description": "The object (or target) of the relationship."
+          }
+        }
+      },
+      "Message": {
+        "type": "object",
+        "required": [
+          "total-results",
+          "items-per-page",
+          "next-page"
+        ],
+        "properties": {
+          "total-results": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The total number of data citation relationships matching the request."
+          },
+          "items-per-page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of data citation relationships returned per page (default 20). This can be changed using the rows query parameter."
+          },
+          "next-page": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "description": "The index of the next page if available. The calculation is based on total results and row size.Use page=next-page to retrieve the next page of items for the query."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          }
+        }
+      },
+      "Object": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "registration-agency"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of a subject or object item, i.e. its DOI."
+          },
+          "type": {
+            "type": "string",
+            "description": "Work type of a subject or object item."
+          },
+          "registration-agency": {
+            "type": "string",
+            "description": "The DOI registration agency of a subject or object item."
+          }
+        }
+      },
+      "OffsetDateTime": {
+        "type": "string",
+        "format": "date-time",
+        "examples": [
+          "2022-03-10T12:15:50-04:00"
+        ]
+      },
+      "Subject": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "registration-agency",
+          "member"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of a subject or object item, i.e. its DOI."
+          },
+          "type": {
+            "type": "string",
+            "description": "Work type of a subject or object item."
+          },
+          "registration-agency": {
+            "type": "string",
+            "description": "The DOI registration agency of a subject or object item."
+          },
+          "member": {
+            "type": "string",
+            "description": "The Crossref member ID corresponding to a work."
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/beta/datacitations": {
+      "get": {
+        "parameters": [
+          {
+            "description": "Retrieve data citations added to the database after this date and/or time.",
+            "examples": {
+              "Date only (full)": {
+                "value": "2025-01-01"
+              },
+              "Date only (no day)": {
+                "value": "2025-01"
+              },
+              "Date only (only year)": {
+                "value": "2025"
+              },
+              "Date and Time (full)": {
+                "value": "2025-01-01T12:00:00"
+              },
+              "Date and Time (no seconds)": {
+                "value": "2025-01-01T12:00"
+              },
+              "Date and Time (only hour)": {
+                "value": "2025-01-01T12"
+              }
+            },
+            "schema": {
+              "type": "string"
+            },
+            "name": "from-created-date",
+            "in": "query"
+          },
+          {
+            "description": "Retrieve data citations where the subject has this Crossref member ID.",
+            "name": "member-id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for data citations where the object has this DOI.",
+            "name": "object-id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Specify which page of results to return. Can be used to page through results when there are more than the maximum row limit.0 indexed.",
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "description": "Filter for data citations with this relation type.",
+            "name": "relation",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Specify the number of data citations to return per page (default: 20, maximum: 1000).",
+            "schema": {
+              "default": 20,
+              "maximum": 1000
+            },
+            "name": "rows",
+            "in": "query"
+          },
+          {
+            "description": "Filter for data citations where the subject has this DOI.",
+            "name": "subject-id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Retrieve data citations added to the database up to and including this date and/or time.",
+            "examples": {
+              "Date only (full)": {
+                "value": "2025-01-01"
+              },
+              "Date only (no day)": {
+                "value": "2025-01"
+              },
+              "Date only (only year)": {
+                "value": "2025"
+              },
+              "Date and Time (full)": {
+                "value": "2025-01-01T12:00:00"
+              },
+              "Date and Time (no seconds)": {
+                "value": "2025-01-01T12:00"
+              },
+              "Date and Time (only hour)": {
+                "value": "2025-01-01T12"
+              }
+            },
+            "schema": {
+              "type": "string"
+            },
+            "name": "until-created-date",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "All",
+        "tags": [
+          "Api Resource"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Crossref data citations API",
+    "version": "1.0.0-SNAPSHOT",
+    "description": "See <a href=\"https://crossref.org\">crossref.org</a>.</br>For questions and feedback, contact <a href=\"mailto:support@crossref.org\">support@crossref.org</a>."
+  }
+}
+```

@@ -1,0 +1,494 @@
+{
+  "author_batch": {
+    "name": "author_batch",
+    "arguments": {
+      "fields": "authorId,name,url,affiliations,paperCount,citationCount,hIndex"
+    },
+    "purpose": "Get details for multiple authors at once",
+    "required_parameters": [
+      "ids"
+    ]
+  },
+  "author_search": {
+    "name": "author_search",
+    "arguments": {
+      "limit": 10,
+      "fields": "authorId,name,url,affiliations,paperCount,citationCount,hIndex"
+    },
+    "purpose": "Search for authors by name",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "author_details": {
+    "name": "author_details",
+    "arguments": {
+      "fields": "authorId,name,url,affiliations,paperCount,citationCount,hIndex"
+    },
+    "purpose": "Details about an author",
+    "required_parameters": [
+      "author_id"
+    ]
+  },
+  "author_papers": {
+    "name": "author_papers",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Details about an author's papers",
+    "required_parameters": [
+      "author_id"
+    ]
+  },
+  "paper_autocomplete": {
+    "name": "paper_autocomplete",
+    "arguments": {},
+    "purpose": "Suggest paper query completions",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "paper_batch": {
+    "name": "paper_batch",
+    "arguments": {
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Get details for multiple papers at once",
+    "required_parameters": [
+      "ids"
+    ]
+  },
+  "paper_search": {
+    "name": "paper_search",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Paper relevance search",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "paper_bulk_search": {
+    "name": "paper_bulk_search",
+    "arguments": {
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Paper bulk search",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "paper_match_title": {
+    "name": "paper_match_title",
+    "arguments": {
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Paper title search",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "paper_details": {
+    "name": "paper_details",
+    "arguments": {
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Details about a paper",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "paper_authors": {
+    "name": "paper_authors",
+    "arguments": {
+      "limit": 10,
+      "fields": "authorId,name,url,affiliations,paperCount,citationCount,hIndex"
+    },
+    "purpose": "Details about a paper's authors",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "paper_citations": {
+    "name": "paper_citations",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Details about a paper's citations",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "paper_references": {
+    "name": "paper_references",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Details about a paper's references",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "snippet_search": {
+    "name": "snippet_search",
+    "arguments": {
+      "limit": 10,
+      "fields": "snippet.text,snippet.snippetKind,snippet.section,snippet.snippetOffset"
+    },
+    "purpose": "Text snippet search",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "recommend_by_examples": {
+    "name": "recommend_by_examples",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Get recommended papers for lists of positive and negative example papers",
+    "required_parameters": [
+      "positivePaperIds"
+    ]
+  },
+  "recommend_for_paper": {
+    "name": "recommend_for_paper",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount"
+    },
+    "purpose": "Get recommended papers for a single positive example paper",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "dataset_diffs": {
+    "name": "dataset_diffs",
+    "arguments": {},
+    "purpose": "Download Links for Incremental Diffs",
+    "required_parameters": [
+      "dataset_name",
+      "end_release_id",
+      "start_release_id"
+    ]
+  },
+  "dataset_releases": {
+    "name": "dataset_releases",
+    "arguments": {},
+    "purpose": "List of Available Releases",
+    "required_parameters": []
+  },
+  "dataset_release": {
+    "name": "dataset_release",
+    "arguments": {},
+    "purpose": "List of Datasets in a Release",
+    "required_parameters": [
+      "release_id"
+    ]
+  },
+  "dataset_manifest": {
+    "name": "dataset_manifest",
+    "arguments": {},
+    "purpose": "Download Links for a Dataset",
+    "required_parameters": [
+      "dataset_name",
+      "release_id"
+    ]
+  },
+  "business-research": {
+    "name": "paper_search",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract,tldr"
+    },
+    "purpose": "Предметный поиск; query и реальные ограничения задаются пользователем.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "academic-review": {
+    "name": "paper_search",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract,tldr"
+    },
+    "purpose": "Предметный поиск; query и реальные ограничения задаются пользователем.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "general-research": {
+    "name": "paper_search",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract,tldr"
+    },
+    "purpose": "Предметный поиск; query и реальные ограничения задаются пользователем.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "open-access-discovery": {
+    "name": "paper_search",
+    "arguments": {
+      "limit": 10,
+      "openAccessPdf": "",
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract"
+    },
+    "purpose": "Статьи со ссылкой на открытый PDF; ссылку ещё надо проверить.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "recent-discovery": {
+    "name": "paper_bulk_search",
+    "arguments": {
+      "sort": "publicationDate:desc",
+      "fields": "paperId,title,year,publicationDate,externalIds,url"
+    },
+    "purpose": "Новые работы без произвольного исключающего порога дат.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "citation-ranked-discovery": {
+    "name": "paper_bulk_search",
+    "arguments": {
+      "sort": "citationCount:desc",
+      "fields": "paperId,title,year,citationCount,externalIds,url"
+    },
+    "purpose": "Цитируемость не равна качеству доказательств.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "title-lookup": {
+    "name": "paper_match_title",
+    "arguments": {
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract"
+    },
+    "purpose": "Разрешение известного названия с проверкой совпадения.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "paper-abstract": {
+    "name": "paper_details",
+    "arguments": {
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract"
+    },
+    "purpose": "Аннотация и библиографические сведения.",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "paper-tldr": {
+    "name": "paper_details",
+    "arguments": {
+      "fields": "paperId,title,year,externalIds,tldr"
+    },
+    "purpose": "Краткий обзор ИИ; не исходный текст.",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "paper-embedding": {
+    "name": "paper_details",
+    "arguments": {
+      "fields": "paperId,title,embedding.specter_v2"
+    },
+    "purpose": "Вектор SPECTER2, если доступен для статьи; не содержание статьи.",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "paper-publication-status": {
+    "name": "paper_details",
+    "arguments": {
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,journal,fieldsOfStudy,s2FieldsOfStudy"
+    },
+    "purpose": "Проверка выходных сведений; рецензирование и исправления проверяются у издателя.",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "citations-contexts": {
+    "name": "paper_citations",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,title,year,externalIds,url,contexts,intents,isInfluential"
+    },
+    "purpose": "Контексты и намерение цитирования; не поддержка или опровержение.",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "references-contexts": {
+    "name": "paper_references",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,title,year,externalIds,url,contexts,intents,isInfluential"
+    },
+    "purpose": "Обратная цепочка цитирований.",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "author-disambiguation": {
+    "name": "author_search",
+    "arguments": {
+      "limit": 5,
+      "fields": "authorId,name,url,affiliations,paperCount,citationCount,hIndex,aliases"
+    },
+    "purpose": "Разрешение тёзок по работам и идентификаторам.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "author-bibliography": {
+    "name": "author_papers",
+    "arguments": {
+      "limit": 20,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract"
+    },
+    "purpose": "Публикации автора с явной границей охвата.",
+    "required_parameters": [
+      "author_id"
+    ]
+  },
+  "recommendations-broad": {
+    "name": "recommend_for_paper",
+    "arguments": {
+      "limit": 10,
+      "from": "recent",
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract"
+    },
+    "purpose": "Недавние междисциплинарные рекомендации.",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "recommendations-computing": {
+    "name": "recommend_for_paper",
+    "arguments": {
+      "limit": 10,
+      "from": "all-cs",
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract"
+    },
+    "purpose": "Поле компьютерных наук; не общий научный корпус.",
+    "required_parameters": [
+      "paper_id"
+    ]
+  },
+  "recommendations-positive-negative": {
+    "name": "recommend_by_examples",
+    "arguments": {
+      "limit": 10,
+      "fields": "paperId,corpusId,title,authors,year,publicationDate,externalIds,url,venue,publicationTypes,isOpenAccess,openAccessPdf,citationCount,referenceCount,influentialCitationCount,abstract"
+    },
+    "purpose": "Примеры нужных и ненужных работ; не фильтр полноты обзора.",
+    "required_parameters": [
+      "positivePaperIds"
+    ]
+  },
+  "fulltext-snippets": {
+    "name": "snippet_search",
+    "arguments": {
+      "limit": 5,
+      "fields": "snippet.text,snippet.snippetKind,snippet.section,snippet.snippetOffset"
+    },
+    "purpose": "Фрагменты названия, аннотации или основного текста; фиксировать snippetKind.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "fulltext-paper-check": {
+    "name": "snippet_search",
+    "arguments": {
+      "limit": 5,
+      "fields": "snippet.text,snippet.snippetKind,snippet.section,snippet.snippetOffset,snippet.annotations.sentences"
+    },
+    "purpose": "Проверка условий в известных статьях с paperIds.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "fulltext-author-filter": {
+    "name": "snippet_search",
+    "arguments": {
+      "limit": 5
+    },
+    "purpose": "Авторы объединяются AND, а не OR; имена сопоставляются приблизительно.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "dataset-latest": {
+    "name": "dataset_release",
+    "arguments": {
+      "release_id": "latest"
+    },
+    "purpose": "Версия и описания наборов; файлы не скачиваются.",
+    "required_parameters": [
+      "release_id"
+    ]
+  },
+  "dataset-local-index": {
+    "name": "dataset_manifest",
+    "arguments": {
+      "release_id": "latest"
+    },
+    "purpose": "Подготовка локального корпуса; dataset_name из действующего списка, права на данные отдельно.",
+    "required_parameters": [
+      "dataset_name",
+      "release_id"
+    ]
+  },
+  "dataset-incremental-update": {
+    "name": "dataset_diffs",
+    "arguments": {},
+    "purpose": "Только описание обновлений и удалений, без изменения локальной базы.",
+    "required_parameters": [
+      "dataset_name",
+      "end_release_id",
+      "start_release_id"
+    ]
+  },
+  "business-public-research": {
+    "name": "paper_bulk_search",
+    "arguments": {
+      "fields": "paperId,title,year,publicationDate,externalIds,url,authors,abstract",
+      "sort": "citationCount:desc"
+    },
+    "purpose": "Проверенный доступ без ключа; query по грамматике массового поиска, просматривать пагинацию.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "academic-public-research": {
+    "name": "paper_bulk_search",
+    "arguments": {
+      "fields": "paperId,title,year,publicationDate,externalIds,url,authors,abstract",
+      "sort": "citationCount:desc"
+    },
+    "purpose": "Проверенный доступ без ключа; query по грамматике массового поиска, просматривать пагинацию.",
+    "required_parameters": [
+      "query"
+    ]
+  },
+  "general-public-research": {
+    "name": "paper_bulk_search",
+    "arguments": {
+      "fields": "paperId,title,year,publicationDate,externalIds,url,authors,abstract",
+      "sort": "citationCount:desc"
+    },
+    "purpose": "Проверенный доступ без ключа; query по грамматике массового поиска, просматривать пагинацию.",
+    "required_parameters": [
+      "query"
+    ]
+  }
+}

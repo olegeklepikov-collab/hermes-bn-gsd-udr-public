@@ -1,0 +1,7 @@
+{
+  "version": "v0.2.3",
+  "published_at": "2026-08-19T20:35:35Z",
+  "archive_sha256": "be1317293fe6396530866611a506eead0e89e0edbd423fd3ab997909e3fc2d5c",
+  "binary": "__HERMES_BN_ROOT__/runtime/keenable-cli/keenable-cli-aarch64-apple-darwin/keenable",
+  "source": "https://github.com/keenableai/keenable-cli/releases/download/v0.2.3/keenable-cli-aarch64-apple-darwin.tar.xz"
+}

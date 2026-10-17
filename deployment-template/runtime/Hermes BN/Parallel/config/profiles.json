@@ -1,0 +1,445 @@
+{
+  "search-turbo": {
+    "method": "POST",
+    "path": "/v1/search",
+    "body": {
+      "mode": "turbo",
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "max_results": 5
+      }
+    },
+    "purpose": "Поиск; каждый запрос дополняется objective и search_queries."
+  },
+  "search-fast": {
+    "method": "POST",
+    "path": "/v1/search",
+    "body": {
+      "mode": "fast",
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "max_results": 5
+      }
+    },
+    "purpose": "Поиск; каждый запрос дополняется objective и search_queries."
+  },
+  "search-basic": {
+    "method": "POST",
+    "path": "/v1/search",
+    "body": {
+      "mode": "basic",
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "max_results": 5
+      }
+    },
+    "purpose": "Поиск; каждый запрос дополняется objective и search_queries."
+  },
+  "search-advanced": {
+    "method": "POST",
+    "path": "/v1/search",
+    "body": {
+      "mode": "advanced",
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "max_results": 5
+      }
+    },
+    "purpose": "Поиск; каждый запрос дополняется objective и search_queries."
+  },
+  "search-academic": {
+    "method": "POST",
+    "path": "/v1/search",
+    "body": {
+      "mode": "advanced",
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "max_results": 8
+      }
+    },
+    "purpose": "Общий поиск без жёсткого ограничения источников. Предпочтительные источники добавляются в objective с учётом темы, страны и дисциплины; строгий список задаётся только при требовании ограниченного корпуса.",
+    "source_preferences": [
+      "arxiv.org",
+      "pubmed.ncbi.nlm.nih.gov",
+      "pmc.ncbi.nlm.nih.gov",
+      "doi.org"
+    ]
+  },
+  "search-business": {
+    "method": "POST",
+    "path": "/v1/search",
+    "body": {
+      "mode": "advanced",
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "max_results": 8
+      }
+    },
+    "purpose": "Общий поиск без жёсткого ограничения источников. Предпочтительные источники добавляются в objective с учётом темы, страны и дисциплины; строгий список задаётся только при требовании ограниченного корпуса.",
+    "source_preferences": [
+      "sec.gov",
+      "investor.gov",
+      "bls.gov",
+      "census.gov",
+      "worldbank.org"
+    ]
+  },
+  "search-fresh": {
+    "method": "POST",
+    "path": "/v1/search",
+    "body": {
+      "mode": "fast",
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "max_results": 5,
+        "fetch_policy": {
+          "max_age_seconds": 600,
+          "timeout_seconds": 20,
+          "disable_cache_fallback": true
+        }
+      }
+    },
+    "purpose": "Свежие страницы; дату публикации задавать отдельно."
+  },
+  "extract-focused": {
+    "method": "POST",
+    "path": "/v1/extract",
+    "body": {
+      "max_chars_total": 20000,
+      "advanced_settings": {}
+    },
+    "purpose": "Чтение одной или нескольких страниц, PDF, страниц с динамическим содержанием."
+  },
+  "extract-full": {
+    "method": "POST",
+    "path": "/v1/extract",
+    "body": {
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "full_content": true
+      }
+    },
+    "purpose": "Чтение одной или нескольких страниц, PDF, страниц с динамическим содержанием."
+  },
+  "extract-live": {
+    "method": "POST",
+    "path": "/v1/extract",
+    "body": {
+      "max_chars_total": 20000,
+      "advanced_settings": {
+        "full_content": true,
+        "fetch_policy": {
+          "max_age_seconds": 600,
+          "timeout_seconds": 20,
+          "disable_cache_fallback": true
+        }
+      }
+    },
+    "purpose": "Чтение одной или нескольких страниц, PDF, страниц с динамическим содержанием."
+  },
+  "task-lite": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "lite",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input."
+  },
+  "task-base": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "base",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input."
+  },
+  "task-core": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "core",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input."
+  },
+  "task-core2x": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "core2x",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input."
+  },
+  "task-pro": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "pro",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input."
+  },
+  "task-ultra": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "ultra",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input.",
+    "activation_condition": "Заранее ограниченный бюджет и объём."
+  },
+  "task-ultra2x": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "ultra2x",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input.",
+    "activation_condition": "Заранее ограниченный бюджет и объём."
+  },
+  "task-ultra4x": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "ultra4x",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input.",
+    "activation_condition": "Заранее ограниченный бюджет и объём."
+  },
+  "task-ultra8x": {
+    "method": "POST",
+    "path": "/v1/tasks/runs",
+    "body": {
+      "processor": "ultra8x",
+      "enable_events": true,
+      "memory_scope_key": "hermes-bn",
+      "task_spec": {
+        "output_schema": {
+          "type": "text",
+          "description": "Ответ по-русски: факты, источники с URL, даты, ограничения и противоречия."
+        }
+      }
+    },
+    "purpose": "Исследование; вход задаётся в input.",
+    "activation_condition": "Заранее ограниченный бюджет и объём."
+  },
+  "response-low": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "body": {
+      "model": "parallel",
+      "reasoning": {
+        "effort": "low"
+      }
+    },
+    "purpose": "Ответ с источниками; input обязателен. Поддерживает stream, previous_response_id и text.format."
+  },
+  "response-medium": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "body": {
+      "model": "parallel",
+      "reasoning": {
+        "effort": "medium"
+      }
+    },
+    "purpose": "Ответ с источниками; input обязателен. Поддерживает stream, previous_response_id и text.format."
+  },
+  "response-high": {
+    "method": "POST",
+    "path": "/v1/responses",
+    "body": {
+      "model": "parallel",
+      "reasoning": {
+        "effort": "high"
+      }
+    },
+    "purpose": "Ответ с источниками; input обязателен. Поддерживает stream, previous_response_id и text.format."
+  },
+  "findall-preview": {
+    "method": "POST",
+    "path": "/v1beta/findall/runs",
+    "body": {
+      "generator": "preview",
+      "match_limit": 5,
+      "memory_scope_key": "hermes-bn"
+    },
+    "purpose": "Проверяемый список; objective, entity_type и match_conditions обязательны."
+  },
+  "findall-base": {
+    "method": "POST",
+    "path": "/v1beta/findall/runs",
+    "body": {
+      "generator": "base",
+      "match_limit": 5,
+      "memory_scope_key": "hermes-bn"
+    },
+    "purpose": "Проверяемый список; objective, entity_type и match_conditions обязательны."
+  },
+  "findall-core": {
+    "method": "POST",
+    "path": "/v1beta/findall/runs",
+    "body": {
+      "generator": "core",
+      "match_limit": 5,
+      "memory_scope_key": "hermes-bn"
+    },
+    "purpose": "Проверяемый список; objective, entity_type и match_conditions обязательны.",
+    "activation_condition": "Бюджет перед запуском."
+  },
+  "findall-pro": {
+    "method": "POST",
+    "path": "/v1beta/findall/runs",
+    "body": {
+      "generator": "pro",
+      "match_limit": 5,
+      "memory_scope_key": "hermes-bn"
+    },
+    "purpose": "Проверяемый список; objective, entity_type и match_conditions обязательны.",
+    "activation_condition": "Бюджет перед запуском."
+  },
+  "entity-people": {
+    "method": "POST",
+    "path": "/v1beta/findall/entity-search",
+    "body": {
+      "entity_type": "people",
+      "match_limit": 5
+    },
+    "purpose": "Быстрый подбор людей или компаний; не заменяет проверку FindAll."
+  },
+  "entity-companies": {
+    "method": "POST",
+    "path": "/v1beta/findall/entity-search",
+    "body": {
+      "entity_type": "companies",
+      "match_limit": 5
+    },
+    "purpose": "Быстрый подбор людей или компаний; не заменяет проверку FindAll."
+  },
+  "images-fast": {
+    "method": "POST",
+    "path": "/v1/images/search",
+    "body": {
+      "mode": "fast"
+    },
+    "purpose": "Поиск изображений с адресами исходных страниц. Проверять права перед повторным использованием."
+  },
+  "images-advanced": {
+    "method": "POST",
+    "path": "/v1/images/search",
+    "body": {
+      "mode": "advanced"
+    },
+    "purpose": "Поиск изображений с адресами исходных страниц. Проверять права перед повторным использованием."
+  },
+  "monitor-event_stream-lite": {
+    "method": "POST",
+    "path": "/v1alpha/monitors",
+    "body": {
+      "type": "event_stream",
+      "processor": "lite",
+      "frequency": "1d",
+      "memory_scope_key": "hermes-bn"
+    },
+    "purpose": "События или изменения готового Task Run; settings обязательны. Постоянные задания не созданы.",
+    "activation_condition": "Только отдельный запрос пользователя с предметом и периодом наблюдения."
+  },
+  "monitor-event_stream-base": {
+    "method": "POST",
+    "path": "/v1alpha/monitors",
+    "body": {
+      "type": "event_stream",
+      "processor": "base",
+      "frequency": "1d",
+      "memory_scope_key": "hermes-bn"
+    },
+    "purpose": "События или изменения готового Task Run; settings обязательны. Постоянные задания не созданы.",
+    "activation_condition": "Только отдельный запрос пользователя с предметом и периодом наблюдения."
+  },
+  "monitor-snapshot-lite": {
+    "method": "POST",
+    "path": "/v1alpha/monitors",
+    "body": {
+      "type": "snapshot",
+      "processor": "lite",
+      "frequency": "1d",
+      "memory_scope_key": "hermes-bn"
+    },
+    "purpose": "События или изменения готового Task Run; settings обязательны. Постоянные задания не созданы.",
+    "activation_condition": "Только отдельный запрос пользователя с предметом и периодом наблюдения."
+  },
+  "monitor-snapshot-base": {
+    "method": "POST",
+    "path": "/v1alpha/monitors",
+    "body": {
+      "type": "snapshot",
+      "processor": "base",
+      "frequency": "1d",
+      "memory_scope_key": "hermes-bn"
+    },
+    "purpose": "События или изменения готового Task Run; settings обязательны. Постоянные задания не созданы.",
+    "activation_condition": "Только отдельный запрос пользователя с предметом и периодом наблюдения."
+  }
+}

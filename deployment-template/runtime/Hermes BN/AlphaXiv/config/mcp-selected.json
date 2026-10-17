@@ -1,0 +1,38 @@
+{
+  "url": "https://api.alphaxiv.org/mcp/v1",
+  "auth": "oauth",
+  "oauth": {
+    "client_name": "Hermes BN — AgentRuntime2",
+    "scope": "email profile offline_access",
+    "timeout": 900
+  },
+  "connect_timeout": 45,
+  "tool_timeout": 240,
+  "tools": {
+    "include": [
+      "answer_pdf_queries",
+      "get_paper_content",
+      "read_files_from_github_repository",
+      "discover_papers",
+      "find_researchers",
+      "get_researcher",
+      "get_researcher_papers",
+      "resolve_researchers",
+      "get_paper_notes",
+      "list_annotated_papers",
+      "list_library",
+      "save_papers_to_folder",
+      "remove_papers_from_folder",
+      "move_papers_between_folders",
+      "create_folder",
+      "rename_folder",
+      "get_for_you_feed",
+      "get_hot_feed",
+      "edit_private_paper_metadata",
+      "list_followed_researchers",
+      "follow_researcher",
+      "unfollow_researcher"
+    ]
+  },
+  "enabled": true
+}

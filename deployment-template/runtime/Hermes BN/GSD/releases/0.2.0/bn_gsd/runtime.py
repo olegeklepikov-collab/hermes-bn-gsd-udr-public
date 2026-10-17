@@ -1,0 +1,295 @@
+"""Native lifecycle, final-request verification, and source-engine composition."""
+from pathlib import Path
+import copy
+import json
+import re
+import uuid
+from .bridge import Bridge
+from .codec import canonical, digest, read_json, strings
+from .roles import NativeRoles
+
+
+class Runtime:
+    def __init__(self, ctx, settings_path):
+        self.ctx = ctx
+        self.bridge = Bridge(settings_path)
+        self.settings = self.bridge.settings
+        self.roles = NativeRoles(self)
+        from .tool_policy import ToolPolicy
+        self.tool_policy = ToolPolicy(self.settings) if self.settings.get("tool_policy") else None
+        self.recovery = self.bridge.call("recover_dead", {})
+
+    def session_start(self, session_id, platform="", **kw):
+        return self.bridge.call("session", {"sid": session_id, "platform": platform})
+
+    def child_start(self, parent_session_id, child_session_id, child_goal="", **kw):
+        match = re.match(r"GSD_NATIVE_JOB:(J\.[0-9a-f]{32})\n", child_goal)
+        if match:
+            return self.bridge.call("session", {"sid": child_session_id, "platform": "subagent",
+                "parent": parent_session_id, "job_id": match.group(1)})
+        # Generic native children inherit resource/effect restrictions but do not become G/S/D.
+        return self.bridge.call("session", {"sid": child_session_id, "platform": "subagent",
+                                            "parent": parent_session_id})
+
+    def pre_model(self, **kw):
+        if kw.get("platform") == "subagent":
+            return {"context": "This is an already activated native leaf role. Do not orchestrate, "
+                    "delegate, start a new GSD run, or request procedures. The host supplies your full "
+                    "canonical context and exact input. Return the required JSON product directly."}
+        return {"context": "GSD Engine 3.0.3 is connected through the native harness. For substantive GSD "
+            "analysis first load skill_view bn-gsd:gsd-native-orchestration, then use gsd_research; "
+            "gsd_analyze is the advanced canonical interface. "
+            "for an exact operation use gsd_work and the full indexed contract. "
+            "G/S/D are real bounded native leaf sessions. Source-engine computations, model review, semantic "
+            "acceptance, and external permission are distinct. Never claim success for a missing executor. "
+            "Use gsd_runtime_status to inspect resource and limitations; gsd_stop stops this family."}
+
+    def request_middleware(self, request, session_id="", **kw):
+        state = self.bridge.call("lookup", {"sid": session_id})
+        job = state.get("job")
+        result = copy.deepcopy(request)
+        key = "max_output_tokens" if "input" in result or (kw.get("aux_task") and kw.get("provider") == "openai-codex") else "max_completion_tokens" if "max_completion_tokens" in result else "max_tokens"
+        result[key] = min(result.get(key) or self.settings["limits"]["output_tokens"], self.settings["limits"]["output_tokens"])
+        if not job:
+            return {"request": result, "source": "bn-gsd", "reason": "bounded provider output"}
+        full = self.bridge.call("job_context", {"job_id": job["id"]})
+        addition = self.delivery_text(full)
+        if addition not in "\n".join(strings(result)):
+            rows = result.get("messages") if isinstance(result.get("messages"), list) else result.get("input")
+            if not isinstance(rows, list):
+                raise ValueError("No supported native message envelope")
+            row = next((v for v in reversed(rows) if isinstance(v, dict) and v.get("role") == "user"), None)
+            if row is None:
+                raise ValueError("No user turn for canonical context delivery")
+            content = row.get("content")
+            if isinstance(content, str):
+                row["content"] = content + addition
+            elif isinstance(content, list):
+                text_type = "input_text" if "input" in result else "text"
+                row["content"].append({"type": text_type, "text": addition})
+            else:
+                raise ValueError("Unsupported native user content")
+        return {"request": result, "source": "bn-gsd", "reason": "complete addressed role context"}
+
+    @staticmethod
+    def delivery_text(full):
+        return ("\n<GSD_ACTIVE_CANONICAL_CONTEXT digest=\"" + full["context"]["text_sha256"] + "\">\n" +
+                full["context"]["text"] + "\n</GSD_ACTIVE_CANONICAL_CONTEXT>\n" +
+                "<GSD_UNTRUSTED_INPUT sha256=\"" + full["job"]["input_digest"] + "\">\n" +
+                canonical(full["inputs"]).decode() + "\n</GSD_UNTRUSTED_INPUT>\n")
+
+    def model_control(self, execution_kind, payload, session_id="", api_request_id="", provider="", **kw):
+        from hermes_cli.execution_control import ExecutionDecision
+        state = self.bridge.call("lookup", {"sid": session_id})
+        request = payload["request"]
+        if any(not isinstance(tool, dict) or tool.get("type") != "function" for tool in (request.get("tools") or [])):
+            return ExecutionDecision(False, "Provider-executed tools require a separate trusted adapter")
+        if provider != self.settings["provider"]:
+            return ExecutionDecision(False, "Model provider is outside the approved resource scope")
+        job = state.get("job")
+        delivery = None
+        if job:
+            full = self.bridge.call("job_context", {"job_id": job["id"]})
+            if self.delivery_text(full) not in "\n".join(strings(request)):
+                return ExecutionDecision(False, "Mandatory role context was not delivered intact")
+            delivery = {"assembled_text_sha256": full["context"]["text_sha256"],
+                        "manifest_digest": full["context"]["manifest_digest"],
+                        "source_bytes": full["context"]["bytes"],
+                        "input_digest": full["job"]["input_digest"],
+                        "final_provider_arguments_verified": True,
+                        "semantic_adherence_inferred": False}
+        maximum = request.get("max_output_tokens") or request.get("max_completion_tokens") or request.get("max_tokens")
+        if type(maximum) is not int or not 0 < maximum <= self.settings["limits"]["output_tokens"]:
+            return ExecutionDecision(False, "A bounded provider output is required")
+        raw = canonical({k: v for k, v in request.items() if k not in {"timeout", "http_client"}})
+        if len(raw) > min(self.settings["limits"]["request_bytes"], state["family"]["limits"].get("request_bytes", self.settings["limits"]["request_bytes"])):
+            return ExecutionDecision(False, "Required context/input exceeds the request bound; split work, do not trim")
+        physical_id = api_request_id + (".aux-attempt-" + str(kw.get("retry_count", 0)) if execution_kind == "auxiliary" else "")
+        reservation = self.bridge.call("reserve", {"sid": session_id, "request_id": physical_id,
+            "fingerprint": digest(read_json(raw)), "upper_tokens": len(raw) + 8192 + maximum,
+            "delivery": delivery})
+        return ExecutionDecision(True, reservation_id=reservation["id"])
+
+    def tool_control(self, payload, session_id="", **kw):
+        from hermes_cli.execution_control import ExecutionDecision
+        name = payload["tool_name"]
+        args = payload["args"]
+        if name in {"gsd_runtime_status", "gsd_stop"}:
+            return ExecutionDecision(True)
+        state = self.bridge.call("lookup", {"sid": session_id})
+        job = state.get("job")
+        if state["family"]["status"] != "running":
+            return ExecutionDecision(False, "GSD family stopped or requires recovery")
+        self.bridge.call("tool_call", {"sid": session_id, "name": name})
+        if job:
+            safe = name in {"gsd_role_info", "tool_search", "tool_describe"}
+            return ExecutionDecision(safe, "Native G/S/D leaves may only inspect addressed sources; effects and recursive delegation are forbidden")
+        if name.startswith("gsd_") or name in {"tool_search", "tool_describe", "tool_call", "skills_list", "skill_view"}:
+            return ExecutionDecision(True)
+        if name == "read_file":
+            from hermes_cli.config_effective import load_user_config_effective
+            if (load_user_config_effective().get("terminal") or {}).get("backend", "local") not in {"local", "bn_guarded_local"}:
+                return ExecutionDecision(False, "Remote file backends need a separate read-scope adapter")
+            from .paths import scoped_public_file
+            scoped_public_file(args.get("path") or "", [self.settings["workspace"], self.settings["bundle_root"]])
+            return ExecutionDecision(True)
+        if name in {"terminal", "read_file", "write_file", "patch", "search_files"}:
+            from hermes_cli.config_effective import load_user_config_effective
+            guarded = (load_user_config_effective().get("terminal") or {}).get("backend") == "bn_guarded_local"
+            return ExecutionDecision(guarded, "A mandatory OS sandbox is required for local execution")
+        if name in {"todo", "memory"}:
+            return ExecutionDecision(True)
+        row = self.tool_policy.classify(name, args) if self.tool_policy else None
+        if row:
+            if row["mode"] == "exact_owner_grant":
+                self.bridge.call("authorize_tool_grant", {"sid": session_id, "name": name, "args_digest": digest(args),
+                    "call_id": kw.get("tool_call_id") or "", "boundary": kw.get("boundary") or ""})
+            return ExecutionDecision(True)
+        return ExecutionDecision(False, "Unlisted executor: explicit trusted adapter or exact owner grant required")
+
+    def result_control(self, payload, session_id="", tool_call_id="", **kw):
+        from hermes_cli.execution_control import ExecutionDecision
+        self.post_tool(tool_name=payload["tool_name"],args=payload["args"],result=payload["result"],session_id=session_id,tool_call_id=tool_call_id)
+        return ExecutionDecision(True)
+
+    def post_tool(self, tool_name="", args=None, result=None, session_id="", tool_call_id="", **kw):
+        if not session_id or tool_name.startswith("gsd_"):
+            return
+        return self.bridge.call("evidence_event", {"sid": session_id, "event": {
+            "tool_name": tool_name, "tool_call_id": tool_call_id, "arguments_sha256": digest(args or {}),
+            "result_sha256": digest(result), "source": "actual_native_tool_result",
+            "reading_level": "tool_return_only", "source_truth_verified": False}})
+
+    def post_api(self, api_request_id="", usage=None, error=None, **kw):
+        total = usage.get("total_tokens") if isinstance(usage, dict) else None
+        physical_id = api_request_id + (".aux-attempt-" + str(kw.get("retry_count", 0)) if kw.get("aux_task") else "")
+        return self.bridge.call("settle", {"request_id": physical_id, "actual_tokens": total,
+                                            "error": error is not None})
+
+    def session_end(self, session_id, interrupted=False, **kw):
+        state = self.bridge.call("lookup", {"sid": session_id})
+        if interrupted and not state.get("job"):
+            self.bridge.call("stop", {"sid": session_id, "reason": "Native parent interrupted"})
+            self.roles.stop(session_id)
+
+    def analyze(self, args, sid):
+        self.bridge.call("validate_analysis", {"components": args["components"], "request": args["request"]})
+        self.bridge.call("phase", {"sid": sid, "phase": "working"})
+        active = args["components"]
+        request = args["request"]
+        native = {}
+        provider = None
+        if "G" in active and request.get("generation", {}).get("method") == "agent":
+            generation = request["generation"]
+            self.bridge.call("validate_generation", {"generation": generation})
+            native["G"] = self.roles.run(sid, "G", "generation", {"generation": generation,
+                "construction_observations": [o for o in request.get("observations", [])
+                                              if o.get("used_for_generation") is True],
+                "seed_origin": "unattested_input_unless_explicitly_bound"}, args["request_id"] + ".G")
+            self.bridge.call("validate_candidates", {"candidates": native["G"]["result"]["candidates"],
+                                                       "generation": generation})
+            provider = self.bridge.call("provider_receipt", {"job_id": native["G"]["id"],
+                                                              "generation": generation})["provider_config"]
+        finite = self.bridge.engine("gsd_execute", args, provider, sid=sid)
+        if finite.get("ok") is not True:
+            return finite
+        outcome = finite["result"]
+        engine = outcome.get("engine_result", {})
+        for role in "SD":
+            if role not in active or role not in engine.get("executed_components", []):
+                continue
+            predecessors = [native["S"]] if role == "D" and "S" in native else list(native.values())
+            handoffs = [self.bridge.call("native_handoff", {"job_id": v["id"], "receiver": role,
+                        "profile": engine["profile"]["selected"], "scope": request["scope"]})
+                        for v in predecessors]
+            inputs = {"scope": request["scope"], "question": request["question"],
+                      "profile": engine["profile"], "finite_role_result": engine["outputs"][role],
+                      "candidate_field": engine.get("candidate_field", []),
+                      "comparison_review": engine.get("outputs", {}).get("S") or request.get("review"),
+                      "finite_review_programmatically_validated_by_source_D": "D" in engine.get("executed_components", []),
+                      "finite_review_method": "Exact canonical JSON comparison only for observation keys present in candidate expectations; unmatched keys are not classified by that finite algorithm; subject-matter truth remains unreviewed",
+                      "native_predecessor_products": {v["role"]: {"job_id": v["id"], "result": v["result"],
+                          "native_result_hash": v["native_receipt"]["result_hash"]} for v in predecessors},
+                      "observations": request.get("observations", []) if role == "S" or not handoffs else [],
+                      "native_predecessor_handoffs": handoffs,
+                      "supplied_review_origin": "unattested_input" if "S" not in active else "original_finite_S_algorithm",
+                      "profile_obligations": engine.get("unmet_profile_obligations", [])}
+            if not handoffs:
+                inputs["supplied_candidate_field"] = engine.get("candidate_field", [])
+                inputs["supplied_review"] = request.get("review")
+            try:
+                native[role] = self.roles.run(sid, role, "semantic_analysis", inputs, args["request_id"] + "." + role)
+            except Exception as exc:
+                outcome["native_failed_role"] = role
+                outcome["native_error"] = str(exc)
+                break
+        outcome["native_role_jobs"] = {role: {"id": job["id"], "result": job["result"],
+            "native_receipt": job["native_receipt"]} for role, job in native.items()}
+        outcome["semantic_acceptance"] = "actual_native_model_products_require_the_declared_subject_matter_review"
+        outcome["generation_observation_delivery"] = "Only declared construction observations were given to native G; holdout observations were withheld"
+        outcome["external_action_authorized"] = False
+        self.bridge.call("phase", {"sid": sid, "phase": "finalizing"})
+        if outcome.get("native_failed_role"):
+            finite["ok"] = False
+            outcome["effective_status"] = "partial_native_execution"
+        return finite
+
+    def research(self, args, sid):
+        # Bind structure only. Hypotheses and reviews are produced by the same
+        # genuine native G/S/D implementation, never by this adapter.
+        request = {"scope": args["scope"], "question": args["question"], "candidates": [],
+            "requested_profile": args.get("requested_profile", "Standard"),
+            "observations": [{**o, "used_for_generation": True} for o in args.get("observations", [])],
+            "generation": {"id": args["request_id"] + ".G", "task": args["question"],
+                "seed": args["question"], "scope": args["scope"], "product_kind": "hypothesis",
+                "frame": args.get("frame", "Distinct process, measurement, null and risky-omission alternatives"),
+                "constraints": args.get("constraints", []), "method": "agent",
+                "max_candidates": args.get("max_candidates", 4), "scan_budget": 20}}
+        if "risk" in args:
+            request["risk"] = args["risk"]
+        return self.analyze({"components": "GSD", "request_id": args["request_id"], "request": request}, sid)
+
+    def work(self, args, sid):
+        key = args["key"]
+        contract = self.bridge.engine("gsd_contract", {"key": key}, sid=sid)
+        if not contract.get("ok"):
+            return contract
+        value = contract["result"]
+        role = value.get("owning_component") or value.get("owner")
+        if role not in {"G", "S", "D"}:
+            return {"ok": False, "error": {"code": "REFERENCE_NOT_EXECUTOR",
+                "message": "This source element is a definition, not an executable G/S/D procedure"}}
+        procedure_ids = [key.split(":", 1)[1]] if key.startswith("procedure:") else []
+        if procedure_ids:
+            if not args.get("run_id"):
+                return {"ok": False, "status": "needs_data", "error": {
+                    "code": "PROCEDURE_CASE_REQUIRED", "message": "A ready source ProcedureEngine case is required"},
+                    "semantic_execution_performed": False}
+            prepared = self.bridge.call("procedure_inputs", {"sid": sid, "run_id": args["run_id"],
+                "procedure_id": procedure_ids[0], "declared_inputs": args["inputs"]})
+            if not prepared["ready"]:
+                return {"ok": False, "status": "awaiting_dependency", "next": prepared["next"],
+                        "semantic_execution_performed": False}
+            args = {**args, "inputs": prepared}
+        job = self.roles.run(sid, role, key, {"contract": value, "inputs": args["inputs"]},
+                             args["request_id"], procedure_ids=procedure_ids,
+                             entry_keys=[] if procedure_ids else value.get("source_anchors", []), profile=args.get("context_profile", "standard"))
+        return {"ok": True, "result": job, "procedure_committed": False,
+                "next_required": "Validate addressable outputs and the actual postcondition before source ProcedureEngine commit"}
+
+    def work_file(self, args, sid):
+        if args["interpretation"] != "independent_records":
+            raise ValueError("Only explicitly independent records can be partitioned by this adapter")
+        plan = self.bridge.call("prepare_work_file", {k: v for k, v in args.items() if k != "interpretation"})
+        results = []
+        for operation in plan.pop("operations"):
+            try:
+                result = self.work(operation, sid)
+            except Exception as exc:
+                result = {"ok": False, "error": {"message": str(exc)}}
+            results.append(result)
+            if not result.get("ok"):
+                break
+        return {"ok": len(results) == plan["source_records"] and all(r.get("ok") for r in results),
+                "plan": plan, "products": results, "completed_record_indices": list(range(sum(r.get("ok") is True for r in results))),
+                "scope": "Independent per-record products only; joint inference requires a separate evidence-preserving task"}

@@ -1,0 +1,155 @@
+{
+  "elibrary": {
+    "active_mode": "external_index_and_owner_supplied_local_files",
+    "direct_site_access_enabled": false,
+    "api_mcp_status": "not_found_in_reviewed_primary_materials",
+    "permission_status": "not_provided",
+    "checked_at": "2026-10-07",
+    "login_alone_sufficient_for_robot_access": false,
+    "display_name": "eLIBRARY.RU",
+    "domain": "elibrary.ru",
+    "homepage": "https://elibrary.ru/",
+    "instructions": [
+      "https://elibrary.ru/help_querybox.asp",
+      "https://elibrary.ru/projects/subscription/manual_elibrary_for_user.pdf"
+    ],
+    "coverage": [
+      "Научные публикации, журналы, авторы и организации",
+      "РИНЦ и SCIENCE INDEX; сведения о цитировании в пределах соответствующего индекса",
+      "Часть полных текстов; доступ определяется конкретной публикацией, регистрацией и правами организации"
+    ],
+    "native_options": [
+      "Поиск по публикациям и доступным полям, тематические рубрики и период",
+      "Логические условия, близость слов, морфология, похожий текст — по справке поиска",
+      "Коллекции и сохранённые запросы — описаны в пользовательском руководстве; текущий доступ требует входа",
+      "Экспорт и библиометрия — через предоставленный интерфейс и условия доступа"
+    ],
+    "manual_search": {
+      "start_url": "https://elibrary.ru/",
+      "query_help": "https://elibrary.ru/help_querybox.asp",
+      "steps": [
+        "Войти в собственный аккаунт при необходимости.",
+        "Открыть поиск публикаций; ввести ключевые слова, отдельно точное название/автора/DOI.",
+        "Выбрать дисциплины и фактический период; проверить состав базы, наличие полного текста и права доступа.",
+        "Сохранить разрешённый файл или экспорт в папку inbox."
+      ],
+      "ui_verified_this_installation": false
+    },
+    "policy": [
+      "Официальное руководство запрещает значительное или систематическое копирование, в том числе роботами, без письменного разрешения. Руководство не является доказательством доступности API.",
+      "Прямой сайт сообщил о блокировке в средстве просмотра; соединение с данной машины отдельно сбрасывается. Причина сброса не установлена."
+    ],
+    "direct_check": {
+      "web_reader": "redirect_to_ip_blocked.asp",
+      "local_machine": "ConnectionError/ConnectionResetError"
+    },
+    "support": {
+      "email": "support@elibrary.ru",
+      "purpose": "официальная поддержка: условия программного доступа и диагностика блокировки",
+      "source": "https://elibrary.ru/ip_blocked.asp"
+    }
+  },
+  "dissercat": {
+    "active_mode": "external_index_and_owner_supplied_local_files",
+    "direct_site_access_enabled": false,
+    "api_mcp_status": "not_found_in_reviewed_primary_materials",
+    "permission_status": "not_provided",
+    "checked_at": "2026-10-07",
+    "login_alone_sufficient_for_robot_access": false,
+    "display_name": "DisserCat",
+    "domain": "dissercat.com",
+    "homepage": "https://www.dissercat.com/",
+    "instructions": [
+      "https://www.dissercat.com/terms",
+      "https://www.dissercat.com/search",
+      "https://www.dissercat.com/chasto-zadavaemye-voprosy-pri-rabote-s-nashei-nauchnoi-bibliotekoi",
+      "https://static.dissercat.com/pravila-raboty-elektronnoi-biblioteki-dissercat"
+    ],
+    "coverage": [
+      "Диссертации и авторефераты, каталоги специальностей ВАК",
+      "Предварительные сведения, содержание, введение и библиография в зависимости от карточки",
+      "Поиск по научным текстам и русская морфология; полнота корпуса не проверена"
+    ],
+    "native_options": [
+      "Полнотекстовый поиск через предоставленный интерфейс",
+      "Поиск по автору, названию и специальности; каталог ВАК",
+      "Чтение доступного автореферата или фрагментов",
+      "Заказ справочно-библиографической услуги — отдельное решение владельца; не право свободного распространения"
+    ],
+    "manual_search": {
+      "start_url": "https://www.dissercat.com/search",
+      "steps": [
+        "Введите русские ключевые слова и альтернативные формулировки.",
+        "Уточните специальность ВАК, автора и год по карточке.",
+        "Отдельно определите вид полученного текста: автореферат, фрагмент либо диссертация.",
+        "Сохраните только законно полученный документ в inbox; покупки выполняются отдельно."
+      ],
+      "ui_verified_this_installation": false
+    },
+    "policy": [
+      "Пункты 5.2 и 5.4 требуют предварительного письменного согласия на сбор информации скриптами и на иной способ доступа.",
+      "Личное некоммерческое использование; применение в бизнесе следует согласовать отдельно."
+    ],
+    "direct_check": {
+      "public_terms": "HTTP 200; publication automation not attempted"
+    },
+    "support": {
+      "email": "support@dissercat.com",
+      "contact_url": "https://www.dissercat.com/contact",
+      "source": "https://www.dissercat.com/terms"
+    }
+  },
+  "cyberleninka": {
+    "active_mode": "external_index_and_owner_supplied_local_files",
+    "direct_site_access_enabled": false,
+    "api_mcp_status": "not_found_in_reviewed_primary_materials",
+    "permission_status": "not_provided",
+    "checked_at": "2026-10-07",
+    "login_alone_sufficient_for_robot_access": false,
+    "display_name": "КиберЛенинка",
+    "domain": "cyberleninka.ru",
+    "homepage": "https://cyberleninka.ru/",
+    "instructions": [
+      "https://cyberleninka.ru/terms.html",
+      "https://cyberleninka.ru/policy.html",
+      "https://cyberleninka.ru/",
+      "https://cyberleninka.ru/about"
+    ],
+    "terms_version": "24.11.2025",
+    "coverage": [
+      "Научные статьи разных дисциплин, включая общественные науки, бизнес, образование и психологию",
+      "Полнотекстовый поиск с русской морфологией; тематический рубрикатор ОЭСР",
+      "Доступные HTML/PDF; права определяются лицензией конкретной статьи и условиями доступа к базе"
+    ],
+    "native_options": [
+      "Полнотекстовый поиск через официальный интерфейс",
+      "Просмотр статей, доступные PDF и библиографические сведения",
+      "Тематический каталог, журналы и авторские сведения",
+      "Регистрация для дополнительных функций; подписка без рекламы не предоставляет право роботизированного сбора"
+    ],
+    "manual_search": {
+      "start_url": "https://cyberleninka.ru/",
+      "steps": [
+        "Введите тему и её русские варианты в поиск.",
+        "Уточните дисциплину, журнал и фактический год публикации по карточке.",
+        "Проверьте лицензию конкретной статьи; сохраните разрешённый PDF или текст в inbox."
+      ],
+      "ui_verified_this_installation": false
+    },
+    "policy": [
+      "Пункты 6.2 и 6.5 запрещают автоматизированный сбор и требуют предварительного письменного согласия.",
+      "Права по открытой лицензии статьи и права доступа к базе — разные основания; для бизнес-применения требуется отдельная проверка."
+    ],
+    "direct_check": {
+      "public_terms": "HTTP 200; publication automation not attempted"
+    },
+    "support": {
+      "email": "mail@cyberleninka.ru",
+      "email_scope": "Официальный контакт по вопросам размещения материалов и заключения договоров.",
+      "postal_address": "ООО ИТЕОС, 123112, Москва, Пресненская набережная, д. 12, помещение 22/74",
+      "source": "https://cyberleninka.ru/about",
+      "formal_requests_source": "https://cyberleninka.ru/terms.html",
+      "general_email": "skynet@cyberleninka.ru"
+    }
+  }
+}

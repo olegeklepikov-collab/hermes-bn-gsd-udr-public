@@ -1,0 +1,406 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Exa: tool-catalog.json
+
+Это переносимый справочный контракт/каталог. Он не содержит действующее подключение или права аккаунта. `${...}` обозначает значение целевой установки; оно заменяется с сохранением требуемого JSON-типа. Состав методов и ограничения сверяются с устанавливаемой версией.
+
+```json
+{
+  "mcp__exa__web_search_exa": {
+    "name": "mcp__exa__web_search_exa",
+    "description": "Search the web for any topic and get clean, ready-to-use content.\n\n      Best for: Finding current information, news, facts, people, companies, or answering questions about any topic.\n      Returns: Clean text content from top search results.\n\n      Query tips:\n      describe the ideal page, not keywords. \"blog post comparing React and Vue performance\" not \"React vs Vue\".\n      Use category:people / category:company to search through Linkedin profiles / companies respectively.\n      If highlights are insufficient, follow up with web_fetch_exa on the best URLs.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Natural language search query. Should be a semantically rich description of the ideal page, not just keywords. Optionally include category:<type> (company, people) to focus results — e.g. 'category:people John Doe software engineer'."
+        },
+        "numResults": {
+          "type": "number",
+          "description": "Number of search results to return (default: 10)."
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "description": "Goal for this search turn; say which documents should rank first, which should be excluded, and what specific facts or figures to pull from them."
+        }
+      },
+      "required": [
+        "query",
+        "objective"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    }
+  },
+  "mcp__exa__web_search_advanced_exa": {
+    "name": "mcp__exa__web_search_advanced_exa",
+    "description": "Advanced web search with full control over filters, domains, dates, and content options.\n\nBest for: When you need specific filters like date ranges, domain restrictions, or category filters.\nNot recommended for: Simple searches - use web_search_exa instead.\nReturns: Search results with optional highlights, summaries, and subpage content.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Search query - can be a question, statement, or keywords"
+        },
+        "numResults": {
+          "type": "number",
+          "description": "Number of results (1-100, default: 10)"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "fast",
+            "instant"
+          ],
+          "description": "Search type - 'auto': high quality and works with all filters (recommended), 'fast': quick results, 'instant': fastest results"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "company",
+            "publication",
+            "news",
+            "pdf",
+            "github",
+            "personal site",
+            "people",
+            "financial report"
+          ],
+          "description": "Filter results to a specific category"
+        },
+        "includeDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Only include results from these domains (e.g., ['arxiv.org', 'github.com'])"
+        },
+        "excludeDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Exclude results from these domains"
+        },
+        "startPublishedDate": {
+          "type": "string",
+          "description": "Only include results published after this date (ISO 8601: YYYY-MM-DD)"
+        },
+        "endPublishedDate": {
+          "type": "string",
+          "description": "Only include results published before this date (ISO 8601: YYYY-MM-DD)"
+        },
+        "startCrawlDate": {
+          "type": "string",
+          "description": "Only include results crawled after this date (ISO 8601: YYYY-MM-DD)"
+        },
+        "endCrawlDate": {
+          "type": "string",
+          "description": "Only include results crawled before this date (ISO 8601: YYYY-MM-DD)"
+        },
+        "includeText": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Only include results containing ALL of these text strings"
+        },
+        "excludeText": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Exclude results containing ANY of these text strings"
+        },
+        "userLocation": {
+          "type": "string",
+          "description": "ISO country code for geo-targeted results (e.g., 'US', 'GB', 'DE')"
+        },
+        "moderation": {
+          "type": "boolean",
+          "description": "Filter out unsafe/inappropriate content"
+        },
+        "additionalQueries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Additional query variations to expand search coverage"
+        },
+        "textMaxCharacters": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Max characters for text extraction per result"
+        },
+        "contextMaxCharacters": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Max characters for context string (not included by default)"
+        },
+        "enableSummary": {
+          "type": "boolean",
+          "description": "Enable summary generation for results"
+        },
+        "summaryQuery": {
+          "type": "string",
+          "description": "Focus query for summary generation"
+        },
+        "enableHighlights": {
+          "type": "boolean",
+          "description": "Enable highlights extraction"
+        },
+        "highlightsMaxCharacters": {
+          "type": "number",
+          "description": "Maximum total characters across all highlights per URL. Preferred over highlightsNumSentences."
+        },
+        "highlightsNumSentences": {
+          "type": "number",
+          "description": "Deprecated: mapped to ~1333 chars/sentence. Use highlightsMaxCharacters instead."
+        },
+        "highlightsPerUrl": {
+          "type": "number",
+          "description": "Deprecated: currently ignored server-side. Use highlightsMaxCharacters instead."
+        },
+        "highlightsQuery": {
+          "type": "string",
+          "description": "Query for highlight relevance"
+        },
+        "maxAgeHours": {
+          "type": "number",
+          "description": "Maximum age of cached content in hours. 0 = always fetch fresh content, omit = use cached content with fresh fetch fallback"
+        },
+        "livecrawlTimeout": {
+          "type": "number",
+          "description": "Timeout in milliseconds for fetching fresh content when maxAgeHours triggers a live fetch"
+        },
+        "subpages": {
+          "type": "number",
+          "description": "Number of subpages to crawl from each result (1-10)"
+        },
+        "subpageTarget": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Keywords to target when selecting subpages"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    }
+  },
+  "mcp__exa__web_fetch_exa": {
+    "name": "mcp__exa__web_fetch_exa",
+    "description": "Read a webpage's full content as clean markdown. Use after web_search_exa when highlights are insufficient or to read any URL.\n\nBest for: Extracting full content from known URLs. Batch multiple URLs in one call.\nReturns: Clean text content and metadata from the page(s).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "URLs to read. Batch multiple URLs in one call."
+        },
+        "maxCharacters": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Maximum characters to extract per page (default: 3000)"
+        }
+      },
+      "required": [
+        "urls"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    }
+  },
+  "mcp__exa__agent_run": {
+    "name": "mcp__exa__agent_run",
+    "description": "Start or resume an Exa Agent run for multi-step research, list-building, or enrichment. Use it instead of running many searches yourself when a task needs multiple searches, cross-source verification, or a structured table of results. Long-running: returns a run ID; resume with runId when the tool reports the run is still running. Not for a single question or lookup (use web_search_exa or web_search_advanced_exa) or reading a known URL (use web_fetch_exa). An interrupted tool call is not an explicit cancellation request.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Natural-language research or enrichment objective. Provide query or runId, not both."
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^agent_run_",
+          "description": "agent_run_... ID returned by an earlier call. Use it to check or continue waiting for the same run; do not start a duplicate run."
+        },
+        "systemPrompt": {
+          "type": "string",
+          "description": "Optional system-level guidance for the Agent."
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": {},
+          "description": "Optional JSON Schema for output. Prefer a top-level object with bounded arrays and source/evidence fields.",
+          "properties": {},
+          "required": []
+        },
+        "input": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": {},
+                "properties": {},
+                "required": []
+              },
+              "description": "Known rows/entities to enrich or process."
+            },
+            "exclusion": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": {},
+                "properties": {},
+                "required": []
+              },
+              "description": "Entities, rows, or records Agent should avoid returning again."
+            }
+          },
+          "additionalProperties": false,
+          "required": []
+        },
+        "dataSources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "provider": {
+                "type": "string",
+                "enum": [
+                  "fiber",
+                  "financial_datasets",
+                  "similarweb",
+                  "baselayer",
+                  "affiliate",
+                  "particle",
+                  "jinko",
+                  "polymarket",
+                  "macrobond"
+                ]
+              }
+            },
+            "required": [
+              "provider"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 5,
+          "description": "Optional Exa Connect providers to enable for this run."
+        },
+        "previousRunId": {
+          "type": "string",
+          "pattern": "^agent_run_",
+          "description": "Completed prior agent_run_... ID to use as context for a new run."
+        },
+        "effort": {
+          "type": "string",
+          "enum": [
+            "minimal",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "ultra",
+            "auto"
+          ],
+          "description": "Agent effort: minimal, low, medium, high, xhigh, ultra, or auto. Defaults to low."
+        },
+        "budget": {
+          "type": "object",
+          "properties": {
+            "maxCostDollars": {
+              "type": "number",
+              "description": "Maximum spend for the run in US dollars, $1–$100. Only for effort auto or ultra; defaults to $5 for auto and $20 for ultra."
+            },
+            "maxDurationSeconds": {
+              "type": "integer",
+              "description": "Soft wall-clock limit in seconds, 300–10800. Only for effort ultra; the run returns what it has found as it nears the limit."
+            }
+          },
+          "additionalProperties": false,
+          "description": "Optional per-run spend and duration limits for the metered auto and ultra efforts. Set it when the user names a cost or time limit.",
+          "required": []
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "required": []
+    }
+  },
+  "mcp__exa__list_resources": {
+    "name": "mcp__exa__list_resources",
+    "description": "List available resources from MCP server 'exa'",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  "mcp__exa__read_resource": {
+    "name": "mcp__exa__read_resource",
+    "description": "Read a resource by URI from MCP server 'exa'",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "description": "URI of the resource to read"
+        }
+      },
+      "required": [
+        "uri"
+      ]
+    }
+  },
+  "mcp__exa__list_prompts": {
+    "name": "mcp__exa__list_prompts",
+    "description": "List available prompts from MCP server 'exa'",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  "mcp__exa__get_prompt": {
+    "name": "mcp__exa__get_prompt",
+    "description": "Get a prompt by name from MCP server 'exa'",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the prompt to retrieve"
+        },
+        "arguments": {
+          "type": "object",
+          "description": "Optional arguments to pass to the prompt",
+          "properties": {},
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  }
+}
+```

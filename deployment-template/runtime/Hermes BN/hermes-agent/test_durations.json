@@ -1,0 +1,16 @@
+{
+  "tests/agent/test_auxiliary_hooks.py": 1.442,
+  "tests/agent/test_auxiliary_required_terminal.py": 1.498,
+  "tests/agent/test_subagent_lifecycle.py": 2.901,
+  "tests/agent/test_subagent_plugin_toolsets.py": 0.544,
+  "tests/gateway/test_multiplex_transport_matrix.py": 0.76,
+  "tests/hermes_cli/test_external_runtime_management.py": 0.931,
+  "tests/hermes_cli/test_oneshot_exit_contract.py": 0.589,
+  "tests/hermes_cli/test_oneshot_resumed_session_persist.py": 5.986,
+  "tests/hermes_cli/test_oneshot_usage_file.py": 0.958,
+  "tests/hermes_cli/test_update_contract.py": 0.856,
+  "tests/plugins/test_required_execution_control.py": 2.213,
+  "tests/tools/test_connector_dispatch_policy.py": 2.035,
+  "tests/tools/test_dynamic_toolset_alias_union.py": 0.952,
+  "tests/tools/test_tool_discovery_batch_contract.py": 1.073
+}

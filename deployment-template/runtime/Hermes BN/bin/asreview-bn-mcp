@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+source '__HERMES_BN_ROOT__/ASReview/environment.sh'
+export HF_HUB_OFFLINE=1
+exec "$HERMES_BN_ROOT/ASReview/runtime/bin/python" "$HERMES_BN_ROOT/ASReview/mcp_server.py"

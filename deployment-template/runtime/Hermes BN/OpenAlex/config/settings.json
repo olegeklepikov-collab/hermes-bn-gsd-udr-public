@@ -1,0 +1,10 @@
+{
+  "local_daily_budget_usd": 0.0,
+  "minimum_interval_seconds": 1.05,
+  "cache_seconds": 300,
+  "paid_balance_enabled": false,
+  "account_writes_enabled": false,
+  "setup_mode": true,
+  "setup_budget_usd": 0.0,
+  "new_user_access_required": true
+}

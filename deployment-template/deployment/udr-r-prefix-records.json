@@ -1,0 +1,907 @@
+[
+  {
+    "path": "lib/libncurses.6.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libncursesw.6.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libtinfo.6.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libtinfow.6.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/61/abm85",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/61/abm85e",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/61/abm85h",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/61/abm85h-old",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/61/adm36",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/61/altos2",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/61/altos3",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/61/ampex210",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/63/cit101e",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/63/cit101e-132",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/63/cit101e-n",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/63/cit101e-n132",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/63/crt",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/64/ddr",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/64/dec-vt220",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/65/emu-220",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/67/go140",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/67/go140w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/67/go225",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hazel",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hp2392",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hp2641a",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hp300h",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hp700-wy",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hp9845",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hp98550",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hpex",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/68/hpsub",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/69/ims-ansi",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6b/kt7",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6d/mai",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6d/mt4520-rv",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/ncsa",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/ncsa-m",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/ncsa-m-ns",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/ncsa-ns",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/ncsa-vt220",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/netbsd6",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-29",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-29-euc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-29-sjis",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-33",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-33-euc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-33-sjis",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-42",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-42-euc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-42-sjis",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-old-unk",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news-unk",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news28",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/news29",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/nwp512",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/nwp512-a",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/nwp513",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/nwp513-a",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/nwp517",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6e/nwp517-w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6f/opus3n1+",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/6f/otek4115",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcmw",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt25",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt25-color",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt25w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt28",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt28w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt35",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt35w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt40",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt40w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt43",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt43w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt50",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvt50w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/70/pcvtXX",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/ti916",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/ti916-132",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/ti916-8",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/ti916-8-132",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi9065",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi910",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi910+",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-2p",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-2p-mc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-2p-p",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-2p-unk",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-mc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-p",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-unk",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-vb",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-vb-mc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-vb-p",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912b-vb-unk",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi912cc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-2p",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-2p-mc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-2p-p",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-2p-unk",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-mc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-p",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-unk",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-vb",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-vb-mc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-vb-p",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi920b-vb-unk",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi921",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi924",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi92B",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvi92D",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/74/tvipt",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/75/uniterm",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/75/uts30",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/versaterm",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt200-js",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt220",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt220-8bit",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt220-base",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt220-nam",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt220-old",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt220-w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt220d",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt320",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt320-k311",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt320-nam",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt320-w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt320-w-nam",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt320nam",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt340",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt400",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt420",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt420f",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt420pc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt420pcdos",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt510",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt510pc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt510pcdos",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt520",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt520-w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt520ansi",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt525",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/76/vt525-w",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/77/wsvt25",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/77/wsvt25m",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/78/x68k",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/7a/z29a",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/7a/z29a-kc-uc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/7a/z29a-nkc-bc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/7a/z29a-nkc-uc",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/7a/z340",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "share/terminfo/7a/z340-nam",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "bin/Rscript",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/R/bin/Rscript",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/krb5/plugins/kdb/db2.so",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/krb5/plugins/preauth/otp.so",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libgssapi_krb5.2.2.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libkadm5clnt_mit.12.0.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libkadm5srv_mit.12.0.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libkdb5.10.0.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libkrb5.3.3.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "sbin/kadmind",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "sbin/kprop",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "sbin/kpropd",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libcurl.4.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libxml2.16.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libgio-2.0.0.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libgirepository-2.0.0.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libglib-2.0.0.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libcrypto.3.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libfontconfig.1.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libtcl8.6.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libintl.8.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/libpango-1.0.0.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "bin/xmlcatalog",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "bin/xmllint",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  },
+  {
+    "path": "lib/Tktable2.10/libTktable2.10.dylib",
+    "placeholder": "/__hudr_r_________________________________________",
+    "mode": "binary"
+  }
+]

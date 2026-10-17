@@ -1,0 +1,11 @@
+{
+  "bn_memory/store.py": "4def1fa7d9c2ef853dc8097d70f28dd840b0e9a23da0ab4766abb36c898471d8",
+  "bn_memory/server.py": "2c174bd70f8e66f1413d413c40721893559c3af081a5bd3ea0bc33dd01b59a7c",
+  "bn_memory/__init__.py": "3eeae39291729ddba934dd110dab51299f34d309b760fd658fbd3cda5a2dbb29",
+  "bn_memory/test_host.py": "bb5304a554c480aec4fc3eeae9865ee56e0376be96cf0f0aaada20f4fb4a9759",
+  "bn_memory/test_store.py": "249d3fdc0376a36f727bfe5c4c25b31108ad9aa0158cb3e8acb217836a3f294f",
+  "bn_memory/schemas.py": "63b99c3f89c57db5978ebc59c32e8baa284a740a7c97da88b846b3409871091e",
+  "bn_memory/plugin.py": "f9313e91ecb26ec0c83e1839d9052c0e958f92d53a978bbe2c957fec04669853",
+  "bn_memory/workers.py": "87003fb414fe085b8e6b4e88575a1935fb6d9cd0746b7da744dfdd85370703c7",
+  "bn_memory/broker.py": "3a6de665a14298fb793335b9f0b6036fd48dde9ba207c460a48f70547d015518"
+}

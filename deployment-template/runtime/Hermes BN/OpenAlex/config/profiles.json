@@ -1,0 +1,614 @@
+{
+  "api-status": {
+    "name": "service_status",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "work-by-id": {
+    "name": "get_entity",
+    "arguments": {
+      "entity": "works"
+    },
+    "transport": "official-api"
+  },
+  "author-by-orcid": {
+    "name": "get_entity",
+    "arguments": {
+      "entity": "authors"
+    },
+    "transport": "official-api"
+  },
+  "institution-by-ror": {
+    "name": "get_entity",
+    "arguments": {
+      "entity": "institutions"
+    },
+    "transport": "official-api"
+  },
+  "source-by-issn": {
+    "name": "get_entity",
+    "arguments": {
+      "entity": "sources"
+    },
+    "transport": "official-api"
+  },
+  "core-literature": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works",
+      "corpus": "core",
+      "filters": [
+        "is_retracted:false",
+        "is_paratext:false"
+      ]
+    },
+    "transport": "official-api"
+  },
+  "expanded-discovery": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works",
+      "corpus": "all"
+    },
+    "transport": "official-api"
+  },
+  "expansion-only": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works",
+      "corpus": "expansion"
+    },
+    "transport": "official-api"
+  },
+  "oa-literature": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works",
+      "filters": [
+        "open_access.is_oa:true",
+        "is_retracted:false"
+      ]
+    },
+    "transport": "official-api"
+  },
+  "metadata-search": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works"
+    },
+    "transport": "official-api"
+  },
+  "fulltext-index-search": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works"
+    },
+    "transport": "official-api"
+  },
+  "exact-wildcard-search": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works"
+    },
+    "transport": "official-api"
+  },
+  "semantic-discovery": {
+    "name": "semantic_search",
+    "arguments": {
+      "limit": 5
+    },
+    "transport": "official-api"
+  },
+  "reranked-search": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works",
+      "rerank": true
+    },
+    "transport": "official-api"
+  },
+  "citation-incoming": {
+    "name": "citations",
+    "arguments": {
+      "direction": "incoming",
+      "limit": 5
+    },
+    "transport": "official-api"
+  },
+  "reference-outgoing": {
+    "name": "citations",
+    "arguments": {
+      "direction": "outgoing",
+      "limit": 5
+    },
+    "transport": "official-api"
+  },
+  "related-works": {
+    "name": "citations",
+    "arguments": {
+      "direction": "related",
+      "limit": 5
+    },
+    "transport": "official-api"
+  },
+  "indexed-abstract": {
+    "name": "read_abstract",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "version-license-links": {
+    "name": "work_links",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "citation-metrics": {
+    "name": "work_metrics",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "authors-at-institution": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "authors"
+    },
+    "transport": "official-api"
+  },
+  "industry-research": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works",
+      "filters": [
+        "authorships.institutions.type:company"
+      ]
+    },
+    "transport": "official-api"
+  },
+  "institution-output": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works"
+    },
+    "transport": "official-api"
+  },
+  "funder-portfolio": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works"
+    },
+    "transport": "official-api"
+  },
+  "grant-awards": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "awards"
+    },
+    "transport": "official-api"
+  },
+  "journal-coverage": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "works"
+    },
+    "transport": "official-api"
+  },
+  "year-counts": {
+    "name": "group_entities",
+    "arguments": {
+      "entity": "works",
+      "group_by": "publication_year"
+    },
+    "transport": "official-api"
+  },
+  "country-counts": {
+    "name": "group_entities",
+    "arguments": {
+      "entity": "works",
+      "group_by": "authorships.countries:include_unknown"
+    },
+    "transport": "official-api"
+  },
+  "institution-counts": {
+    "name": "group_entities",
+    "arguments": {
+      "entity": "works",
+      "group_by": "authorships.institutions.id:include_unknown"
+    },
+    "transport": "official-api"
+  },
+  "oa-counts": {
+    "name": "group_entities",
+    "arguments": {
+      "entity": "works",
+      "group_by": "open_access.oa_status:include_unknown"
+    },
+    "transport": "official-api"
+  },
+  "topic-counts": {
+    "name": "group_entities",
+    "arguments": {
+      "entity": "works",
+      "group_by": "primary_topic.id:include_unknown"
+    },
+    "transport": "official-api"
+  },
+  "study-design-counts": {
+    "name": "group_entities",
+    "arguments": {
+      "entity": "works",
+      "group_by": "study_designs.id:include_unknown"
+    },
+    "transport": "official-api"
+  },
+  "sdg-counts": {
+    "name": "group_entities",
+    "arguments": {
+      "entity": "works",
+      "group_by": "sustainable_development_goals.id:include_unknown"
+    },
+    "transport": "official-api"
+  },
+  "batch-ids": {
+    "name": "batch_entities",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "autocomplete": {
+    "name": "autocomplete",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "oql-validate": {
+    "name": "translate_query",
+    "arguments": {
+      "format": "oql"
+    },
+    "transport": "official-api"
+  },
+  "oqo-validate": {
+    "name": "translate_query",
+    "arguments": {
+      "format": "oqo"
+    },
+    "transport": "official-api"
+  },
+  "oql-execute": {
+    "name": "execute_query",
+    "arguments": {
+      "format": "oql",
+      "per_page": 5
+    },
+    "transport": "official-api"
+  },
+  "oqo-execute": {
+    "name": "execute_query",
+    "arguments": {
+      "format": "oqo",
+      "per_page": 5
+    },
+    "transport": "official-api"
+  },
+  "oql-save-local": {
+    "name": "save_query",
+    "arguments": {
+      "format": "oql"
+    },
+    "transport": "official-api"
+  },
+  "public-text-topics": {
+    "name": "classify_text",
+    "arguments": {
+      "kind": "topics"
+    },
+    "transport": "official-api"
+  },
+  "public-text-keywords": {
+    "name": "classify_text",
+    "arguments": {
+      "kind": "keywords"
+    },
+    "transport": "official-api"
+  },
+  "download-original-pdf": {
+    "name": "download_content",
+    "arguments": {
+      "format": "pdf"
+    },
+    "transport": "official-api"
+  },
+  "download-grobid-tei": {
+    "name": "download_content",
+    "arguments": {
+      "format": "tei"
+    },
+    "transport": "official-api"
+  },
+  "tei-structure": {
+    "name": "content_structure",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "tei-section": {
+    "name": "read_content",
+    "arguments": {
+      "kind": "section"
+    },
+    "transport": "official-api"
+  },
+  "tei-table": {
+    "name": "read_content",
+    "arguments": {
+      "kind": "table"
+    },
+    "transport": "official-api"
+  },
+  "original-pdf-pages": {
+    "name": "read_pdf_pages",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "original-pdf-table-image": {
+    "name": "render_pdf_page",
+    "arguments": {},
+    "transport": "official-api"
+  },
+  "export-json": {
+    "name": "export_results",
+    "arguments": {
+      "entity": "works",
+      "format": "json"
+    },
+    "transport": "official-api"
+  },
+  "export-jsonl": {
+    "name": "export_results",
+    "arguments": {
+      "entity": "works",
+      "format": "jsonl"
+    },
+    "transport": "official-api"
+  },
+  "export-csv": {
+    "name": "export_results",
+    "arguments": {
+      "entity": "works",
+      "format": "csv"
+    },
+    "transport": "official-api"
+  },
+  "catalog-topics": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "topics"
+    },
+    "transport": "official-api"
+  },
+  "catalog-keywords": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "keywords"
+    },
+    "transport": "official-api"
+  },
+  "catalog-sources": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "sources"
+    },
+    "transport": "official-api"
+  },
+  "catalog-institutions": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "institutions"
+    },
+    "transport": "official-api"
+  },
+  "catalog-publishers": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "publishers"
+    },
+    "transport": "official-api"
+  },
+  "catalog-funders": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "funders"
+    },
+    "transport": "official-api"
+  },
+  "catalog-countries": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "countries"
+    },
+    "transport": "official-api"
+  },
+  "catalog-languages": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "languages"
+    },
+    "transport": "official-api"
+  },
+  "catalog-work-types": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "work-types"
+    },
+    "transport": "official-api"
+  },
+  "catalog-source-types": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "source-types"
+    },
+    "transport": "official-api"
+  },
+  "catalog-institution-types": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "institution-types"
+    },
+    "transport": "official-api"
+  },
+  "catalog-licenses": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "licenses"
+    },
+    "transport": "official-api"
+  },
+  "catalog-indexes": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "indexes"
+    },
+    "transport": "official-api"
+  },
+  "catalog-study-designs": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "study-designs"
+    },
+    "transport": "official-api"
+  },
+  "catalog-source-lists": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "source-lists"
+    },
+    "transport": "official-api"
+  },
+  "catalog-locations": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "locations"
+    },
+    "transport": "official-api"
+  },
+  "catalog-raw-affiliation-strings": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "raw-affiliation-strings"
+    },
+    "transport": "official-api"
+  },
+  "catalog-collections": {
+    "name": "list_entities",
+    "arguments": {
+      "entity": "collections"
+    },
+    "transport": "official-api"
+  },
+  "mcp-search_works": {
+    "name": "search_works",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-get_work": {
+    "name": "get_work",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-resolve_references": {
+    "name": "resolve_references",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-list_citations": {
+    "name": "list_citations",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-search_entities": {
+    "name": "search_entities",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-get_entity": {
+    "name": "get_entity",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-group_works": {
+    "name": "group_works",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-analyze_works": {
+    "name": "analyze_works",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-find_keywords": {
+    "name": "find_keywords",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-keyword_search": {
+    "name": "keyword_search",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-read_docs": {
+    "name": "read_docs",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-check-oql": {
+    "name": "check_oql",
+    "arguments": {},
+    "transport": "official-mcp"
+  },
+  "mcp-calculation": {
+    "name": "calculate_works",
+    "arguments": {
+      "limit": 5
+    },
+    "transport": "official-mcp"
+  },
+  "mcp-search-keyword": {
+    "name": "search_works",
+    "arguments": {
+      "mode": "keyword",
+      "limit": 5
+    },
+    "transport": "official-mcp"
+  },
+  "mcp-search-semantic": {
+    "name": "search_works",
+    "arguments": {
+      "mode": "semantic",
+      "limit": 5
+    },
+    "transport": "official-mcp"
+  },
+  "mcp-search-exact": {
+    "name": "search_works",
+    "arguments": {
+      "mode": "exact",
+      "rerank": false,
+      "limit": 5
+    },
+    "transport": "official-mcp"
+  },
+  "mcp-search-fulltext": {
+    "name": "search_works",
+    "arguments": {
+      "mode": "keyword",
+      "search_in": "fulltext",
+      "limit": 5
+    },
+    "transport": "official-mcp"
+  },
+  "mcp-preview-random": {
+    "name": "search_works",
+    "arguments": {
+      "preview": true,
+      "preview_sample": "random",
+      "preview_limit": 5
+    },
+    "transport": "official-mcp"
+  }
+}

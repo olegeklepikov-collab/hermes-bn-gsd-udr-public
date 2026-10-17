@@ -1,0 +1,455 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# AlphaXiv: profiles.json
+
+Это переносимый шаблон параметров. Он не содержит действующее подключение или права аккаунта. `${...}` обозначает значение целевой установки; оно заменяется с сохранением требуемого JSON-типа. Состав методов и ограничения сверяются с устанавливаемой версией.
+
+```json
+{
+  "discovery-quick": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 3,
+      "prioritize": "default"
+    },
+    "purpose": "Поиск кандидатов; keywords и question задаются под задачу.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  },
+  "discovery-balanced": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 5,
+      "prioritize": "default"
+    },
+    "purpose": "Поиск кандидатов; keywords и question задаются под задачу.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  },
+  "discovery-deep": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 8,
+      "prioritize": "default"
+    },
+    "purpose": "Поиск кандидатов; keywords и question задаются под задачу.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  },
+  "discovery-recent": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 5,
+      "prioritize": "recency"
+    },
+    "purpose": "Поиск кандидатов; keywords и question задаются под задачу.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  },
+  "discovery-historical": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 5,
+      "prioritize": "historical"
+    },
+    "purpose": "Поиск кандидатов; keywords и question задаются под задачу.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  },
+  "business-technology": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 5,
+      "prioritize": "default"
+    },
+    "purpose": "Научная основа технологий и продуктов; проверка применимости.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  },
+  "academic-review": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 5,
+      "prioritize": "default"
+    },
+    "purpose": "Обзор литературы; методы, противоречия и пробелы.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  },
+  "general-research": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 5,
+      "prioritize": "default"
+    },
+    "purpose": "Исследовательский вопрос с обозначением охвата научного корпуса.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  },
+  "paper-overview": {
+    "command": "call",
+    "name": "get_paper_content",
+    "arguments": {
+      "fullText": false
+    },
+    "purpose": "Промежуточный обзор ИИ; проверять тип возвращённого материала.",
+    "required_parameters": [
+      "url"
+    ]
+  },
+  "paper-fulltext": {
+    "command": "call",
+    "name": "get_paper_content",
+    "arguments": {
+      "fullText": true
+    },
+    "purpose": "Исходный извлечённый текст; учитывать версию и полноту страниц.",
+    "required_parameters": [
+      "url"
+    ]
+  },
+  "pdf-methods": {
+    "command": "call",
+    "name": "answer_pdf_queries",
+    "arguments": {
+      "queries": [
+        "Methods, sample size, datasets, and experimental design",
+        "Limitations and threats to validity"
+      ]
+    },
+    "purpose": "Проверка методов и ограничений по страницам PDF.",
+    "required_parameters": [
+      "paper",
+      "queries"
+    ]
+  },
+  "pdf-results": {
+    "command": "call",
+    "name": "answer_pdf_queries",
+    "arguments": {
+      "queries": [
+        "Main numerical results, uncertainty, and table references",
+        "Baseline comparison and study limitations"
+      ]
+    },
+    "purpose": "Извлечение результатов с номерами страниц.",
+    "required_parameters": [
+      "paper",
+      "queries"
+    ]
+  },
+  "pdf-eligibility": {
+    "command": "call",
+    "name": "answer_pdf_queries",
+    "arguments": {
+      "queries": [
+        "Check each stated inclusion criterion against the full text; identify supporting pages and absent or contradicted criteria"
+      ]
+    },
+    "purpose": "Проверка критериев полного текста после поиска кандидатов.",
+    "required_parameters": [
+      "paper",
+      "queries"
+    ]
+  },
+  "repository-overview": {
+    "command": "call",
+    "name": "read_files_from_github_repository",
+    "arguments": {
+      "path": "${PATH}"
+    },
+    "purpose": "Дерево и корневые файлы научного проекта.",
+    "required_parameters": [
+      "githubUrl",
+      "path"
+    ]
+  },
+  "repository-file": {
+    "command": "call",
+    "name": "read_files_from_github_repository",
+    "arguments": {},
+    "purpose": "Чтение конкретного файла без выполнения кода.",
+    "required_parameters": [
+      "githubUrl",
+      "path"
+    ]
+  },
+  "researcher-profile": {
+    "command": "call",
+    "name": "get_researcher",
+    "arguments": {
+      "include": [
+        "bio",
+        "position_history",
+        "education",
+        "citation_trajectory",
+        "links"
+      ]
+    },
+    "purpose": "Сведения об исследователях с проверкой тёзок.",
+    "required_parameters": [
+      "researchers"
+    ]
+  },
+  "researcher-papers-recent": {
+    "command": "call",
+    "name": "get_researcher_papers",
+    "arguments": {
+      "sort": "recent",
+      "limit_per_researcher": 5
+    },
+    "purpose": "Последние работы; даты только при реальной границе задачи.",
+    "required_parameters": [
+      "researchers"
+    ]
+  },
+  "researcher-papers-cited": {
+    "command": "call",
+    "name": "get_researcher_papers",
+    "arguments": {
+      "sort": "cited",
+      "limit_per_researcher": 5
+    },
+    "purpose": "Наиболее цитируемые работы; не приравнивать цитируемость к качеству.",
+    "required_parameters": [
+      "researchers"
+    ]
+  },
+  "researchers-topic": {
+    "command": "call",
+    "name": "find_researchers",
+    "arguments": {
+      "topic_authors": "any",
+      "limit": 12
+    },
+    "purpose": "Одна предметная тема в терминах статей.",
+    "required_parameters": []
+  },
+  "researchers-roster": {
+    "command": "call",
+    "name": "find_researchers",
+    "arguments": {
+      "sort": "citations",
+      "limit": 25
+    },
+    "purpose": "Текущая организация и публичные профессиональные сведения.",
+    "required_parameters": []
+  },
+  "researchers-career": {
+    "command": "call",
+    "name": "find_researchers",
+    "arguments": {
+      "sort": "recent_activity",
+      "limit": 12
+    },
+    "purpose": "История позиций и реальные временные ограничения.",
+    "required_parameters": []
+  },
+  "researchers-coauthors": {
+    "command": "call",
+    "name": "find_researchers",
+    "arguments": {
+      "sort": "relationship_strength",
+      "limit": 12
+    },
+    "purpose": "Связи соавторства; не доказательство членства в лаборатории.",
+    "required_parameters": []
+  },
+  "researchers-resolve": {
+    "command": "call",
+    "name": "resolve_researchers",
+    "arguments": {},
+    "purpose": "Пакетное разрешение имён по прочитанному внешнему источнику.",
+    "required_parameters": [
+      "people"
+    ]
+  },
+  "feed-hot": {
+    "command": "call",
+    "name": "get_hot_feed",
+    "arguments": {
+      "limit": 10
+    },
+    "purpose": "Общий поток новых популярных работ.",
+    "required_parameters": []
+  },
+  "feed-personal": {
+    "command": "call",
+    "name": "get_for_you_feed",
+    "arguments": {
+      "limit": 10
+    },
+    "purpose": "Рекомендации владельца; не охват исследовательского поля.",
+    "required_parameters": []
+  },
+  "library-list": {
+    "command": "call",
+    "name": "list_library",
+    "arguments": {
+      "include_papers": false
+    },
+    "purpose": "Папки и состояния доступа.",
+    "required_parameters": []
+  },
+  "library-membership": {
+    "command": "call",
+    "name": "list_library",
+    "arguments": {
+      "include_papers": false
+    },
+    "purpose": "Проверка членства указанных работ.",
+    "required_parameters": []
+  },
+  "library-create-folder": {
+    "command": "call",
+    "name": "create_folder",
+    "arguments": {},
+    "purpose": "Собственные папки Hermes BN.",
+    "required_parameters": [
+      "name"
+    ]
+  },
+  "library-rename-folder": {
+    "command": "call",
+    "name": "rename_folder",
+    "arguments": {},
+    "purpose": "Переименование собственной папки.",
+    "required_parameters": [
+      "folder_id",
+      "name"
+    ]
+  },
+  "library-save": {
+    "command": "call",
+    "name": "save_papers_to_folder",
+    "arguments": {},
+    "purpose": "Сохранение в явно указанную собственную папку.",
+    "required_parameters": [
+      "paper_ids_or_urls"
+    ]
+  },
+  "library-move": {
+    "command": "call",
+    "name": "move_papers_between_folders",
+    "arguments": {},
+    "purpose": "Если работа уже в целевой папке, источник остаётся без изменений.",
+    "required_parameters": [
+      "paper_ids_or_urls",
+      "from_folder_id",
+      "to_folder_id"
+    ]
+  },
+  "library-remove": {
+    "command": "call",
+    "name": "remove_papers_from_folder",
+    "arguments": {},
+    "purpose": "Удаление связи с собственной папкой; остальные папки сохраняются.",
+    "required_parameters": [
+      "paper_ids_or_urls",
+      "folder_id"
+    ]
+  },
+  "notes-list": {
+    "command": "call",
+    "name": "list_annotated_papers",
+    "arguments": {
+      "page": "${PAGE}"
+    },
+    "purpose": "Список собственных заметок только для задачи владельца.",
+    "required_parameters": [
+      "page"
+    ]
+  },
+  "notes-read": {
+    "command": "call",
+    "name": "get_paper_notes",
+    "arguments": {},
+    "purpose": "Чтение заметок и выделений с различением текста статьи и обзора.",
+    "required_parameters": [
+      "paper_id_or_url"
+    ]
+  },
+  "following-list": {
+    "command": "call",
+    "name": "list_followed_researchers",
+    "arguments": {},
+    "purpose": "Проверка подписок.",
+    "required_parameters": []
+  },
+  "following-add": {
+    "command": "call",
+    "name": "follow_researcher",
+    "arguments": {},
+    "purpose": "Только по отдельному заданию владельца.",
+    "required_parameters": [
+      "slug"
+    ]
+  },
+  "following-remove": {
+    "command": "call",
+    "name": "unfollow_researcher",
+    "arguments": {},
+    "purpose": "Только по отдельному заданию владельца.",
+    "required_parameters": [
+      "slug"
+    ]
+  },
+  "private-metadata-edit": {
+    "command": "call",
+    "name": "edit_private_paper_metadata",
+    "arguments": {},
+    "purpose": "Только собственная загруженная статья и подтверждённые сведения.",
+    "required_parameters": [
+      "paper_id_or_url"
+    ]
+  },
+  "discovery-popular": {
+    "command": "call",
+    "name": "discover_papers",
+    "arguments": {
+      "difficulty": 5,
+      "prioritize": "popular"
+    },
+    "purpose": "Только когда задача прямо касается популярности.",
+    "required_parameters": [
+      "keywords",
+      "question",
+      "difficulty"
+    ]
+  }
+}
+```

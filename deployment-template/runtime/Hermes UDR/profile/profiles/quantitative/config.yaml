@@ -1,0 +1,28 @@
+agent:
+  reasoning_effort: high
+  max_turns: 20
+model:
+  default: gpt-6.1-sol
+  provider: openai-codex
+  stream: true
+terminal:
+  backend: local
+  cwd: __HERMES_UDR_ROOT__/workspace/quantitative
+plugins:
+  enabled: []
+  disabled:
+  - hermes-foundation-bridge
+  - udr-runtime-policy
+  - ultra-deep-research
+platform_toolsets:
+  cli:
+  - todo
+  - udr_role
+  telegram:
+  - todo
+  - udr_role
+memory:
+  provider: local
+platforms: {}
+gateway:
+  standalone: true

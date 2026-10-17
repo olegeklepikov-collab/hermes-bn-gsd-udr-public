@@ -1,0 +1,62 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Проверяемые свидетельства
+
+Публичный пакет содержит имена и контрольные суммы, а не содержимое личных сеансов и ключей. Местные файлы находятся в `${UDR_ROOT}/operator/bn-bridge/evidence`.
+
+- `academic-original-artifact.json` — SHA-256 `66b5d16836d64a6d83594b8441b3130b7e64b226a4b4eda05df960360e254fd6`
+- `academic-source.json` — SHA-256 `2598c7477a7b42ff5848c52f52081c0641c1bdc651142d8873972b7d916a6380`
+- `actual-native-model-counters.json` — SHA-256 `bbeba38fc5ccb8b0f8457fd0cdf495dd8faf1cb6886d989b7d366ced46274307`
+- `complement-context-and-rights.json` — SHA-256 `29fe25ba82d56e81e553b5b035a827134bf7daad7c003a9303617c16c9722e04`
+- `complement-native-ledger.json` — SHA-256 `a8a140a1e7e547d70c970a6dbad6d32ead736761532253f2a05c80d5bd3d2165`
+- `desktop-restart.json` — SHA-256 `c3ea49b94b3200842355959f017596d1eb93e8c0e16bb9db1bef4ad95c5e2a6d`
+- `final-boundaries.json` — SHA-256 `d3782e99c7fc807957a2a5f9c6fa2a89c54a2d538b107b4b0343492c3b4eeaa1`
+- `final-component-scope.json` — SHA-256 `0cad6bbea94fa1875c0f76a7812837da1b0806599bff429b08b30b78f80366cb`
+- `final-configuration-delta.json` — SHA-256 `f1a97a7183efd96b262ebf3c222bf05a4e6fcff4d8771880cc113e7fa1686caf`
+- `final-freeze.json` — SHA-256 `da0aef38115d61ba9b915cf4af39175c6bb715d8cc128513ed01952fd4926866`
+- `final-installed-hashes.json` — SHA-256 `bc869061b59d3562606225932e314909a96d3ed2275801fc6eb9a02faa89c944`
+- `final-live-and-portable-check.json` — SHA-256 `d0d1ab412f247347a21e3eae36401fd01137dfd3903bee562da9b8d25e4004fe`
+- `final-native-status.json` — SHA-256 `0f34df47da409f4a59a620cc678cf6447bb6979240234e51ce1c192905fc19fe`
+- `final-production-start.json` — SHA-256 `d169b09976a9dc94e3513324c5694de5ee6342c544571dc18dbf9a37decc6d3c`
+- `final-restore-readback.json` — SHA-256 `89fca7f9acbc7d9ead0e7a4b8f61b05201d52b2cd2c7dde8bc9d5950d6329a0d`
+- `finish-state-regression.json` — SHA-256 `259284b837994f8ab3534e9baf95ca5a7c032ecbb886ba1e1ccc151f20fd87fd`
+- `independent-first-position.json` — SHA-256 `3cc3a81bcc57f96946f393e7a546d89bc31b574867b98d53b6df0a98cc5eae74`
+- `independent-gsd.json` — SHA-256 `3fbe98a8cdeb18afb3a88ccf96db3ba0f12e9d477576c93916e2b227a6ee3346`
+- `independent-udr.json` — SHA-256 `7cfeade5784873ee561245aa5a68b1a0438ae2f6f0fa1fd77f2a1f71cb46bc30`
+- `install.json` — SHA-256 `f97239c3fc8deef1bb29cd81fef644206c5b613d6baff868d64949b10d1a13f9`
+- `live-observer-model.json` — SHA-256 `bdc9c375c9d15f3f8ac2df293fdb092d11d3c526caab92e9cf8f4c1c6c901611`
+- `mode-academic-native-handoff.json` — SHA-256 `c44ac649a5601c1395cbc506d48929b9953e917b8b45adf8d4f91e62131ec482`
+- `mode-academic-state.json` — SHA-256 `33afb280e668f454d90d82bcd54dcbcf7c06001dc2e34d75931b2b6edcd00fc6`
+- `mode-academic.json` — SHA-256 `f27f838fed7b4e219272f3cf4622ace4c0622a4e060c2d23102b21a699a4642c`
+- `mode-deep-native-handoff.json` — SHA-256 `b02960a7bb2f28d3c5f693a89a40c3e48851f991604cd767d1128c6c8f5e204b`
+- `mode-deep-state.json` — SHA-256 `ddce01f41d27818c57144b71098e43b7dd9d31695de14956fa0900841a9cd64b`
+- `mode-deep.json` — SHA-256 `cad72667f44650a0df7e69740c97a8a76a89396d650637c1f0fae284e183141c`
+- `mode-research-resume.json` — SHA-256 `65cd5f7baef59b364ed7c11b1a5d8025042b16cf9b46ddf4b0d26c2dd704c0b5`
+- `mode-research-state.json` — SHA-256 `e081d1c663ff402f31e7963d345e146e5be432f2aa7e2c437ab4975638dd17e5`
+- `mode-research.json` — SHA-256 `de5858255b2431b8085e897bbb4c659198a350f7ce1b48f6d8bddb4a8df8e9ce`
+- `mode-search-resume.json` — SHA-256 `741c3a8a9b184fd25b222735d84f03f13685a5b6eb11896248ca2da72885cc01`
+- `mode-search-state.json` — SHA-256 `7705cc5640401865dc79e7c258671ec3863eb59c6950b73629a820eaf41783ea`
+- `mode-search.json` — SHA-256 `16c1636688b2675ac15dca902c88d3ad0ebebcd85acfe5d6b3848537c605b358`
+- `mode-ultra-native-handoff.json` — SHA-256 `d515f9d0d9c0e2f0f5350bc4b9cb64040ae744fad5fd376284739816b8194378`
+- `mode-ultra-state.json` — SHA-256 `6d457412f43b47f57a3073046707ee6fc90a084c02dfd9ad544dedbbd0b65553`
+- `mode-ultra.json` — SHA-256 `306448a70df6bf3d25dde36bef1bbeb5514e1e986f0ffd5c2d3a9f01525cbe19`
+- `native-gsd-udr-complement.json` — SHA-256 `9deb0adf387c87c67a64ec5a14ab32d88de5f810a52ca005e3d2e7377fad4aa5`
+- `native-model-traces-backfilled.json` — SHA-256 `ac74da20df90d8a4a30300754428d0ea88ad6c35ca927f0f36059d45e0016c1c`
+- `owner-delivery-approval.json` — SHA-256 `62f89bed7c4d46b82e34ab1be9313f1a3b9f2d40e0e02dd1f8d8271a2ee790a0`
+- `owner-file-receipt.json` — SHA-256 `969bab84644716da1902b443e65616a4d475be5e4373faafb8a05997ad2bf119`
+- `plan-profile-regression.json` — SHA-256 `887c610513f4e72874d5710929a42b420056c815708a83edd0047773bc26d879`
+- `public-fetch-parse.json` — SHA-256 `c0b1168361b239697bbe96167255ab96690246bb7b1f90dd3bc28c1ce0f4083c`
+- `restore-cleanup.json` — SHA-256 `df95c3b76f424cf5bd6fe4d73584002802f87834dd1207d6a97ad4d26b18d149`
+- `restore-processes.json` — SHA-256 `0a9b4c3ccb0c5e8f694d43c1a420090312c18fa0728c2ce3dcde5130a19f3cfe`
+- `staging-controls.json` — SHA-256 `df485516715ce87667d1d895e3a3d5d010511b7b79d03896be9457a21cdf344c`
+- `staging-start.json` — SHA-256 `449d887e98a071b9482cbd675e91d8aa360e4022c987682bdccb22c9b718b1ec`
+- `telegram-before-finish-fix.json` — SHA-256 `347a979baa917c2ebc6887510d889b85be9dc86767f3aaaadeb7f0ed1c18ac7a`
+- `telegram-delivery-observed.json` — SHA-256 `f53e6497e9f784613bade48336e69b0b1f4802973a9851cbf27961c299aaff5f`
+- `telegram-delivery.json` — SHA-256 `594bc8dc545b98cad22faf0195c23774409868e218753645c1bffe07d31788be`
+- `telegram-exact-corrected-finish.json` — SHA-256 `ddda4fb7ab9c61208aa1488be7b3800320c85437a47f21ee70d16afe83418558`
+- `telegram-finish-recovery.json` — SHA-256 `bc6ee32c9791a910948c6f6305c44922cdd81e7ce691a0da52fd01f466edd29a`
+- `telegram-native-model-counters.json` — SHA-256 `33273bbdb7f98a3b01e196b6b5c6daf009de1a3c718adef4e80cfd8d2ae92ed2`
+- `telegram-tool-path.json` — SHA-256 `fe60483a64dcaa3262a00b6fe9e07ca966cf88d14f5208fadaffd2a350684f02`
+- `whoami-owner-reply.json` — SHA-256 `308383bf5a39de88446ab10291dbab66f4b459b96d547545c99f938abe2427c0`

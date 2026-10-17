@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-07",
+  "without_key_interval_seconds": 0.4,
+  "with_key_interval_seconds": 0.12,
+  "rate_scope": "this instance across processes; NCBI limit is per shared IP/key",
+  "raw_vendor_responses_saved": false,
+  "key_optional": true,
+  "one_ncbi_key_per_account": "do not regenerate without owner decision",
+  "pubmed_corpus": "bibliography and abstracts",
+  "pmc_corpus": "licensed accessible article versions",
+  "default_read_max_chars": 12000,
+  "read_scope": "JATS body/selected section; front/back and supplements separate",
+  "date_fields": "issue year and electronic date distinct",
+  "source_identity": "article IDs isolated from reference IDs",
+  "temporary_history": "not a permanent research protocol",
+  "corpus_downloads": "not performed",
+  "source_presentation": "preserve checked_sources; scientific claims require evidence sources"
+}

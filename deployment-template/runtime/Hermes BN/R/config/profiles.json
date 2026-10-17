@@ -1,0 +1,449 @@
+{
+  "package-search": {
+    "name": "btw_tool_cran_search",
+    "arguments": {
+      "format": "short",
+      "n_results": 5,
+      "_intent": "Поиск пакетов CRAN"
+    },
+    "purpose": "Поиск пакетов CRAN"
+  },
+  "package-card": {
+    "name": "btw_tool_cran_package",
+    "arguments": {
+      "_intent": "Описание пакета CRAN"
+    },
+    "purpose": "Описание пакета CRAN"
+  },
+  "package-history": {
+    "name": "btw_tool_cran_versions",
+    "arguments": {
+      "_intent": "История версий пакета"
+    },
+    "purpose": "История версий пакета"
+  },
+  "help-page": {
+    "name": "btw_tool_docs_help_page",
+    "arguments": {
+      "_intent": "Справка по функции"
+    },
+    "purpose": "Справка по функции"
+  },
+  "help-topics": {
+    "name": "btw_tool_docs_package_help_topics",
+    "arguments": {
+      "_intent": "Темы справки пакета"
+    },
+    "purpose": "Темы справки пакета"
+  },
+  "package-news": {
+    "name": "btw_tool_docs_package_news",
+    "arguments": {
+      "_intent": "Изменения версии"
+    },
+    "purpose": "Изменения версии"
+  },
+  "vignette-list": {
+    "name": "btw_tool_docs_available_vignettes",
+    "arguments": {
+      "_intent": "Список руководств пакета"
+    },
+    "purpose": "Список руководств пакета"
+  },
+  "vignette-read": {
+    "name": "btw_tool_docs_vignette",
+    "arguments": {
+      "_intent": "Чтение руководства пакета"
+    },
+    "purpose": "Чтение руководства пакета"
+  },
+  "inspect-table": {
+    "name": "btw_tool_env_describe_data_frame",
+    "arguments": {
+      "format": "skim",
+      "_intent": "Структура таблицы и пропуски"
+    },
+    "purpose": "Структура таблицы и пропуски"
+  },
+  "inspect-environment": {
+    "name": "btw_tool_env_describe_environment",
+    "arguments": {
+      "_intent": "Объекты текущего процесса R"
+    },
+    "purpose": "Объекты текущего процесса R"
+  },
+  "package-available": {
+    "name": "btw_tool_sessioninfo_is_package_installed",
+    "arguments": {
+      "_intent": "Доступность пакета"
+    },
+    "purpose": "Доступность пакета"
+  },
+  "package-versions": {
+    "name": "btw_tool_sessioninfo_package",
+    "arguments": {
+      "dependencies": [
+        "false"
+      ],
+      "_intent": "Проверка версий библиотек"
+    },
+    "purpose": "Проверка версий библиотек"
+  },
+  "platform": {
+    "name": "btw_tool_sessioninfo_platform",
+    "arguments": {
+      "_intent": "Версия R и платформа"
+    },
+    "purpose": "Версия R и платформа"
+  },
+  "compute-data-import": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Импорт CSV/TSV, Excel, Stata/SPSS, JSON/RDS и SQLite"
+    },
+    "purpose": "Импорт CSV/TSV, Excel, Stata/SPSS, JSON/RDS и SQLite",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-data-quality": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Пропуски, дубли, типы, диапазоны и единицы"
+    },
+    "purpose": "Пропуски, дубли, типы, диапазоны и единицы",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-data-transform": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Объединение, агрегирование и изменение формы таблиц"
+    },
+    "purpose": "Объединение, агрегирование и изменение формы таблиц",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-descriptive-statistics": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Средние, дисперсия, медианы и квантили"
+    },
+    "purpose": "Средние, дисперсия, медианы и квантили",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-confidence-intervals": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Доверительные интервалы и предположения"
+    },
+    "purpose": "Доверительные интервалы и предположения",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-hypothesis-tests": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Одно- и двухвыборочные, парные и непараметрические проверки"
+    },
+    "purpose": "Одно- и двухвыборочные, парные и непараметрические проверки",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-power-sample-size": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Мощность и объём выборки при заданных допущениях"
+    },
+    "purpose": "Мощность и объём выборки при заданных допущениях",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-effect-sizes": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Величины эффекта и неопределённость"
+    },
+    "purpose": "Величины эффекта и неопределённость",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-correlation": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Корреляции, зависимости и ограничения интерпретации"
+    },
+    "purpose": "Корреляции, зависимости и ограничения интерпретации",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-linear-regression": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Линейные модели и диагностические проверки"
+    },
+    "purpose": "Линейные модели и диагностические проверки",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-generalized-models": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Логистические, счётные и другие обобщённые модели"
+    },
+    "purpose": "Логистические, счётные и другие обобщённые модели",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-mixed-models": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Многоуровневые модели и случайные эффекты"
+    },
+    "purpose": "Многоуровневые модели и случайные эффекты",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-generalized-additive-models": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Нелинейные сглаженные зависимости"
+    },
+    "purpose": "Нелинейные сглаженные зависимости",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-robust-standard-errors": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Робастные и групповые стандартные ошибки"
+    },
+    "purpose": "Робастные и групповые стандартные ошибки",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-marginal-comparisons": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Предельные средние и множественные сравнения"
+    },
+    "purpose": "Предельные средние и множественные сравнения",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-panel-fixed-effects": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Панельные модели с фиксированными эффектами"
+    },
+    "purpose": "Панельные модели с фиксированными эффектами",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-meta-analysis": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Объединение эффектов, неоднородность и чувствительность"
+    },
+    "purpose": "Объединение эффектов, неоднородность и чувствительность",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-psychometrics": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Надёжность, факторные модели и проверка допущений"
+    },
+    "purpose": "Надёжность, факторные модели и проверка допущений",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-structural-equations": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Подтверждающие факторные и структурные модели"
+    },
+    "purpose": "Подтверждающие факторные и структурные модели",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-survival": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Выживаемость, цензурирование и модели рисков"
+    },
+    "purpose": "Выживаемость, цензурирование и модели рисков",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-time-series": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Временные ряды, прогнозы и проверка на отложенном периоде"
+    },
+    "purpose": "Временные ряды, прогнозы и проверка на отложенном периоде",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-machine-learning": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Обучение моделей, разбиение и перекрёстная проверка"
+    },
+    "purpose": "Обучение моделей, разбиение и перекрёстная проверка",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-random-forests": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Случайные леса с воспроизводимым семенем"
+    },
+    "purpose": "Случайные леса с воспроизводимым семенем",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-regularized-models": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Регуляризованные модели и подбор штрафа"
+    },
+    "purpose": "Регуляризованные модели и подбор штрафа",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-resampling-bootstrap": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Повторные выборки, перестановки и бутстреп"
+    },
+    "purpose": "Повторные выборки, перестановки и бутстреп",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-clustering": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Группировка и снижение размерности"
+    },
+    "purpose": "Группировка и снижение размерности",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-graphs-networks": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Сети, расстояния и характеристики графа"
+    },
+    "purpose": "Сети, расстояния и характеристики графа",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-simulation": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Моделирование с заданным семенем и распределениями"
+    },
+    "purpose": "Моделирование с заданным семенем и распределениями",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-bayesian-conjugate": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Аналитические сопряжённые обновления; MCMC требует отдельного пакета"
+    },
+    "purpose": "Аналитические сопряжённые обновления; MCMC требует отдельного пакета",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-optimization": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Целевые функции, ограничения и проверка решений"
+    },
+    "purpose": "Целевые функции, ограничения и проверка решений",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-scenario-cashflows": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Синтетические денежные потоки и чувствительность"
+    },
+    "purpose": "Синтетические денежные потоки и чувствительность",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-plots": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Один проверяемый график за вызов"
+    },
+    "purpose": "Один проверяемый график за вызов",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-tables-exports": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Таблицы CSV/Excel/JSON/RDS и сохранение моделей"
+    },
+    "purpose": "Таблицы CSV/Excel/JSON/RDS и сохранение моделей",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-reproducible-report": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Отчёты R Markdown/HTML с кодом и версиями"
+    },
+    "purpose": "Отчёты R Markdown/HTML с кодом и версиями",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  },
+  "compute-project-lock": {
+    "name": "btw_tool_run_r",
+    "arguments": {
+      "_intent": "Фиксация версий и воспроизводимость через renv"
+    },
+    "purpose": "Фиксация версий и воспроизводимость через renv",
+    "needs_owner_parameters": [
+      "code"
+    ]
+  }
+}

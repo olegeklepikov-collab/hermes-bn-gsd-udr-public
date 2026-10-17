@@ -1,0 +1,111 @@
+name: Run Integration Tests
+
+on:
+  pull_request:
+    paths:
+      - "mcp/**"
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: integration-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-dolt:
+    name: Integration Tests (Dolt / MySQL)
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: ./go.mod
+      id: go
+    - name: Install latest Dolt
+      run: |
+        sudo bash -c 'curl -L https://github.com/dolthub/dolt/releases/latest/download/install.sh | bash'
+        dolt version
+        dolt config --global --add user.name mcp-ci
+        dolt config --global --add user.email mcp-ci@dolthub.com
+    - name: Test All
+      working-directory: ./mcp/integration_tests/
+      run: |
+         go test -timeout 30m ./...
+
+  test-doltlite:
+    name: Integration Tests (DoltLite / SQLite)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      DOLTLITE_VERSION: v0.11.46
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: ./go.mod
+      id: go
+    - name: Check out DoltLite
+      uses: actions/checkout@v4
+      with:
+        repository: dolthub/doltlite
+        ref: ${{ env.DOLTLITE_VERSION }}
+        path: doltlite
+    - name: Install DoltLite build dependencies
+      run: |
+        sudo apt-get update && sudo apt-get install -y build-essential tcl zlib1g-dev
+    - name: Build libdoltlite
+      working-directory: ./doltlite
+      run: |
+        mkdir -p build
+        cd build
+        ../configure
+        make doltlite-lib -j$(nproc)
+        cp libdoltlite.a libsqlite3.a
+    - name: Test All
+      working-directory: ./mcp/integration_tests/
+      env:
+        DOLT_DIALECT: doltlite
+        CGO_CFLAGS: -I${{ github.workspace }}/doltlite/build
+        CGO_LDFLAGS: -L${{ github.workspace }}/doltlite/build -lz -lpthread -lm -ldl
+      run: |
+         go test -tags "doltlite libsqlite3" -timeout 30m ./...
+
+  test-doltgres:
+    name: Integration Tests (DoltgreSQL / PostgreSQL)
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: ./go.mod
+      id: go
+    - name: Install latest DoltgreSQL
+      run: |
+        set -euo pipefail
+        ASSET_URL=$(curl -sL https://api.github.com/repos/dolthub/doltgresql/releases/latest \
+          | grep "browser_download_url.*linux-amd64" \
+          | head -n1 \
+          | cut -d '"' -f 4)
+        echo "Downloading: $ASSET_URL"
+        curl -L -o /tmp/doltgres.tar.gz "$ASSET_URL"
+        mkdir -p /tmp/doltgres-extract
+        tar -xzf /tmp/doltgres.tar.gz -C /tmp/doltgres-extract
+        sudo mv /tmp/doltgres-extract/*/bin/doltgres /usr/local/bin/doltgres
+        doltgres --version || true
+    - name: Test All
+      working-directory: ./mcp/integration_tests/
+      env:
+        DOLT_DIALECT: postgres
+      run: |
+         go test -timeout 30m ./...

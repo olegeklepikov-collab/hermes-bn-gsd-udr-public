@@ -1,0 +1,52 @@
+{
+  "url": "https://api.scite.ai/mcp",
+  "auth": "oauth",
+  "connect_timeout": 45,
+  "tool_timeout": 90,
+  "tools": {
+    "include": [
+      "search_literature",
+      "read_fulltext",
+      "citation_graph",
+      "bibliography",
+      "report_citations",
+      "citation_report",
+      "get_more_tools",
+      "search_patents",
+      "search_grants",
+      "get_grant",
+      "search_clinical_trials",
+      "get_clinical_trial",
+      "search_drugs",
+      "get_drug",
+      "search_device510k",
+      "get_device510k",
+      "search_510k_summaries",
+      "get_510k_summary",
+      "search_faers",
+      "get_faers_report",
+      "search_maude",
+      "get_maude_report",
+      "search_mhra",
+      "get_mhra_alert",
+      "search_collections",
+      "get_collection",
+      "list_collection_notes",
+      "list_collection_files",
+      "get_collection_file",
+      "get_collection_file_download_url",
+      "create_collection",
+      "add_dois_to_collection",
+      "create_collection_note",
+      "update_collection",
+      "update_collection_note",
+      "upload_collection_file"
+    ]
+  },
+  "oauth": {
+    "client_name": "Hermes BN — AgentRuntime2",
+    "scope": "mcp offline_access",
+    "timeout": 900
+  },
+  "enabled": true
+}

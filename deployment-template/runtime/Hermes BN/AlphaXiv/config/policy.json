@@ -1,0 +1,13 @@
+{
+  "default_difficulty": 5,
+  "max_discovery_calls_per_user_message": 2,
+  "fulltext_reading_is_not_fulltext_discovery": true,
+  "date_bounds_only_if_requested": true,
+  "library_scope": "Hermes BN",
+  "private_uploads": "explicit_request_only",
+  "following_changes": "explicit_request_only",
+  "delete_folder": "not_enabled",
+  "source_verification": "publisher_or_arxiv_version",
+  "corpus": "primarily arXiv; not a PubMed replacement",
+  "default_library_sharing": "not_shared"
+}

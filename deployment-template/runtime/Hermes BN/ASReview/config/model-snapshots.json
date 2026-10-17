@@ -1,0 +1,14 @@
+{
+  "intfloat/multilingual-e5-large": {
+    "revision": "3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
+    "path": "__HERMES_BN_ROOT__/ASReview/cache/huggingface/hub/models--intfloat--multilingual-e5-large/snapshots/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
+    "license": "mit",
+    "safetensors": true
+  },
+  "mixedbread-ai/mxbai-embed-large-v1": {
+    "revision": "b33106f585b9ce46904ad7443a3b52b7a63e231c",
+    "path": "__HERMES_BN_ROOT__/ASReview/cache/huggingface/hub/models--mixedbread-ai--mxbai-embed-large-v1/snapshots/b33106f585b9ce46904ad7443a3b52b7a63e231c",
+    "license": "apache-2.0",
+    "safetensors": true
+  }
+}

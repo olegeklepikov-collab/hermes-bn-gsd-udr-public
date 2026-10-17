@@ -1,0 +1,75 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Справка Scite: index
+
+Сохранённая внешняя документация. Копия адаптирована для переносимости: локальные пути и демонстрационные реквизиты/объекты заменены параметрами; содержимое не является конфигурацией готового аккаунта. Она описывает продукты, версии и варианты доступа, а не состояние какого-либо аккаунта. Примеры ОС, тарифов, путей и лимитов выбираются по целевой установке; числовые условия проверяются у поставщика перед использованием. Даты и исходная терминология могут относиться к версии справки.
+
+---
+
+
+# Scite
+
+> Scite helps researchers discover and evaluate scientific literature by showing how publications cite one another.
+
+Scite is an AI-powered research platform from Research Solutions. It indexes more than 315 million scholarly articles from more than 41 million full-text sources and works with more than 30 publisher partners.
+
+Smart Citations are the foundation of Scite. They show the text surrounding a citation and classify the citation as supporting, contrasting, or mentioning, so researchers can understand how later work has evaluated a publication rather than relying on a citation count alone.
+
+## Products
+
+- [Scite Assistant](https://scite.ai/assistant): Ask research questions and receive answers grounded in scholarly literature, with citations linked to their sources.
+- [Scite Search](https://scite.ai/search): Search publication metadata and citation statements from full text to find relevant papers, findings, methods, and claims.
+- [Collections](https://scite.ai/collections): Organize papers, monitor new citations, track supporting or contrasting evidence, and receive alerts about retractions and editorial notices.
+- [Smart Citations and Reports](https://scite.ai/features#smart-citations): See how a paper has been cited, including the citation context and whether each citation supports, contrasts with, or mentions the work.
+- [Reference Check](https://scite.ai/features#reference-check): Check the references in a manuscript for retractions, editorial notices, and contrasting evidence.
+- [All Scite features](https://scite.ai/features): Overview of Scite's research products and workflows.
+
+## Scite MCP
+
+Scite MCP connects ChatGPT, Claude, Gemini, Copilot, and other MCP-compatible AI tools to scientific literature and Smart Citations. It can search literature, retrieve verifiable papers and citation context, and help an AI tool ground its answers in real sources.
+
+The Scite MCP can be tried for up to 10 requests without creating a Scite account and without a credit card or trial. Continued use requires authentication.
+
+- [MCP setup guide](https://scite.ai/mcp): Setup instructions for supported AI clients and answers to common questions.
+- [Remote MCP server](https://api.scite.ai/mcp): Streamable HTTP endpoint for MCP-compatible clients.
+- [MCP discovery](https://scite.ai/.well-known/mcp.json): Machine-readable server metadata, authentication information, and available tools.
+- [MCP OpenAPI specification](https://api.scite.ai/mcp/openapi): Machine-readable specification for the Scite MCP API.
+
+## Scite API
+
+The Scite API provides programmatic access to publication metadata, literature search, Smart Citation tallies and statements, collections, reference checking, Assistant, research metrics, and evidence datasets.
+
+- [API overview](https://scite.ai/api): Product overview and available data feeds.
+- [API documentation](https://api.scite.ai/docs): Guides, concepts, authentication, examples, and API reference.
+- [API guide for coding agents](https://api.scite.ai/docs/for-coding-agents): A compact starting point for agents building with the Scite API or MCP server.
+- [Integrations](https://scite.ai/integrations): MCP, API, institutional holdings, Zotero, browser extension, and Scite Badge.
+
+## Data
+
+Scite combines scholarly metadata with citation statements extracted from full text. Its data includes publications, authors, journals, organizations, funders, patents, clinical trials, grants, drugs, devices, adverse events, and regulatory and safety information. Availability varies by product, plan, license, and source-access rights.
+
+- [Scite data](https://scite.ai/data): Overview of scholarly, patent, clinical, grant, and regulatory datasets.
+- [Data coverage](https://scite.ai/coverage): Current coverage statistics, subject coverage, and publisher partners.
+- [Journals](https://scite.ai/journals): Browse journals and their citation metrics.
+- [Organizations](https://scite.ai/affiliations): Explore institutional research output and citation data.
+- [Funders](https://scite.ai/institutions): Explore the citation landscape of funded research.
+
+## Pricing and access
+
+- [Pricing in Markdown](https://scite.ai/pricing.md): Agent-readable plan, feature, and access information, including unauthenticated MCP use.
+- [Pricing](https://scite.ai/pricing): Current plans and pricing for individuals, teams, academic institutions, and enterprises.
+- [Contact sales](https://scite.ai/contact-sales): Discuss institutional access, API or data licensing, publisher partnerships, and custom requirements.
+
+## Resources
+
+- [Blog](https://scite.ai/blog): Research, product updates, company news, and practical guidance from Scite.
+- [Help and FAQ](https://help.researchsolutions.com/hc/en-us/categories/31947397460116-Scite): Product help, account guidance, and answers to common questions.
+- [Getting started](https://scite.ai/getting-started): Introduction to using Scite on the web, through MCP, or through the API.
+
+## Legal
+
+- [Privacy policy](https://scite.ai/policy)
+- [Terms of service](https://scite.ai/terms)
+- [Accessibility statement](https://scite.ai/accessibility-statement)

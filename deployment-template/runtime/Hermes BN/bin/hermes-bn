@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+source '__HERMES_BN_ROOT__/environment.sh'
+if [[ "${1:-}" == desktop || "${1:-}" == gui ]]; then
+  shift
+  exec "$HERMES_BN_ROOT/bin/hermes-bn-desktop" "$@"
+fi
+exec "$HERMES_BN_ROOT/hermes-agent/venv/bin/python" -m hermes_cli.main "$@"

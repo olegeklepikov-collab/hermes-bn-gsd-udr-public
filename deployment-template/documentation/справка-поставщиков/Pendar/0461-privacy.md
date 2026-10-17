@@ -1,0 +1,389 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Справка Pendar: privacy
+
+Сохранённая внешняя документация. Копия адаптирована для переносимости: локальные пути и демонстрационные реквизиты/объекты заменены параметрами; содержимое не является конфигурацией готового аккаунта. Она описывает продукты, версии и варианты доступа, а не состояние какого-либо аккаунта. Примеры ОС, тарифов, путей и лимитов выбираются по целевой установке; числовые условия проверяются у поставщика перед использованием. Даты и исходная терминология могут относиться к версии справки.
+
+---
+
+
+<div class="d-flex">
+
+<div id="sidebar" class="sidebar">
+
+<div class="sidebar-logo text-center mb-2">
+
+<a href="/" class="sidebar-logo-link" title="Go to Home"><img src="/static/images/pendar_logo_no_background.a5c10d3a95dc.png" class="sidebar-logo-img" onerror="this.style.display=&#39;none&#39;; this.nextElementSibling.style.display=&#39;inline&#39;;" alt="Pendar Logo" /></a> <span class="version-text" style="display:none;">v1.6.0</span>
+
+</div>
+
+<div class="nav flex-column">
+
+<div class="nav-item">
+
+<a href="/app/chat/" class="nav-link" data-tooltip="Chat with agents"><span class="emoji-icon"> <img src="/static/icons/stars.91b8109955b4.svg" class="sidebar-svg-icon" /> </span> <span class="nav-text">Chat with agents</span></a>
+
+</div>
+
+<div class="nav-item">
+
+<a href="/app/" class="nav-link" data-tooltip="Library"><span class="emoji-icon"> <img src="/static/icons/library_sidenav.25f2561aa6fa.svg" class="sidebar-svg-icon" /> <span id="sidebar-library-badge" class="sidebar-library-badge" aria-label="No new library items" hidden=""></span> </span> <span class="nav-text">Library</span></a>
+
+</div>
+
+<div class="nav-item unified-chat-history-nav-item" style="display:none;">
+
+<a href="#" id="sidebar-history-btn" class="nav-link" data-tooltip="Chat history" title="Open past chat conversations"><span class="emoji-icon"> <img src="/static/icons/history_sidenav.dcb5842ae81e.svg" class="sidebar-svg-icon" /> </span> <span class="nav-text">Chat history</span></a>
+
+</div>
+
+<div class="nav-item">
+
+</div>
+
+<div class="nav-item">
+
+<a href="/accounts/login/" class="nav-link" data-tooltip="Login"><span class="emoji-icon"> <img src="/static/icons/key.95f6973e1441.svg" class="sidebar-svg-icon" /> </span> <span class="nav-text">Login</span></a>
+
+</div>
+
+</div>
+
+<div class="bottom-nav-section">
+
+<div class="bottom-nav-separator">
+
+</div>
+
+<div class="bottom-nav-item">
+
+<span class="emoji-icon"> <img src="/static/icons/help_sidenav.c7b2c7485bc3.svg" class="sidebar-svg-icon" /> </span> <span class="nav-text">Help</span>
+
+</div>
+
+<div class="bottom-nav-item">
+
+<span class="emoji-icon"> <img src="/static/icons/toggle_sidenav.3a83705787dc.svg" class="sidebar-svg-icon" /> </span> <span class="nav-text">Toggle Sidebar</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="help-chooser-modal" class="autosave-modal app-settings-modal-anchor help-chooser-modal" style="display:none;" role="dialog" aria-modal="true" aria-label="Help" aria-hidden="true">
+
+<div id="help-chooser-backdrop" class="autosave-modal-backdrop">
+
+</div>
+
+<div id="help-chooser-body" class="autosave-modal-body app-settings-modal-body help-chooser-body">
+
+<div class="autosave-modal-header autosave-modal-header--close-only">
+
+×
+
+</div>
+
+<div class="help-chooser-actions">
+
+<img src="/static/icons/ai_help.ded35de07c25.svg" class="help-chooser-action-icon" /> User guides
+
+<a href="/support/" class="help-chooser-action" target="_blank" rel="noopener noreferrer"><img src="/static/icons/help.8d6fab740160.svg" class="help-chooser-action-icon" /> <span>Contact us</span></a> <a href="/feedback/" class="help-chooser-action" target="_blank" rel="noopener noreferrer"><img src="/static/icons/feedback_sidenav.fd0c3d021d3e.svg" class="help-chooser-action-icon" /> <span>Give us feedback</span></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="help-modal" class="help-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="help-modal-title" aria-hidden="true">
+
+<div class="help-modal-backdrop">
+
+</div>
+
+<div id="help-modal-dialog" class="help-modal-dialog">
+
+<div class="help-modal-header">
+
+<img src="/static/icons/help_modal_back.f705f8b57ed3.svg" class="help-modal-back-icon" />
+
+## User guides
+
+×
+
+</div>
+
+<div id="help-topic-body" class="help-topic-body is-empty">
+
+<div id="help-topic-selector" class="help-topic-selector">
+
+<div class="help-topic-pill-wrap">
+
+<span class="help-topic-pill-size-anchor" aria-hidden="true"> <span class="help-topic-pill-size-icon"></span> What is Analyze Research Landscape? </span>
+
+<img src="/static/icons/help_select.d513785092ed.svg" class="help-topic-pill-icon" data-role="pill-icon" /> <span class="help-topic-pill-label" data-role="pill-label">Select</span>
+
+<div id="help-topic-menu" class="help-topic-menu" role="listbox" hidden="">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="help-modal-panel" class="help-modal-panel" tabindex="0">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="upgradeModal" class="upgrade-modal-overlay">
+
+<div class="upgrade-modal">
+
+×
+
+### Not enough credits
+
+Buy credits to keep going
+
+<div class="upgrade-modal-buttons">
+
+<a href="/pricing/" class="dashboard-btn upgrade-modal-dashboard-btn"><img src="/static/icons/credit_card.0bd296790b33.svg" class="dashboard-btn-subscription-icon" aria-hidden="true" width="20" height="20" /> Buy Credits</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="mainContent" class="main-content">
+
+<div class="content-container">
+
+<div class="policy-container">
+
+# Privacy Policy
+
+Last Updated: August 16, 2026
+
+This Privacy Policy describes how **PendarLabs LLC** (“Pendar,” “we,” “our,” or “us”), a Virginia limited liability company, collects, uses, stores, shares, and deletes information when you use [pendar.ai](https://pendar.ai), our research web application, our ChatGPT / Codex plugin and MCP tools, email communications, and related services (collectively, the “Services”).
+
+It is written for the product as it actually works today — including chat history, saved research, billing, and third-party AI and literature APIs — not as a generic template.
+
+## 1. Who this applies to
+
+This policy applies when you:
+
+- Browse the marketing site or create a Pendar account
+- Use research features in the web app (search, deep research, literature intelligence, claim checking, writing/report tools, PDF library features, and related chat)
+- Connect Pendar through ChatGPT, Codex, or another MCP client (OAuth or API key)
+- Contact us for support or subscribe to product emails
+
+## 2. Information we collect
+
+### 2.1 Account and profile information
+
+When you register or update your profile, we may collect:
+
+- Username, email address, password (stored as a one-way hash; we cannot read your password)
+- Name and institution
+- Optional profile fields such as position, website, and area of expertise
+- Email verification status and account preferences
+
+### 2.2 Authentication information
+
+**Google sign-in.** If you use Google OAuth, we receive your email address, profile name, Google account identifier, and optionally a profile picture. We do not receive your Google password.
+
+**ChatGPT / MCP OAuth.** When you authorize the Pendar plugin from ChatGPT (or a similar client), we store OAuth client registration data, authorization codes (short-lived), and hashed access/refresh tokens tied to your Pendar account. We also record which tools you approved and credit-related consent context shown at authorization time.
+
+**API keys.** If you mint a Pendar MCP API key (for Codex or other clients), we show the secret once and store only a cryptographic hash plus a public identifier. We cannot recover the secret later.
+
+### 2.3 Prompts, chat, and research content you create
+
+To provide the product, we store research content associated with your account, including:
+
+- **Chat prompts and responses:** messages you send in the unified chat and assistant replies, with mode/metadata needed to resume a conversation
+- **Search queries and reports:** queries used for paper finding / deep research and generated reports when those runs are saved or persisted for history
+- **Saved work:** saved searches, literature analyses, claim-check results, notes, tags, and similar artifacts you keep in the product
+- **Library PDFs you save:** PDFs you add to your library, kept until you delete them or close your account
+- **PDFs uploaded only for in-chat analysis:** temporary working copies and related extracted text used to answer questions in the current session; these are not kept as library files (see Retention)
+- **Paper/metadata lists:** bibliographic records returned by research tools and attached to your saved results (titles, authors, DOIs, links, abstracts or snippets, citation counts, and similar fields from academic indexes)
+
+**Important:** prompts and research queries are not “pass-through only.” Content needed for chat history, saved results, billing integrity, and product features is stored in our systems until you delete it or close your account (see Retention). PDFs uploaded only for in-chat analysis are temporary working copies and are not retained on that schedule.
+
+### 2.4 ChatGPT plugin and MCP tool usage
+
+When you call Pendar tools from ChatGPT or another MCP client, we receive and process:
+
+- The tool name and arguments you (or the host model) submit — for example a citation string, DOI, topic phrase, or paper identifier
+- Structured results we return (paper metadata, corpus counts, citation-neighbourhood analytics, notes/warnings)
+- Authentication and metering records: which credential authorized the call, success/failure for billing, and credit debit metadata (tool name, surface = MCP, credential type)
+
+We do not need ChatGPT conversation transcripts beyond what is sent to our MCP endpoint for a tool call. ChatGPT’s own handling of your chat is governed by OpenAI’s policies.
+
+### 2.5 Billing and credits
+
+- Credit balance, credit purchases, and feature debit history
+- Payment processing through Stripe (card details are handled by Stripe; we store customer/subscription identifiers and transaction metadata needed for accounting and support)
+
+### 2.6 Usage and operational records
+
+- Feature usage logs for metering and abuse prevention (feature key, timestamps, billing period, limited metadata such as path or report length — not a full analytics dossier of every keystroke)
+- Technical logs: IP address, user agent, request paths, error diagnostics
+- Cookies/session identifiers required to keep you signed in and remember preferences (for example theme)
+
+We do not use third-party advertising trackers or sell personal information. Internal product analytics are operational (billing, reliability, support), not ad targeting.
+
+### 2.7 Communications
+
+Support emails, feedback, and (if you opt in) product update emails.
+
+## 3. How we use information
+
+- Provide, operate, and secure the Services
+- Run research workflows and return results to you or to an authorized MCP client acting for you
+- Maintain chat history and saved research you expect to reopen
+- Authenticate you and authorize ChatGPT / API access
+- Meter credits, prevent abuse, and process payments
+- Diagnose outages, improve reliability, and provide support
+- Send service notices (security, billing, material policy changes)
+- Comply with law
+
+We do **not** use your research content to train our own foundation models. We also do not sell your personal information. Third-party AI providers process prompts you submit through us under their own terms; see Section 5.
+
+## 4. What we send to third parties (and why)
+
+Pendar is an orchestration layer. To answer research questions we transmit necessary inputs to processors:
+
+### 4.1 AI model providers
+
+- **OpenAI** and **Anthropic** (and similar providers we may add) receive prompts, conversation context, and document excerpts required to generate a response for web-app features that use LLMs.
+- MCP literature tools such as citation verification, literature survey, and citation-graph analytics are primarily retrieval/analytics over bibliographic indexes and typically do **not** send your prompt to an LLM on our side; they still authenticate and meter against your Pendar account.
+
+Review provider policies:
+
+- <a href="https://openai.com/privacy" target="_blank" rel="noopener noreferrer">OpenAI Privacy Policy</a>
+- <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a>
+
+### 4.2 Literature, search, and web retrieval APIs
+
+- Academic literature indexes and APIs (for example OpenAlex) receive search terms, DOIs, and paper identifiers needed to resolve and aggregate publications
+- Web/search providers we configure for research features (for example SerpAPI / Serper, Tavily) may receive queries needed for those tools
+
+These providers return publicly oriented bibliographic or web results. They are not “your private paper vault,” but query strings you submit can reveal research interests.
+
+### 4.3 Infrastructure, auth, and payments
+
+- Cloud hosting and object storage for the application, databases, and uploaded files
+- Google (OAuth sign-in)
+- Stripe (payments)
+- Email delivery providers for transactional mail
+- OpenAI, when you use ChatGPT as the client that calls our MCP server (your ChatGPT account relationship is with OpenAI)
+
+### 4.4 Legal and safety disclosures
+
+We may disclose information if required by law, to respond to lawful requests, or to protect users, the public, or Pendar from fraud, abuse, or security threats. If Pendar is involved in a merger, acquisition, or asset sale, information may transfer subject to this policy or a successor policy with notice.
+
+## 5. AI processing specifics
+
+- **What is transmitted for LLM features:** the minimum prompt/context/document text needed for that feature
+- **What we store:** chat messages, saved outputs, uploads, and metering records as described above
+- **Training:** we do not use your content to train Pendar models; whether a provider uses API data for training is governed by that provider’s terms and our configuration with them
+- **Human review:** staff may access account data to provide support, investigate abuse, or fix incidents, under access controls
+
+## 6. Cookies and similar technologies
+
+We use cookies and local storage for:
+
+- Authentication and session continuity
+- CSRF protection and security
+- UI preferences (for example dark mode)
+
+We do not use advertising cookies. Disabling session cookies will prevent sign-in and many authenticated features from working.
+
+## 7. Data retention
+
+| Data | Typical retention |
+|----|----|
+| Account and profile | While the account is active; deleted or anonymized after account deletion, subject to legal holds |
+| Chat messages and session history | Until you delete the session/content or close the account |
+| Saved searches, reports, analyses, claim checks | Until you delete them or close the account |
+| Library PDFs you save | Until you delete them or close the account |
+| PDFs uploaded only for in-chat analysis | Temporary working copies. Typically deleted within a few hours; as little as about one hour when the system is under disk or memory pressure |
+| Feature usage / credit ledgers | Retained for billing integrity, abuse prevention, and accounting; generally kept while the account exists and for a limited period afterward as required for disputes and tax records |
+| MCP OAuth access tokens | Until expiry, revocation, or account deletion |
+| MCP API key hashes | Until you revoke the key or delete the account |
+| Server / security logs | Typically short operational windows (days to a few months) unless needed for an investigation |
+| Stripe / billing records | As required by payment processors and applicable tax/accounting law |
+
+## 8. Your rights and data deletion
+
+Subject to applicable law, you may:
+
+- **Access** personal information we hold about you
+- **Correct** account/profile information in the product
+- **Delete** saved research, uploads, or chat content you control in the product
+- **Request account deletion**, which removes or anonymizes personal account data and associated research content we do not need to retain by law
+- **Export** available research artifacts where the product provides download/export
+- **Revoke** Google OAuth, disconnect ChatGPT / MCP authorization, or revoke API keys
+- **Opt out** of non-essential product emails (transactional/billing/security messages may still be sent)
+
+To request deletion or a copy of your data, email <admin@pendar.ai>. We aim to respond within 30 days. Some residual copies may remain briefly in encrypted backups and will expire on the backup cycle. We may retain limited records needed for fraud prevention, legal compliance, or unresolved billing disputes.
+
+Disconnecting the ChatGPT connector stops new tool calls; it does not by itself delete your Pendar account or past web-app research. Revoke MCP tokens in ChatGPT and/or ask us to delete account data if you want both sides cleared.
+
+## 9. Security
+
+- HTTPS in transit
+- Access-controlled databases and hashed passwords / hashed API and OAuth secrets
+- Per-user authorization checks on research objects and MCP credentials
+- Operational monitoring for abuse and failed auth
+
+No online service is perfectly secure. If you suspect unauthorized access, contact us immediately.
+
+## 10. Children
+
+The Services are not directed to children under 13, and we do not knowingly collect personal information from them. If you believe a child has created an account, contact <admin@pendar.ai> and we will delete it.
+
+## 11. International transfers
+
+Pendar is a cloud-hosted service. Your information may be processed on servers in the United States and in other countries where our infrastructure or subprocessors operate. Those countries may have different data-protection laws than your home jurisdiction. By using the Services, you understand that your information may be transferred as described in this policy.
+
+## 12. Changes
+
+We may update this policy as the product changes (for example new integrations). We will post the revised policy at <https://pendar.ai/privacy/>, update the “Last Updated” date, and for material changes provide additional notice such as email or an in-product notice when appropriate.
+
+## 13. Contact
+
+<div class="contact-info">
+
+**PendarLabs LLC** — Virginia, United States\
+**Email:** <admin@pendar.ai>\
+**Website:** <https://pendar.ai>
+
+Related: Terms of Service (локальный ресурс исходного примера не включён) · Support (локальный ресурс исходного примера не включён)
+
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd;">
+
+← Back to Home](</>) \| [Terms of Service (локальный ресурс исходного примера не включён)
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>

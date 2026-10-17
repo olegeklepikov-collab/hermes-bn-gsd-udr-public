@@ -1,0 +1,40 @@
+{
+  "url": "https://mcp.undermind.ai/mcp",
+  "auth": "oauth",
+  "oauth": {
+    "scope": "mcp",
+    "timeout": 900
+  },
+  "connect_timeout": 45,
+  "tool_timeout": 240,
+  "enabled": true,
+  "tools": {
+    "include": [
+      "get_orientation",
+      "list_workspaces",
+      "create_workspace",
+      "search_papers",
+      "find_papers_by_author",
+      "lookup_papers_by_metadata",
+      "get_paper_info",
+      "read_pdfs",
+      "get_pdf_download_links",
+      "launch_deep_search",
+      "inspect_deep_searches",
+      "display_deep_search_results",
+      "display_references",
+      "suggest_pdf_uploads",
+      "inspect_files",
+      "write_file",
+      "inspect_folders",
+      "create_folder",
+      "move_folder",
+      "add_papers_to_folder",
+      "remove_papers_from_folder",
+      "star_papers",
+      "unstar_papers",
+      "move_files",
+      "move_deep_searches"
+    ]
+  }
+}

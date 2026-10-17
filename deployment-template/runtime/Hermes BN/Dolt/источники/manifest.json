@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-08",
+  "source": "https://github.com/dolthub/dolt-mcp/tree/v0.3.8",
+  "documents": [
+    {
+      "file": "README.md",
+      "sha256": "0f08e2acb79a63c037247792a6abc24c78db5e7f743c9ade791c83853480229f"
+    },
+    {
+      "file": "docker/README.md",
+      "sha256": "6a62966b4bd01aaa31398544222c1acf52de1cd067ccc13859f907110d72abc8"
+    }
+  ]
+}

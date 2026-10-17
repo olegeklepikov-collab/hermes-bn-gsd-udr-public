@@ -1,0 +1,731 @@
+{
+  "installation": {
+    "name": "service_status",
+    "arguments": {}
+  },
+  "models": {
+    "name": "model_catalog",
+    "arguments": {}
+  },
+  "projects": {
+    "name": "list_projects",
+    "arguments": {}
+  },
+  "synthetic_connection_test": {
+    "name": "create_demo",
+    "arguments": {
+      "project_id": "bn-connection-demo"
+    }
+  },
+  "review_elas_u4": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "elas_u4",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_elas_u4": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "elas_u4",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_elas_u4": {
+    "name": "simulate",
+    "arguments": {
+      "model": "elas_u4",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_elas_u3": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "elas_u3",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_elas_u3": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "elas_u3",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_elas_u3": {
+    "name": "simulate",
+    "arguments": {
+      "model": "elas_u3",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_elas_l2": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "elas_l2",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_elas_l2": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "elas_l2",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_elas_l2": {
+    "name": "simulate",
+    "arguments": {
+      "model": "elas_l2",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_elas_h3": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "elas_h3",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_elas_h3": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "elas_h3",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_elas_h3": {
+    "name": "simulate",
+    "arguments": {
+      "model": "elas_h3",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_logistic_tfidf": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "logistic_tfidf",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_logistic_tfidf": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "logistic_tfidf",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_logistic_tfidf": {
+    "name": "simulate",
+    "arguments": {
+      "model": "logistic_tfidf",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_forest_tfidf": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "forest_tfidf",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_forest_tfidf": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "forest_tfidf",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_forest_tfidf": {
+    "name": "simulate",
+    "arguments": {
+      "model": "forest_tfidf",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_mixed_random": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "mixed_random",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_mixed_random": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "mixed_random",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_mixed_random": {
+    "name": "simulate",
+    "arguments": {
+      "model": "mixed_random",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_mixed_uncertainty": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "mixed_uncertainty",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_mixed_uncertainty": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "mixed_uncertainty",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_mixed_uncertainty": {
+    "name": "simulate",
+    "arguments": {
+      "model": "mixed_uncertainty",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_uncertainty_tfidf": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "uncertainty_tfidf",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_uncertainty_tfidf": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "uncertainty_tfidf",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_uncertainty_tfidf": {
+    "name": "simulate",
+    "arguments": {
+      "model": "uncertainty_tfidf",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_char_svm": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "char_svm",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_char_svm": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "char_svm",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_char_svm": {
+    "name": "simulate",
+    "arguments": {
+      "model": "char_svm",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_random": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "random",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_random": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "random",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_random": {
+    "name": "simulate",
+    "arguments": {
+      "model": "random",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "review_top_down": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "oracle",
+      "model": "top_down",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "validation_top_down": {
+    "name": "create_project",
+    "arguments": {
+      "mode": "validate",
+      "model": "top_down",
+      "seed": 42
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_top_down": {
+    "name": "simulate",
+    "arguments": {
+      "model": "top_down",
+      "seed": 42,
+      "stop": "all"
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "export_csv_all": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "csv",
+      "filter": "all",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_csv_relevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "csv",
+      "filter": "relevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_csv_irrelevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "csv",
+      "filter": "irrelevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_csv_unseen": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "csv",
+      "filter": "unseen",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_tsv_all": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "tsv",
+      "filter": "all",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_tsv_relevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "tsv",
+      "filter": "relevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_tsv_irrelevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "tsv",
+      "filter": "irrelevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_tsv_unseen": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "tsv",
+      "filter": "unseen",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_json_all": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "json",
+      "filter": "all",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_json_relevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "json",
+      "filter": "relevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_json_irrelevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "json",
+      "filter": "irrelevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_json_unseen": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "json",
+      "filter": "unseen",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_xlsx_all": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "xlsx",
+      "filter": "all",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_xlsx_relevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "xlsx",
+      "filter": "relevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_xlsx_irrelevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "xlsx",
+      "filter": "irrelevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_xlsx_unseen": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "xlsx",
+      "filter": "unseen",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_ris_all": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "ris",
+      "filter": "all",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_ris_relevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "ris",
+      "filter": "relevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_ris_irrelevant": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "ris",
+      "filter": "irrelevant",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "export_ris_unseen": {
+    "name": "export_dataset",
+    "arguments": {
+      "format": "ris",
+      "filter": "unseen",
+      "include_duplicates": true
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "simulation_stop_last_relevant": {
+    "name": "simulate",
+    "arguments": {
+      "model": "elas_u4",
+      "seed": 42,
+      "stop": "last_relevant",
+      "stop_value": 100
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_stop_n_labelled": {
+    "name": "simulate",
+    "arguments": {
+      "model": "elas_u4",
+      "seed": 42,
+      "stop": "n_labelled",
+      "stop_value": 100
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "simulation_stop_consecutive_irrelevant": {
+    "name": "simulate",
+    "arguments": {
+      "model": "elas_u4",
+      "seed": 42,
+      "stop": "consecutive_irrelevant",
+      "stop_value": 100
+    },
+    "required": [
+      "project_id",
+      "file"
+    ]
+  },
+  "unseen_random_audit": {
+    "name": "sample_audit",
+    "arguments": {
+      "size": 20,
+      "seed": 42
+    },
+    "required": [
+      "project_id"
+    ]
+  },
+  "unseen_larger_audit": {
+    "name": "sample_audit",
+    "arguments": {
+      "size": 100,
+      "seed": 42
+    },
+    "required": [
+      "project_id"
+    ]
+  }
+}

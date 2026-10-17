@@ -1,0 +1,52 @@
+{
+  "starter": {
+    "documentation": "https://developer.clarivate.com/apis/wos-starter",
+    "base_url": "https://api.clarivate.com/apis/wos-starter/v2",
+    "key_name": "WOS_BN_STARTER_API_KEY",
+    "enabled": false,
+    "configured_plan": "free_trial",
+    "request_interval_seconds": 1.1,
+    "daily_request_cap": 50,
+    "records_per_request_cap": 3
+  },
+  "expanded": {
+    "documentation": "https://developer.clarivate.com/apis/wos",
+    "base_url": "https://api.clarivate.com/api/wos",
+    "key_name": "WOS_BN_EXPANDED_API_KEY",
+    "enabled": false,
+    "configured_plan": "not_subscribed",
+    "request_interval_seconds": 1.1,
+    "daily_request_cap": 50,
+    "records_per_request_cap": 3
+  },
+  "researcher": {
+    "documentation": "https://developer.clarivate.com/apis/wos-researcher",
+    "base_url": "https://api.clarivate.com/apis/wos-researcher",
+    "key_name": "WOS_BN_RESEARCHER_API_KEY",
+    "enabled": false,
+    "configured_plan": "not_subscribed",
+    "request_interval_seconds": 1.1,
+    "daily_request_cap": 50,
+    "records_per_request_cap": 3
+  },
+  "journals": {
+    "documentation": "https://developer.clarivate.com/apis/wos-journal",
+    "base_url": "https://api.clarivate.com/apis/wos-journals/v1",
+    "key_name": "WOS_BN_JOURNALS_API_KEY",
+    "enabled": false,
+    "configured_plan": "not_subscribed",
+    "request_interval_seconds": 1.1,
+    "daily_request_cap": 50,
+    "records_per_request_cap": 3
+  },
+  "incites": {
+    "documentation": "https://developer.clarivate.com/apis/incites",
+    "base_url": "https://incites-api.clarivate.com/api/incites",
+    "key_name": "WOS_BN_INCITES_API_KEY",
+    "enabled": false,
+    "configured_plan": "not_subscribed",
+    "request_interval_seconds": 1.1,
+    "daily_request_cap": 50,
+    "records_per_request_cap": 3
+  }
+}

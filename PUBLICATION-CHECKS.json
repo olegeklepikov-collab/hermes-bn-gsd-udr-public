@@ -1,0 +1,15 @@
+{
+  "files": 33740,
+  "patterns": 23,
+  "issues": [],
+  "publication_scope": "Current sanitized tree only; historical private/full-mode receipts excluded",
+  "archives": "Existing clean-r2 base and neutral-r2 update; immutable SHA-256 retained",
+  "download_helper_checks": [
+    "fixture reconstruction",
+    "idempotent reuse",
+    "damaged existing archive rejected",
+    "public HTTPS without credentials"
+  ],
+  "source_private_commit": "d62b331430e545045b8ec646a46e588b3083d1c9",
+  "original_private_repository_changed": false
+}

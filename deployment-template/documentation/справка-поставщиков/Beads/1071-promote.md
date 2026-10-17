@@ -1,0 +1,41 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Справка Beads: promote
+
+Сохранённая внешняя документация. Копия адаптирована для переносимости: локальные пути и демонстрационные реквизиты/объекты заменены параметрами; содержимое не является конфигурацией готового аккаунта. Она описывает продукты, версии и варианты доступа, а не состояние какого-либо аккаунта. Примеры ОС, тарифов, путей и лимитов выбираются по целевой установке; числовые условия проверяются у поставщика перед использованием. Даты и исходная терминология могут относиться к версии справки.
+
+---
+
+
+---
+title: "bd promote"
+description: "Promote a wisp (ephemeral issue) to a permanent bead."
+---
+
+{/* AUTO-GENERATED: do not edit manually */}
+
+Generated from `bd help --doc promote`.
+
+Promote a wisp (ephemeral issue) to a permanent bead.
+
+This copies the issue from the wisps table (dolt_ignored) to the permanent
+issues table (Dolt-versioned), preserving labels, dependencies, events, and
+comments. The original ID is preserved so all links keep working.
+
+A comment is added recording the promotion and optional reason.
+
+Examples:
+  bd promote bd-wisp-abc123
+  bd promote bd-wisp-abc123 --reason "Worth tracking long-term"
+
+```
+bd promote <wisp-id> [flags]
+```
+
+**Flags:**
+
+```
+  -r, --reason string   Reason for promotion
+```

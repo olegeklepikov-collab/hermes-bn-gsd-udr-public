@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+source '__HERMES_BN_ROOT__/environment.sh'
+exec "$HERMES_BN_ROOT/hermes-agent/venv/bin/python" "$HERMES_BN_ROOT/PubMed/cli.py" "$@"

@@ -1,0 +1,12 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Volumes/Builds/packages/sonoma-arm64/Rlib/4.6/00LOCK-commonmark/00new/commonmark/libs/commonmark.so'
+relocations:
+  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _R_list_extensions, symObjAddr: 0x0, symBinAddr: 0x1300, symSize: 0xAC }
+  - { offset: 0x11C, size: 0x8, addend: 0x0, symName: _R_list_extensions, symObjAddr: 0x0, symBinAddr: 0x1300, symSize: 0xAC }
+  - { offset: 0x899, size: 0x8, addend: 0x0, symName: _R_init_commonmark, symObjAddr: 0x0, symBinAddr: 0x13C0, symSize: 0x50 }
+  - { offset: 0x8C0, size: 0x8, addend: 0x0, symName: _CallEntries, symObjAddr: 0x50, symBinAddr: 0x34020, symSize: 0x0 }
+  - { offset: 0x94A, size: 0x8, addend: 0x0, symName: _R_init_commonmark, symObjAddr: 0x0, symBinAddr: 0x13C0, symSize: 0x50 }
+  - { offset: 0xB0D, size: 0x8, addend: 0x0, symName: _R_render_markdown, symObjAddr: 0x0, symBinAddr: 0x1440, symSize: 0x32C }
+  - { offset: 0x130F, size: 0x8, addend: 0x0, symName: _R_render_markdown, symObjAddr: 0x0, symBinAddr: 0x1440, symSize: 0x32C }
+...

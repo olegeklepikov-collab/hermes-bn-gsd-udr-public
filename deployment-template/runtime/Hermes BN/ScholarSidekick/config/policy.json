@@ -1,0 +1,16 @@
+{
+  "mode": "anonymous",
+  "api_key_used": false,
+  "MCP_URL": "https://scholar-sidekick.com/api/mcp",
+  "REST_URL": "https://scholar-sidekick.com",
+  "LLM_screen_enabled": false,
+  "LLM_screen_alternative": "Free first-party ssk_ key or paid RapidAPI; not configured",
+  "formatter_interval_seconds": 6.3,
+  "audit_interval_seconds": 8.2,
+  "other_interval_seconds": 1.1,
+  "auto_retries": false,
+  "silent_provider_fallback": false,
+  "purchases": false,
+  "optional_paid_evidence_reports": false,
+  "standard_CSL_export_required": "resolveIdentifier currently returns normalized Biblio items; export csl provides standard CSL-JSON."
+}

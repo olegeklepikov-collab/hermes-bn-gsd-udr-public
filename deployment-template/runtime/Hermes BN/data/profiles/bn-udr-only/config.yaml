@@ -1,0 +1,125 @@
+model:
+  provider: openai-codex
+  default: gpt-6.1-sol
+auth:
+  adopt_external_logins: false
+  codex_login_flow: browser
+terminal:
+  backend: bn_guarded_local
+  cwd: __HERMES_BN_ROOT__/workspace
+  home_mode: profile
+desktop:
+  repo_scan_roots:
+  - __HERMES_BN_ROOT__/workspace
+display:
+  skin: hermes-bn
+  interim_assistant_messages: true
+  show_commentary: true
+  platforms:
+    telegram:
+      tool_progress: 'off'
+      interim_assistant_messages: true
+      show_commentary: true
+      show_reasoning: false
+      thinking_progress: false
+_config_version: 46
+platforms: {}
+web:
+  backend: exa
+  search_backend: exa
+  extract_backend: firecrawl
+  provider_tier:
+    exa: paid
+    firecrawl: paid
+    tavily: paid
+    keenable: paid
+  keyless_fallback: false
+  keyless_rescue: false
+  extract_char_limit: 20000
+  cache_enabled: true
+  cache_ttl_minutes: 20
+  provider_tiers:
+    parallel: paid
+mcp_servers:
+  udr:
+    command: __HERMES_UDR_ROOT__/operator/bn-bridge/serve
+    args: []
+    timeout: 120
+    enabled: false
+  context:
+    command: __HERMES_BN_ROOT__/hermes-agent/venv/bin/python
+    args:
+    - __HERMES_BN_ROOT__/Memory/releases/1.2.8/bn_memory/server.py
+    - __HERMES_BN_ROOT__/Memory/settings.json
+    enabled: false
+    timeout: 360
+plugins:
+  enabled: []
+  disabled:
+  - bn-common-memory
+  - bn-gsd
+  - bn-udr-host
+  - bn-work-status
+  - nimble-agent
+  entries:
+    bn-udr-host:
+      enabled: false
+      settings:
+        udr_root: __HERMES_UDR_ROOT__
+        independent: true
+        budget_mode: observe
+        max_parallel_workers: 4
+    bn-common-memory:
+      enabled: false
+      settings:
+        config_file: __HERMES_BN_ROOT__/Memory/settings.json
+    bn-work-status:
+      enabled: false
+  load_timeout_seconds: 30
+compression:
+  enabled: false
+auxiliary:
+  title_generation:
+    model_upgrade_enabled: false
+gateway: {}
+platform_toolsets:
+  cli:
+  - udr
+  - todo
+  - web
+  - skills
+  - context
+  - mcp-udr
+  telegram:
+  - udr
+  - todo
+  - web
+  - skills
+  - context
+  - mcp-udr
+  gui:
+  - udr
+  - todo
+  - web
+  - skills
+  - context
+  - mcp-udr
+agent:
+  coding_context: auto
+  reasoning_effort: xhigh
+  max_turns: 0
+  run_budget_seconds: null
+execution_controls_required: false
+delegation:
+  max_iterations: 9223372036854775807
+tool_loop_guardrails:
+  warnings_enabled: true
+  hard_stop_enabled: true
+  non_interactive_hard_stop_enabled: true
+  loop_caps:
+    max_web_searches: 0
+    max_subagents: 0
+timeouts:
+  tools:
+    sequential_call: 0
+    concurrent_batch: 0

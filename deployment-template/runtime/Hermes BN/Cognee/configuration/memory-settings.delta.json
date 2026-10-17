@@ -1,0 +1,6 @@
+{
+  "package_root": "<INSTANCE_ROOT>/Memory/releases/1.2.3",
+  "cognee_root": "<INSTANCE_ROOT>/Cognee",
+  "cognee_enabled": true,
+  "cognee_lesson_enabled": true
+}

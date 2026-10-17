@@ -1,0 +1,3 @@
+parallel-web==1.3.5
+parallel-web-tools[cli]==0.9.3
+questionary==2.1.1

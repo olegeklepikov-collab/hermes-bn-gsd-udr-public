@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-07",
+  "host": "api.semanticscholar.org",
+  "request_interval": 1.1,
+  "max_retry_attempts": 2,
+  "api_key_file": "__HERMES_BN_ROOT__/SemanticScholar/credentials.env",
+  "dataset_files_downloaded": false,
+  "dataset_business_use": "requires checking dataset license or provider permission",
+  "api_key_not_a_blanket_dataset_license": true,
+  "default_scope": "internal research",
+  "fulltext_reading": "snippets or external connected reader, not metadata/tldr",
+  "citation_stance": "not inferred from intents or influence",
+  "date_bounds": "only when actual task specifies them",
+  "pagination": "record next offset/token and stop bounds"
+}

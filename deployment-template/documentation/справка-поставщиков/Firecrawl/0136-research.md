@@ -1,0 +1,325 @@
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+> Актуальный порядок для слоя 16.10.2026: см. CURRENT-SETUP.md в корне. Подписанные исходные спецификации сохраняют свои исходные версии; локальные переопределения заданы отдельно.
+
+# Справка Firecrawl: research
+
+Сохранённая внешняя документация. Копия адаптирована для переносимости: локальные пути и демонстрационные реквизиты/объекты заменены параметрами; содержимое не является конфигурацией готового аккаунта. Она описывает продукты, версии и варианты доступа, а не состояние какого-либо аккаунта. Примеры ОС, тарифов, путей и лимитов выбираются по целевой установке; числовые условия проверяются у поставщика перед использованием. Даты и исходная терминология могут относиться к версии справки.
+
+---
+
+
+https://docs.firecrawl.dev/features/research
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: [/llms.txt](https://docs.firecrawl.dev/llms.txt)
+>
+> Use this file to discover all available pages before exploring further.
+
+[Skip to main content](https://docs.firecrawl.dev/features/research#content-area)
+
+Firecrawl Research is a purpose-built index for scientific and engineering research agents. It exposes a research-specific toolset for searching papers, inspecting paper metadata, reading relevant full-text passages, and discovering related papers through structural expansion.The index covers roughly 43 million paper abstracts. The majority of the corpus is biomedical and life sciences — **PubMed**, **bioRxiv**, and **medRxiv** — alongside **arXiv** for physics, mathematics, and computer science. Papers are addressable by their source ids, so `pmid:`, `pmcid:`, and `doi:` references work the same way `arxiv:` ones do.
+
+- Find papers by topic, method, benchmark, author, or category
+- Inspect canonical paper metadata and source ids
+- Read the passages in one paper that answer a specific question
+- Expand from strong seed papers to related papers, citers, or references
+
+To give your agent access to the Research Index, we strongly recommend using our [CLI](https://docs.firecrawl.dev/sdks/cli) or [MCP](https://docs.firecrawl.dev/mcp-server), combined with our [**dedicated research skill**](https://github.com/firecrawl/skills/blob/main/skills/firecrawl-research-index/SKILL.md), which you can install with:
+
+```
+npx skills add firecrawl/skills@firecrawl-research-index
+```
+
+## [​](https://docs.firecrawl.dev/features/research\#how-this-relates-to-/search)  How this relates to `/search`
+
+From 2026-11-16, `categories: ["research"]` on `/search` searches this index and returns the same paper records in `data.research`. The table below describes its behavior until then. See [search categories](https://docs.firecrawl.dev/features/search#search-categories).
+
+Firecrawl has two things named “research”, and they are not the same feature:
+
+|  | Research Index (this page) | `/search` with `categories: ["research"]` |
+| --- | --- | --- |
+| What it searches | A paper index of ~43M abstracts — PubMed, bioRxiv, medRxiv, arXiv | The open web, restricted to ~14 academic **websites** (arxiv.org, nature.com, pubmed.ncbi.nlm.nih.gov, …) |
+| What you get back | Ranked paper records: canonical `paperId`, `primaryId`, source ids, title, full abstract, score | Ordinary web results: URL, title, snippet |
+| Can it read inside a paper | Yes — passage-level reads via `GET /search/research/papers/{id}` | No |
+| Can it expand by citations | Yes — `GET /search/research/papers/{id}/similar` | No |
+| Endpoint | `GET /search/research/papers` | `POST /search` |
+
+Use the Research Index when you are doing literature work: finding papers, reading them, and following citations. Use [`categories: ["research"]`](https://docs.firecrawl.dev/features/search#search-categories) when you want ordinary web pages that happen to live on academic domains.
+
+## [​](https://docs.firecrawl.dev/features/research\#endpoints)  Endpoints
+
+| Task | Endpoint |
+| --- | --- |
+| Search papers | [`GET /search/research/papers`](https://docs.firecrawl.dev/api-reference/endpoint/research-search-papers) |
+| Inspect metadata or read passages | [`GET /search/research/papers/{id}`](https://docs.firecrawl.dev/api-reference/endpoint/research-paper) |
+| Find related papers | [`GET /search/research/papers/{id}/similar`](https://docs.firecrawl.dev/api-reference/endpoint/research-related-papers) |
+
+## [​](https://docs.firecrawl.dev/features/research\#search-papers)  Search papers
+
+Search paper abstracts with a natural-language query. The response returns ranked papers with canonical `paperId`, preferred `primaryId`, source ids, title, abstract, score, and optional ranking signals.
+
+cURL
+
+## CLI
+
+Python
+
+Node
+
+```
+# No API key needed to get started; add -H "Authorization: Bearer $FIRECRAWL_API_KEY" for higher rate limits:
+curl -s "https://api.firecrawl.dev/v2/search/research/papers?query=diffusion%20image%20synthesis&k=20"
+```
+
+```
+firecrawl research search-papers "diffusion image synthesis" --limit 20
+```
+
+```
+from firecrawl import Firecrawl
+
+firecrawl = Firecrawl(
+  # No API key needed to get started; add one for higher rate limits:
+  # api_key="fc-YOUR-API-KEY",
+)
+
+result = firecrawl.v2.search_papers("diffusion image synthesis", k=20)
+print(result)
+```
+
+```
+import { Firecrawl } from "firecrawl";
+
+const firecrawl = new Firecrawl({
+  // No API key needed to get started; add one for higher rate limits:
+  // apiKey: "fc-YOUR-API-KEY",
+});
+
+const result = await firecrawl.research.searchPapers("diffusion image synthesis", {
+  k: 20,
+});
+console.log(result);
+```
+
+Optional filters:
+
+- `authors`: author substring filter; all filters must match
+- `categories`: paper category filter, such as `cs.LG`
+- `from`: inclusive created/updated lower bound, `YYYY-MM-DD`
+- `to`: inclusive created/updated upper bound, `YYYY-MM-DD`
+
+### [​](https://docs.firecrawl.dev/features/research\#biomedical-example)  Biomedical example
+
+Most of the index is life sciences, so clinical and molecular biology queries work the same way:
+
+cURL
+
+## CLI
+
+Python
+
+Node
+
+```
+# No API key needed to get started; add -H "Authorization: Bearer $FIRECRAWL_API_KEY" for higher rate limits:
+curl -s "https://api.firecrawl.dev/v2/search/research/papers?query=CRISPR%20base%20editing%20off-target%20effects%20in%20primary%20human%20T%20cells&k=20"
+```
+
+```
+firecrawl research search-papers "CRISPR base editing off-target effects in primary human T cells" --limit 20
+```
+
+```
+from firecrawl import Firecrawl
+
+firecrawl = Firecrawl(
+  # No API key needed to get started; add one for higher rate limits:
+  # api_key="fc-YOUR-API-KEY",
+)
+
+result = firecrawl.v2.search_papers(
+  "CRISPR base editing off-target effects in primary human T cells",
+  k=20,
+)
+print(result)
+```
+
+```
+import { Firecrawl } from "firecrawl";
+
+const firecrawl = new Firecrawl({
+  // No API key needed to get started; add one for higher rate limits:
+  // apiKey: "fc-YOUR-API-KEY",
+});
+
+const result = await firecrawl.research.searchPapers(
+  "CRISPR base editing off-target effects in primary human T cells",
+  { k: 20 },
+);
+console.log(result);
+```
+
+Results carry a `primaryId` in whichever namespace the source uses, so biomedical hits come back as `pmid:<id>`, `pmcid:<id>`, or `doi:<doi>`. Feed that value straight back into the inspect, read, and related endpoints below.
+
+## [​](https://docs.firecrawl.dev/features/research\#inspect-a-paper)  Inspect a paper
+
+Use a canonical `paperId` or a source-specific `primaryId`. Accepted `primaryId` forms are `arxiv:<id>`, `pmid:<id>`, `pmcid:<id>`, and `doi:<doi>` — for example `curl -s ".../v2/search/research/papers/pmid:<id>"` for a PubMed record.
+
+cURL
+
+## CLI
+
+Python
+
+Node
+
+```
+# No API key needed to get started; add -H "Authorization: Bearer $FIRECRAWL_API_KEY" for higher rate limits:
+curl -s "https://api.firecrawl.dev/v2/search/research/papers/arxiv:1706.03762"
+```
+
+```
+firecrawl research inspect-paper arxiv:1706.03762
+```
+
+```
+from firecrawl import Firecrawl
+
+firecrawl = Firecrawl(
+  # No API key needed to get started; add one for higher rate limits:
+  # api_key="fc-YOUR-API-KEY",
+)
+
+paper = firecrawl.v2.inspect_paper("arxiv:1706.03762")
+print(paper)
+```
+
+```
+import { Firecrawl } from "firecrawl";
+
+const firecrawl = new Firecrawl({
+  // No API key needed to get started; add one for higher rate limits:
+  // apiKey: "fc-YOUR-API-KEY",
+});
+
+const paper = await firecrawl.research.getPaper("arxiv:1706.03762");
+console.log(paper);
+```
+
+## [​](https://docs.firecrawl.dev/features/research\#read-paper-passages)  Read paper passages
+
+Add `query` to the same paper path to retrieve the top full-text passages for a question. This is useful for verifying whether a candidate paper actually contains a method, dataset, constraint, or result before you include it.
+
+cURL
+
+## CLI
+
+Python
+
+Node
+
+```
+# No API key needed to get started; add -H "Authorization: Bearer $FIRECRAWL_API_KEY" for higher rate limits:
+curl -s "https://api.firecrawl.dev/v2/search/research/papers/arxiv:1706.03762?query=what%20is%20the%20attention%20mechanism&k=4"
+```
+
+```
+firecrawl research read-paper arxiv:1706.03762 --question "What is the attention mechanism?" --limit 4
+```
+
+```
+from firecrawl import Firecrawl
+
+firecrawl = Firecrawl(
+  # No API key needed to get started; add one for higher rate limits:
+  # api_key="fc-YOUR-API-KEY",
+)
+
+passages = firecrawl.v2.read_paper(
+    "arxiv:1706.03762",
+    "What is the attention mechanism?",
+    k=4,
+)
+print(passages)
+```
+
+```
+import { Firecrawl } from "firecrawl";
+
+const firecrawl = new Firecrawl({
+  // No API key needed to get started; add one for higher rate limits:
+  // apiKey: "fc-YOUR-API-KEY",
+});
+
+const passages = await firecrawl.research.getPaper("arxiv:1706.03762", {
+  query: "What is the attention mechanism?",
+  k: 4,
+});
+console.log(passages);
+```
+
+## [​](https://docs.firecrawl.dev/features/research\#find-related-papers)  Find related papers
+
+Expand from one or more seed papers through semantic expansion and rank the candidates against a natural-language `intent`.
+
+cURL
+
+## CLI
+
+Python
+
+Node
+
+```
+# No API key needed to get started; add -H "Authorization: Bearer $FIRECRAWL_API_KEY" for higher rate limits:
+curl -s "https://api.firecrawl.dev/v2/search/research/papers/arxiv:1706.03762/similar?intent=efficient%20transformers&mode=similar&k=20"
+```
+
+```
+firecrawl research related-papers arxiv:1706.03762 --intent "efficient transformers" --limit 20
+```
+
+```
+from firecrawl import Firecrawl
+
+firecrawl = Firecrawl(
+  # No API key needed to get started; add one for higher rate limits:
+  # api_key="fc-YOUR-API-KEY",
+)
+
+papers = firecrawl.v2.related_papers(
+    "arxiv:1706.03762",
+    "efficient transformers",
+    mode="similar",
+    k=20,
+)
+print(papers)
+```
+
+```
+import { Firecrawl } from "firecrawl";
+
+const firecrawl = new Firecrawl({
+  // No API key needed to get started; add one for higher rate limits:
+  // apiKey: "fc-YOUR-API-KEY",
+});
+
+const papers = await firecrawl.research.similarPapers("arxiv:1706.03762", {
+  intent: "efficient transformers",
+  mode: "similar",
+  k: 20,
+});
+console.log(papers);
+```
+
+Modes:
+
+- `similar`: co-citation and bibliographic-coupling neighborhood
+- `citers`: papers that cite the seed
+- `references`: papers cited by the seed
+
+[Suggest edits](https://github.com/firecrawl/firecrawl-docs/edit/main/features/research.mdx) [Raise issue](https://github.com/firecrawl/firecrawl-docs/issues/new?title=Issue%20on%20docs&body=Path:%20/features/research)
+
+✕

@@ -1,0 +1,18 @@
+{
+  "selected_tools": [
+    "verify_paper",
+    "survey_literature",
+    "graph_hopper",
+    "audit_bibliography",
+    "profile_researcher",
+    "find_venues"
+  ],
+  "authentication": "own OAuth; tools:read",
+  "price_per_mcp_tool_call": 1,
+  "purchases_allowed": false,
+  "private_uploads_planned": false,
+  "web_agent_runs_not_in_MCP": true,
+  "token_access_lifetime_seconds_as_shown": 3600,
+  "renewal_window_days_as_shown": 30,
+  "audit_bibliography_cost": "ceil(number_of_references / 5) credits; service consent page says 1 per call but current tool catalog gives this more specific rule"
+}

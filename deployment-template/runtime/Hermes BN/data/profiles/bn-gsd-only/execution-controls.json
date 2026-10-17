@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "required": {
+    "tool": [
+      "bn-gsd",
+      "bn-common-memory"
+    ],
+    "tool_result": [
+      "bn-gsd",
+      "bn-common-memory"
+    ],
+    "llm": [
+      "bn-gsd",
+      "bn-common-memory"
+    ],
+    "auxiliary": [
+      "bn-gsd",
+      "bn-common-memory"
+    ]
+  },
+  "timeout_seconds": 15
+}

@@ -1,0 +1,12 @@
+{
+  "hermes-foundation-bridge": {
+    "pinned": true,
+    "revision": "70c45c3749192e54bf37d15387a4cde7682c10d1",
+    "source": "file:///Volumes/AgentRuntime2/active-runtime/Hermes%20UDR/software/foundation-release/foundation-source"
+  },
+  "ultra-deep-research": {
+    "pinned": true,
+    "revision": "1f8e5398a3e7e0d065cc1820bdc65ce9c0967ed2",
+    "source": "file:///Volumes/AgentRuntime2/active-runtime/Hermes%20UDR/software/research-release/research-source"
+  }
+}

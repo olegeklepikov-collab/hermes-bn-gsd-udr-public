@@ -1,0 +1,14 @@
+{
+  "email": "__CONTACT_EMAIL__",
+  "mode": "polite",
+  "api_base": "https://api.crossref.org/v1",
+  "user_agent": "HermesBN-Crossref/1.0 (mailto:__CONTACT_EMAIL__)",
+  "concurrency": 1,
+  "minimum_interval_seconds": 0.4,
+  "cache_ttl_seconds": 300,
+  "max_page_rows": 1000,
+  "default_page_rows": 10,
+  "maximum_batch_dois": 20,
+  "download_fulltext": false,
+  "email_authorized": false
+}

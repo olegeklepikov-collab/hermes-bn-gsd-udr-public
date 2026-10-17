@@ -1,0 +1,177 @@
+{
+  "checked_at": "2026-10-08",
+  "release": "3.0.8",
+  "commit": "d3e863c94e1945ace7848b6ca5bcf2fb1eecbdb5",
+  "docs": [
+    {
+      "file": "index.md",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/index.md",
+      "sha256": "9b032a18e48bd7df81f2b65b99e73f46d7e223faadcc1fd8f067fa4ad308c2a9"
+    },
+    {
+      "file": "lab/index.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/index.rst",
+      "sha256": "28e6b1bb09f82ff35e99bcbf205650dae183b9359586de388be3a91134cacf30"
+    },
+    {
+      "file": "lab/simulation_api_example.ipynb",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/simulation_api_example.ipynb",
+      "sha256": "095fd1ea573a52308f57ca4bf0f06d78f33529c0fcd81fb83188a75d9f858e9c"
+    },
+    {
+      "file": "lab/models.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/models.rst",
+      "sha256": "5023ad82c286de115657bf59f2069e5ed98c2153d86aeaf43745601a1ade84b0"
+    },
+    {
+      "file": "lab/progress.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/progress.rst",
+      "sha256": "b0cb0d39e8bdb6088ca9e3893efd015bf86cfd7bb049a50e7c21a0ff519493ee"
+    },
+    {
+      "file": "lab/data_labeled.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/data_labeled.rst",
+      "sha256": "4b9a748c36193d998f2f76f56489296cb06808eeede676d21c40edcbdd967027"
+    },
+    {
+      "file": "lab/simulation_cli.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/simulation_cli.rst",
+      "sha256": "d4944f5a607ab7b396bbbc6a189437bda1ec3e807fe3d64d804133235a070639"
+    },
+    {
+      "file": "lab/project_create.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/project_create.rst",
+      "sha256": "7754f8a53a74e72a3957f81097c5dac7b1d1640fdf799f0f56ab87eb199e5af1"
+    },
+    {
+      "file": "lab/openscience.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/openscience.rst",
+      "sha256": "ff72d39f2098c51202d87a7dd99958c2e6f9a049bd04fffd2046b5b2ffc6ea7b"
+    },
+    {
+      "file": "lab/data.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/data.rst",
+      "sha256": "0c809aad29849a495906470460cff742786748891e9f23461fd4d79233d04780"
+    },
+    {
+      "file": "lab/screening.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/screening.rst",
+      "sha256": "d8ec1da559a823040278b58f0d75bdd848a6ca9d6f339a42fbea3c88577d5cfa"
+    },
+    {
+      "file": "lab/simulation_overview.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/simulation_overview.rst",
+      "sha256": "62a4e5ca3f720d7ac58ad501dbbc19e46336ebf2d876d7dc30dad1091c50ff43"
+    },
+    {
+      "file": "lab/manage.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/manage.rst",
+      "sha256": "c18aa76046c484f8c8e8be1b7df33b5606134dffe649d0b64d072384882fb2ff"
+    },
+    {
+      "file": "lab/installation.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/installation.rst",
+      "sha256": "3b57793d9cebbb9b45de8018a71f8676e53ed2815b106e389ffd1a45795744cc"
+    },
+    {
+      "file": "lab/troubleshooting.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/troubleshooting.rst",
+      "sha256": "5c6dd49871ad5a277611b5490424a2ddafd9558234c483cac5a1b529f6c0ef05"
+    },
+    {
+      "file": "lab/dory.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/dory.rst",
+      "sha256": "46fe377334662d02d00a7151af5304f7a77848e30b44f84f9f494387cc9f9b10"
+    },
+    {
+      "file": "lab/start.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/start.rst",
+      "sha256": "332cf95845418a0fc96cbfacb58ad0f5131761c7e5443510ede7e3c0bf15c97c"
+    },
+    {
+      "file": "lab/validation.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/validation.rst",
+      "sha256": "6c6850b92edefcbe4ef332d1d4a931ec86b252c2ae6f087bea17b9f14aabcbe6"
+    },
+    {
+      "file": "lab/data_format.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/data_format.rst",
+      "sha256": "a31d873632ef705e3ec58749311242d8480c5882714307be49a32a71beca30d5"
+    },
+    {
+      "file": "lab/about.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/lab/about.rst",
+      "sha256": "ba075129995367557cc1766a3f0066d450f4c80998ee632a4a7a783a92d1c38b"
+    },
+    {
+      "file": "server/authentication.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/server/authentication.rst",
+      "sha256": "ac367a3692cccb035d7281f8f6c903b1f9f634d7e1dfeff41a9fc491c84578aa"
+    },
+    {
+      "file": "server/index.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/server/index.rst",
+      "sha256": "76498e74dcaf6a7927e26daeb8381a9a08dbd3a213640da60d1de8d65a2acea1"
+    },
+    {
+      "file": "server/configuration.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/server/configuration.rst",
+      "sha256": "7437d94a31aae2fd5a55457bf0056af0b6dc428983d7b50d92be115c33618deb"
+    },
+    {
+      "file": "server/overview.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/server/overview.rst",
+      "sha256": "cf4cca86cf3ff282472b406f22b4206d98a28dfa0e7a6332263665409a4c1a58"
+    },
+    {
+      "file": "server/installation.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/server/installation.rst",
+      "sha256": "b8e189f130ed6d7ceb02e3d10b205e9362e885090705b2cd26b124fec15358ac"
+    },
+    {
+      "file": "server/migration.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/server/migration.rst",
+      "sha256": "0e77a70830095f0b6d3923fd85198d67e41ade96330b2356cafe7c99fca52c0c"
+    },
+    {
+      "file": "server/auth_tool.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/server/auth_tool.rst",
+      "sha256": "239a295074ebe4ccb2c7376050fc49e8accb65bd5ba186dcf030f1607b239409"
+    },
+    {
+      "file": "technical/index.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/technical/index.rst",
+      "sha256": "c948d2b4f24df0ffa3e9b9f3aeaa3340e4c94467314f323ef5139e543647fa21"
+    },
+    {
+      "file": "technical/cli.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/technical/cli.rst",
+      "sha256": "a338988c1fdf2eed9b03f6962ed5f2b170d1bbbdc59c5a00817f105e547dcaf8"
+    },
+    {
+      "file": "technical/overview_development.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/technical/overview_development.rst",
+      "sha256": "d56e342e4b2bbe79275b43b675a19e90602338a2233c13a82607f3d0f6658856"
+    },
+    {
+      "file": "technical/example_api_asreview_file.ipynb",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/technical/example_api_asreview_file.ipynb",
+      "sha256": "f02f1f8c4bab501e1b91a0bd9baafe106dc8fa7d2cac5c75cf2d253a344902bc"
+    },
+    {
+      "file": "technical/extensions.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/technical/extensions.rst",
+      "sha256": "9e501afd1cf09f1962548f99e2ce7b6492b1cb1db8e087ed163f140ad2412d7f"
+    },
+    {
+      "file": "_templates/autosummary/class.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/_templates/autosummary/class.rst",
+      "sha256": "b557a59ad85ca37e6e32b5989fd5614a4811ceb64078835f65c27c3b115e2ccf"
+    },
+    {
+      "file": "_templates/autosummary/module.rst",
+      "url": "https://github.com/asreview/asreview/blob/v3.0.8/docs/source/_templates/autosummary/module.rst",
+      "sha256": "9ec93445a6f329c07c7177d6e59d7a06000134fa309b20e7f6bb7f0d0fd583f2"
+    }
+  ]
+}

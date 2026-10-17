@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+source '__HERMES_BN_ROOT__/environment.sh'
+cd "$HERMES_BN_ROOT/workspace"
+exec "$HERMES_BN_ROOT/app-build/mac-arm64/Hermes BN.app/Contents/MacOS/Hermes" "$@" < /dev/null >> "$HERMES_BN_ROOT/logs/desktop-runtime.log" 2>&1

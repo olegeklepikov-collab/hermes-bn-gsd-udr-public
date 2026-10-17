@@ -4,6 +4,8 @@
 
 **[Полная инструкция установки на новый Mac](INSTALL-macOS-Apple-Silicon.md)**
 
+Инструкция r3 включает полное подключение поисковых и научных служб к обычному BN, GSD, управляемому UDR и разрешённым сборщикам: защищённый ввод, профили, методы/каналы, точечный допуск и сквозная приёмка. [Инструкция и средства оператора r3](https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-17-search-guide-r3).
+
 Нужны **оба слоя** из [recovery-set.json](recovery-set.json): очищенная основа и обновление r2, всего 18 721 636 694 байта загрузки. Файловое дерево содержит исходники и документацию; полные исполняемые среды находятся в [материалах выпуска](https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-17-gsd-udr-r2). Один git clone не является полной установкой.
 
 ```sh

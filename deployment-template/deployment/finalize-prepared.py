@@ -6,12 +6,12 @@ ROOT=Path(__file__).resolve().parents[1];B=ROOT/'runtime/Hermes BN';U=ROOT/'runt
 def digest(value):return hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
 def filehash(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
-    for name in ['prepared.json','UDR-prepared.json','Memory-prepared.json']:
+    for name in ['prepared.json','UDR-prepared.json','Memory-prepared.json','Parser-prepared.json']:
         if not (ROOT/'deployment'/name).is_file():raise ValueError('Finish all fresh preparation steps first')
     if (B/'data/auth.json').exists() or (U/'profile/auth.json').exists():raise ValueError('Fresh preparation must precede account authorization')
     import yaml
     memory=json.loads((B/'Memory/settings.json').read_text());package=Path(memory['package_root'])
-    if package.name!='1.2.8':raise ValueError('Expected selected Memory1.2.8; old template must not activate a stale package')
+    if package.name!='1.3.0':raise ValueError('Expected selected Memory1.3.0; old template must not activate a stale package')
     manifest=package/'manifest.json';values=json.loads(manifest.read_text())
     for name in values:values[name]=filehash(package/name)
     manifest.write_text(json.dumps(values,indent=2))

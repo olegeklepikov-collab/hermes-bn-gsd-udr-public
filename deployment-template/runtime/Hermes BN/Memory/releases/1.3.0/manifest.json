@@ -1,0 +1,23 @@
+{
+  "bn_memory/__init__.py": "2173d45274c9ddb8828697a98272d549f100e38d6e0f0ba93caa5f34a244ecf2",
+  "bn_memory/broker.py": "b61848da373beaea9f8224a47003ea09ee3f5cd3c6eab91a9002cb4a9db7085b",
+  "bn_memory/cognee_native.py": "1f7caed9cd84eea79d018b8eec4eb24ad3fb21e1786543e6f5958b87d8b6454a",
+  "bn_memory/cognee_worker.py": "d833e580462d30ca67d384dcbbff9b9e2f40e441ff8fb3f228077bf1736f09cb",
+  "bn_memory/document_worker.py": "54ae0ffe42cd79fb21f86b21c055bfb45e3f2ce0cc0b58f891e711552f1b539d",
+  "bn_memory/documents.py": "1fe7088446cae01b7e924ffc4705a21420c77355382309733bead37cb8ffd00d",
+  "bn_memory/knowledge.py": "7b8be46a553ce451c95639a11c4532a36c3b7cab0df9eaed414fe7f6a803adcc",
+  "bn_memory/parser_cli.py": "701e7e42b2304e0a550c592acf6d1d7cbe08dd44ffdb340c0874e04a6462efcb",
+  "bn_memory/parser_host.py": "a65b0249537fa6bc08b937e503a142984456d37e6b25041b58e14883a36e1575",
+  "bn_memory/plugin.py": "d18b43a2ee70f18a0458d2ae1d656f5454994b0fb2f36d44a64f9a796dfdcf93",
+  "bn_memory/read_adapter.py": "21fc5bd4536ff3500482e1a4ffcdb7927c2eafbb94e86dd36e06cd3866172f95",
+  "bn_memory/schemas.py": "8d42d7de1f3f92592ee6e88afdf841ca075db610ab6005e5f061518155b41fb2",
+  "bn_memory/server.py": "1b569ab8d943ea3f1819040c8e2fdb257ee8811269c2b6f68141f8fe186c3e50",
+  "bn_memory/store.py": "a22e5e51209ce1a299a78535b62b1dd61c17154343a70f6fae71182241d5214f",
+  "bn_memory/test_host.py": "ca75dd9698e6ecfed5492bdfe5b7a7a70d86c9ec7b297bf1e21d420046a046ba",
+  "bn_memory/test_knowledge.py": "1e28377b638187b62e24ecccaed8a4ffa9e2914383b00531d71809f957c98448",
+  "bn_memory/test_store.py": "249d3fdc0376a36f727bfe5c4c25b31108ad9aa0158cb3e8acb217836a3f294f",
+  "bn_memory/workers.py": "058ed838b23cbebbceba05384303c6ed448d5c6d60500081a74c62f12c89816d",
+  "parser-runtime.json": "c29e28be1bffe638adccc65e6162d8582d1d5840d9bbae4ee31c824b88a1f65b",
+  "vision-ocr.swift": "fb472df1475fc53bb769db51eaa7e7eebb702a3ad990132b9b4d7c361c9c235c",
+  "xls-runtime/manifest.json": "b209cd2c4c6c5478d4b0aa5a42ed149d46db443ccb8eb1bc7f0c5675774ce870"
+}

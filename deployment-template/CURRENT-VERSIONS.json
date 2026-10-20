@@ -1,5 +1,5 @@
 {
-  "date_utc": "2026-10-17T03:14:38.618700+00:00",
+  "date_utc": "2026-10-20",
   "versions": {
     "Hermes_BN": "0.22.2",
     "Hermes_commit": "d923a5eb487a17c0a68801bba9ef0f56c81040a8",
@@ -7,7 +7,7 @@
     "Python_BN": "3.14.6 managed under AgentRuntime2",
     "GSD_engine": "3.0.3",
     "GSD_adapter": "0.2.13 / Hermes0.22.2 compatibility r3",
-    "Memory": "1.2.8",
+    "Memory": "1.3.0",
     "Cognee": "1.6.4",
     "Beads": "1.3.1",
     "Dolt_BN": "2.4.2",
@@ -24,11 +24,12 @@
     "R_BN": "4.6.1",
     "R_UDR": "4.5.3",
     "model": "gpt-6.1-sol / xhigh / openai-codex OAuth",
-    "UDR_host": "0.2.10",
-    "UDR_MCP_transport": "0.2.5",
+    "UDR_host": "0.3.0",
+    "UDR_MCP_transport": "0.3.0",
     "R_languageserver": "0.3.20; native R.framework, private owned library; CRAN sonoma-arm64 binaries and all sources supplied",
     "Zotero": "10.0.6",
-    "SQLite_BN_Python": "3.53.1"
+    "SQLite_BN_Python": "3.53.1",
+    "document_parser": "bn-parser/1.0.0; required macOS isolation; host implementation"
   },
   "newer_packages_not_promoted_without_pair_qualification": {
     "graphiti-core": "0.31.1",
@@ -40,7 +41,7 @@
   "MCP_handshakes": 31,
   "Beads_Dolt_service": "restored own existing SQL service; direct status ok",
   "scope_notes": "Neutral program/runtime/configuration templates with current pointers; no inherited account, authority, memory, research or scientific acceptance.",
-  "UDR_local_adapter": "0.2.10",
+  "UDR_local_adapter": "0.3.0",
   "UDR_Beads_runtime": "1.3.1",
   "UDR_Beads_signed_supplier_baseline": "1.1.0",
   "core_tests_canonical": 81,
@@ -61,7 +62,7 @@
     "tiktoken": "imported"
   },
   "dependency_constraints": "Official Hermes0.22.2 lock plus retained compatible Tavily/Nimble adapters; frozen base pins unchanged",
-  "UDR_manifest_checked_entries": 14,
+  "UDR_manifest_checked_entries": 15,
   "deployment_label_note": "Neutral source-only CLI may display vunknown; exact source commit is pinned independently.",
   "scientific_universal_acceptance": false,
   "current_end_to_end_acceptance": "The supplied source was exercised on macOSarm64; another owner must run their own acceptance after configuring credentials. Producer research/account/task states are excluded.",
@@ -75,5 +76,14 @@
   "Zotero_bundle_build": "10.0.6",
   "neutral_base_archive": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst",
   "neutral_base_logical_manifest_sha256": "7c74044360072c3729a39218620d47825dec367f3d5026d49518cd4d957f51d2",
-  "neutral_base_OS_metadata_removed": true
+  "neutral_base_OS_metadata_removed": true,
+  "document_parser": {
+    "required_os": "macOS arm64 with sandbox-exec",
+    "default_step_seconds": 45,
+    "default_step_units": 64,
+    "total_document_page_limit": null,
+    "network_acquisition_SDK_max_bytes": 50000000,
+    "extraction_is_model_reading": false,
+    "credentials_inherited": false
+  }
 }

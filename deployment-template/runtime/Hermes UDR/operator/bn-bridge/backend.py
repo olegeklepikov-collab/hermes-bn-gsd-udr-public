@@ -218,51 +218,11 @@ def start(sid, request):
     return saved(sid)
 
 def attachment(sid, path):
-    import mimetypes, shutil
-    p = Path(path)
-    cache = Path('__HERMES_BN_ROOT__/data/cache/documents')
-    if p.is_symlink() or not p.resolve().is_relative_to(cache.resolve()) or not p.is_file():
-        raise PermissionError('native_document_cache_required')
-    if p.stat().st_size > 8 * 1024 * 1024 or p.suffix.lower() not in {'.txt','.csv','.md','.json','.xml'}:
-        # Native ingress never preloads a large document in a lifecycle callback.
-        # The addressed corpus tool makes the complete snapshot in an explicit step.
-        st=p.stat();body={'path':str(p),'filename':p.name,'bytes':st.st_size,'mtime_ns':st.st_mtime_ns,
-            'status':'awaiting_addressed_corpus','corpus_path':'attachment:'+str(p.relative_to(cache)),
-            'full_original_ingested':False,'reading_level':'metadata_only','text':'','source_truth_verified':False}
-        with db() as c:c.execute('INSERT INTO attachments VALUES(?,?,?) ON CONFLICT(sid,path) DO UPDATE SET body=excluded.body',(sid,str(p),json.dumps(body,ensure_ascii=False)))
-        return body
-    with db() as c:
-        old = c.execute('SELECT body FROM attachments WHERE sid=? AND path=?', (sid, str(p))).fetchone()
-    raw_hash = digest(p.read_bytes())
-    if old:
-        body = json.loads(old[0])
-        if body['sha256'] != raw_hash: raise ValueError('cached_original_changed')
-        return body
-    _, artifacts, *_ = adapters()
-    rel = 'BN-IN-' + raw_hash[:32] + p.suffix.lower()
-    q = artifacts.quarantine / rel
-    if q.exists() and digest(q.read_bytes()) != raw_hash: raise ValueError('quarantine_conflict')
-    if not q.exists(): shutil.copyfile(p, q); q.chmod(0o600)
-    original = artifacts.ingest({'schema_version': 1, 'acquisition_id': 'BN-IN-' + raw_hash[:32],
-        'relative_path': rel, 'media_type': mimetypes.guess_type(p.name)[0] or 'application/octet-stream',
-        'max_bytes': 8 * 1024 * 1024})
-    # Immutable raw bytes are registered before this adapter's parsing.
-    if p.suffix.lower() in {'.txt', '.csv', '.md', '.json', '.xml'}:
-        text = p.read_text(encoding='utf-8')
-    elif p.suffix.lower() == '.pdf':
-        import pdfplumber
-        with pdfplumber.open(p) as pdf:
-            if len(pdf.pages) > 100: raise ValueError('pdf_requires_partitioned_processing')
-            text = '\n\n'.join('PAGE '+str(i+1)+'\n'+(page.extract_text() or '') for i,page in enumerate(pdf.pages))
-        if not text.strip(): raise ValueError('scanned_pdf_requires_separate_ocr')
-    else:
-        text = None
-    body = {'sha256': raw_hash, 'artifact': original, 'cached_path': str(p),
-        'original_preserved_before_adapter_parse': True, 'text': text,
-        'parse_status': 'extracted' if text is not None else 'unsupported_preserved',
-        'source_truth_verified': False}
-    with db() as c:
-        c.execute('INSERT INTO attachments VALUES (?,?,?)', (sid,str(p),json.dumps(body,ensure_ascii=False)))
+    p=Path(path);cache=ROOT.parent/'Hermes BN/data/cache/documents'
+    if p.is_symlink() or not p.resolve().is_relative_to(cache.resolve()) or not p.is_file():raise PermissionError('native_document_cache_required')
+    st=p.stat();body={'file_stat':[st.st_dev,st.st_ino,st.st_size,st.st_mtime_ns,st.st_ctime_ns],'sha256':None,'content_hash_pending':True,'path':str(p),'filename':p.name,'bytes':st.st_size,'mtime_ns':st.st_mtime_ns,'status':'awaiting_addressed_corpus',
+      'corpus_path':'attachment:'+str(p.relative_to(cache)),'full_original_ingested':False,'reading_level':'metadata_only','text':'','source_truth_verified':False}
+    with db() as c:c.execute('INSERT INTO attachments VALUES(?,?,?) ON CONFLICT(sid,path) DO UPDATE SET body=excluded.body',(sid,str(p),json.dumps(body,ensure_ascii=False)))
     return body
 
 def active_lease_heartbeat(body,session):
@@ -426,56 +386,17 @@ def research(sid, request):
         args['action'] = args.pop('method_action', 'catalogue')
         args.pop('run_id', None)
         return method(args)
-    if action == 'fetch':
-        from hermes_research_report.research_fetch import fetch
-        import shutil
-        args['max_bytes'] = min(args.get('max_bytes', 8*1024*1024),8*1024*1024)
-        result = fetch(args)
-        raw_path = Path(result['original_path'])
-        rel = 'BN-WEB-' + result['original_sha256'][:32] + '.bin'
-        target = artifacts.quarantine / rel
-        if not target.exists(): shutil.copyfile(raw_path,target); target.chmod(0o600)
-        original = artifacts.ingest({'schema_version':1,'acquisition_id':'BN-WEB-'+result['original_sha256'][:32],
-            'relative_path':rel,'media_type':'application/octet-stream','max_bytes':8*1024*1024})
-        metadata = json.loads(Path(result['metadata_file']).read_text())
-        raw = raw_path.read_bytes();ctype = metadata['content_type'].lower()
-        if 'pdf' in ctype or raw.startswith(b'%PDF'):
-            import pdfplumber
-            with pdfplumber.open(raw_path) as pdf:
-                if len(pdf.pages)>100:raise ValueError('pdf_requires_partitioned_processing')
-                text='\n\n'.join('PAGE '+str(i+1)+'\n'+(p.extract_text() or '') for i,p in enumerate(pdf.pages))
-            parser='pdfplumber-0.11.9'
-        elif 'xml' in ctype or raw.lstrip().startswith(b'<?xml'):
-            import xml.etree.ElementTree as ET
-            text='\n'.join(' '.join(''.join(p.itertext()).split()) for p in ET.fromstring(raw).iter()
-                if p.tag in {'article-title','abstract','p','table-wrap','caption','label'})
-            parser='Python-ElementTree-selected-JATS-elements'
-        elif 'html' in ctype or b'<html' in raw[:500].lower():
-            from html.parser import HTMLParser
-            class Reader(HTMLParser):
-                def __init__(self):super().__init__();self.parts=[];self.ignored=0
-                def handle_starttag(self,t,a):
-                    if t in {'script','style'}:self.ignored+=1
-                    if t in {'p','div','li','tr','br','h1','h2','h3'}:self.parts.append('\n')
-                def handle_endtag(self,t):
-                    if t in {'script','style'}:self.ignored=max(0,self.ignored-1)
-                def handle_data(self,t):
-                    if not self.ignored:self.parts.append(t)
-            reader=Reader();reader.feed(raw.decode('utf-8'));text=''.join(reader.parts);parser='Python-HTMLParser-text-extraction'
-        else:
-            text=raw.decode('utf-8');parser='UTF8-strict'
-        if not text.strip():raise ValueError('empty_extraction_requires_another_parser')
-        path=raw_path.parent/'host-extracted.txt';path.write_text(text);path.chmod(0o600)
-        transform={'contract':'ParseReceiptV1','artifact_id':original['artifact_id'],
-            'input_sha256':result['original_sha256'],'output_sha256':digest(text),
-            'parser':parser,'complete_text_preserved':True,'visuals_verified':False,'claims_accepted':False}
-        oid='BNP-'+sha256_json(transform)[:24];put(s.state,transform,body['project'],oid,body['host_run'])
-        registered=source({'run_id':body['run_id'],'url':metadata['final_url'],'title':args.get('title',metadata['final_url']),
-            'text_path':str(path),'extent':'full_text','origin_ref':original['artifact_id'],'parse_receipt_ref':oid})
-        capture(sid,{'tool':'research_fetch','family':'web','source_ref':metadata['final_url'],
-            'source_version':result['original_sha256'],'text':text,'reading_level':'extracted_text'})
-        return {**registered,'original':original,'parse_receipt_ref':oid,'original_preserved_before_host_parse':True,
-            'visuals_verified':False,'meaning_verified':False}
+    if action in {'fetch','parse','intake'}:
+        from parser_intake import web_step,document_step
+        config=json.loads((ROOT.parent/'Hermes BN/Memory/settings.json').read_text())
+        sys.path.insert(0,config['package_root'])
+        if action=='intake':return document_step(sid,body,args,document_store(),put,s.state,source,root_for)
+        if action=='fetch':
+            from hermes_research_report.research_fetch import fetch
+            from hermes_research_report.research_integration import settings as intake_settings
+            if intake_settings()['integration_mode']!='foundation':raise PermissionError('safe_host_intake_requires_foundation_mode')
+            acquired=fetch(args);args['retrieval_id']=Path(acquired['original_path']).parent.name
+        return web_step(sid,body,args,artifacts,put,s.state,source,root_for,config)
     if action == 'compare':
         from hermes_research_report.comparison import compare_periods
         return compare_periods(args['observations'],args['before'],args['after'])
@@ -610,8 +531,15 @@ def rpc(data):
             old = c.execute('SELECT body FROM attachments WHERE sid=? AND path=?', (sid,data['path'])).fetchone()
         if not old: raise PermissionError('original_not_registered')
         result = json.loads(old[0])
-        if digest(Path(data['path']).read_bytes()) != result['sha256']: raise PermissionError('original_changed')
-        return {'status': 'verified', 'sha256': result['sha256']}
+        p=Path(data['path']);cache=ROOT.parent/'Hermes BN/data/cache/documents'
+        if p.is_symlink() or not p.resolve().is_relative_to(cache.resolve()) or not p.is_file():raise PermissionError('native_document_cache_required')
+        st=p.stat();current=[st.st_dev,st.st_ino,st.st_size,st.st_mtime_ns,st.st_ctime_ns]
+        if result.get('content_hash_pending'):
+            if current!=result.get('file_stat'):raise PermissionError('original_changed_before_immutable_intake')
+            return {'status':'verified_acquisition_metadata_only','sha256':None,'content_hash_checked':False,'next':'document_catalogue creates the immutable hashed original; only isolated document_read material may reach a model'}
+        from parser_intake import digest as file_digest
+        if file_digest(p)!=result['sha256']:raise PermissionError('original_changed')
+        return {'status':'verified','sha256':result['sha256'],'content_hash_checked':True}
     if op == 'trace':
         body = saved(sid)
         if body and body.get('native_child'):body=saved(body['parent_sid'])

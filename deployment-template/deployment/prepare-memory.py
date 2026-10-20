@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Initialize neutral memory locally; no services, accounts or controllers activated."""
 from pathlib import Path
-import os,json,sys,secrets,uuid,hashlib
+import os,json,sys,secrets,uuid,hashlib,subprocess
 A=Path(__file__).resolve().parents[1];B=A/'runtime/Hermes BN';U=A/'runtime/Hermes UDR';M=B/'Memory';C=B/'Cognee'
 if (M/'settings.json').exists() or (M/'state/memory.sqlite').exists():raise SystemExit('Existing memory: refuse replacement. Extract a fresh copy.')
 if not (A/'deployment/prepared.json').exists() or not (A/'deployment/UDR-prepared.json').exists():raise SystemExit('Prepare BN and UDR first, including relocation of their interpreters.')
@@ -21,6 +21,7 @@ sys.path.insert(0,cfg['package_root']);from bn_memory.store import Store
 Store(cfg['state_root'],cfg).initialize()
 (C/'state/instance.json').write_text(json.dumps({'instance_id':str(uuid.uuid4())}));(C/'state/instance.json').chmod(0o600)
 (M/'settings.json').write_text(json.dumps(cfg,ensure_ascii=False,indent=2));(M/'settings.json').chmod(0o600)
+subprocess.run([sys.executable,str(A/'deployment/configure-parser.py')],check=True)
 # Refresh substituted package integrity, preserving provider wheels and their signatures.
 manifest=Path(cfg['package_root'])/'manifest.json'
 if manifest.exists():

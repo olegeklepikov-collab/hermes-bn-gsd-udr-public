@@ -1,12 +1,12 @@
 # Hermes BN: полная установка на новый Mac с Apple Silicon
 
-Дата комплекта: 17 октября 2026 года. Исполняемая подготовка проверена на macOS 26.5.1 (25F80), arm64; совместимость с более ранней macOS требует отдельной проверки. Версия инструкции: `public-2026-10-17-search-guide-r3`. Установочные архивы r2 сохранены без изменения.
+Дата комплекта: 20 октября 2026 года. Исполняемая подготовка проверена на macOS 26.5.1 (25F80), arm64; совместимость с более ранней macOS требует отдельной проверки. Версия инструкции: `public-2026-10-20-gsd-udr-parser-r4`. Новое обновление включает прежний r2; основу clean-r2 использовать без изменения.
 
 Репозиторий: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public
 
-Установочные архивы: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-17-gsd-udr-r2
+Установочные архивы: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-20-gsd-udr-parser-r4
 
-Актуальная инструкция и средства настройки: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-17-search-guide-r3
+Актуальная инструкция и средства настройки: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-20-gsd-udr-parser-r4
 
 ## 1. Что именно устанавливается
 
@@ -19,9 +19,9 @@
 | Слой | Итоговый файл | Размер | SHA-256 |
 |---|---|---:|---|
 | Очищенная основа | `Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst` | 17 801 925 827 байт | `cbf18ffe88011c66fea0498068c2119ad3bacad376a35bd6fbe2f9e9b7f9fce1` |
-| Обновление | `Hermes-BN-GSD-and-UDR-new-user-update-20261016-r2.tar.zst` | 919 710 867 байт | `e032943a25685d8c3f43eb391ec909683cd1444ba12062f7c43750b035bd89a9` |
+| Обновление parser-r4 | `Hermes-BN-GSD-and-UDR-new-user-update-20261020-r4.tar.zst` | Точный размер в recovery-set.json | Точная SHA-256 в recovery-set.json |
 
-Основа опубликована десятью частями; обновление — одним файлом. Всего загружается 18 721 636 694 байта. Программа `restore.py` проверяет каждую часть, порядок, итоговый размер и SHA-256. Старую основу без `clean-r2`, полный личный архив и прежние обновления сюда не подмешивать.
+Основа опубликована десятью частями; обновление — одним файлом. Общий объём и точная сумма нового обновления определяются recovery-set.json; сумму старого r2 для нового архива не использовать. Программа `restore.py` проверяет каждую часть, порядок, итоговый размер и SHA-256. Старую основу без `clean-r2`, полный личный архив и прежние обновления сюда не подмешивать.
 
 ### Закреплённый состав
 
@@ -30,8 +30,8 @@
 | Hermes BN | 0.22.2; исходная основа `d923a5eb487a17c0a68801bba9ef0f56c81040a8` и отдельно учтённые местные адаптеры |
 | Python BN / Node | 3.14.6 / 24.18.0 |
 | GSD | движок 3.0.3; адаптер 0.2.13, совместимость с Hermes 0.22.2, сборка r3 |
-| UDR | согласованная пара Research 0.44.0b2 / Foundation 0.14.0b1; адаптер BN 0.2.10 |
-| Общая память / Cognee | 1.2.8 / 1.6.4 |
+| UDR | согласованная пара Research 0.44.0b2 / Foundation 0.14.0b1; адаптер BN 0.3.0 |
+| Общая память / Cognee | 1.3.0 / 1.6.4 |
 | Beads | фактические исполнители BN и UDR 1.3.1; исходная версия 1.1.0 внутри подписанного SDK сохранена отдельно |
 | Dolt BN | 2.4.2; отдельные закрепления UDR сохраняются |
 | Graphiti / Neo4j | Foundation 0.30.2, MCP 0.30.1 / 5.26.31 |
@@ -82,7 +82,7 @@ git --version
 umask 077
 mkdir -p "$HOME/HermesInstall"
 cd "$HOME/HermesInstall"
-git clone --depth 1 --branch public-2026-10-17-search-guide-r3 \
+git clone --depth 1 --branch public-2026-10-20-gsd-udr-parser-r4 \
   https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public.git kit
 BN_KIT="$HOME/HermesInstall/kit"
 cd "$BN_KIT"
@@ -103,7 +103,7 @@ python3 restore.py --download \
 Не скачивайте архивы заново и не распаковывайте их поверх данных. Получите отдельную новую папку только с инструкцией и средствами оператора:
 
 ```bash
-git clone --depth 1 --branch public-2026-10-17-search-guide-r3 \
+git clone --depth 1 --branch public-2026-10-20-gsd-udr-parser-r4 \
   https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public.git \
   "$HOME/HermesInstall/kit-r3"
 BN_KIT="$HOME/HermesInstall/kit-r3"
@@ -127,7 +127,7 @@ bash "$BN_KIT/restore-tools/restore.sh" \
 python3 "$BN_DEST/verify.py" "$BN_DEST"
 
 bash "$BN_KIT/restore-tools/restore.sh" \
-  "$HOME/HermesInstall/archives/Hermes-BN-GSD-and-UDR-new-user-update-20261016-r2.tar.zst" \
+  "$HOME/HermesInstall/archives/Hermes-BN-GSD-and-UDR-new-user-update-20261020-r4.tar.zst" \
   "$HOME/HermesInstall/update-r2"
 
 python3 "$BN_KIT/apply-update.py" \
@@ -946,3 +946,23 @@ launchctl bootout "gui/$(id -u)" \
 Исполняемая подготовка очищенного комплекта проверялась на отдельной копии macOS arm64: восстановление слоёв, новые пути и ключи, пустые состояния, закрепления, импорты и собственный R. Другой владелец проходит свою приёмку служб, моделей, прав и внешних продуктов. Наличие дистрибутивов для Linux/Windows внутри основы не означает подтверждённую работу обновлённого комплекта на этих платформах.
 
 Эта инструкция описывает полный порядок до рабочего подключения и восстановления. Она не объявляет уже выполненными действия на вашем новом Mac, не создаёт аккаунты и не наследует согласия прежнего владельца. Результат фиксируется последовательно: **получено → проверено → подготовлено → настроено → подключено → испытано → восстановление подтверждено**.
+
+
+## 14. Безопасный разбор PDF и больших документарных баз — parser-r4
+
+Новое обновление r4 накладывается непосредственно на согласованную основу 14 октября. Отдельное обновление r2 не нужно: оно уже включено. Подробный маршрут, форматы, контрольные точки и границы: [SAFE-DOCUMENT-PARSING.md](https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/blob/main/deployment-template/SAFE-DOCUMENT-PARSING.md).
+
+После prepare-memory.py должен появиться deployment/Parser-prepared.json. Он создаётся configure-parser.py для новой среды. finalize-prepared.py требует этот файл и Memory 1.3.0. До настоящих документов выполните:
+
+```sh
+BN_DIR="$PWD/runtime/Hermes BN"
+"$BN_DIR/hermes-agent/venv/bin/python" deployment/parser-selftest.py --work "$PWD/parser-selftest-new"
+```
+
+Проверка не требует внешних ключей: PDF на 1 001 страницу, поздний маркер, продолжение, повтор без нового процесса и отказ повреждённого PDF. Затем проверьте реальное чтение и входящий документ Telegram со своим аккаунтом.
+
+Рабочий путь: document_catalogue → повторять document_extract до extracted → все страницы document_describe → все фрагменты document_read → document_status по каждому обязательному этапу. Обычный read_file документа направляет в этот путь; незащищённое и стороннее преобразование как запасной маршрут запрещено.
+
+Для UDR после document_extract используйте action=intake с corpus_id и doc_id, повторяя next_action=intake до registration_complete=true. Сетевой fetch сохраняет original.bin и использует тот же изолированный обработчик; продолжение — action=parse с retrieval_id. Сетевой загрузчик SDK имеет отдельный предел 50 МБ; более крупные предоставленные файлы принимайте местным корпусом.
+
+Нет общего предела числа страниц или строк: работа разбивается на ограниченные шаги. Сохраняются ограничения памяти, времени шага и свободного диска. Неподдержанные форматы, шифрование, повреждение и неразобранные вложения явно остаются пробелами. SQL, макросы, формулы, ссылки и команды из оригинала не выполняются. Извлечение, регистрация, чтение конкретной ролью и предметное принятие проверяются отдельно.

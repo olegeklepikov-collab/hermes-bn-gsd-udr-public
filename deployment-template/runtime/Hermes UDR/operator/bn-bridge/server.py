@@ -1,5 +1,6 @@
 """Three MCP tools; Hermes BN remains the only research model executor."""
 import asyncio
+import threading
 import json
 from mcp.server import Server
 from mcp.server.stdio import stdio_server
@@ -9,8 +10,8 @@ import backend
 SCHEMAS = {
     'udr_research': ('Управляемое исследование UDR. Сначала start(question,mode,request_id), затем plan, source(url,title,text,extent), note(text,source_ids), fetch(url), method, finish(report,status) or finish(report_path,report_sha256,status). read(path) читает сохранённое; stop сохраняет прерванную работу. Полный профиль возвращается при старте. Модель не принимает выводы и не разрешает передачу.',
         {'request': {'type': 'object', 'properties': {
-            'action': {'enum': ['start','status','plan','source','document','note','fetch','method','compare','build_report','workspace','finish','read','stop','list','resume','phase']},
-            'run_id':{'type':'string'}, 'corpus_id':{'type':'string'},'phase':{'enum':['plan','collect','analyse','verify','report']},
+            'action': {'enum': ['start','status','plan','source','document','note','fetch','parse','intake','method','compare','build_report','workspace','finish','read','stop','list','resume','phase']},
+            'run_id':{'type':'string'}, 'retrieval_id':{'type':'string','pattern':'^[a-f0-9]{32}$'}, 'doc_id':{'type':'string'}, 'corpus_id':{'type':'string'},'phase':{'enum':['plan','collect','analyse','verify','report']},
             'question':{'type':'string'}, 'mode':{'enum':['search','research','deep','ultra','academic']},
             'request_id':{'type':'string'}, 'plan':{'type':'object','description':'Substantive roadmap object, never a string; use applicable planning_fields returned by start.'},
             'url':{'type':'string'}, 'title':{'type':'string'}, 'text':{'type':'string'},
@@ -35,15 +36,28 @@ async def list_tools(context, params):
         'required': list(props), 'additionalProperties': False}) for n, (description, props) in SCHEMAS.items()])
 
 async def call_tool(context, params):
+    cancel=None;cancel_var=None;cancel_token=None
     try:
+        request=params.arguments.get('request',{})
+        if params.name=='udr_research' and request.get('action') in {'fetch','parse','intake'}:
+            settings=json.loads((backend.ROOT.parent/'Hermes BN/Memory/settings.json').read_text())
+            __import__('sys').path.insert(0,settings['package_root'])
+            from bn_memory.parser_host import CANCEL_EVENT
+            cancel=threading.Event();cancel_var=CANCEL_EVENT;cancel_token=cancel_var.set(cancel)
         result = await asyncio.to_thread(backend.dispatch, params.name, params.arguments)
         return CallToolResult(content=[TextContent(type='text', text=json.dumps(result, ensure_ascii=False))])
+    except asyncio.CancelledError:
+        if cancel is not None:cancel.set()
+        raise
     except Exception as exc:
         # Expected refusals are structured; no confidential inputs in a traceback.
         return CallToolResult(is_error=True, content=[TextContent(type='text', text=json.dumps(
             {'status':'blocked','error':type(exc).__name__,'code':getattr(exc,'code',str(exc))},ensure_ascii=False))])
 
-server = Server('hermes-bn-udr', version='0.2.5', on_list_tools=list_tools, on_call_tool=call_tool)
+    finally:
+        if cancel_token is not None:cancel_var.reset(cancel_token)
+
+server = Server('hermes-bn-udr', version='0.3.0', on_list_tools=list_tools, on_call_tool=call_tool)
 
 async def main():
     async with stdio_server() as (read, write):

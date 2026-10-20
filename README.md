@@ -11,3 +11,5 @@ python3 restore.py --download --parts-dir ../hermes-parts --output-dir ../hermes
 ```
 
 Загрузка публичного комплекта не требует GitHub-аккаунта. Подписанные Research/Foundation не изменены. Memory1.3.0 / UDRhost0.3.0 / bn-parser1.0.0; определения и ограничения версий раскрыты в документации. Приёмка нового пользователя обязательна. Публикацию подтверждает REMOTE-VERIFICATION.json после проверки серверных сумм.
+
+Окончательный результат восстановления и публикации: [итоговая приёмка](PARSER-FINAL-ACCEPTANCE.md).

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "pages": 1001,
+  "calls": 8,
+  "late_marker_verified": true,
+  "filesystem_restore_preserved_first_128_pages": true,
+  "OS_isolation": true,
+  "complete_reuse_without_executor": true,
+  "corrupt_PDF_blocked": true,
+  "model_reading_tested": false,
+  "Cyrillic_source_and_output_paths": true,
+  "remote_calls": 0,
+  "native_OCR_from_relocated_runtime": true
+}

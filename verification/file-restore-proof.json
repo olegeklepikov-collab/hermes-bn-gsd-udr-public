@@ -1,0 +1,12 @@
+{
+  "regression_reproduced_before_fix": true,
+  "real_original_and_output_filesystem_restore": true,
+  "same_bytes_rehashed_before_continuation": true,
+  "prior_units_preserved": 2,
+  "final_units": 14,
+  "all_original_bytes_read_back_exact": true,
+  "changed_bytes_rejected": true,
+  "original_intake_stat_retained": true,
+  "host_source_hash_bound_to_receipt": true,
+  "unsettled_checkpoint_restore_rejected": true
+}

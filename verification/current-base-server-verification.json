@@ -1,0 +1,72 @@
+[
+  {
+    "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+    "tag": "public-2026-10-17-gsd-udr-r2",
+    "base_archive_sha256": "cbf18ffe88011c66fea0498068c2119ad3bacad376a35bd6fbe2f9e9b7f9fce1",
+    "all_parts_current_server_digests_verified": true,
+    "parts": [
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part001",
+        "bytes": 1900000000,
+        "sha256": "25fe1723f1b3851137c1ae4c4c56dbf5dae631360c27c7a61f94de37cc8bc60c",
+        "server_asset_id": 650322589
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part002",
+        "bytes": 1900000000,
+        "sha256": "a35ba70e0080c4cd7d56df99c8ecec197b8c825107b3539f46a384ca5ac116d3",
+        "server_asset_id": 650322421
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part003",
+        "bytes": 1900000000,
+        "sha256": "e1567ae0c94ba66e7a81b9d6593749c310d3de9cbf506ff77e4e0b9168f6d027",
+        "server_asset_id": 650321586
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part004",
+        "bytes": 1900000000,
+        "sha256": "d403459e0e68c73d75fac64c5f38ab3c6a625da6839f2dfff055c32284bcf241",
+        "server_asset_id": 650323816
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part005",
+        "bytes": 1900000000,
+        "sha256": "243a107caab17d9e6c95df71c81482e2edfd7ebdf3dfced5080ad4ef65f4f9c5",
+        "server_asset_id": 650326801
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part006",
+        "bytes": 1900000000,
+        "sha256": "9a8c198a833a0cab4805572d6afce8ea7ac654189c0d64182b6efd57f5b5295b",
+        "server_asset_id": 650325398
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part007",
+        "bytes": 1900000000,
+        "sha256": "31e9db7c37ea76c7ea4e812dd88e5686c342302d66cb0c531b0f624b07cf2c42",
+        "server_asset_id": 650327765
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part008",
+        "bytes": 1900000000,
+        "sha256": "5fe4bb7f4e455b1ac22ae981148eff977f4acf2c49665ccdd1a1ed2398ec83b9",
+        "server_asset_id": 650328306
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part009",
+        "bytes": 1900000000,
+        "sha256": "1d5a28e7b0258572370541ba2497ab4af0ae4f8be3967d916e850fa16a5db54f",
+        "server_asset_id": 650329770
+      },
+      {
+        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part010",
+        "bytes": 701925827,
+        "sha256": "2cc5dd149e3908e63b938d8128b3596873d3c9fbcea88ad142592cab5d4df4af",
+        "server_asset_id": 650330307
+      }
+    ],
+    "published": true,
+    "whole_base_bytes_not_re_downloaded": true
+  }
+]

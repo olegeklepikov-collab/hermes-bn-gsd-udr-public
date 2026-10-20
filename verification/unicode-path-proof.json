@@ -1,0 +1,7 @@
+{
+  "Cyrillic_source_and_output_paths": true,
+  "sandbox_enforced": true,
+  "exact_readback": true,
+  "before_fix_failed_closed": true,
+  "fix_one_profile_encoding_argument": true
+}

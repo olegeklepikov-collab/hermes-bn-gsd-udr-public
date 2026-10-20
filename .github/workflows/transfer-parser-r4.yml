@@ -1,0 +1,44 @@
+name: Transfer verified neutral parser release
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TARGET_TAG: public-2026-10-20-gsd-udr-parser-r4
+      TRANSFER_SOURCES: ${{ secrets.BN_TRANSFER_SOURCES }}
+    steps:
+      - name: Copy only verified neutral asset
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os,json,hashlib,urllib.request,subprocess,pathlib,sys,re
+          try:
+              entries=json.loads(os.environ['TRANSFER_SOURCES'])
+              assert len(entries)==1
+              for entry in entries:
+                  name=entry['name'];assert pathlib.Path(name).name==name and '..' not in name
+                  assert entry['url'].startswith('https://release-assets.githubusercontent.com/')
+                  assert re.fullmatch('[a-f0-9]{64}',entry['sha256'])
+                  tag=os.environ['TARGET_TAG'];repo=os.environ['GH_REPO']
+                  rid=json.loads(subprocess.check_output(['gh','release','view',tag,'--repo',repo,'--json','databaseId']))['databaseId']
+                  current=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/{rid}']))
+                  existing=next((a for a in current['assets'] if a['name']==name),None)
+                  if existing:
+                      assert existing['size']==entry['bytes'] and existing['digest']=='sha256:'+entry['sha256']
+                      print('Already verified:',name);continue
+                  h=hashlib.sha256();count=0
+                  with urllib.request.urlopen(entry['url'],timeout=90) as src,open(name,'xb') as dst:
+                      while block:=src.read(4*1024*1024):dst.write(block);h.update(block);count+=len(block)
+                  assert count==entry['bytes'] and h.hexdigest()==entry['sha256']
+                  subprocess.run(['gh','release','upload',tag,name,'--repo',repo],check=True,capture_output=True)
+                  pathlib.Path(name).unlink()
+                  print('Transferred verified neutral asset:',name)
+          except Exception:
+              print('Transfer failed; source URL and credentials are withheld.',file=sys.stderr)
+              sys.exit(1)
+          PY

@@ -1079,10 +1079,14 @@ class GatewayInboundMixin(GatewayPluginInjectionMixin):
         # Plugin-registered slash commands. Underscores normalize to hyphens so Telegram's
         # underscored autocomplete form matches plugin commands registered with hyphens.
         if command:
-            try:
-                from hermes_cli.plugins import get_plugin_command_handler
-                plugin_handler = get_plugin_command_handler(command.replace("_", "-"))
-                if plugin_handler:
+            # Lookup and execution must share the routed runtime's scope. The outer
+            # adapter scope belongs to the receiving bot and may name another profile.
+            async with self._async_profile_scope_for_source(source):
+                try:
+                    from hermes_cli.plugins import get_plugin_command_handler
+                    plugin_handler = get_plugin_command_handler(command.replace("_", "-"))
+                    if plugin_handler is None:
+                        return False, None, command
                     # The agent-turn path binds HERMES_SESSION_* via _set_session_env; this dispatch
                     # sits before it, so a handler reading get_session_env() would see an empty or a
                     # foreign (cron agent's os.environ) session (#108698). No session_entry exists yet,
@@ -1100,8 +1104,13 @@ class GatewayInboundMixin(GatewayPluginInjectionMixin):
                             if asyncio.iscoroutine(result):
                                 result = await result
                     return True, str(result) if result else None, command
-            except Exception as e:
-                logger.warning("Plugin command dispatch failed: %s", e)
+                except Exception as e:
+                    # A failed lookup cannot establish absence; a found handler's
+                    # refusal must not fall through to the unknown-command path.
+                    from agent.redact import redact_for_egress
+                    error = redact_for_egress(f"Command /{command} failed: {e}")
+                    logger.warning("%s", error)
+                    return True, error, command
         return False, None, command
 
     def _hm_bundle_slash_rewrite(

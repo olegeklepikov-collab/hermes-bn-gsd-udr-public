@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "installation": true,
+  "repeat_without_changes": true,
+  "unqualified_source_refused": true,
+  "rollback_bytes_identical": true,
+  "profile_admissions_updated": true,
+  "limits_preserved": true
+}

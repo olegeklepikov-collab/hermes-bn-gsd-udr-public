@@ -1,6 +1,6 @@
 {
   "format": "hermes-bn-recovery-set/2",
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "mode": "new-user",
   "base_and_update_both_required": true,
   "archives": [
@@ -89,23 +89,26 @@
     {
       "role": "update",
       "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
-      "tag": "public-2026-10-20-gsd-udr-parser-r4",
+      "tag": "public-2026-10-21-gsd-udr-gateway-r5",
       "archive": {
-        "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261020-r4.tar.zst",
-        "bytes": 926607616,
-        "sha256": "e692cca3205490e1b4cce31b56c84001e23fb63acaa055773b1a2a6691fa29f2"
+        "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261021-r5.tar.zst",
+        "bytes": 927490736,
+        "sha256": "fef49c2cfd5b194aa6d54377179941f890b5f445700861af034f0c174761681b"
       },
       "parts": [
         {
           "index": 1,
           "offset": 0,
-          "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261020-r4.tar.zst",
-          "bytes": 926607616,
-          "sha256": "e692cca3205490e1b4cce31b56c84001e23fb63acaa055773b1a2a6691fa29f2"
+          "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261021-r5.tar.zst",
+          "bytes": 927490736,
+          "sha256": "fef49c2cfd5b194aa6d54377179941f890b5f445700861af034f0c174761681b"
         }
       ]
     }
   ],
   "neutral_base_header_cleaned": true,
-  "consolidates_previous_update_r2": true
+  "consolidates_previous_update_r2": true,
+  "consolidates_previous_parser_r4": true,
+  "source_state_snapshot_date": "2026-10-20",
+  "program_amendment_date": "2026-10-21"
 }

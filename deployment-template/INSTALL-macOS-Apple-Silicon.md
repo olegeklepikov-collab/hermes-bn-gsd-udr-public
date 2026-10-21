@@ -1,12 +1,12 @@
 # Hermes BN: полная установка на новый Mac с Apple Silicon
 
-Дата комплекта: 20 октября 2026 года. Исполняемая подготовка проверена на macOS 26.5.1 (25F80), arm64; совместимость с более ранней macOS требует отдельной проверки. Версия инструкции: `public-2026-10-20-gsd-udr-parser-r4`. Новое обновление включает прежний r2; основу clean-r2 использовать без изменения.
+Дата комплекта: 21 октября 2026 года. Исполняемая подготовка проверена на macOS 26.5.1 (25F80), arm64; совместимость с более ранней macOS требует отдельной проверки. Версия инструкции: `public-2026-10-21-gsd-udr-gateway-r5`. Новое обновление включает прежние r2 и parser-r4; основу clean-r2 использовать без изменения.
 
 Репозиторий: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public
 
-Установочные архивы: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-20-gsd-udr-parser-r4
+Установочные архивы: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-21-gsd-udr-gateway-r5
 
-Актуальная инструкция и средства настройки: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-20-gsd-udr-parser-r4
+Актуальная инструкция и средства настройки: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-21-gsd-udr-gateway-r5
 
 ## 1. Что именно устанавливается
 
@@ -19,7 +19,7 @@
 | Слой | Итоговый файл | Размер | SHA-256 |
 |---|---|---:|---|
 | Очищенная основа | `Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst` | 17 801 925 827 байт | `cbf18ffe88011c66fea0498068c2119ad3bacad376a35bd6fbe2f9e9b7f9fce1` |
-| Обновление parser-r4 | `Hermes-BN-GSD-and-UDR-new-user-update-20261020-r4.tar.zst` | Точный размер в recovery-set.json | Точная SHA-256 в recovery-set.json |
+| Обновление gateway-r5 | `Hermes-BN-GSD-and-UDR-new-user-update-20261021-r5.tar.zst` | Точный размер в recovery-set.json | Точная SHA-256 в recovery-set.json |
 
 Основа опубликована десятью частями; обновление — одним файлом. Общий объём и точная сумма нового обновления определяются recovery-set.json; сумму старого r2 для нового архива не использовать. Программа `restore.py` проверяет каждую часть, порядок, итоговый размер и SHA-256. Старую основу без `clean-r2`, полный личный архив и прежние обновления сюда не подмешивать.
 
@@ -82,7 +82,7 @@ git --version
 umask 077
 mkdir -p "$HOME/HermesInstall"
 cd "$HOME/HermesInstall"
-git clone --depth 1 --branch public-2026-10-20-gsd-udr-parser-r4 \
+git clone --depth 1 --branch public-2026-10-21-gsd-udr-gateway-r5 \
   https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public.git kit
 BN_KIT="$HOME/HermesInstall/kit"
 cd "$BN_KIT"
@@ -103,13 +103,13 @@ python3 restore.py --download \
 Не скачивайте архивы заново и не распаковывайте их поверх данных. Получите отдельную новую папку только с инструкцией и средствами оператора:
 
 ```bash
-git clone --depth 1 --branch public-2026-10-20-gsd-udr-parser-r4 \
+git clone --depth 1 --branch public-2026-10-21-gsd-udr-gateway-r5 \
   https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public.git \
-  "$HOME/HermesInstall/kit-r3"
-BN_KIT="$HOME/HermesInstall/kit-r3"
+  "$HOME/HermesInstall/kit-r5"
+BN_KIT="$HOME/HermesInstall/kit-r5"
 ```
 
-Каталог `kit-r3` должен быть новым. Задайте `BN_DEST` и `BN_ROOT` фактическими путями своей уже установленной копии, затем используйте маршрут работающего экземпляра в разделе 9. Подготовительные программы создания новых состояний повторно не выполняются.
+Каталог `kit-r5` должен быть новым. Задайте `BN_DEST` и `BN_ROOT` фактическими путями своей уже установленной копии, затем используйте маршрут работающего экземпляра в разделе 9. Подготовительные программы создания новых состояний повторно не выполняются.
 
 ## 4. Распаковка и применение обновления
 
@@ -118,7 +118,7 @@ BN_KIT="$HOME/HermesInstall/kit-r3"
 ```bash
 BN_DEST="$HOME/hbn"
 test ! -e "$BN_DEST"
-test ! -e "$HOME/HermesInstall/update-r2"
+test ! -e "$HOME/HermesInstall/update-r5"
 
 bash "$BN_KIT/restore-tools/restore.sh" \
   "$HOME/HermesInstall/archives/Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst" \
@@ -127,12 +127,12 @@ bash "$BN_KIT/restore-tools/restore.sh" \
 python3 "$BN_DEST/verify.py" "$BN_DEST"
 
 bash "$BN_KIT/restore-tools/restore.sh" \
-  "$HOME/HermesInstall/archives/Hermes-BN-GSD-and-UDR-new-user-update-20261020-r4.tar.zst" \
-  "$HOME/HermesInstall/update-r2"
+  "$HOME/HermesInstall/archives/Hermes-BN-GSD-and-UDR-new-user-update-20261021-r5.tar.zst" \
+  "$HOME/HermesInstall/update-r5"
 
 python3 "$BN_KIT/apply-update.py" \
   --base-root "$BN_DEST" \
-  --update-root "$HOME/HermesInstall/update-r2"
+  --update-root "$HOME/HermesInstall/update-r5"
 ```
 
 Продолжайте только после успешного завершения каждой команды. При проверке основы ожидается `mismatches: 0`. Применение обновления само проверяет полезные файлы, полный конечный манифест, права, ссылки и лишние пути. Сохраняйте `RESTORE-APPLIED.json`.
@@ -144,7 +144,7 @@ python3 "$BN_KIT/apply-update.py" \
 ```bash
 python3 "$BN_KIT/apply-update.py" \
   --base-root "$BN_DEST" \
-  --update-root "$HOME/HermesInstall/update-r2" --verify-only
+  --update-root "$HOME/HermesInstall/update-r5" --verify-only
 ```
 
 Не запускайте эту проверку неизменного архива после подстановки собственных путей, входа в аккаунты или создания рабочих данных: такие изменения ожидаемо отличаются от заводского манифеста. Для установленной системы действуют новые местные манифесты.
@@ -966,3 +966,16 @@ BN_DIR="$PWD/runtime/Hermes BN"
 Для UDR после document_extract используйте action=intake с corpus_id и doc_id, повторяя next_action=intake до registration_complete=true. Сетевой fetch сохраняет original.bin и использует тот же изолированный обработчик; продолжение — action=parse с retrieval_id. Сетевой загрузчик SDK имеет отдельный предел 50 МБ; более крупные предоставленные файлы принимайте местным корпусом.
 
 Нет общего предела числа страниц или строк: работа разбивается на ограниченные шаги. Сохраняются ограничения памяти, времени шага и свободного диска. Неподдержанные форматы, шифрование, повреждение и неразобранные вложения явно остаются пробелами. SQL, макросы, формулы, ссылки и команды из оригинала не выполняются. Извлечение, регистрация, чтение конкретной ролью и предметное принятие проверяются отдельно.
+
+
+## 17. Область профиля и ошибки плагинных команд — gateway-r5
+
+
+
+1. Поиск и исполнение плагинной команды выполняются внутри области профиля назначения сообщения. Профиль принимающего бота сохраняет свою роль при проверке входящего доступа.
+2. Отказ найденного исполнителя возвращается как ошибка исполнения с настоящей причиной. Ошибка загрузчика также закрывает путь; она не считается доказательством отсутствия команды.
+3. Сообщение ошибки до отправки и записи в журнал проходит штатную обязательную очистку redact_for_egress. Отмена не перехватывается как обычная ошибка. Отказ обязательной области блокирует обработчик.
+4. Изменённый gateway/run_inbound.py включён в манифест доверенного ядра. Обновлена точная сумма этого манифеста в допусках основного профиля GSD и отдельного профиля GSD. Контроли не отключались.
+
+
+Полное описание, проверки, порядок обновления действующей установки и отката: GATEWAY-COMMAND-FIX.md. Для существующей установки r4 используйте только точечный apply-gateway-fix.py с её собственным BN_ROOT. Полную повторную подготовку и создание новых состояний не выполнять.

@@ -1,3 +1,3 @@
-# Текущее состояние
+# Текущее состояние — gateway-r5
 
-Рабочая версия: Memory1.3.0 / UDRhost0.3.0 / parser-r4. Текущие указания: CURRENT-SETUP.md внутри deployment-template, INSTALL-macOS-Apple-Silicon.md и PARSER-ACCEPTANCE.md. Старые документы и квитанции описывают прежние выпуски; они не заменяют новую приёмку.
+Исправлены область плагинных команд и маскирование отказов. 37 проверок прошли; отдельно повторены 12 целевых на установленном коде. Контроли, поколения, сроки и расходы GSD сохранены. Текущие инструкции: INSTALL-macOS-Apple-Silicon.md, GATEWAY-COMMAND-FIX.md и deployment-template/CURRENT-SETUP.md. Результаты parser-r4 сохранены отдельно как приёмка документарного маршрута.

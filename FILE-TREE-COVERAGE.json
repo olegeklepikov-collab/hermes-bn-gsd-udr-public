@@ -1,10 +1,11 @@
 {
   "source_variant": "neutral current sources; complete runtimes in the base and consolidated update assets",
-  "source_files": 33755,
+  "source_files": 33764,
   "omitted_large_source_paths": [
     "runtime/Hermes UDR/software/bin/bd"
   ],
   "runtime_state_imported_into_git": false,
   "master_recovery_key_uploaded": false,
-  "current_update": "public-2026-10-20-gsd-udr-parser-r4"
+  "current_update": "public-2026-10-21-gsd-udr-gateway-r5",
+  "gateway_command_fix_included": true
 }

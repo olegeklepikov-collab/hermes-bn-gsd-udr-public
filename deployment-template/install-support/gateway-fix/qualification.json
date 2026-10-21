@@ -1,0 +1,14 @@
+{
+  "installed": true,
+  "gateway_file_sha256": "e361541eebc06e28f37e2370df8a2eeb7ab3edc31b771e0dd175452fa109223c",
+  "core_manifest_sha256": "b6391da045b4873ef8500537876ab0e42688949a31ac56a78d500e4a221259ad",
+  "core_manifest_files_verified": 24,
+  "GSD_engine_unchanged": true,
+  "GSD_limits_and_state_unchanged": true,
+  "signed_UDR_SDK_unchanged": true,
+  "hermes_commit": "d923a5eb487a17c0a68801bba9ef0f56c81040a8",
+  "release": "gateway-r5",
+  "date": "2026-10-21",
+  "tests_passed": 37,
+  "profile_admissions_updated": true
+}

@@ -1,17 +1,5 @@
 {
-  "status": "verified",
-  "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
-  "tag": "public-2026-10-20-gsd-udr-parser-r4",
-  "asset": {
-    "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261020-r4.tar.zst",
-    "bytes": 926607616,
-    "sha256": "e692cca3205490e1b4cce31b56c84001e23fb63acaa055773b1a2a6691fa29f2",
-    "id": 660207702
-  },
-  "complete_set_requires_original_base": true,
-  "base_parts_verified_currently": "verification/current-base-server-verification.json",
-  "runtime_and_archive_evidence": "verification/PARSER-RELEASE-VERIFICATION.json",
-  "source_tree_contains_only_neutral_material": true,
-  "private_owner_state_only_encrypted": true,
-  "master_key_uploaded": false
+  "status": "upload_pending",
+  "tag": "public-2026-10-21-gsd-udr-gateway-r5",
+  "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public"
 }

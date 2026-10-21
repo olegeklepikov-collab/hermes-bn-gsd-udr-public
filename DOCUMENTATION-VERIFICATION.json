@@ -1,40 +1,13 @@
 {
-  "revision": "public-2026-10-17-search-guide-r3",
-  "scope": "Documentation and explicit owner-side installation support only; no changes applied to active Hermes BN",
-  "shell_blocks_syntax_passed": 33,
-  "python_files_compile_passed": 4,
-  "canonical_hash_matches_pinned_gsd": true,
-  "transport_tests": [
-    "read-only plan",
-    "explicit config/settings hashes",
-    "single-entry update with checkpoint",
-    "idempotent reuse",
-    "stale plan rejected",
-    "corrupt policy rejected"
-  ],
-  "portability_tests": [
-    "four timezone tokens",
-    "profile-scoped Tavily paths",
-    "matching narrow code and transport digests",
-    "preserved limits",
-    "empty repeated plan",
-    "stale plan rejected",
-    "uninitialized fresh alternate profile"
-  ],
-  "changed_files_privacy_checked": 7,
-  "known_private_patterns_checked": 23,
-  "private_matches": 0,
-  "runtime_payload_unchanged": true,
-  "deployment_template_git_tree": "7a9d10179a58ad4820219dfb47f422486c1c8e54",
-  "real_external_provider_accounts_connected_in_this_documentation_task": false,
-  "target_machine_acceptance_required": true,
+  "revision": "public-2026-10-21-gsd-udr-gateway-r5",
+  "runtime_changed": true,
+  "gateway_tests_passed": 37,
+  "portable_update_executed": true,
+  "new_owner_acceptance_required": true,
   "files": {
-    "INSTALL-macOS-Apple-Silicon.md": "6abdd398b482b837589fc000ed4c3fc74405776807c296280f09fd4a6a458ceb",
-    "README.md": "c8a8500ff90a98b8e77d4629e0e9d20413043ea6e9b0d3e8e863577aa791db46",
-    "PUBLICATION-NOTE.md": "48c403fd1f5adf651695e3cb681c590385606f8adaf9a6f5228a8d523ec96324",
-    "install-support/admit-mcp-transport.py": "c65b15f79c89a8f347c36b719c6032abfb9bf623391659b440f02a58e99f1778",
-    "install-support/check-admission.py": "2613c6c78ca3727165ecc60232fa478bf6cf0d1da4a45d5112b63ab094d8f828",
-    "install-support/check-portability.py": "78957e8c77903ef46f268fe2beada043dc61c06880867e515c7130359b0d61c1",
-    "install-support/configure-search-portability.py": "e40b99fe4cef3c1553d5f7db12b17ffce5a53081778e494956bbabe7f6a22315"
+    "INSTALL-macOS-Apple-Silicon.md": "fafd11163ddfcc8994401b5d091305a0df4e9d6653ab181fdb75e150ee2dbcea",
+    "GATEWAY-COMMAND-FIX.md": "c7b2a115024f25c20c4d8eab541349327c4dac2a3d7df6b6effe5a54b8bf7506",
+    "GATEWAY-ACCEPTANCE.json": "51608e0d9e641fd021923b1726e7eb8a240694ff855f7b6a1fe6696d9c0c4ba7",
+    "install-support/apply-gateway-fix.py": "c0ef1e2dce8e3b70290962e42dddd4318c189b1757bfffd394ea753616a3ffe7"
   }
 }

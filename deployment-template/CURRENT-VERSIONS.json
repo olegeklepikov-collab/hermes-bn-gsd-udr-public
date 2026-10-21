@@ -1,5 +1,5 @@
 {
-  "date_utc": "2026-10-20",
+  "date_utc": "2026-10-21",
   "versions": {
     "Hermes_BN": "0.22.2",
     "Hermes_commit": "d923a5eb487a17c0a68801bba9ef0f56c81040a8",
@@ -29,7 +29,8 @@
     "R_languageserver": "0.3.20; native R.framework, private owned library; CRAN sonoma-arm64 binaries and all sources supplied",
     "Zotero": "10.0.6",
     "SQLite_BN_Python": "3.53.1",
-    "document_parser": "bn-parser/1.0.0; required macOS isolation; host implementation"
+    "document_parser": "bn-parser/1.0.0; required macOS isolation; host implementation",
+    "gateway_command_fix": "gateway-r5; scoped plugin commands and explicit redacted failures"
   },
   "newer_packages_not_promoted_without_pair_qualification": {
     "graphiti-core": "0.31.1",
@@ -85,5 +86,28 @@
     "network_acquisition_SDK_max_bytes": 50000000,
     "extraction_is_model_reading": false,
     "credentials_inherited": false
+  },
+  "gateway_command_acceptance": {
+    "release": "gateway-r5",
+    "date": "2026-10-21",
+    "hermes_version": "0.22.2",
+    "hermes_commit": "d923a5eb487a17c0a68801bba9ef0f56c81040a8",
+    "tests_before": {
+      "passed": 19,
+      "failed": 5
+    },
+    "tests_after": {
+      "passed": 37,
+      "failed": 0
+    },
+    "targeted_installed_tests": 12,
+    "native_GSD_status": true,
+    "standalone_UDR_has_no_GSD_command": true,
+    "profile_admissions_updated": true,
+    "controller_limits_unchanged": true,
+    "signed_UDR_unchanged": true,
+    "portable_install_repeat_refusal_rollback": true,
+    "new_Telegram_transport_test_performed": false,
+    "gateway_file_sha256": "e361541eebc06e28f37e2370df8a2eeb7ab3edc31b771e0dd175452fa109223c"
   }
 }

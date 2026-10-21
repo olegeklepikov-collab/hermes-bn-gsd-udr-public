@@ -1,0 +1,23 @@
+{
+  "files": 33740,
+  "patterns": 23,
+  "issues": [],
+  "publication_scope": "Current sanitized tree only; historical private/full-mode receipts excluded",
+  "archives": "Existing clean-r2 base and neutral-r2 update; immutable SHA-256 retained",
+  "download_helper_checks": [
+    "fixture reconstruction",
+    "idempotent reuse",
+    "damaged existing archive rejected",
+    "public HTTPS without credentials"
+  ],
+  "source_private_commit": "d62b331430e545045b8ec646a46e588b3083d1c9",
+  "original_private_repository_changed": false,
+  "source_tree_object_id": "7a9d10179a58ad4820219dfb47f422486c1c8e54",
+  "public_source_equals_private_source_git_tree": true,
+  "shell_blocks_syntax_checked": 16,
+  "final_public_tree_privacy_scan": {
+    "files": 33741,
+    "patterns": 23,
+    "issues": []
+  }
+}

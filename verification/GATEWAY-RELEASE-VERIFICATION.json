@@ -1,0 +1,50 @@
+{
+  "release": "public-2026-10-21-gsd-udr-gateway-r5",
+  "runtime": {
+    "release": "gateway-r5",
+    "date": "2026-10-21",
+    "hermes_version": "0.22.2",
+    "hermes_commit": "d923a5eb487a17c0a68801bba9ef0f56c81040a8",
+    "tests_before": {
+      "passed": 19,
+      "failed": 5
+    },
+    "tests_after": {
+      "passed": 37,
+      "failed": 0
+    },
+    "targeted_installed_tests": 12,
+    "native_GSD_status": true,
+    "standalone_UDR_has_no_GSD_command": true,
+    "profile_admissions_updated": true,
+    "controller_limits_unchanged": true,
+    "signed_UDR_unchanged": true,
+    "portable_install_repeat_refusal_rollback": true,
+    "new_Telegram_transport_test_performed": false,
+    "gateway_file_sha256": "e361541eebc06e28f37e2370df8a2eeb7ab3edc31b771e0dd175452fa109223c"
+  },
+  "archive_stream": {
+    "archive_sha256": "fef49c2cfd5b194aa6d54377179941f890b5f445700861af034f0c174761681b",
+    "all_declared_payload_members_verified": 68130,
+    "all_regular_file_bodies_SHA_verified": 60414,
+    "decompressed_bytes_hashed": 2435539799,
+    "all_top_metadata_SHA_verified": true,
+    "pipeline_exit_codes": [
+      0
+    ],
+    "auxiliary_mac_metadata_members": 0,
+    "privacy_actual_secret_or_owner_matches": 0,
+    "neutral_uid_and_OS_metadata_clean": true
+  },
+  "portable_update": {
+    "passed": true,
+    "installation": true,
+    "repeat_without_changes": true,
+    "unqualified_source_refused": true,
+    "rollback_bytes_identical": true,
+    "profile_admissions_updated": true,
+    "limits_preserved": true
+  },
+  "signed_UDR_and_GSD_methodology_unchanged": true,
+  "other_machine_and_owner_acceptance_required": true
+}

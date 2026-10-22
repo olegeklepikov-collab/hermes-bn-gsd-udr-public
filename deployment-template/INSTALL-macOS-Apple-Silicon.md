@@ -1,12 +1,12 @@
 # Hermes BN: полная установка на новый Mac с Apple Silicon
 
-Дата комплекта: 21 октября 2026 года. Исполняемая подготовка проверена на macOS 26.5.1 (25F80), arm64; совместимость с более ранней macOS требует отдельной проверки. Версия инструкции: `public-2026-10-21-gsd-udr-gateway-r5`. Новое обновление включает прежние r2 и parser-r4; основу clean-r2 использовать без изменения.
+Дата комплекта: 22 октября 2026 года. Исполняемая подготовка проверена на macOS 26.5.1 (25F80), arm64; совместимость с более ранней macOS требует отдельной проверки. Версия инструкции: `public-2026-10-22-gsd-udr-prepared-files-r6`. Новое обновление включает прежние r2, parser-r4 и gateway-r5; основу clean-r2 использовать без изменения.
 
 Репозиторий: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public
 
-Установочные архивы: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-21-gsd-udr-gateway-r5
+Установочные архивы: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-22-gsd-udr-prepared-files-r6
 
-Актуальная инструкция и средства настройки: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-21-gsd-udr-gateway-r5
+Актуальная инструкция и средства настройки: https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-22-gsd-udr-prepared-files-r6
 
 ## 1. Что именно устанавливается
 
@@ -19,7 +19,7 @@
 | Слой | Итоговый файл | Размер | SHA-256 |
 |---|---|---:|---|
 | Очищенная основа | `Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst` | 17 801 925 827 байт | `cbf18ffe88011c66fea0498068c2119ad3bacad376a35bd6fbe2f9e9b7f9fce1` |
-| Обновление gateway-r5 | `Hermes-BN-GSD-and-UDR-new-user-update-20261021-r5.tar.zst` | Точный размер в recovery-set.json | Точная SHA-256 в recovery-set.json |
+| Обновление prepared-files-r6 | `Hermes-BN-GSD-and-UDR-new-user-update-20261022-r6.tar.zst` | Точный размер в recovery-set.json | Точная SHA-256 в recovery-set.json |
 
 Основа опубликована десятью частями; обновление — одним файлом. Общий объём и точная сумма нового обновления определяются recovery-set.json; сумму старого r2 для нового архива не использовать. Программа `restore.py` проверяет каждую часть, порядок, итоговый размер и SHA-256. Старую основу без `clean-r2`, полный личный архив и прежние обновления сюда не подмешивать.
 
@@ -30,7 +30,7 @@
 | Hermes BN | 0.22.2; исходная основа `d923a5eb487a17c0a68801bba9ef0f56c81040a8` и отдельно учтённые местные адаптеры |
 | Python BN / Node | 3.14.6 / 24.18.0 |
 | GSD | движок 3.0.3; адаптер 0.2.13, совместимость с Hermes 0.22.2, сборка r3 |
-| UDR | согласованная пара Research 0.44.0b2 / Foundation 0.14.0b1; адаптер BN 0.3.0 |
+| UDR | согласованная пара Research 0.44.0b2 / Foundation 0.14.0b1; адаптер BN 0.3.1 |
 | Общая память / Cognee | 1.3.0 / 1.6.4 |
 | Beads | фактические исполнители BN и UDR 1.3.1; исходная версия 1.1.0 внутри подписанного SDK сохранена отдельно |
 | Dolt BN | 2.4.2; отдельные закрепления UDR сохраняются |
@@ -82,7 +82,7 @@ git --version
 umask 077
 mkdir -p "$HOME/HermesInstall"
 cd "$HOME/HermesInstall"
-git clone --depth 1 --branch public-2026-10-21-gsd-udr-gateway-r5 \
+git clone --depth 1 --branch public-2026-10-22-gsd-udr-prepared-files-r6 \
   https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public.git kit
 BN_KIT="$HOME/HermesInstall/kit"
 cd "$BN_KIT"
@@ -103,13 +103,13 @@ python3 restore.py --download \
 Не скачивайте архивы заново и не распаковывайте их поверх данных. Получите отдельную новую папку только с инструкцией и средствами оператора:
 
 ```bash
-git clone --depth 1 --branch public-2026-10-21-gsd-udr-gateway-r5 \
+git clone --depth 1 --branch public-2026-10-22-gsd-udr-prepared-files-r6 \
   https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public.git \
-  "$HOME/HermesInstall/kit-r5"
-BN_KIT="$HOME/HermesInstall/kit-r5"
+  "$HOME/HermesInstall/kit-r6"
+BN_KIT="$HOME/HermesInstall/kit-r6"
 ```
 
-Каталог `kit-r5` должен быть новым. Задайте `BN_DEST` и `BN_ROOT` фактическими путями своей уже установленной копии, затем используйте маршрут работающего экземпляра в разделе 9. Подготовительные программы создания новых состояний повторно не выполняются.
+Каталог `kit-r6` должен быть новым. Задайте `BN_DEST` и `BN_ROOT` фактическими путями своей уже установленной копии, затем используйте маршрут работающего экземпляра в разделе 9. Подготовительные программы создания новых состояний повторно не выполняются.
 
 ## 4. Распаковка и применение обновления
 
@@ -118,7 +118,7 @@ BN_KIT="$HOME/HermesInstall/kit-r5"
 ```bash
 BN_DEST="$HOME/hbn"
 test ! -e "$BN_DEST"
-test ! -e "$HOME/HermesInstall/update-r5"
+test ! -e "$HOME/HermesInstall/update-r6"
 
 bash "$BN_KIT/restore-tools/restore.sh" \
   "$HOME/HermesInstall/archives/Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst" \
@@ -127,12 +127,12 @@ bash "$BN_KIT/restore-tools/restore.sh" \
 python3 "$BN_DEST/verify.py" "$BN_DEST"
 
 bash "$BN_KIT/restore-tools/restore.sh" \
-  "$HOME/HermesInstall/archives/Hermes-BN-GSD-and-UDR-new-user-update-20261021-r5.tar.zst" \
-  "$HOME/HermesInstall/update-r5"
+  "$HOME/HermesInstall/archives/Hermes-BN-GSD-and-UDR-new-user-update-20261022-r6.tar.zst" \
+  "$HOME/HermesInstall/update-r6"
 
 python3 "$BN_KIT/apply-update.py" \
   --base-root "$BN_DEST" \
-  --update-root "$HOME/HermesInstall/update-r5"
+  --update-root "$HOME/HermesInstall/update-r6"
 ```
 
 Продолжайте только после успешного завершения каждой команды. При проверке основы ожидается `mismatches: 0`. Применение обновления само проверяет полезные файлы, полный конечный манифест, права, ссылки и лишние пути. Сохраняйте `RESTORE-APPLIED.json`.
@@ -144,7 +144,7 @@ python3 "$BN_KIT/apply-update.py" \
 ```bash
 python3 "$BN_KIT/apply-update.py" \
   --base-root "$BN_DEST" \
-  --update-root "$HOME/HermesInstall/update-r5" --verify-only
+  --update-root "$HOME/HermesInstall/update-r6" --verify-only
 ```
 
 Не запускайте эту проверку неизменного архива после подстановки собственных путей, входа в аккаунты или создания рабочих данных: такие изменения ожидаемо отличаются от заводского манифеста. Для установленной системы действуют новые местные манифесты.
@@ -979,3 +979,8 @@ BN_DIR="$PWD/runtime/Hermes BN"
 
 
 Полное описание, проверки, порядок обновления действующей установки и отката: GATEWAY-COMMAND-FIX.md. Для существующей установки r4 используйте только точечный apply-gateway-fix.py с её собственным BN_ROOT. Полную повторную подготовку и создание новых состояний не выполнять.
+
+
+## 18. Готовые файлы — UDR host 0.3.1
+
+В новом r6 приём готовых файлов уже включён. На действующем r5 используйте только install-support/apply-prepared-file-fix.py с собственными --bn-root и --udr-root; базы и подготовку повторно не создавайте. Полная процедура, проверки и откат — PREPARED-FILE-DELIVERY.md. Приём не выдаёт научную приёмку или разрешение на отправку; точное защищённое разрешение требуется отдельно. Не копируйте разрешения и настройки прежнего владельца.

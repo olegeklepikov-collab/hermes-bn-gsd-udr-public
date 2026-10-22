@@ -1,11 +1,12 @@
 {
   "source_variant": "neutral current sources; complete runtimes in the base and consolidated update assets",
-  "source_files": 33764,
+  "source_files": 33786,
   "omitted_large_source_paths": [
     "runtime/Hermes UDR/software/bin/bd"
   ],
   "runtime_state_imported_into_git": false,
   "master_recovery_key_uploaded": false,
-  "current_update": "public-2026-10-21-gsd-udr-gateway-r5",
-  "gateway_command_fix_included": true
+  "current_update": "public-2026-10-22-gsd-udr-prepared-files-r6",
+  "gateway_command_fix_included": true,
+  "prepared_file_delivery_included": true
 }

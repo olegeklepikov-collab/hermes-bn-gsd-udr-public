@@ -1,0 +1,37 @@
+{
+  "tag": "public-2026-10-21-gsd-udr-gateway-r5",
+  "release_id": 419770451,
+  "server_digests_match_expected": true,
+  "verified_assets": [
+    {
+      "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261021-r5.tar.zst",
+      "bytes": 927490736,
+      "sha256": "fef49c2cfd5b194aa6d54377179941f890b5f445700861af034f0c174761681b"
+    },
+    {
+      "name": "INSTALL-macOS-Apple-Silicon.md",
+      "bytes": 130599,
+      "sha256": "fafd11163ddfcc8994401b5d091305a0df4e9d6653ab181fdb75e150ee2dbcea"
+    },
+    {
+      "name": "GATEWAY-COMMAND-FIX.md",
+      "bytes": 8047,
+      "sha256": "c7b2a115024f25c20c4d8eab541349327c4dac2a3d7df6b6effe5a54b8bf7506"
+    },
+    {
+      "name": "GATEWAY-ACCEPTANCE.json",
+      "bytes": 676,
+      "sha256": "51608e0d9e641fd021923b1726e7eb8a240694ff855f7b6a1fe6696d9c0c4ba7"
+    },
+    {
+      "name": "recovery-set.json",
+      "bytes": 4301,
+      "sha256": "69197d4e8d3a31cbe80fe3094332902cd4cca03fc657f1a71abeefc77c9d2dcf"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 926,
+      "sha256": "6c47a67049027d1b114b5d0087bc391cb25cd27ac62275eb8b7cd2cb228edfec"
+    }
+  ]
+}

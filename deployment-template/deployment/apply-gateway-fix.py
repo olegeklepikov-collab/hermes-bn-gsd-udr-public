@@ -33,8 +33,9 @@ def atomic(path, data):
 def main():
     parser = argparse.ArgumentParser(description="Исправление команд Hermes 0.22.2; состояния и доступы сохраняются")
     parser.add_argument("--bn-root", type=Path, required=True)
-    parser.add_argument("--check", action="store_true")
-    parser.add_argument("--rollback", action="store_true")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check", action="store_true")
+    mode.add_argument("--rollback", action="store_true")
     args = parser.parse_args()
     root = args.bn_root.resolve(strict=True)
     target = root / "hermes-agent/gateway/run_inbound.py"

@@ -10,7 +10,9 @@ import backend
 SCHEMAS = {
     'udr_research': ('Управляемое исследование UDR. Сначала start(question,mode,request_id), затем plan, source(url,title,text,extent), note(text,source_ids), fetch(url), method, finish(report,status) or finish(report_path,report_sha256,status). read(path) читает сохранённое; stop сохраняет прерванную работу. Полный профиль возвращается при старте. Модель не принимает выводы и не разрешает передачу.',
         {'request': {'type': 'object', 'properties': {
-            'action': {'enum': ['start','status','plan','source','document','note','fetch','parse','intake','method','compare','build_report','workspace','finish','read','stop','list','resume','phase']},
+            'action': {'enum': ['start','status','plan','source','document','note','fetch','parse','intake','method','compare','build_report','workspace','finish','adopt_file','read','stop','list','resume','phase']},
+            'source_path':{'type':'string','description':'adopt_file: existing regular file under BN workspace/research/<project>; scoped relative or exact absolute BN path. No symlinks or parent traversal. The host preserves all bytes; no delivery authority is created.'},
+            'expected_sha256':{'type':'string','pattern':'^[a-f0-9]{64}$'},
             'run_id':{'type':'string'}, 'retrieval_id':{'type':'string','pattern':'^[a-f0-9]{32}$'}, 'doc_id':{'type':'string'}, 'corpus_id':{'type':'string'},'phase':{'enum':['plan','collect','analyse','verify','report']},
             'question':{'type':'string'}, 'mode':{'enum':['search','research','deep','ultra','academic']},
             'request_id':{'type':'string'}, 'plan':{'type':'object','description':'Substantive roadmap object, never a string; use applicable planning_fields returned by start.'},
@@ -57,7 +59,7 @@ async def call_tool(context, params):
     finally:
         if cancel_token is not None:cancel_var.reset(cancel_token)
 
-server = Server('hermes-bn-udr', version='0.3.0', on_list_tools=list_tools, on_call_tool=call_tool)
+server = Server('hermes-bn-udr', version='0.3.1', on_list_tools=list_tools, on_call_tool=call_tool)
 
 async def main():
     async with stdio_server() as (read, write):

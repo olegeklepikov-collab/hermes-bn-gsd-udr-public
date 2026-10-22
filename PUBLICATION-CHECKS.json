@@ -1,13 +1,13 @@
 {
-  "release": "public-2026-10-21-gsd-udr-gateway-r5",
+  "release": "public-2026-10-22-gsd-udr-prepared-files-r6",
   "current_source_check": {
     "repository": ".hermes-bn-public-20261017",
-    "changed_files_privacy_checked": 32,
+    "changed_files_privacy_checked": 65,
     "owner_marker_matches": 0,
-    "source_manifest_files_verified": 33764
+    "source_manifest_files_verified": 33786
   },
-  "complete_set_requires_base_and_r5": true,
-  "prior_r2_r4_not_applied_separately": true,
+  "complete_set_requires_base_and_r6": true,
+  "prior_r2_r4_r5_not_applied_separately": true,
   "full_owner_archive_encrypted": true,
   "master_key_uploaded": false,
   "old_receipts_preserved_as_history": true

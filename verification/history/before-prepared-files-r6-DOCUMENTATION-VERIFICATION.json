@@ -1,0 +1,13 @@
+{
+  "revision": "public-2026-10-21-gsd-udr-gateway-r5",
+  "runtime_changed": true,
+  "gateway_tests_passed": 37,
+  "portable_update_executed": true,
+  "new_owner_acceptance_required": true,
+  "files": {
+    "INSTALL-macOS-Apple-Silicon.md": "fafd11163ddfcc8994401b5d091305a0df4e9d6653ab181fdb75e150ee2dbcea",
+    "GATEWAY-COMMAND-FIX.md": "c7b2a115024f25c20c4d8eab541349327c4dac2a3d7df6b6effe5a54b8bf7506",
+    "GATEWAY-ACCEPTANCE.json": "51608e0d9e641fd021923b1726e7eb8a240694ff855f7b6a1fe6696d9c0c4ba7",
+    "install-support/apply-gateway-fix.py": "c0ef1e2dce8e3b70290962e42dddd4318c189b1757bfffd394ea753616a3ffe7"
+  }
+}

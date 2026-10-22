@@ -319,6 +319,9 @@ def research(sid, request):
         parent=saved(body['parent_sid'])
         if not parent:raise PermissionError('parent_research_missing')
         body=parent
+    if action == 'adopt_file':
+        from prepared_file import adopt
+        return adopt(sid, request['run_id'], request['source_path'], request['expected_sha256'])
     if action == 'finish' and 'report_path' in request:
         request=report_from_file(root_for(body['run_id']),request)
     if action == 'read':
@@ -483,7 +486,7 @@ def rpc(data):
     op, sid = data['operation'], data.get('sid', '')
     if op=='deliver_report':
         from report_delivery import deliver
-        return deliver(sid,data['run_id'],data['expected_sha256'],data['grant_id'])
+        return deliver(sid,data['run_id'],data['expected_sha256'],data['grant_id'],data.get('artifact_id'))
     if op=='document_phase':
         body=saved(sid);authority=check(sid)
         if body and body.get('managed_worker'):return {'phase':authority['document_phase'],'corpus_id':authority.get('corpus_id')}

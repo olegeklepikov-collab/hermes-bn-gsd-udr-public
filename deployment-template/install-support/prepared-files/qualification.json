@@ -1,0 +1,30 @@
+{
+  "version": "0.3.1",
+  "before": {
+    "backend.py": "b950db7697204e00db359e42806bebd328bd88dd688458f1687e88fd18ef1777",
+    "server.py": "cf1c58f23d1361b4add4888f51b271ce269e6593e02b09a94a25af018725c7a8",
+    "prepared_file.py": null,
+    "report_delivery.py": "6dd6e0db3e45bbd0341c6123618107d5f957909a3bcd8fdd1085480cc539833c",
+    "plugin/__init__.py": "e32527c496c3f6b9b9f7714237e632bec804c43fc9dad6a79627ae3021014b80",
+    "plugin/plugin.yaml": "ad96d38c99e629e89ea2aa9bdc09b376cf460f5c3320f5761dc1c8be1b42fd3c"
+  },
+  "after": {
+    "backend.py": "6ab77c8c2c6297c90150d3fd1e7d3de4eef333ed3720441df5c79184ae34c192",
+    "server.py": "19612aa632c08928eb8b985a6106a2a024bbacb391a13bdf49b479db0b1a3940",
+    "prepared_file.py": "0601afc44e05a76b1657d3e29ac8f02acf613c81638cbd8929005c5aa92eebd2",
+    "report_delivery.py": "0180e21005db1743f689e2dc1f7a58602c7847e8c8eca5134a1fece7d9cdca2e",
+    "plugin/__init__.py": "e1b5ba2597fe35d3b88840d04c184d826e94f1c386f78e973ddec4f1de798c53",
+    "plugin/plugin.yaml": "736b9a04db8d09771cdc0e3b9d7fbd1b7a8c13ed5644131e582916d1ed371b96"
+  },
+  "hermes_qualified": "0.22.2",
+  "signed_SDK_modified": false,
+  "before_native_plugin": {
+    "__init__.py": [
+      "e32527c496c3f6b9b9f7714237e632bec804c43fc9dad6a79627ae3021014b80",
+      "32ce6697fd3e93e8f411f0cc23d6b71412c92197d095f6fcdb036a0a07e11d23"
+    ],
+    "plugin.yaml": [
+      "ad96d38c99e629e89ea2aa9bdc09b376cf460f5c3320f5761dc1c8be1b42fd3c"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "qualified_r5_installation": true,
+  "repeat_idempotent": true,
+  "later_change_refused": true,
+  "rollback_byte_identical": true,
+  "user_state_and_limits_preserved": true,
+  "new_owner_authority_imported": false,
+  "Cyrillic_relocated_source_executed": true
+}

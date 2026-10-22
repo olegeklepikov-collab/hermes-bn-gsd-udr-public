@@ -1,17 +1,19 @@
 {
-  "backend.py": "b950db7697204e00db359e42806bebd328bd88dd688458f1687e88fd18ef1777",
-  "server.py": "cf1c58f23d1361b4add4888f51b271ce269e6593e02b09a94a25af018725c7a8",
-  "rpc": "318dd47f17aef171497f89a04e160c606b27928596c9a8e6ec9605f9461de474",
-  "serve": "263fb9f4582c69af7215f9166789795f400641c41a967b65092935eb85377d30",
+  "backend.py": "6ab77c8c2c6297c90150d3fd1e7d3de4eef333ed3720441df5c79184ae34c192",
+  "server.py": "19612aa632c08928eb8b985a6106a2a024bbacb391a13bdf49b479db0b1a3940",
+  "rpc": "9a43591ab1f1f8fcd2b72b31341c3ab21cc0486409c0bf844ddfd53280cd16d5",
+  "serve": "87e497339b757bc1d5ffdebf75a2962d162abbfec918e67f252282579c3a1001",
   "team_backend.py": "e575adf775b489b803808e96b65e8fd8b18f3dc18ac1469b27610ab894a8fe54",
   "team_runner.py": "5bca19f3a138f368be88d8c1a5aae3058da85fdec20fe17151581439021a2de6",
   "worker_policy.py": "d685b3a5d0363bc343fc1509d3d866a4077dc543339fc786cfcaa701c42cccfe",
-  "plugin/__init__.py": "e32527c496c3f6b9b9f7714237e632bec804c43fc9dad6a79627ae3021014b80",
-  "plugin/plugin.yaml": "ad96d38c99e629e89ea2aa9bdc09b376cf460f5c3320f5761dc1c8be1b42fd3c",
+  "plugin/__init__.py": "e1b5ba2597fe35d3b88840d04c184d826e94f1c386f78e973ddec4f1de798c53",
+  "plugin/plugin.yaml": "736b9a04db8d09771cdc0e3b9d7fbd1b7a8c13ed5644131e582916d1ed371b96",
   "lease_resume.py": "94d73300d4c0441c125d7a28fedec5356230e397e68f9895c08cf4a2adfd7c22",
-  "report_delivery.py": "6dd6e0db3e45bbd0341c6123618107d5f957909a3bcd8fdd1085480cc539833c",
+  "report_delivery.py": "0180e21005db1743f689e2dc1f7a58602c7847e8c8eca5134a1fece7d9cdca2e",
   "portable_reads.py": "5fa2101f558ac49fbb0a49e3530c333e37c7871243218461d708ffe3c6ba00a7",
   "local_beads.py": "908e30c7187a4d0c765de27029c8b519de5d96a2fa502d5b33b992409435e1d4",
   "../../../Hermes BN/data/skills/document-corpus-completeness/SKILL.md": "74d2b219fda95a5c27a7dd5e5f82a4cdc688ee8897165a0f2b1677ccac9e4ff7",
-  "parser_intake.py": "e94aa1640bf2daf37ac7bf628aa03b189664ccb6ccdf6da654014ed471e0ecd2"
+  "parser_intake.py": "e94aa1640bf2daf37ac7bf628aa03b189664ccb6ccdf6da654014ed471e0ecd2",
+  "prepared_file.py": "0601afc44e05a76b1657d3e29ac8f02acf613c81638cbd8929005c5aa92eebd2",
+  "../../../Hermes BN/data/skills/bn-udr-host-work/SKILL.md": "9b2c519aafa6a1504efc77bb2d119fb554b2f02c6e9861d4ece746263f0b1455"
 }

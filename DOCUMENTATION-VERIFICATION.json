@@ -1,13 +1,15 @@
 {
-  "revision": "public-2026-10-21-gsd-udr-gateway-r5",
-  "runtime_changed": true,
-  "gateway_tests_passed": 37,
+  "revision": "public-2026-10-22-gsd-udr-prepared-files-r6",
+  "UDR_host": "0.3.1",
+  "component_tests_passed": 30,
+  "relocated_component_tests_passed": 30,
   "portable_update_executed": true,
   "new_owner_acceptance_required": true,
   "files": {
-    "INSTALL-macOS-Apple-Silicon.md": "fafd11163ddfcc8994401b5d091305a0df4e9d6653ab181fdb75e150ee2dbcea",
-    "GATEWAY-COMMAND-FIX.md": "c7b2a115024f25c20c4d8eab541349327c4dac2a3d7df6b6effe5a54b8bf7506",
-    "GATEWAY-ACCEPTANCE.json": "51608e0d9e641fd021923b1726e7eb8a240694ff855f7b6a1fe6696d9c0c4ba7",
-    "install-support/apply-gateway-fix.py": "c0ef1e2dce8e3b70290962e42dddd4318c189b1757bfffd394ea753616a3ffe7"
+    "INSTALL-macOS-Apple-Silicon.md": "1e1feef3f7d1dd87a5eb4a23a54f0cfa2dc7828ab0f8b13f1ec2b71832b4209d",
+    "PREPARED-FILE-DELIVERY.md": "66d722e2ef36c7f39f79838e7142d188306d99a22d3ed4db264b9915673ae156",
+    "PREPARED-FILE-ACCEPTANCE.json": "705e7685ca1c2a4d7b2f92b5691f3b273354192ee9f748040e07d2ef7742f225",
+    "install-support/apply-prepared-file-fix.py": "4f3d7731beb3608c9903e45b7566b187a1894ebea9a286c9f14436584e6b1603",
+    "install-support/apply-gateway-fix.py": "53c8fd310d323c882c42a7bdd81356ce0857aa2c86d7bfb1c4e7107ebffc75dc"
   }
 }

@@ -46,7 +46,7 @@
   "UDR_Beads_runtime": "1.3.1",
   "UDR_Beads_signed_supplier_baseline": "1.1.0",
   "core_tests_canonical": 81,
-  "local_adapter_tests": 7,
+  "local_adapter_tests": 30,
   "portability_actual_pages": 15,
   "oneshot_background_review": "explicit persisted review; enabled in long-lived sessions",
   "optional_capability_parity": {
@@ -63,7 +63,7 @@
     "tiktoken": "imported"
   },
   "dependency_constraints": "Official Hermes0.22.2 lock plus retained compatible Tavily/Nimble adapters; frozen base pins unchanged",
-  "UDR_manifest_checked_entries": 15,
+  "UDR_manifest_checked_entries": 17,
   "deployment_label_note": "Neutral source-only CLI may display vunknown; exact source commit is pinned independently.",
   "scientific_universal_acceptance": false,
   "current_end_to_end_acceptance": "The supplied source was exercised on macOSarm64; another owner must run their own acceptance after configuring credentials. Producer research/account/task states are excluded.",
@@ -73,7 +73,7 @@
     "required_controller_ids_preserved": true
   },
   "native_queue_workers": 4,
-  "local_adapter_tests_scope": "Exact report-file input: Unicode/CRLF plus6negative guards; separate earlier6portability tests retained",
+  "local_adapter_tests_scope": "Prepared-file0.3.1:30positive,negative,integration tests; earlier exact-report-file and portability checks retained as historical evidence",
   "Zotero_bundle_build": "10.0.6",
   "neutral_base_archive": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst",
   "neutral_base_logical_manifest_sha256": "7c74044360072c3729a39218620d47825dec367f3d5026d49518cd4d957f51d2",
@@ -135,5 +135,6 @@
       "Cyrillic_relocated_source_executed": true
     },
     "producer_validation_not_new_owner_acceptance": true
-  }
+  },
+  "earlier_local_adapter_tests": 7
 }

@@ -92,16 +92,16 @@
       "tag": "public-2026-10-22-gsd-udr-prepared-files-r6",
       "archive": {
         "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261022-r6.tar.zst",
-        "bytes": 927514050,
-        "sha256": "9f80ddbcd7d21687e50e5cbd6a7f630b483eeb47d5d8d692dc0d14739b2f873e"
+        "bytes": 927513742,
+        "sha256": "57071be0de3b806bde9bb6bbe6b0cde3933b040c6af0b7af5006c288338897fc"
       },
       "parts": [
         {
           "index": 1,
           "offset": 0,
           "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261022-r6.tar.zst",
-          "bytes": 927514050,
-          "sha256": "9f80ddbcd7d21687e50e5cbd6a7f630b483eeb47d5d8d692dc0d14739b2f873e"
+          "bytes": 927513742,
+          "sha256": "57071be0de3b806bde9bb6bbe6b0cde3933b040c6af0b7af5006c288338897fc"
         }
       ]
     }

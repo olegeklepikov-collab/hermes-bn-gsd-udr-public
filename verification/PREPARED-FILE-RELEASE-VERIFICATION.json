@@ -1,0 +1,68 @@
+{
+  "release": "public-2026-10-22-gsd-udr-prepared-files-r6",
+  "runtime": {
+    "installed_version": "UDR host 0.3.1",
+    "tests_passed": 30,
+    "real_Telegram_readback_verified": true,
+    "messages_sent": 1,
+    "duplicate_suppressed": true,
+    "source_manifest_files_valid": 17,
+    "GSD_settings_except_exact_admissions_unchanged": true,
+    "signed_SDK_source_modified": false,
+    "actual_MCP_schema_checked": true,
+    "scientific_claims_accepted": false,
+    "release": "prepared-files-r6",
+    "date": "2026-10-22",
+    "relocated_component_tests_passed": 30,
+    "portable_update": {
+      "passed": true,
+      "qualified_r5_installation": true,
+      "repeat_idempotent": true,
+      "later_change_refused": true,
+      "rollback_byte_identical": true,
+      "user_state_and_limits_preserved": true,
+      "new_owner_authority_imported": false,
+      "Cyrillic_relocated_source_executed": true
+    },
+    "producer_validation_not_new_owner_acceptance": true
+  },
+  "archive_stream": {
+    "archive_sha256": "57071be0de3b806bde9bb6bbe6b0cde3933b040c6af0b7af5006c288338897fc",
+    "all_declared_payload_members_verified": 68160,
+    "all_regular_file_bodies_SHA_verified": 60437,
+    "decompressed_bytes_hashed": 2435765400,
+    "all_top_metadata_SHA_verified": true,
+    "pipeline_exit_codes": [
+      0
+    ],
+    "auxiliary_mac_metadata_members": 0,
+    "privacy_actual_secret_or_owner_matches": 0,
+    "neutral_uid_and_OS_metadata_clean": true
+  },
+  "portable_update": {
+    "passed": true,
+    "qualified_r5_installation": true,
+    "repeat_idempotent": true,
+    "later_change_refused": true,
+    "rollback_byte_identical": true,
+    "user_state_and_limits_preserved": true,
+    "new_owner_authority_imported": false,
+    "Cyrillic_relocated_source_executed": true
+  },
+  "signed_UDR_and_GSD_methodology_unchanged": true,
+  "other_machine_and_owner_acceptance_required": true,
+  "base_plus_update_composition": [
+    {
+      "mode": "full",
+      "composed_entries": 1012682,
+      "base_plus_update_exactly_matches_final_manifest": true,
+      "final_manifest_sha256": "de3da6b2b13e67ff6e781d6dd4d8cb0191b65456606bb172264831ed6164350f"
+    },
+    {
+      "mode": "new-user",
+      "composed_entries": 360534,
+      "base_plus_update_exactly_matches_final_manifest": true,
+      "final_manifest_sha256": "d17b96077997bb7f5b24ca6f4d9dfe7862df1fb5ad538f177ad5853ad94d95bc"
+    }
+  ]
+}

@@ -23,21 +23,21 @@ jobs:
               repo=os.environ['GH_REPO'];tag=os.environ['TARGET_TAG']
               rid=json.loads(subprocess.check_output(['gh','release','view',tag,'--repo',repo,'--json','databaseId']))['databaseId']
               for e in entries:
-                  name=e['name'];assert pathlib.Path(name).name==name and '..' not in name
+                  stage='validate';name=e['name'];assert pathlib.Path(name).name==name and '..' not in name
                   assert e['url'].startswith('https://release-assets.githubusercontent.com/')
                   assert re.fullmatch('[a-f0-9]{64}',e['sha256'])
-                  current=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/{rid}/assets?per_page=100']))
+                  stage='inspect';current=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/{rid}/assets?per_page=100']))
                   a=next((a for a in current if a['name']==name),None)
                   if a:
                       assert a['size']==e['bytes'] and a.get('digest')=='sha256:'+e['sha256']
                       print('Already verified:',name);continue
-                  h=hashlib.sha256();size=0
+                  stage='download';h=hashlib.sha256();size=0
                   with urllib.request.urlopen(e['url'],timeout=120) as src,open(name,'xb') as dst:
                       while b:=src.read(8*1024*1024):dst.write(b);h.update(b);size+=len(b)
-                  assert size==e['bytes'] and h.hexdigest()==e['sha256']
-                  subprocess.run(['gh','release','upload',tag,name,'--repo',repo],check=True,capture_output=True)
+                  stage='hash';assert size==e['bytes'] and h.hexdigest()==e['sha256']
+                  stage='upload';subprocess.run(['gh','release','upload',tag,name,'--repo',repo],check=True,capture_output=True)
                   pathlib.Path(name).unlink();print('Transferred verified asset:',name)
           except Exception:
-              print('Transfer failed; source URLs and credentials withheld.',file=sys.stderr)
+              print('Transfer failed; safe type='+type(sys.exc_info()[1]).__name__+'; asset='+name+'; stage='+stage+'; HTTP='+str(getattr(sys.exc_info()[1],'code','')),file=sys.stderr)
               sys.exit(1)
           CODE

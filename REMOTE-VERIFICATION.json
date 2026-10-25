@@ -1,5 +1,108 @@
 {
-  "status": "publication_pending",
+  "status": "published_verified",
+  "date": "2026-10-25",
+  "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+  "url": "https://github.com/olegeklepikov-collab/hermes-bn-gsd-udr-public/releases/tag/public-2026-10-25-gsd-udr-full-r7",
   "tag": "public-2026-10-25-gsd-udr-full-r7",
-  "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public"
+  "release_source_commit": "5a463b605cb9c79e34bf56ac47ad8e72815b00eb",
+  "assets_verified": [
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part001",
+      "bytes": 1900000000,
+      "sha256": "806ce82b02a004fc865a74228df452a349e5e9ea236bfbf097b0641cad0d6d79"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part002",
+      "bytes": 1900000000,
+      "sha256": "03ee64f199037e9582063fb6b9053a5d5060d4a5069b67666456261cdcc7af40"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part003",
+      "bytes": 1900000000,
+      "sha256": "69a758d8db245f402e5ec5e618c253e2b6dd0e39e720bbfe5ad8aa03c8c638c0"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part004",
+      "bytes": 1900000000,
+      "sha256": "aeed8752f3760a51a73705d2eefe1e56bd206da50aadc57dd82bb4d9de8708c2"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part005",
+      "bytes": 1900000000,
+      "sha256": "4fbce4aa715c941c46831284c4ef5cf24b74ccc02d172c20581f8e75083cc512"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part006",
+      "bytes": 1900000000,
+      "sha256": "ea59479769e6ce6449e3bfb9562564def525d1bf428910345296c88b88c96fe6"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part007",
+      "bytes": 1900000000,
+      "sha256": "7783782ef7aceeb65d5b9cc9f69a3d330750fadaf6c9937a4957c79796e6c805"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part008",
+      "bytes": 1900000000,
+      "sha256": "3a7413b3c9a7f4a959d348f71169f522bf732a91a4e37cba86ec3942a2ef3011"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part009",
+      "bytes": 1900000000,
+      "sha256": "dcee29af5d74dcfd4bc8609098a7a8744e8a9fece30f891c64b02d708e34e87c"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part010",
+      "bytes": 845478717,
+      "sha256": "419d88a505ba8a4c0e8a8780702090e272cbb308e2151119244359342d07f095"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "recovery-set.json",
+      "bytes": 3270,
+      "sha256": "b1c7090916059f381c8f6a1617ba587fedd9fb4d445cdb6967249429b298f4cf"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "restore.py",
+      "bytes": 4343,
+      "sha256": "1868474bbc48e4099303cf02dc57a5e7b9b1b19abbea8166017c36480d602eea"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "CURRENT-SETUP.md",
+      "bytes": 5580,
+      "sha256": "dad92587cff2cf13b14e458ac9db8da883a36aebc1d3e6ce8c99279c7980a938"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "INSTALL-macOS-Apple-Silicon.md",
+      "bytes": 126783,
+      "sha256": "cec39cdea794fd36f18b46f509bdb76e7ed1e2090e9b9e0430aea64d7ababc58"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "INSPECTION.md",
+      "bytes": 1618,
+      "sha256": "b4749e369a4e55bd2b5f24d4f14ed6310197631f1ca9d3ac6a6dd57b74f960b6"
+    },
+    {
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "name": "SHA256SUMS",
+      "bytes": 1788,
+      "sha256": "6551557938531bb9c5a123475123d2b209e9e16fc37340a462b55ba9636063e1"
+    }
+  ],
+  "standalone_snapshot": true,
+  "recovery_key_uploaded": false
 }

@@ -11,7 +11,7 @@ def main():
     if (B/'data/auth.json').exists() or (U/'profile/auth.json').exists():raise ValueError('Fresh preparation must precede account authorization')
     import yaml
     memory=json.loads((B/'Memory/settings.json').read_text());package=Path(memory['package_root'])
-    if package.name!='1.3.0':raise ValueError('Expected selected Memory1.3.0; old template must not activate a stale package')
+    if package.name!='1.4.0':raise ValueError('Expected selected Memory1.4.0; old template must not activate a stale package')
     manifest=package/'manifest.json';values=json.loads(manifest.read_text())
     for name in values:values[name]=filehash(package/name)
     manifest.write_text(json.dumps(values,indent=2))

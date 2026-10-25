@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "files_scanned": 298526,
+  "bytes_scanned": 29445256688,
+  "known_private_values_checked": 31,
+  "additional_current_files_checked": 8713,
+  "resolved_interpreter_archive_owner_metadata": 3686
+}

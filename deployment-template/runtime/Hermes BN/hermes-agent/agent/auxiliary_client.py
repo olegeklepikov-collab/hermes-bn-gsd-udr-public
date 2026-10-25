@@ -3327,6 +3327,8 @@ def _is_timeout_error(exc: Exception) -> bool:
     A timeout burns the whole ``timeout`` budget, so a same-provider retry on the compression
     path doubles wall time; fast drops stay on the retry path.
     """
+    if getattr(exc, "non_retryable", False) is True:
+        return False
     with contextlib.suppress(ImportError):
         from openai import APITimeoutError
         if isinstance(exc, APITimeoutError):
@@ -8144,7 +8146,7 @@ def _should_retry_same_provider(task: Optional[str], exc: Exception, tag: str) -
     """True when ``exc`` is a transient transport blip worth a same-provider retry; critical-path
     tasks skip it on a full-budget timeout (``_should_skip_same_provider_retry``) and go straight
     to fallback."""
-    if not _is_transient_transport_error(exc):
+    if getattr(exc, "non_retryable", False) is True or not _is_transient_transport_error(exc):
         return False
     if _should_skip_same_provider_retry(task, exc):
         logger.info("Auxiliary %s%s: timeout on the critical path; "
@@ -8170,6 +8172,8 @@ def _start_recovery_ladder(
     task: Optional[str], async_mode: bool, route_info: Optional[dict[str, str]],
 ):
     """Build the recovery-ladder generator for a failed primary request."""
+    if getattr(first_err, "non_retryable", False) is True:
+        raise first_err
     return _aux_recovery_ladder(
         first_err, client=req.client, kwargs=req.kwargs, task=task, async_mode=async_mode,
         base_info=req.base_info, resolved_provider=req.resolved_provider,

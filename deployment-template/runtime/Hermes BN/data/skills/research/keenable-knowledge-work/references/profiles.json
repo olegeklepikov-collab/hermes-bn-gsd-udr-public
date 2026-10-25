@@ -1,0 +1,228 @@
+{
+  "profiles": [
+    {
+      "id": "quick",
+      "purpose": "Быстрое уточнение",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "realtime",
+        "max_results": 3,
+        "snippet_max_length": 1000
+      }
+    },
+    {
+      "id": "source-discovery",
+      "purpose": "Поиск первичных оснований",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "max_results": 5,
+        "snippet_max_length": 2000
+      }
+    },
+    {
+      "id": "business",
+      "purpose": "Рынок, компании, продукты",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "max_results": 10,
+        "snippet_max_length": 3000
+      }
+    },
+    {
+      "id": "academic",
+      "purpose": "Издатели и научные репозитории",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "max_results": 10,
+        "snippet_max_length": 3000
+      },
+      "rule": "Отдельные запросы к нужным доменам; проверять DOI, полный текст и тип исследования"
+    },
+    {
+      "id": "primary-domain",
+      "purpose": "Заданный первичный домен",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "max_results": 5,
+        "snippet_max_length": 2000
+      },
+      "required_per_task": [
+        "site"
+      ]
+    },
+    {
+      "id": "news",
+      "purpose": "Опубликованное в нужный период",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "max_results": 10,
+        "snippet_max_length": 2000
+      },
+      "required_per_task": [
+        "published_after",
+        "published_before"
+      ]
+    },
+    {
+      "id": "index-freshness",
+      "purpose": "Период индексирования",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "max_results": 5,
+        "snippet_max_length": 2000
+      },
+      "required_per_task": [
+        "acquired_after",
+        "acquired_before"
+      ]
+    },
+    {
+      "id": "point-in-time",
+      "purpose": "Поиск на прошлый момент",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "max_results": 10,
+        "snippet_max_length": 3000
+      },
+      "required_per_task": [
+        "query_time"
+      ]
+    },
+    {
+      "id": "cached-read",
+      "purpose": "Индексированная страница",
+      "tool": "fetch_page_content",
+      "parameters": {
+        "live": false,
+        "max_chars": 50000
+      }
+    },
+    {
+      "id": "live-read",
+      "purpose": "Действующая страница",
+      "tool": "fetch_page_content",
+      "parameters": {
+        "live": true,
+        "max_chars": 50000
+      }
+    },
+    {
+      "id": "targeted-extraction",
+      "purpose": "Выбранные сведения по точной инструкции",
+      "tool": "fetch_page_content",
+      "parameters": {
+        "live": false,
+        "max_chars": 20000
+      },
+      "required_per_task": [
+        "prompt"
+      ]
+    },
+    {
+      "id": "machine-output",
+      "purpose": "Программный разбор MCP",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "output_format": "json",
+        "max_results": 5,
+        "snippet_max_length": 2000
+      }
+    },
+    {
+      "id": "experimental-wizards",
+      "purpose": "Экспериментальные специализированные ответы",
+      "tool": "search_web_pages",
+      "parameters": {
+        "mode": "pro",
+        "enableWizards": true,
+        "max_results": 3
+      },
+      "automatic": false
+    },
+    {
+      "id": "evidence-table",
+      "purpose": "Таблица по выбранным страницам",
+      "tool": "select",
+      "parameters": {
+        "show_preview": false
+      },
+      "rule": "WEB_FETCH известных URL; SEM_EXTRACT/ALL и per_field; сохранить URL"
+    },
+    {
+      "id": "broad-table",
+      "purpose": "Несколько направлений табличного исследования",
+      "tool": "select",
+      "parameters": {
+        "show_preview": false
+      },
+      "rule": "WEB_SEARCH: >=6 разных направлений; объём обработки заранее неизвестен; для небольшого корпуса предпочитать предварительно выбранные URL"
+    },
+    {
+      "id": "semantic-comparison",
+      "purpose": "Смысловое включение, порядок, объединение",
+      "tool": "select",
+      "parameters": {
+        "show_preview": false
+      },
+      "rule": "SEM_MATCH, SEM_SCORE, SEM_NORM; проверить определения и правила слияния"
+    },
+    {
+      "id": "result-reuse",
+      "purpose": "Повторный отбор, объединение и агрегаты",
+      "tool": "select",
+      "parameters": {
+        "show_preview": false
+      },
+      "rule": "FROM собственный result_set_id; TRY_CAST для чисел и дат"
+    },
+    {
+      "id": "preview",
+      "purpose": "Проверка структуры большой таблицы",
+      "tool": "select",
+      "parameters": {
+        "show_preview": true
+      }
+    },
+    {
+      "id": "deep-research",
+      "purpose": "Обоснованный синтез нескольких направлений",
+      "workflow": [
+        "decompose",
+        "search",
+        "fetch",
+        "table-if-useful",
+        "cross-check",
+        "synthesize"
+      ],
+      "rule": "Это процедура Hermes, не отдельный API исследования"
+    },
+    {
+      "id": "local-corpus",
+      "purpose": "Воспроизводимый архив выбранных страниц",
+      "operation": "batch-local",
+      "rule": "1–50 последовательных search/fetch; остановка при429; анализ ошибок каждой страницы"
+    },
+    {
+      "id": "linked-report",
+      "purpose": "Отчёт по ссылке",
+      "tool": "generate_html_report",
+      "automatic": false,
+      "rule": "По просьбе пользователя; проверенная таблица и отдельные SQL-агрегаты; URL источников в строках"
+    },
+    {
+      "id": "report-removal",
+      "purpose": "Закрытие ссылки и удаление отчёта",
+      "tool": "revoke_html_report",
+      "automatic": false,
+      "rule": "Только явная просьба удалить конкретный собственный отчёт"
+    }
+  ]
+}

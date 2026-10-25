@@ -448,6 +448,13 @@ def recall(sid, request):
     for family, value in result.items():
         capture(sid, {'family': {'memory': 'agentmemory', 'graph': 'graphiti', 'zvec': 'zvec'}[family],
             'tool': 'udr_recall_' + family, 'text': json.dumps(value, ensure_ascii=False), 'query': query})
+    try:
+        config_path=ROOT.parent/'Hermes BN'/'Memory/settings.json'
+        config=json.loads(config_path.read_text());sys.path.insert(0,config['package_root'])
+        from bn_memory.broker import Broker
+        result['shared_context']=Broker(config).recall(sid,{'query':query,'mode':'hybrid','limit':5})
+    except Exception as exc:
+        result['shared_context']={'status':'unavailable','code':type(exc).__name__+':'+str(exc)[:120]}
     return result
 
 def verify_host(name, args):
@@ -484,6 +491,12 @@ def dispatch(name, args):
 
 def rpc(data):
     op, sid = data['operation'], data.get('sid', '')
+    if op=='prepare_delivery':
+        from delivery_approval import prepare
+        return prepare(sid,data['run_id'],data['artifact_id'],data['expected_sha256'])
+    if op=='authorize_delivery':
+        from delivery_approval import issue
+        return issue(sid,data['approval'])
     if op=='deliver_report':
         from report_delivery import deliver
         return deliver(sid,data['run_id'],data['expected_sha256'],data['grant_id'],data.get('artifact_id'))

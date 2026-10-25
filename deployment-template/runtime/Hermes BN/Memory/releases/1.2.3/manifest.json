@@ -5,7 +5,7 @@
   "bn_memory/test_knowledge.py": "1e28377b638187b62e24ecccaed8a4ffa9e2914383b00531d71809f957c98448",
   "bn_memory/__init__.py": "be070feaa78e1465baabbdc5d7153b24edef13851f6a28275e1588c8581c6602",
   "bn_memory/test_host.py": "ca75dd9698e6ecfed5492bdfe5b7a7a70d86c9ec7b297bf1e21d420046a046ba",
-  "bn_memory/document_worker.py": "4f4c36704c7b96e13a4254747637d75b82c6d54609bb2847cc42ab84a1de402b",
+  "bn_memory/document_worker.py": "8df6a674c1304af93dd4e272375b464ff5b0da26ee506ecb1b724f4ee228a43a",
   "bn_memory/test_store.py": "249d3fdc0376a36f727bfe5c4c25b31108ad9aa0158cb3e8acb217836a3f294f",
   "bn_memory/schemas.py": "b48404aa113986b294937cac5fcbbf8d3856644c050f0300baad7fc207abdeb8",
   "bn_memory/cognee_worker.py": "837dea39deb51169afc218abc6a26d916f5f28eaa271a49e17a08708e2d4aa99",
@@ -14,7 +14,7 @@
   "bn_memory/broker.py": "cbc43b62f38f1cc823d88db34e53145803425d3a0879002657e47fd3bc1b1a2e",
   "bn_memory/knowledge.py": "35a6ce4a5e7e6dfe1b023cf7f8241c3ea7894d613d101e750a1cf64a4b623b51",
   "bn_memory/cognee_native.py": "1f7caed9cd84eea79d018b8eec4eb24ad3fb21e1786543e6f5958b87d8b6454a",
-  "xls-runtime/manifest.json": "962c51f4a7ac5a356297295ef4dd7f526a958505e2a7b678fb7c45197b912190",
+  "xls-runtime/manifest.json": "b209cd2c4c6c5478d4b0aa5a42ed149d46db443ccb8eb1bc7f0c5675774ce870",
   "xls-runtime/classes/XlsReader.class": "1ece415449bb524795336e8d3ad99d4b56fab4db9051bf845b6edd2bc64e73f3",
   "xls-runtime/classes/XlsReader$1.class": "d238aface28e033d38a2b3d387b8d1f2f930fac48a006d5bd1d904205abe1de9",
   "xls-runtime/lib/log4j-api-2.24.3.jar.asc": "c3fefadb2411623b9795027b7f7e997d675c761dd26f5169d56543f805c66536",
@@ -31,6 +31,5 @@
   "xls-runtime/lib/log4j-api-2.24.3.jar": "5b4a0a0cd0e751ded431c162442bdbdd53328d1f8bb2bae5fc1bbeee0f66d80f",
   "xls-runtime/lib/commons-math3-3.6.1.jar.asc": "e0a9e72b481ea864abf7a20fec3003294f543167e531970df75a632cc3a08f33",
   "xls-runtime/lib/commons-codec-1.20.0.jar": "6af66595f9f6a7bb58ce66518d6888d40b547c366d2262f06676eee19528ff66",
-  "xls-runtime/src/XlsReader.java": "b2eee4cfc4660fafa3a86ca7e97ee1cedfdf32f373773f9f56d0043e9954c056",
-  "xls-runtime/passive-jdk21.policy": "2b280b1a392cde4f67746272c9e612d4475e877ec1af6da050fdc72b77a0012a"
+  "xls-runtime/src/XlsReader.java": "b2eee4cfc4660fafa3a86ca7e97ee1cedfdf32f373773f9f56d0043e9954c056"
 }

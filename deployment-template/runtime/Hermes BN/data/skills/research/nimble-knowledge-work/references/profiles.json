@@ -1,0 +1,328 @@
+{
+  "profiles": [
+    {
+      "id": "quick-source-discovery",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "general",
+        "search_depth": "lite",
+        "max_results": 3,
+        "include_answer": false
+      }
+    },
+    {
+      "id": "standard-source-discovery",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "general",
+        "search_depth": "standard",
+        "max_results": 5,
+        "include_answer": false
+      }
+    },
+    {
+      "id": "full-page-search",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "general",
+        "search_depth": "standard",
+        "full_content": true,
+        "max_results": 3,
+        "include_answer": false
+      }
+    },
+    {
+      "id": "search-news",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "news",
+        "search_depth": "lite",
+        "max_results": 3,
+        "include_answer": false
+      },
+      "rule": "Период, язык и регион задаются по задаче; geo не является географическим режимом"
+    },
+    {
+      "id": "search-coding",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "coding",
+        "search_depth": "lite",
+        "max_results": 3,
+        "include_answer": false
+      },
+      "rule": "Период, язык и регион задаются по задаче; geo не является географическим режимом"
+    },
+    {
+      "id": "search-academic",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "academic",
+        "search_depth": "lite",
+        "max_results": 3,
+        "include_answer": false
+      },
+      "rule": "Период, язык и регион задаются по задаче; geo не является географическим режимом"
+    },
+    {
+      "id": "search-shopping",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "shopping",
+        "search_depth": "lite",
+        "max_results": 3,
+        "include_answer": false
+      },
+      "rule": "Период, язык и регион задаются по задаче; geo не является географическим режимом"
+    },
+    {
+      "id": "search-social",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "social",
+        "search_depth": "lite",
+        "max_results": 3,
+        "include_answer": false
+      },
+      "rule": "Период, язык и регион задаются по задаче; geo не является географическим режимом"
+    },
+    {
+      "id": "search-geo",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "geo",
+        "search_depth": "lite",
+        "max_results": 3,
+        "include_answer": false
+      },
+      "rule": "Период, язык и регион задаются по задаче; geo не является географическим режимом"
+    },
+    {
+      "id": "search-location",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "location",
+        "search_depth": "lite",
+        "max_results": 3,
+        "include_answer": false
+      },
+      "rule": "Период, язык и регион задаются по задаче; geo не является географическим режимом"
+    },
+    {
+      "id": "document-discovery",
+      "tool": "search",
+      "parameters": {
+        "focus": "general",
+        "search_depth": "lite",
+        "content_type": [
+          "documents"
+        ],
+        "max_results": 5
+      }
+    },
+    {
+      "id": "primary-domains",
+      "tool": "nimble_search",
+      "parameters": {
+        "focus": "general",
+        "search_depth": "standard",
+        "max_results": 5,
+        "include_answer": false
+      },
+      "rule": "Домены include/exclude задаются по задаче и проверяются по URL"
+    },
+    {
+      "id": "read-page",
+      "tool": "nimble_extract",
+      "parameters": {
+        "output_format": "markdown"
+      },
+      "rule": "URL обязателен; проверять полноту"
+    },
+    {
+      "id": "rendered-page",
+      "tool": "extract",
+      "parameters": {
+        "driver": "vx8",
+        "render": true,
+        "formats": [
+          "markdown"
+        ]
+      }
+    },
+    {
+      "id": "structured-page",
+      "tool": "extract",
+      "parameters": {
+        "driver": "vx6",
+        "parse": true,
+        "formats": [
+          "html"
+        ]
+      },
+      "rule": "Не активировать автоматически; использовать Templates или структурированный Agent API V2.",
+      "automatic": false,
+      "availability": "inline_parser_returned_empty_on_known_html"
+    },
+    {
+      "id": "public-xhr",
+      "tool": "extract",
+      "parameters": {
+        "is_xhr": true,
+        "render": false
+      },
+      "rule": "Только заданный публичный API, без cookies и частных заголовков"
+    },
+    {
+      "id": "browser-read-actions",
+      "tool": "extract",
+      "parameters": {
+        "driver": "vx8",
+        "render": true
+      },
+      "rule": "Читающие browser_actions по действующей схеме; не использовать устаревшие формы type автоматически"
+    },
+    {
+      "id": "network-data",
+      "tool": "extract",
+      "parameters": {
+        "driver": "vx8",
+        "render": true
+      },
+      "rule": "Network_capture по разрешённым публичным запросам"
+    },
+    {
+      "id": "template-record",
+      "tool": "nimble_extract_templates_run",
+      "parameters": {},
+      "rule": "Сначала каталог и Get; имя и params по схеме"
+    },
+    {
+      "id": "template-async",
+      "tool": "nimble_extract_templates_run_async",
+      "parameters": {},
+      "rule": "Сохранить task_id и получить результат"
+    },
+    {
+      "id": "template-batch",
+      "tool": "template-batch",
+      "parameters": {},
+      "rule": "Сначала 1–2 записи; shared template и отдельные params, до1000"
+    },
+    {
+      "id": "bounded-map",
+      "tool": "nimble_map",
+      "parameters": {
+        "limit": 20,
+        "sitemap": "include",
+        "domain_filter": "domain"
+      }
+    },
+    {
+      "id": "bounded-crawl",
+      "tool": "crawl-create",
+      "parameters": {
+        "limit": 20,
+        "max_discovery_depth": 1,
+        "crawl_entire_domain": false,
+        "allow_subdomains": false,
+        "allow_external_links": false
+      }
+    },
+    {
+      "id": "business-research",
+      "tool": "nimble_agent_run_start",
+      "parameters": {
+        "effort": "medium"
+      },
+      "rule": "Использовать подготовленный Hermes BN — business research; сохрани agent_id/run_id"
+    },
+    {
+      "id": "academic-research",
+      "tool": "nimble_agent_run_start",
+      "parameters": {
+        "effort": "medium"
+      },
+      "rule": "Использовать подготовленный Hermes BN — academic research; сохрани agent_id/run_id"
+    },
+    {
+      "id": "general-research",
+      "tool": "nimble_agent_run_start",
+      "parameters": {
+        "effort": "medium"
+      },
+      "rule": "Использовать подготовленный Hermes BN — general research; сохрани agent_id/run_id"
+    },
+    {
+      "id": "source-enrichment",
+      "tool": "agent-run-start",
+      "parameters": {
+        "effort": "medium"
+      },
+      "rule": "Подготовленный агент enrichment; массив исходных строк и проверка новых полей"
+    },
+    {
+      "id": "research-dataset",
+      "tool": "agent-run-start",
+      "parameters": {
+        "effort": "high"
+      },
+      "rule": "Подготовленный dataset_building; явные критерии и число строк"
+    },
+    {
+      "id": "continue-research",
+      "tool": "agent-run-start",
+      "parameters": {},
+      "rule": "previous_interaction_id прежнего задания, источники и схема по задаче"
+    },
+    {
+      "id": "live-progress",
+      "tool": "agent-events",
+      "parameters": {},
+      "rule": "enable_events:true при создании; сохранить поток и получить итоговый результат"
+    },
+    {
+      "id": "serp-analysis",
+      "tool": "serp",
+      "parameters": {
+        "search_engine": "google_search",
+        "num_results": 5,
+        "parse": true
+      }
+    },
+    {
+      "id": "driver-diagnostics",
+      "tool": "domain-driver",
+      "parameters": {},
+      "rule": "Один url или один agent"
+    },
+    {
+      "id": "domain-diagnostics",
+      "tool": "domain-health",
+      "parameters": {},
+      "rule": "До100 публичных доменов; состояние трафика не подтверждает содержание",
+      "automatic": false,
+      "availability": "published_endpoint_returned_404"
+    },
+    {
+      "id": "public-document-download",
+      "tool": "media",
+      "parameters": {},
+      "rule": "Конкретный разрешённый документ; назначение локальное, без обхода показа медиа"
+    },
+    {
+      "id": "manual-cloud-job",
+      "tool": "job-create",
+      "parameters": {},
+      "rule": "Требует конкретных входов и назначения хранения; не создаётся общей установкой",
+      "automatic": false
+    },
+    {
+      "id": "custom-template-authoring",
+      "tool": "template-generate",
+      "parameters": {},
+      "rule": "Только явный запрос на конкретный сайт и поля",
+      "automatic": false
+    }
+  ]
+}

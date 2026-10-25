@@ -1,0 +1,4 @@
+name: bn-work-status
+version: 1.0.0
+description: Краткие фактические статусы этапов, дочерних исполнителей и остановок всей работы Hermes BN.
+requires_hermes: '>=0.21.5'

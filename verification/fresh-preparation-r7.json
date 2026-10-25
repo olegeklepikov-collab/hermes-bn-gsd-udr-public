@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "steps": [
+    {
+      "step": "BN",
+      "exit_code": 0
+    },
+    {
+      "step": "UDR",
+      "exit_code": 0
+    },
+    {
+      "step": "Memory",
+      "exit_code": 0
+    },
+    {
+      "step": "finalize",
+      "exit_code": 0
+    },
+    {
+      "step": "BN-CLI",
+      "exit_code": 0
+    },
+    {
+      "step": "UDR-CLI",
+      "exit_code": 0
+    }
+  ],
+  "empty_memory_verified": true,
+  "new_independent_memory_key": true,
+  "old_auth_absent": true,
+  "services_started": false,
+  "model_generations": 0,
+  "external_service_authorizations": 0,
+  "scope": "Actual local preparation and CLI; own external connections and end-to-end target acceptance remain required",
+  "R": {
+    "BN": {
+      "exit_code": 0,
+      "mean": 3,
+      "sample_variance": 2.5
+    },
+    "UDR": {
+      "exit_code": 0,
+      "mean": 3,
+      "sample_variance": 2.5
+    }
+  },
+  "fresh_Beads_empty": true
+}

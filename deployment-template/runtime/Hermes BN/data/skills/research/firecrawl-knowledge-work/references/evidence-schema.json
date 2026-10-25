@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "type":"object",
+  "required":["claim","source_url","retrieved_at","evidence","coverage"],
+  "properties":{
+    "claim":{"type":"string"},
+    "claim_kind":{"enum":["fact","calculation","inference","source_statement"]},
+    "source_url":{"type":"string","format":"uri"},
+    "retrieved_at":{"type":"string","format":"date-time"},
+    "published_at":{"type":["string","null"]},
+    "source_type":{"type":"string"},
+    "evidence":{"type":"string"},
+    "page_or_section":{"type":["string","null"]},
+    "coverage":{"type":"string"},
+    "conflicting_evidence":{"type":"array","items":{"type":"string"}},
+    "limitations":{"type":"array","items":{"type":"string"}},
+    "confidence_basis":{"type":"string"}
+  },
+  "additionalProperties":false
+}

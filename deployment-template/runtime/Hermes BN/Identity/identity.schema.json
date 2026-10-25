@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hermes-bn:identity-edition:1",
+  "title": "Identity foundation observation, not automatic approval",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "store_version",
+    "revision",
+    "agent_id",
+    "instance_id",
+    "previous",
+    "observed_at",
+    "reason",
+    "status",
+    "content_authority",
+    "deep_identity",
+    "profiles"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "store_version": {
+      "const": "0.1.0"
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+    },
+    "agent_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instance_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previous": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "revision",
+        "manifest_sha256"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}$"
+        },
+        "manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "observed_not_activated"
+    },
+    "content_authority": {
+      "const": "existing_native_soul"
+    },
+    "deep_identity": {
+      "type": "object",
+      "required": [
+        "continuity",
+        "foundations",
+        "epistemic_stance",
+        "values_and_boundaries",
+        "dispositions",
+        "relationships",
+        "expression"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "continuity": {
+          "type": "null"
+        },
+        "foundations": {
+          "type": "null"
+        },
+        "epistemic_stance": {
+          "type": "null"
+        },
+        "values_and_boundaries": {
+          "type": "null"
+        },
+        "dispositions": {
+          "type": "null"
+        },
+        "relationships": {
+          "type": "null"
+        },
+        "expression": {
+          "type": "null"
+        }
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "file",
+          "native_path",
+          "sha256",
+          "bytes"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "native_path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  }
+}

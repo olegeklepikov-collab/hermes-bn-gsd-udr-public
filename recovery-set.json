@@ -1,115 +1,90 @@
 {
-  "format": "hermes-bn-recovery-set/2",
-  "date": "2026-10-22",
+  "format": "hermes-bn-recovery-set/3",
+  "date": "2026-10-25",
   "mode": "new-user",
-  "base_and_update_both_required": true,
+  "base_and_update_both_required": false,
   "archives": [
     {
-      "role": "base",
+      "role": "complete",
       "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
-      "tag": "public-2026-10-17-gsd-udr-r2",
+      "tag": "public-2026-10-25-gsd-udr-full-r7",
       "archive": {
-        "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst",
-        "bytes": 17801925827,
-        "sha256": "cbf18ffe88011c66fea0498068c2119ad3bacad376a35bd6fbe2f9e9b7f9fce1"
+        "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst",
+        "bytes": 17945478717,
+        "sha256": "d93caa43f923df5d519679c39260a05ece6c9c98dbf3efa16d063448c5410536"
       },
       "parts": [
         {
           "index": 1,
           "offset": 0,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part001",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part001",
           "bytes": 1900000000,
-          "sha256": "25fe1723f1b3851137c1ae4c4c56dbf5dae631360c27c7a61f94de37cc8bc60c"
+          "sha256": "806ce82b02a004fc865a74228df452a349e5e9ea236bfbf097b0641cad0d6d79"
         },
         {
           "index": 2,
           "offset": 1900000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part002",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part002",
           "bytes": 1900000000,
-          "sha256": "a35ba70e0080c4cd7d56df99c8ecec197b8c825107b3539f46a384ca5ac116d3"
+          "sha256": "03ee64f199037e9582063fb6b9053a5d5060d4a5069b67666456261cdcc7af40"
         },
         {
           "index": 3,
           "offset": 3800000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part003",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part003",
           "bytes": 1900000000,
-          "sha256": "e1567ae0c94ba66e7a81b9d6593749c310d3de9cbf506ff77e4e0b9168f6d027"
+          "sha256": "69a758d8db245f402e5ec5e618c253e2b6dd0e39e720bbfe5ad8aa03c8c638c0"
         },
         {
           "index": 4,
           "offset": 5700000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part004",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part004",
           "bytes": 1900000000,
-          "sha256": "d403459e0e68c73d75fac64c5f38ab3c6a625da6839f2dfff055c32284bcf241"
+          "sha256": "aeed8752f3760a51a73705d2eefe1e56bd206da50aadc57dd82bb4d9de8708c2"
         },
         {
           "index": 5,
           "offset": 7600000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part005",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part005",
           "bytes": 1900000000,
-          "sha256": "243a107caab17d9e6c95df71c81482e2edfd7ebdf3dfced5080ad4ef65f4f9c5"
+          "sha256": "4fbce4aa715c941c46831284c4ef5cf24b74ccc02d172c20581f8e75083cc512"
         },
         {
           "index": 6,
           "offset": 9500000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part006",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part006",
           "bytes": 1900000000,
-          "sha256": "9a8c198a833a0cab4805572d6afce8ea7ac654189c0d64182b6efd57f5b5295b"
+          "sha256": "ea59479769e6ce6449e3bfb9562564def525d1bf428910345296c88b88c96fe6"
         },
         {
           "index": 7,
           "offset": 11400000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part007",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part007",
           "bytes": 1900000000,
-          "sha256": "31e9db7c37ea76c7ea4e812dd88e5686c342302d66cb0c531b0f624b07cf2c42"
+          "sha256": "7783782ef7aceeb65d5b9cc9f69a3d330750fadaf6c9937a4957c79796e6c805"
         },
         {
           "index": 8,
           "offset": 13300000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part008",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part008",
           "bytes": 1900000000,
-          "sha256": "5fe4bb7f4e455b1ac22ae981148eff977f4acf2c49665ccdd1a1ed2398ec83b9"
+          "sha256": "3a7413b3c9a7f4a959d348f71169f522bf732a91a4e37cba86ec3942a2ef3011"
         },
         {
           "index": 9,
           "offset": 15200000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part009",
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part009",
           "bytes": 1900000000,
-          "sha256": "1d5a28e7b0258572370541ba2497ab4af0ae4f8be3967d916e850fa16a5db54f"
+          "sha256": "dcee29af5d74dcfd4bc8609098a7a8744e8a9fece30f891c64b02d708e34e87c"
         },
         {
           "index": 10,
           "offset": 17100000000,
-          "name": "Hermes-BN-GSD-and-UDR-Complete-new-user-20261014-clean-r2.tar.zst.part010",
-          "bytes": 701925827,
-          "sha256": "2cc5dd149e3908e63b938d8128b3596873d3c9fbcea88ad142592cab5d4df4af"
-        }
-      ]
-    },
-    {
-      "role": "update",
-      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
-      "tag": "public-2026-10-22-gsd-udr-prepared-files-r6",
-      "archive": {
-        "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261022-r6.tar.zst",
-        "bytes": 927513742,
-        "sha256": "57071be0de3b806bde9bb6bbe6b0cde3933b040c6af0b7af5006c288338897fc"
-      },
-      "parts": [
-        {
-          "index": 1,
-          "offset": 0,
-          "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261022-r6.tar.zst",
-          "bytes": 927513742,
-          "sha256": "57071be0de3b806bde9bb6bbe6b0cde3933b040c6af0b7af5006c288338897fc"
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261025-r7.tar.zst.part010",
+          "bytes": 845478717,
+          "sha256": "419d88a505ba8a4c0e8a8780702090e272cbb308e2151119244359342d07f095"
         }
       ]
     }
-  ],
-  "neutral_base_header_cleaned": true,
-  "consolidates_previous_update_r2": true,
-  "consolidates_previous_parser_r4": true,
-  "source_state_snapshot_date": "2026-10-20",
-  "program_amendment_date": "2026-10-22",
-  "consolidates_previous_gateway_r5": true
+  ]
 }

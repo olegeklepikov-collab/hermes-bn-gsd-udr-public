@@ -1,14 +1,6 @@
 from pathlib import Path
 import json,secrets,pymysql,os,socket,time
 z=Path(__file__).resolve().parents[1];fp=z/'config/credentials.json'
-import subprocess
-pidfile=z/'config/server.pid'
-if not pidfile.exists():raise RuntimeError('Start the intended local Dolt service first')
-pid=int(pidfile.read_text())
-command=subprocess.check_output(['/bin/ps','-p',str(pid),'-o','command='],text=True).strip()
-if not command.startswith(str(z/'bin/dolt')+' '):raise RuntimeError('SQL process does not belong to this installation')
-probe=subprocess.run(['/usr/sbin/lsof','-a','-p',str(pid),'-iTCP:33697','-sTCP:LISTEN','-t'],capture_output=True,text=True)
-if probe.returncode or str(pid) not in probe.stdout.split():raise RuntimeError('The SQL listener does not belong to the pinned process')
 if fp.exists():creds=json.loads(fp.read_text())
 else:
  creds={'root_password':secrets.token_urlsafe(36),'agent_password':secrets.token_urlsafe(36),'initialized':False};fp.write_text(json.dumps(creds));fp.chmod(0o600)

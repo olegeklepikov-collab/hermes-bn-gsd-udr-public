@@ -53,28 +53,7 @@ def load_blob(settings, sha):
     return read_json(raw)
 
 
-def check_anchor(settings, initializing=False):
-    db = Path(settings["state_dir"]) / "state.sqlite3"
-    path = Path(settings["anchor_file"])
-    if initializing and not db.exists() and not path.exists():
-        return
-    if not db.is_file() or not path.is_file():
-        raise ValueError("DEGRADED: missing independent recovery anchor")
-    anchor = read_json(path.read_bytes())
-    key = Path(settings["native_key"]).read_bytes()
-    body = anchor["body"]
-    if not hmac.compare_digest(anchor["mac"], hmac.new(key, canonical(body), hashlib.sha256).hexdigest()):
-        raise ValueError("DEGRADED: independent anchor authentication failed")
-    if body["database_sha256"] != hashlib.sha256(db.read_bytes()).hexdigest():
-        raise ValueError("DEGRADED: database does not match its independent anchor")
-
-
-def anchor(settings):
-    db = Path(settings["state_dir"]) / "state.sqlite3"
-    body = {"version": 1, "database_sha256": hashlib.sha256(db.read_bytes()).hexdigest(),
-            "recorded_at": time.time(), "engine_manifest_sha256": settings["engine_manifest_sha256"]}
-    mac = hmac.new(Path(settings["native_key"]).read_bytes(), canonical(body), hashlib.sha256).hexdigest()
-    atomic(Path(settings["anchor_file"]), canonical({"body": body, "mac": mac}))
+from bn_gsd.anchor_store import check_anchor, anchor, install_store_guard
 
 
 def execute(settings, operation, args):
@@ -97,6 +76,7 @@ def execute(settings, operation, args):
     if not check["valid"]:
         raise ValueError("Supplied GSD code or corpus failed integrity validation")
     from gsd_bridge.service import Service
+    install_store_guard(settings)
     service = Service()
     ledger = HostLedger(service.store, settings["limits"])
     functions = {

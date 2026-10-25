@@ -247,8 +247,13 @@ def register(ctx):
         except BaseException:
             runner.stop(kw.get('session_id'),args.get('request_id'));raise
     def deliver_report(args,**kw):
+        if not args.get('grant_id'):
+            from delivery_approval import authorize_native
+            approval=authorize_native(host,args,kw['session_id'])
+            if approval['status']!='delivery_authorized':return canonical(approval).decode()
+            args={**args,'grant_id':approval['grant_id']}
         return canonical(host.rpc('deliver_report',kw['session_id'],**args)).decode()
-    ctx.register_tool(name='bn_deliver_report',toolset='udr',schema={'name':'bn_deliver_report','description':'Передать владельцу канонический черновик или сохранённый через adopt_file неизменённый файл (artifact_id) по точному защищённому разрешению оператора. Получатель не задаётся моделью; научная приёмка не утверждается. Без grant_id или при несовпадении байтов — отказ.','parameters':{'type':'object','additionalProperties':False,'properties':{'run_id':{'type':'string'},'expected_sha256':{'type':'string','pattern':'^[a-f0-9]{64}$'},'grant_id':{'type':'string','pattern':'^[a-f0-9]{32}$'},'artifact_id':{'type':'string','pattern':'^BNAF-[a-f0-9]{32}$'}},'required':['run_id','expected_sha256','grant_id']}},handler=deliver_report)
+    ctx.register_tool(name='bn_deliver_report',toolset='udr',schema={'name':'bn_deliver_report','description':'Передать владельцу канонический черновик или сохранённый через adopt_file неизменённый файл (artifact_id) по точному защищённому разрешению владельца. Если grant_id отсутствует, штатная система Hermes запросит подтверждение в текущем личном чате; передайте artifact_id. Получатель не задаётся моделью; научная приёмка не утверждается. Отказ или отсутствие подтверждения закрывают отправку; получателя определяет доверенный контекст, не модель.','parameters':{'type':'object','additionalProperties':False,'properties':{'run_id':{'type':'string'},'expected_sha256':{'type':'string','pattern':'^[a-f0-9]{64}$'},'grant_id':{'type':'string','pattern':'^[a-f0-9]{32}$'},'artifact_id':{'type':'string','pattern':'^BNAF-[a-f0-9]{32}$'}},'required':['run_id','expected_sha256']}},handler=deliver_report)
     ctx.register_tool(name='bn_udr_team',toolset='udr_multiagent',schema=SCHEMA,handler=managed_team)
     ctx.on_unload(runner.stop)
     ctx.register_middleware('tool_request', host.tool_request)

@@ -1,5 +1,5 @@
 name: bn-udr-host
-version: 0.3.1
+version: 0.3.2
 description: UDR и нативная исследовательская команда с каноническими задачами Beads,
   без второго управляющего цикла модели.
 requires_hermes: '>=0.21.5'

@@ -11,16 +11,11 @@ def xls_units(path,java):
         target=runtime/name
         if target.is_symlink() or hashlib.sha256(target.read_bytes()).hexdigest()!=digest:raise ValueError('xls_runtime_integrity_failed:'+name)
     if not java or not Path(java).is_file():raise ValueError('xls_native_java_not_configured')
-    java_args=[java,'-XX:-UsePerfData','-Xmx1024m','-Djava.awt.headless=true','-Dlog4j2.loggerContextFactory=org.apache.logging.log4j.simple.SimpleLoggerContextFactory','-cp',str(runtime/'classes')+os.pathsep+str(runtime/'lib/*'),'XlsReader',str(path)]
-    if sys.platform=='darwin':
-        sandbox=shutil.which('sandbox-exec')
-        if not sandbox:raise ValueError('xls_passive_os_sandbox_unavailable')
-        command=[sandbox,'-p','(version 1)(allow default)(deny network*)(deny file-write*)',*java_args]
-    elif sys.platform.startswith('linux') or sys.platform=='win32':
-        # Explicit portable adapter: JDK 21 security policy, no writes/network/processes.
-        # JDK >=24 removed this mechanism and therefore fails instead of running unguarded.
-        command=[java,'-Djava.security.manager','-Djava.security.policy=='+str(runtime/'passive-jdk21.policy'),*java_args[1:]]
-    else:raise ValueError('xls_passive_platform_not_supported')
+    sandbox=shutil.which('sandbox-exec')
+    if not sandbox:raise ValueError('xls_passive_os_sandbox_unavailable')
+    # The native reader can neither connect to a network nor modify any source/dependency.
+    profile='(version 1)(allow default)(deny network*)(deny file-write*)'
+    command=[sandbox,'-p',profile,java,'-XX:-UsePerfData','-Xmx1024m','-Djava.awt.headless=true','-Dlog4j2.loggerContextFactory=org.apache.logging.log4j.simple.SimpleLoggerContextFactory','-cp',str(runtime/'classes')+os.pathsep+str(runtime/'lib/*'),'XlsReader',str(path)]
     env={k:v for k,v in os.environ.items() if k not in {'JAVA_TOOL_OPTIONS','_JAVA_OPTIONS','JDK_JAVA_OPTIONS','CLASSPATH'}}
     # Spool complete output rather than holding the full workbook representation in RAM.
     with tempfile.TemporaryFile(mode='w+') as output,tempfile.TemporaryFile(mode='w+') as errors:

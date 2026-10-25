@@ -1,0 +1,19 @@
+{
+  "reviewed_at":"2026-10-05",
+  "default_dataSources":[],
+  "max_providers_per_run":5,
+  "default_effort":"low",
+  "note":"Поставщик выбирается для конкретной задачи. Стоимость Agent добавляется всегда. Шаблоны не выполняются автоматически.",
+  "providers":[
+    {"provider":"macrobond","role":"Макроэкономические ряды, определения и календари","partner_price":"Free","priority":"основной по запросу"},
+    {"provider":"financial_datasets","role":"Отчётность, SEC, фундаментальные и рыночные данные","partner_price_dollars_per_call":0.01,"priority":"основной по запросу"},
+    {"provider":"particle","role":"Публичные тексты подкастов с говорящими и временем","partner_price_dollars_per_call":0.015,"priority":"основной по запросу"},
+    {"provider":"similarweb","role":"Оценки посещаемости и сопоставление сайтов","partner_price":"$0.30 за кредит поставщика; 1–15 кредитов за вызов","priority":"дополнительный по цели и цене"},
+    {"provider":"fiber","role":"Деловые компании и профессиональные профили","partner_price":"$0.02 за кредит поставщика, переменное число кредитов","priority":"дополнительный; контакты отдельно"},
+    {"provider":"baselayer","role":"Регистрационные и KYB-сведения организаций","partner_price":"$0.10–$4.00 за заказ по операции","priority":"дополнительный по цели и цене"},
+    {"provider":"polymarket","role":"Публичные данные рынков прогнозов","partner_price":"Free","priority":"дополнительный; только чтение"},
+    {"provider":"affiliate","role":"Каталоги товаров и продавцов","partner_price_dollars_per_call":0.015,"priority":"дополнительный"},
+    {"provider":"jinko","role":"Поиск перевозок и гостиниц","partner_price_dollars_per_call":0.005,"priority":"дополнительный; только чтение"}
+  ],
+  "source":"https://exa.ai/docs/agent/connect/overview"
+}

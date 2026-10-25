@@ -1,5 +1,4 @@
 {
-  "passive-jdk21.policy": "2b280b1a392cde4f67746272c9e612d4475e877ec1af6da050fdc72b77a0012a",
   "classes/XlsReader.class": "1ece415449bb524795336e8d3ad99d4b56fab4db9051bf845b6edd2bc64e73f3",
   "classes/XlsReader$1.class": "d238aface28e033d38a2b3d387b8d1f2f930fac48a006d5bd1d904205abe1de9",
   "lib/log4j-api-2.24.3.jar.asc": "c3fefadb2411623b9795027b7f7e997d675c761dd26f5169d56543f805c66536",

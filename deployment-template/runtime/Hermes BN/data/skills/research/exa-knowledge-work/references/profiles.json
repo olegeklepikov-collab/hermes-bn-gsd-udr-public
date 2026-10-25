@@ -1,0 +1,20 @@
+{
+  "version":1,
+  "reviewed_at":"2026-10-05",
+  "note":"Начальные значения выбираются по задаче. Даты и обязательные поля заполняются перед вызовом. Эти файлы сами не запускают сеть и расписания.",
+  "profiles":[
+    {"id":"general","name":"Общее исследование","operation":"search","defaults":{"type":"auto","numResults":10,"contents":{"highlights":true}}},
+    {"id":"quick","name":"Короткий поиск","operation":"search","defaults":{"type":"fast","numResults":5,"contents":{"highlights":true}},"alternative":"instant при измеренном требовании к задержке"},
+    {"id":"current","name":"Свежие сведения","operation":"search","defaults":{"type":"auto","category":"news","numResults":10,"contents":{"highlights":true}},"task_required":["startPublishedDate","endPublishedDate"],"fresh_read":{"operation":"contents","maxAgeHours":0}},
+    {"id":"academic","name":"Научная литература","operation":"search","defaults":{"type":"auto","category":"publication","numResults":15,"contents":{"highlights":true}},"task_required":["вопрос","критерии включения"]},
+    {"id":"business","name":"Деловое исследование","operation":"search","defaults":{"type":"auto","category":"company","numResults":10,"contents":{"highlights":true}},"task_required":["рынок","регион","период","сопоставимые поля"]},
+    {"id":"financial-reports","name":"Отчётность и статистика","operation":"search","defaults":{"type":"auto","category":"financial report","numResults":10,"contents":{"highlights":true}},"task_required":["организация или показатель","период","единица измерения"]},
+    {"id":"read-source","name":"Полное чтение источника","operation":"contents","defaults":{"text":{"maxCharacters":20000}},"task_required":["ids или urls"],"note":"Проверять statuses каждой страницы и границы полученного текста."},
+    {"id":"structured-deep","name":"Структурированное исследование","operation":"search","defaults":{"type":"deep","numResults":10,"contents":{"highlights":true}},"task_required":["outputSchema до 10 свойств","вопрос"]},
+    {"id":"agent","name":"Многоступенчатое исследование","operation":"agent-create","defaults":{"effort":"medium"},"task_required":["query","outputSchema при необходимости"],"fixed_price_dollars":0.10},
+    {"id":"lists-and-enrichment","name":"Подборки и обогащение","operation":"agent-create","defaults":{"effort":"auto","budget":{"maxCostDollars":1}},"task_required":["query","целевое число","критерии","согласованный input при обогащении"]},
+    {"id":"historical","name":"Историческая версия источника","operation":"contents","defaults":{"text":{"maxCharacters":20000}},"task_required":["ids","snapshotAsOf"],"incompatible":["maxAgeHours","livecrawl","livecrawlTimeout","subpages"],"note":"Доступ до пяти месяцев; после 100 запросов требуется обращение к Exa."},
+    {"id":"batch","name":"Пакет исследований","operation":"batch-create","task_required":["requests с уникальными customId"],"note":"Только POST /search и /agent/runs; получить результат каждого элемента."},
+    {"id":"monitor","name":"Наблюдение за новыми источниками","operation":"monitor-create","template":{"name":"заполнить","search":{"query":"заполнить","numResults":5,"contents":{"highlights":true}},"webhook":{"url":"HTTPS-получатель пользователя","events":["monitor.run.completed"]}},"active":false,"task_required":["цель","query","HTTPS-получатель","частота при расписании"],"note":"Без trigger — ручное наблюдение; не создавать с чужим адресом."}
+  ]
+}

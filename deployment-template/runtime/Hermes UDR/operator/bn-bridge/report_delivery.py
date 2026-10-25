@@ -55,7 +55,11 @@ def deliver(sid,run_id,expected_sha256,grant_id,artifact_id=None):
  async def send():
   from dotenv import dotenv_values
   from telegram import Bot
-  env=dotenv_values(b.ROOT.parent/'Hermes BN/data/.env');token=env.get('TELEGRAM_BOT_TOKEN') or env.get('HERMES_TELEGRAM_BOT_TOKEN')
+  home=Path(grant.get('transport_home') or b.ROOT.parent/'Hermes BN/data').resolve()
+  bn=b.ROOT.parent/'Hermes BN';profiles=bn/'data/profiles'
+  allowed=[bn/'data',*[p for p in profiles.iterdir() if p.is_dir()]] if profiles.is_dir() else [bn/'data']
+  if home not in [p.resolve() for p in allowed]:raise PermissionError('configured_delivery_transport_required')
+  env=dotenv_values(home/'.env');token=env.get('TELEGRAM_BOT_TOKEN') or env.get('HERMES_TELEGRAM_BOT_TOKEN')
   if not token:raise PermissionError('bot_credential_unavailable')
   logging.getLogger('httpx').setLevel(logging.CRITICAL);logging.getLogger('httpcore').setLevel(logging.CRITICAL)
   async with Bot(token) as bot:

@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "verified_at": "2026-10-05",
+  "description": "Начальные настройки операций. Поля task_required заполняются по запросу. Эти режимы выбираются инструкцией агента и не являются дополнительными серверами.",
+  "profiles": [
+    {
+      "id": "general",
+      "name": "Общее исследование",
+      "search": {
+        "limit": 10,
+        "sources": [
+          "web"
+        ],
+        "domainTools": false
+      },
+      "scrape": {
+        "formats": [
+          "markdown",
+          "links"
+        ],
+        "onlyMainContent": true
+      },
+      "task_required": [
+        "вопрос",
+        "период при необходимости"
+      ]
+    },
+    {
+      "id": "current",
+      "name": "Свежие сведения и новости",
+      "search": {
+        "limit": 10,
+        "sources": [
+          "web",
+          "news"
+        ],
+        "domainTools": false
+      },
+      "scrape": {
+        "formats": [
+          "markdown"
+        ],
+        "maxAge": 0
+      },
+      "task_required": [
+        "период",
+        "география при необходимости"
+      ],
+      "note": "Фильтр tbs выбирается по требуемому периоду; проверять дату публикации и дату события отдельно."
+    },
+    {
+      "id": "business",
+      "name": "Деловое исследование",
+      "search": {
+        "limit": 10,
+        "sources": [
+          "web",
+          "alexandria"
+        ],
+        "toolDetail": "compact"
+      },
+      "scrape": {
+        "formats": [
+          "markdown",
+          "json"
+        ],
+        "maxAge": 0
+      },
+      "task_required": [
+        "рынок",
+        "регион",
+        "период",
+        "сопоставимые поля JSON"
+      ]
+    },
+    {
+      "id": "academic",
+      "name": "Научная литература",
+      "research_search": {
+        "k": 20
+      },
+      "research_read": {
+        "k": 4
+      },
+      "research_related": {
+        "k": 10,
+        "mode": "references"
+      },
+      "task_required": [
+        "исследовательский вопрос",
+        "критерии включения"
+      ],
+      "note": "Для непокрытых дисциплин дополнять веб-поиском профильных первичных источников."
+    },
+    {
+      "id": "site-corpus",
+      "name": "Корпус сайта",
+      "map": {
+        "limit": 100,
+        "includeSubdomains": false
+      },
+      "crawl": {
+        "limit": 20,
+        "maxDiscoveryDepth": 2,
+        "allowExternalLinks": false,
+        "allowSubdomains": false,
+        "crawlEntireDomain": false,
+        "maxConcurrency": 2,
+        "scrapeOptions": {
+          "formats": [
+            "markdown",
+            "links"
+          ]
+        }
+      },
+      "task_required": [
+        "URL",
+        "includePaths"
+      ]
+    },
+    {
+      "id": "structured",
+      "name": "Структурированное сравнение",
+      "scrape": {
+        "formats": [
+          "json",
+          "markdown"
+        ],
+        "maxAge": 0
+      },
+      "agent": {
+        "effort": "low",
+        "maxCredits": 50,
+        "exchange": {
+          "enabled": false
+        }
+      },
+      "task_required": [
+        "сопоставимые поля",
+        "известные URL либо вопрос"
+      ],
+      "note": "Известные URL — Scrape; поиск неизвестных источников — Agent; выполнять только нужную операцию."
+    },
+    {
+      "id": "documents",
+      "name": "Разбор документов",
+      "parse": {
+        "formats": [
+          "markdown",
+          "links"
+        ],
+        "pdfOptions": {
+          "maxPages": 20
+        }
+      },
+      "task_required": [
+        "публичный URL либо согласованный локальный файл"
+      ],
+      "note": "Сохранять страницы, блоки и границы неполной обработки."
+    },
+    {
+      "id": "dynamic",
+      "name": "Динамические страницы",
+      "interact": {
+        "timeout": 30
+      },
+      "task_required": [
+        "URL",
+        "конкретное действие чтения"
+      ],
+      "note": "Сеанс обязательно закрыть через interact_stop."
+    },
+    {
+      "id": "developer",
+      "name": "Технические первичные источники",
+      "developer_search": {
+        "k": 5
+      },
+      "task_required": [
+        "продукт",
+        "версия",
+        "вопрос"
+      ]
+    },
+    {
+      "id": "monitoring",
+      "name": "Наблюдение за изменениями",
+      "monitor_template": {
+        "name": "заполняется по задаче",
+        "schedule": {
+          "text": "заполняется по задаче",
+          "timezone": "заполняется по задаче"
+        },
+        "targets": [
+          {
+            "type": "scrape",
+            "urls": []
+          }
+        ],
+        "notification": {},
+        "retentionDays": 30
+      },
+      "task_required": [
+        "цель",
+        "URL или запросы",
+        "расписание",
+        "часовой пояс",
+        "получатели при уведомлениях"
+      ],
+      "note": "API создания не принимает status. Для неактивного примера: сначала создать запись с отложенным расписанием без получателей, затем немедленно PATCH status:paused и проверить monitor_get. Не создавать рабочую запись без заданных пользователем цели и расписания.",
+      "pause_after_create": {
+        "status": "paused"
+      }
+    }
+  ]
+}

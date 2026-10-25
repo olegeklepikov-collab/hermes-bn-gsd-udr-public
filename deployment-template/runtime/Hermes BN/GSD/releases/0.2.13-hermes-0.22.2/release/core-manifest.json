@@ -3,7 +3,7 @@
   "hermes_commit": "d923a5eb487a17c0a68801bba9ef0f56c81040a8",
   "files": {
     "agent/agent_runtime_helpers.py": "295bd0adcb698ddeb87966f77a79ef1c8016702641db401bfe692ffb63e0dd49",
-    "agent/auxiliary_client.py": "124c0dec4c0189f1b2d18c9be5233e8cc2745540c2f49b677ad28f8c1b458682",
+    "agent/auxiliary_client.py": "6f3ea9258abb3a55fb1b869650c552f6dcbb399d7610745634cd2419ffb59d64",
     "agent/auxiliary_hooks.py": "df5ec2ca76e32ebabc8463d3a59027ab14de73f2a5f4342fccfdb25b7628c8fb",
     "agent/codex_responses_adapter.py": "c86e14ebe721e94f86a1a50266272c364ccea9660a6da456eb00fa109e5f054d",
     "agent/subagent_lifecycle.py": "a3ee7487bd82fa0734e32c757456fb1c6afcff7c4b1dbbe33799d4243c1cfbbb",

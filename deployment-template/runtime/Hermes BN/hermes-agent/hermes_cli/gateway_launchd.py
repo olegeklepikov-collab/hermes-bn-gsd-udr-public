@@ -216,7 +216,7 @@ def _gateway_run_command() -> list[str]:
                            python=_gw().get_python_path())
 
 
-def launchd_program_arguments(command: list[str], stdout_log: Path, stderr_log: Path) -> list[str]:
+def launchd_program_arguments(command: list[str], stdout_log: Path, stderr_log: Path, *, working_directory: str | None = None) -> list[str]:
     """launchd ``ProgramArguments`` that run ``command`` with a Local Network identity macOS accepts (#71206).
 
     macOS Local Network Privacy attributes a socket to the process launchd spawned for the job. A bare
@@ -238,6 +238,8 @@ def launchd_program_arguments(command: list[str], stdout_log: Path, stderr_log: 
     is translated back to a process exit code so KeepAlive's ``SuccessfulExit`` semantics are preserved.
     """
     shell = f"exec {shlex.join(command)} >> {shlex.quote(str(stdout_log))} 2>> {shlex.quote(str(stderr_log))}"
+    if working_directory:
+        shell = f"cd {shlex.quote(str(working_directory))} && " + shell
     javascript = (
         'ObjC.import("stdlib"); '
         f"const status=$.system({json.dumps(shell)}); "
@@ -370,8 +372,17 @@ def generate_launchd_plist() -> str:
     stdout_log, stderr_log = log_dir / "gateway.log", log_dir / "gateway.error.log"
     command = _timestamped_stderr_gateway_command(stderr_log, external_supervisor=True)
     prog_args_xml = "\n        ".join(
-        f"<string>{escape(part)}</string>" for part in launchd_program_arguments(command, stdout_log, stderr_log)
+        f"<string>{escape(part)}</string>" for part in launchd_program_arguments(command, stdout_log, stderr_log, working_directory=str(working_dir))
     )
+    # launchd opens cwd/logs before osascript can establish its filesystem identity.
+    # Keep pre-exec paths in the user Library; the child enters the real profile above.
+    bootstrap_dir = Path.home() / "Library/Logs/HermesGateway" / label
+    bootstrap_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
+    bootstrap_stdout, bootstrap_stderr = bootstrap_dir / "bootstrap.log", bootstrap_dir / "bootstrap.error.log"
+    for path in (bootstrap_stdout, bootstrap_stderr):
+        descriptor = os.open(path, os.O_CREAT | os.O_APPEND | os.O_WRONLY | os.O_NOFOLLOW, 0o600)
+        os.close(descriptor)
+    working_dir = str(Path.home())
 
     # Persist the configured RLIMIT_NOFILE floor: launchd defaults to soft 256, and every plist
     # rewrite would otherwise strip a manual limit and reintroduce EMFILE crashes.
@@ -450,10 +461,10 @@ def generate_launchd_plist() -> str:
     <integer>60</integer>
 {nofile_block}
     <key>StandardOutPath</key>
-    <string>{stdout_log}</string>
+    <string>{bootstrap_stdout}</string>
     
     <key>StandardErrorPath</key>
-    <string>{stderr_log}</string>
+    <string>{bootstrap_stderr}</string>
 </dict>
 </plist>
 """

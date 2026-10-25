@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Public edition 2026-10-17: unauthenticated HTTPS download; immutable payload hashes retained."""
+"""Fetch and reconstruct BOTH immutable archives of a complete recovery set."""
 from pathlib import Path
-import argparse,hashlib,json,os,shutil,subprocess,re
-from urllib.parse import quote
+import argparse,hashlib,json,os,shutil,subprocess
 def sha(path):
     h=hashlib.sha256()
     with path.open('rb') as f:
@@ -15,8 +14,9 @@ def main():
     p=argparse.ArgumentParser(description='Собрать полный комплект: неизменная основа и проверенное обновление.')
     p.add_argument('--manifest',type=Path,default=Path(__file__).with_name('recovery-set.json'));p.add_argument('--parts-dir',type=Path,default=Path('parts'));p.add_argument('--output-dir',type=Path,default=Path('recovery-archives'));p.add_argument('--download',action='store_true');a=p.parse_args()
     m=json.loads(a.manifest.read_text())
-    if m['format']!='hermes-bn-recovery-set/2' or [x['role'] for x in m['archives']]!=['base','update']:raise ValueError('Нужен согласованный комплект основы и обновления')
-    if a.download and not shutil.which('curl'):raise ValueError('Требуется curl; в macOS он находится в /usr/bin/curl')
+    if not ((m['format']=='hermes-bn-recovery-set/3' and [x['role'] for x in m['archives']]==['complete']) or (m['format']=='hermes-bn-recovery-set/2' and [x['role'] for x in m['archives']]==['base','update'])):raise ValueError('Неизвестная структура комплекта')
+    public=all(x['repository'].endswith('-public') for x in m['archives'])
+    if a.download and not public and not shutil.which('gh'):raise ValueError('Для закрытой копии установите GitHub CLI и войдите своим аккаунтом')
     a.output_dir.mkdir(parents=True,exist_ok=True)
     for item in m['archives']:
         archive=item['archive'];target=a.output_dir/archive['name'];folder=a.parts_dir/item['role'];folder.mkdir(parents=True,exist_ok=True)
@@ -29,18 +29,13 @@ def main():
             if part['index']!=i or part['offset']!=total or Path(part['name']).name!=part['name']:raise ValueError('Неверный порядок частей')
             total+=part['bytes'];path=folder/part['name']
             if not path.exists() and a.download:
-                if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+',item['repository']):raise ValueError('Неверный адрес репозитория')
-                url='https://github.com/'+item['repository']+'/releases/download/'+quote(item['tag'],safe='')+'/'+quote(part['name'],safe='')
-                pending=path.with_name(path.name+'.download-partial')
-                if pending.exists():raise ValueError('Есть незавершённая загрузка: '+str(pending))
-                print('Загрузка без авторизации: '+part['name'],flush=True)
-                try:
-                    subprocess.run(['curl','--fail','--location','--silent','--show-error','--retry','3','--proto','=https','--output',str(pending),url],check=True)
-                    if pending.stat().st_size!=part['bytes'] or sha(pending)!=part['sha256']:raise ValueError('Загруженная часть не совпала с манифестом')
-                    pending.rename(path)
-                except BaseException:
-                    if pending.exists():pending.unlink()
-                    raise
+                if public:
+                    import urllib.request,urllib.parse
+                    url='https://github.com/'+item['repository']+'/releases/download/'+item['tag']+'/'+urllib.parse.quote(part['name'])
+                    temporary=path.with_name(path.name+'.download')
+                    with urllib.request.urlopen(url,timeout=120) as src,temporary.open('xb') as dst:shutil.copyfileobj(src,dst,8*1024*1024)
+                    temporary.rename(path)
+                else:subprocess.run(['gh','release','download',item['tag'],'--repo',item['repository'],'--pattern',part['name'],'--dir',str(folder)],check=True)
             if not path.is_file() or path.stat().st_size!=part['bytes'] or sha(path)!=part['sha256']:raise ValueError('Отсутствует или повреждена часть: '+part['name'])
             print(item['role']+': проверена часть '+str(i)+'/'+str(len(item['parts'])),flush=True)
         if total!=archive['bytes']:raise ValueError('Размер комплекта частей неверен')
@@ -52,5 +47,5 @@ def main():
             f.flush();os.fsync(f.fileno())
         if sha(temporary)!=archive['sha256']:raise ValueError('Итоговый SHA256 не совпал')
         temporary.rename(target);print('Архив проверен:',target.name)
-    print('Полный комплект собран: основа + обновление. Следуйте INSTALL-macOS-Apple-Silicon.md; службы автоматически не запускаются.')
+    print('Полный комплект собран и проверен. Следуйте CURRENT-SETUP.md; службы автоматически не запускаются.')
 if __name__=='__main__':main()

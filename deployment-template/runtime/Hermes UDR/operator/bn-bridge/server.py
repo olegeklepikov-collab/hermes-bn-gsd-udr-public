@@ -59,7 +59,7 @@ async def call_tool(context, params):
     finally:
         if cancel_token is not None:cancel_var.reset(cancel_token)
 
-server = Server('hermes-bn-udr', version='0.3.1', on_list_tools=list_tools, on_call_tool=call_tool)
+server = Server('hermes-bn-udr', version='0.3.2', on_list_tools=list_tools, on_call_tool=call_tool)
 
 async def main():
     async with stdio_server() as (read, write):

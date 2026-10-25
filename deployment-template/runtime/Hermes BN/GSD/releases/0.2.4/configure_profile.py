@@ -62,8 +62,7 @@ def main():
         "r_runtime":str(Path(a.r_runtime or Path(a.runtime_root or core.parent).parent / "hermes-bn-r").resolve()), "child_timeout_seconds": 180,
         "integration_manifest_sha256": hashlib.sha256((bundle / "manifest.json").read_bytes()).hexdigest(),
         "engine_manifest_sha256": hashlib.sha256((bundle / "engine/manifest.json").read_bytes()).hexdigest(),
-        "limits": {"tokens": 4000000, "model_calls": 64, "child_jobs": 32,
-                   "wall_seconds": 7200, "output_tokens": 32768, "request_bytes": 2097152}}
+        "limits": {'tokens': None, 'model_calls': None, 'child_jobs': None, 'wall_seconds': None, 'output_tokens': 128000, 'request_bytes': 8388608, 'tool_calls': None, 'role_model_calls': None, 'budget_mode': 'observe'}}
     settings_file = operator / "settings.json"
 
     plugin = home / "plugins/bn-gsd"

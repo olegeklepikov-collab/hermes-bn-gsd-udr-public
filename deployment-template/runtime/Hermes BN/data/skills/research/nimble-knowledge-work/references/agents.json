@@ -1,0 +1,44 @@
+[
+  {
+    "name": "hermes-bn-business-research",
+    "display_name": "Hermes BN — Бизнес",
+    "agent_id": "wsa_a600490554d24cf6b4bbf7fd8a2acb48",
+    "use_case": "research",
+    "effort": "medium"
+  },
+  {
+    "name": "hermes-bn-academic-research",
+    "display_name": "Hermes BN — Академические исследования",
+    "agent_id": "wsa_519634ea80a144b1978cd7a911c20301",
+    "use_case": "research",
+    "effort": "medium"
+  },
+  {
+    "name": "hermes-bn-general-research",
+    "display_name": "Hermes BN — Общие исследования",
+    "agent_id": "wsa_2d2cb08d6b334f72b37f7c3f693b5b42",
+    "use_case": "research",
+    "effort": "medium"
+  },
+  {
+    "name": "hermes-bn-source-enrichment",
+    "display_name": "Hermes BN — Дополнение данных",
+    "agent_id": "wsa_3bfa627b9c4d41c5b95c93700000ed60",
+    "use_case": "enrichment",
+    "effort": "medium"
+  },
+  {
+    "name": "hermes-bn-dataset-research",
+    "display_name": "Hermes BN — Исследовательские таблицы",
+    "agent_id": "wsa_04f4ceb1c9994fb9967065407ee8827b",
+    "use_case": "dataset_building",
+    "effort": "high"
+  },
+  {
+    "name": "hermes-bn-company-profile",
+    "display_name": "Hermes BN — Профиль компании",
+    "agent_id": "wsa_3a0c60bdac444365bfbc3b1ab75d1637",
+    "use_case": "research",
+    "effort": "medium"
+  }
+]

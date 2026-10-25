@@ -10,7 +10,7 @@
     "bn-main": "__HERMES_BN_ROOT__/workspace"
   },
   "state_root": "__HERMES_BN_ROOT__/Memory/state",
-  "package_root": "__HERMES_BN_ROOT__/Memory/releases/1.3.0",
+  "package_root": "__HERMES_BN_ROOT__/Memory/releases/1.4.0",
   "python": "__HERMES_BN_ROOT__/hermes-agent/venv/bin/python",
   "graph_python": "__HERMES_UDR_ROOT__/software/foundation-graph/bin/python",
   "zvec_python": "__HERMES_UDR_ROOT__/software/zvec/bin/python",
@@ -33,5 +33,14 @@
   "udr_host_state": "__HERMES_UDR_ROOT__/operator/bn-bridge/host-state.sqlite",
   "xls_java": "__HERMES_UDR_ROOT__/software/java21.jdk/Contents/Home/bin/java",
   "backend_read_timeout_seconds": 120,
-  "cognee_projection_revision": "dataset-isolation-v2"
+  "cognee_projection_revision": "dataset-isolation-v2",
+  "owner_project_reads": true,
+  "semantic_context": true,
+  "source_index_enabled": true,
+  "udr_workspace": "__HERMES_UDR_ROOT__/workspace",
+  "native_session_databases": [
+    "__HERMES_BN_ROOT__/data/state.db",
+    "__HERMES_BN_ROOT__/data/profiles/bn-gsd-only/state.db",
+    "__HERMES_BN_ROOT__/data/profiles/bn-udr-only/state.db"
+  ]
 }

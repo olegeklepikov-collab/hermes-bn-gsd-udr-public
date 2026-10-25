@@ -1,0 +1,345 @@
+{
+  "version": 1,
+  "reviewed_at": "2026-10-05",
+  "timezone": "__TIMEZONE__",
+  "note": "Начальные режимы выбираются по задаче; расписания и расходы не запускаются этим файлом.",
+  "citation_formats": [
+    "numbered",
+    "apa",
+    "mla",
+    "chicago"
+  ],
+  "output_lengths": [
+    "short",
+    "standard",
+    "long"
+  ],
+  "profiles": [
+    {
+      "id": "general",
+      "name": "Общее исследование",
+      "operation": "search",
+      "defaults": {
+        "topic": "general",
+        "search_depth": "advanced",
+        "max_results": 5,
+        "chunks_per_source": 3,
+        "include_answer": false,
+        "include_usage": true
+      }
+    },
+    {
+      "id": "simple",
+      "name": "Простой поиск",
+      "operation": "search",
+      "defaults": {
+        "search_depth": "basic",
+        "max_results": 5,
+        "chunks_per_source": 2,
+        "include_usage": true
+      }
+    },
+    {
+      "id": "quick",
+      "name": "Быстрый поиск",
+      "operation": "search",
+      "defaults": {
+        "search_depth": "fast",
+        "max_results": 5,
+        "chunks_per_source": 2,
+        "include_usage": true
+      },
+      "alternative": "ultra-fast при требовании к задержке"
+    },
+    {
+      "id": "news",
+      "name": "Новости",
+      "operation": "search",
+      "defaults": {
+        "topic": "news",
+        "search_depth": "advanced",
+        "max_results": 10,
+        "include_published_date": true,
+        "filter_by_published_date": true,
+        "include_usage": true
+      },
+      "task_required": [
+        "start_date/end_date или time_range"
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "Финансовые первичные источники",
+      "operation": "search",
+      "defaults": {
+        "topic": "finance",
+        "search_depth": "advanced",
+        "max_results": 10,
+        "include_usage": true
+      },
+      "task_required": [
+        "объект",
+        "период",
+        "единицы"
+      ]
+    },
+    {
+      "id": "academic",
+      "name": "Академическое исследование",
+      "operation": "search",
+      "defaults": {
+        "topic": "general",
+        "search_depth": "advanced",
+        "max_results": 10,
+        "chunks_per_source": 3,
+        "include_usage": true
+      },
+      "task_required": [
+        "вопрос",
+        "критерии включения",
+        "источники по дисциплине"
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Деловое сравнение",
+      "operation": "search",
+      "defaults": {
+        "topic": "general",
+        "search_depth": "advanced",
+        "max_results": 10,
+        "include_usage": true
+      },
+      "task_required": [
+        "рынок",
+        "география",
+        "период",
+        "одинаковые поля"
+      ]
+    },
+    {
+      "id": "language-region",
+      "name": "Язык и география",
+      "operation": "search",
+      "defaults": {
+        "topic": "general",
+        "search_depth": "advanced",
+        "max_results": 5,
+        "include_usage": true
+      },
+      "task_required": [
+        "language",
+        "country при необходимости"
+      ],
+      "strict_language": {
+        "filter_by_language": true
+      },
+      "note": "Страна повышает приоритет, строгий язык требует language."
+    },
+    {
+      "id": "images",
+      "name": "Источники изображений",
+      "operation": "search",
+      "defaults": {
+        "search_depth": "advanced",
+        "max_results": 5,
+        "include_images": true,
+        "include_image_descriptions": true,
+        "include_favicon": true,
+        "include_usage": true
+      }
+    },
+    {
+      "id": "full-read",
+      "name": "Полное чтение выбранного URL",
+      "operation": "extract",
+      "defaults": {
+        "extract_depth": "basic",
+        "format": "markdown",
+        "timeout": 60,
+        "include_usage": true
+      },
+      "alternative": {
+        "extract_depth": "advanced"
+      },
+      "task_required": [
+        "urls до 20"
+      ]
+    },
+    {
+      "id": "targeted-read",
+      "name": "Целевые отрывки",
+      "operation": "extract",
+      "defaults": {
+        "extract_depth": "advanced",
+        "chunks_per_source": 3,
+        "include_usage": true
+      },
+      "task_required": [
+        "urls",
+        "query"
+      ],
+      "note": "Это отрывки, не весь текст."
+    },
+    {
+      "id": "site-map",
+      "name": "Структура сайта",
+      "operation": "map",
+      "defaults": {
+        "max_depth": 1,
+        "max_breadth": 20,
+        "limit": 20,
+        "allow_external": false,
+        "include_usage": true
+      },
+      "task_required": [
+        "url",
+        "пути/домены по задаче"
+      ]
+    },
+    {
+      "id": "site-corpus",
+      "name": "Корпус сайта",
+      "operation": "crawl",
+      "defaults": {
+        "max_depth": 1,
+        "max_breadth": 20,
+        "limit": 20,
+        "allow_external": false,
+        "extract_depth": "advanced",
+        "format": "markdown",
+        "include_usage": true
+      },
+      "task_required": [
+        "url",
+        "select_paths/exclude_paths по задаче"
+      ],
+      "targeted": {
+        "chunks_per_source": 3,
+        "instructions": "по задаче"
+      }
+    },
+    {
+      "id": "research-mini",
+      "name": "Узкое самостоятельное исследование",
+      "operation": "research-create",
+      "defaults": {
+        "model": "mini",
+        "citation_format": "numbered",
+        "output_length": "short"
+      },
+      "credit_range": [
+        4,
+        110
+      ]
+    },
+    {
+      "id": "research-pro",
+      "name": "Многостороннее исследование",
+      "operation": "research-create",
+      "defaults": {
+        "model": "pro",
+        "citation_format": "numbered",
+        "output_length": "standard"
+      },
+      "credit_range": [
+        15,
+        250
+      ]
+    },
+    {
+      "id": "research-auto",
+      "name": "Автоматический выбор исследования",
+      "operation": "research-create",
+      "defaults": {
+        "model": "auto",
+        "citation_format": "numbered",
+        "output_length": "standard"
+      },
+      "note": "Проверить выбранную модель и расход по завершении."
+    },
+    {
+      "id": "structured",
+      "name": "Структурированный результат",
+      "operation": "research-create",
+      "defaults": {
+        "model": "mini",
+        "output_length": "short"
+      },
+      "task_required": [
+        "input",
+        "output_schema с описанием каждого поля"
+      ],
+      "supported_property_types": [
+        "object",
+        "string",
+        "integer",
+        "number",
+        "array"
+      ]
+    },
+    {
+      "id": "stream",
+      "name": "Исследование с потоком",
+      "operation": "research-stream",
+      "defaults": {
+        "model": "mini",
+        "citation_format": "numbered",
+        "output_length": "short"
+      },
+      "task_required": [
+        "input",
+        "файл результата"
+      ],
+      "note": "Дождаться done, сохранить события и источники."
+    },
+    {
+      "id": "files",
+      "name": "Исследование по файлам и вебу",
+      "operation": "research-create",
+      "defaults": {
+        "model": "mini",
+        "output_length": "short"
+      },
+      "task_required": [
+        "input",
+        "согласованные files"
+      ],
+      "formats": [
+        "txt",
+        "md",
+        "json"
+      ],
+      "maximum_files": 5,
+      "maximum_total_words": 80000
+    },
+    {
+      "id": "batch",
+      "name": "Пакет поиска и чтения",
+      "operation": "batch-local",
+      "task_required": [
+        "requests с разными customId"
+      ],
+      "max_concurrency": 2
+    },
+    {
+      "id": "usage",
+      "name": "Учёт использования",
+      "operation": "usage",
+      "rate_limit": "10 запросов за 10 минут"
+    },
+    {
+      "id": "logs",
+      "name": "Диагностика собственного ключа",
+      "operation": "logs",
+      "defaults": {
+        "limit": 5,
+        "filter_by_api_key": true
+      },
+      "task_required": [
+        "start_date/end_date при необходимости"
+      ],
+      "note": "Доступ зависит от тарифа."
+    }
+  ]
+}

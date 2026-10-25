@@ -60,7 +60,3 @@ _bd=U/'software/bin/bd'
 _lock=U/'state/adapters/beads-runtime.json';_lock.parent.mkdir(parents=True,exist_ok=True)
 _lock.write_text(json.dumps({'schema_version':1,'executable':str(_bd),'sha256':__import__('hashlib').sha256(_bd.read_bytes()).hexdigest(),'version':'1.3.1','dolt_root':str(U/'state/beads-local'),'supplier_baseline':'1.1.0','signed_SDK_modified':False},indent=2));_lock.chmod(0o600)
 
-# Local compatibility override, separate from the unchanged signed SDK baseline.
-_bd=U/'software/bin/bd'
-_lock=U/'state/adapters/beads-runtime.json';_lock.parent.mkdir(parents=True,exist_ok=True)
-_lock.write_text(json.dumps({'schema_version':1,'executable':str(_bd),'sha256':__import__('hashlib').sha256(_bd.read_bytes()).hexdigest(),'version':'1.3.1','dolt_root':str(U/'state/beads-local'),'supplier_baseline':'1.1.0','signed_SDK_modified':False},indent=2));_lock.chmod(0o600)

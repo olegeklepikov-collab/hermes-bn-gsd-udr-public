@@ -22,7 +22,9 @@ display:
       show_commentary: true
       show_reasoning: false
       thinking_progress: false
-_config_version: 46
+      long_running_notifications: false
+      busy_ack_detail: false
+_config_version: 50
 platforms: {}
 web:
   backend: exa
@@ -365,7 +367,7 @@ mcp_servers:
   rstats:
     command: __HERMES_BN_ROOT__/hermes-agent/venv/bin/python
     args:
-    - __HERMES_BN_ROOT__/GSD/releases/0.2.13-hermes-0.22.2-r3/sandbox_mcp.py
+    - __HERMES_BN_ROOT__/GSD/releases/0.2.13/sandbox_mcp.py
     - --settings
     - __HERMES_BN_ROOT__/GSD/operator/settings.json
     enabled: false
@@ -643,7 +645,7 @@ mcp_servers:
   context:
     command: __HERMES_BN_ROOT__/hermes-agent/venv/bin/python
     args:
-    - __HERMES_BN_ROOT__/Memory/releases/1.3.0/bn_memory/server.py
+    - __HERMES_BN_ROOT__/Memory/releases/1.4.0/bn_memory/server.py
     - __HERMES_BN_ROOT__/Memory/settings.json
     enabled: false
     timeout: 360
@@ -676,7 +678,10 @@ plugins:
       enabled: false
   load_timeout_seconds: 30
 compression:
-  enabled: false
+  enabled: true
+  in_place: true
+  threshold: 0.65
+  threshold_tokens: 325000
 auxiliary:
   title_generation:
     model_upgrade_enabled: false
@@ -973,6 +978,9 @@ execution_controls_required: false
 approvals:
   destructive_slash_confirm: false
 command_allowlist:
+- plugin_rule:bn-owner-file:1c93748a08d9dfa86d9d463515077aa9d589eb0fe1531a7b9064158a5a0987b7
+- plugin_rule:bn-owner-file:55c8858affbc892d79ed3fdfc6be98dd294647691fcaab0c1b33912b58aec3d1
+- plugin_rule:bn-owner-file:891ba53d6860003fb16f300d200133d566ee33d870a1c4fcc48708c632196bde
 - script execution via -e/-c flag
 delegation:
   max_iterations: 9223372036854775807

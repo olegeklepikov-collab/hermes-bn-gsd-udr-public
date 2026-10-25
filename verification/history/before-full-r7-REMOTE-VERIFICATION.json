@@ -1,0 +1,44 @@
+{
+  "status": "verified",
+  "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+  "tag": "public-2026-10-22-gsd-udr-prepared-files-r6",
+  "release_id": 420604483,
+  "assets_verified_before_publication": [
+    {
+      "name": "Hermes-BN-GSD-and-UDR-new-user-update-20261022-r6.tar.zst",
+      "bytes": 927513742,
+      "sha256": "57071be0de3b806bde9bb6bbe6b0cde3933b040c6af0b7af5006c288338897fc"
+    },
+    {
+      "name": "INSTALL-macOS-Apple-Silicon.md",
+      "bytes": 131428,
+      "sha256": "1e1feef3f7d1dd87a5eb4a23a54f0cfa2dc7828ab0f8b13f1ec2b71832b4209d"
+    },
+    {
+      "name": "PREPARED-FILE-DELIVERY.md",
+      "bytes": 10571,
+      "sha256": "66d722e2ef36c7f39f79838e7142d188306d99a22d3ed4db264b9915673ae156"
+    },
+    {
+      "name": "PREPARED-FILE-ACCEPTANCE.json",
+      "bytes": 853,
+      "sha256": "705e7685ca1c2a4d7b2f92b5691f3b273354192ee9f748040e07d2ef7742f225"
+    },
+    {
+      "name": "recovery-set.json",
+      "bytes": 4352,
+      "sha256": "d34abe5f38e4c68e2253d78b5425250d34940b71fc2329216ee86cb0063a36cb"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 2173,
+      "sha256": "61ded5ac25516b0a8d3abab7f7d127c8970f75093fd9ba919640fe7ee77c9fbc"
+    }
+  ],
+  "complete_set_requires_original_base": true,
+  "consolidates_previous_r2_r4_r5": true,
+  "base_parts_verified_currently": "verification/current-base-server-verification.json",
+  "runtime_and_archive_evidence": "verification/PREPARED-FILE-RELEASE-VERIFICATION.json",
+  "private_owner_state_only_encrypted": true,
+  "master_key_uploaded": false
+}

@@ -645,7 +645,7 @@ mcp_servers:
   context:
     command: __HERMES_BN_ROOT__/hermes-agent/venv/bin/python
     args:
-    - __HERMES_BN_ROOT__/Memory/releases/1.4.0/bn_memory/server.py
+    - __HERMES_BN_ROOT__/Memory/releases/1.4.2/bn_memory/server.py
     - __HERMES_BN_ROOT__/Memory/settings.json
     enabled: false
     timeout: 360
@@ -661,9 +661,9 @@ plugins:
     bn-gsd:
       enabled: false
       settings:
-        package_root: __HERMES_BN_ROOT__/GSD/releases/0.2.13-hermes-0.22.2-r3
+        package_root: __HERMES_BN_ROOT__/GSD/releases/0.2.13-hermes-0.22.2-r4
         settings_file: __HERMES_BN_ROOT__/GSD/operator/settings.json
-        core_manifest: __HERMES_BN_ROOT__/GSD/releases/0.2.13-hermes-0.22.2-r3/release/core-manifest.json
+        core_manifest: __HERMES_BN_ROOT__/GSD/releases/0.2.13-hermes-0.22.2-r4/release/core-manifest.json
     bn-udr-host:
       enabled: false
       settings:
@@ -971,17 +971,13 @@ platform_toolsets:
   - mcp-udr
 agent:
   coding_context: auto
-  reasoning_effort: xhigh
+  reasoning_effort: high
   max_turns: 0
   run_budget_seconds: null
 execution_controls_required: false
 approvals:
   destructive_slash_confirm: false
-command_allowlist:
-- plugin_rule:bn-owner-file:1c93748a08d9dfa86d9d463515077aa9d589eb0fe1531a7b9064158a5a0987b7
-- plugin_rule:bn-owner-file:55c8858affbc892d79ed3fdfc6be98dd294647691fcaab0c1b33912b58aec3d1
-- plugin_rule:bn-owner-file:891ba53d6860003fb16f300d200133d566ee33d870a1c4fcc48708c632196bde
-- script execution via -e/-c flag
+command_allowlist: []
 delegation:
   max_iterations: 9223372036854775807
 onboarding:

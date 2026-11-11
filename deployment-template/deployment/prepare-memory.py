@@ -14,6 +14,8 @@ def convert(v):
  if isinstance(v,dict):return {k:convert(x) for k,x in v.items()}
  return v
 cfg=convert(cfg)
+cfg['package_root']=str(M/'releases/1.4.2')
+if not Path(cfg['package_root']).is_dir():raise SystemExit('Repaired Memory1.4.2 package required')
 for p in [M/'state',C/'state',C/'state/engine',C/'state/lesson-engines',C/'state/originals']:p.mkdir(mode=0o700,parents=True,exist_ok=True);p.chmod(0o700)
 fd=os.open(cfg['host_key'],os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
 with os.fdopen(fd,'wb') as f:f.write(secrets.token_bytes(32))

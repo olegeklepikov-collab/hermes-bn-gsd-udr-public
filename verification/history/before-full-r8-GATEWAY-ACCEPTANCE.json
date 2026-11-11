@@ -1,0 +1,23 @@
+{
+  "release": "gateway-r5",
+  "date": "2026-10-21",
+  "hermes_version": "0.22.2",
+  "hermes_commit": "d923a5eb487a17c0a68801bba9ef0f56c81040a8",
+  "tests_before": {
+    "passed": 19,
+    "failed": 5
+  },
+  "tests_after": {
+    "passed": 37,
+    "failed": 0
+  },
+  "targeted_installed_tests": 12,
+  "native_GSD_status": true,
+  "standalone_UDR_has_no_GSD_command": true,
+  "profile_admissions_updated": true,
+  "controller_limits_unchanged": true,
+  "signed_UDR_unchanged": true,
+  "portable_install_repeat_refusal_rollback": true,
+  "new_Telegram_transport_test_performed": false,
+  "gateway_file_sha256": "e361541eebc06e28f37e2370df8a2eeb7ab3edc31b771e0dd175452fa109223c"
+}

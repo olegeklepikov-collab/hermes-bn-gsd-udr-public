@@ -343,6 +343,8 @@ def rpc(sid,data):
 
 
 def assert_finishable(sid,allow_partial=False):
+ from replacement_recovery import reconcile
+ reconcile(sid)
  body=parent(sid);root=b.root_for(body['run_id'])/'teams'
  if not root.exists():return
  for p in root.glob('*.json'):

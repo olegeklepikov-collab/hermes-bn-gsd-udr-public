@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "bounded_bundled_reentry_verified": true,
+  "initial_system_python_site_dependencies_absent": true,
+  "existing_state_unchanged": true
+}

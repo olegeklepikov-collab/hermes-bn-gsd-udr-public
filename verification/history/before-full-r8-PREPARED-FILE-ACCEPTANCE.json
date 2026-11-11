@@ -1,0 +1,26 @@
+{
+  "installed_version": "UDR host 0.3.1",
+  "tests_passed": 30,
+  "real_Telegram_readback_verified": true,
+  "messages_sent": 1,
+  "duplicate_suppressed": true,
+  "source_manifest_files_valid": 17,
+  "GSD_settings_except_exact_admissions_unchanged": true,
+  "signed_SDK_source_modified": false,
+  "actual_MCP_schema_checked": true,
+  "scientific_claims_accepted": false,
+  "release": "prepared-files-r6",
+  "date": "2026-10-22",
+  "relocated_component_tests_passed": 30,
+  "portable_update": {
+    "passed": true,
+    "qualified_r5_installation": true,
+    "repeat_idempotent": true,
+    "later_change_refused": true,
+    "rollback_byte_identical": true,
+    "user_state_and_limits_preserved": true,
+    "new_owner_authority_imported": false,
+    "Cyrillic_relocated_source_executed": true
+  },
+  "producer_validation_not_new_owner_acceptance": true
+}

@@ -489,7 +489,7 @@ def dispatch(name, args):
                 'scientific_universal_acceptance':False}}
     raise ValueError('unknown_tool')
 
-def rpc(data):
+def _rpc(data):
     op, sid = data['operation'], data.get('sid', '')
     if op=='prepare_delivery':
         from delivery_approval import prepare
@@ -510,7 +510,11 @@ def rpc(data):
         return team_backend.rpc(sid,{k:v for k,v in data.items() if k not in {'operation','sid'}})
     if op == 'prepare_turn':
         from lease_resume import prepare_turn
-        return prepare_turn(sid)
+        result=prepare_turn(sid)
+        if result.get('status')=='active' and not result.get('native_child'):
+            from replacement_recovery import pending_continuations
+            result['operator_continuations']=pending_continuations(sid)
+        return result
     if op == 'check':
         return check(sid)
     if op == 'bind_child':
@@ -575,6 +579,11 @@ def rpc(data):
                 'raw_contents_logged':False,'latency_available':event['latency_available'],
                 'backfilled_from_native_logger':event.get('backfilled',False)}})
     raise ValueError('unknown_rpc')
+
+def rpc(data):
+    from control_snapshot import fresh
+    with fresh(data.get('sid',''),data['operation']):
+        return _rpc(data)
 
 if __name__ == '__main__':
     try:

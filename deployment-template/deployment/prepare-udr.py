@@ -17,7 +17,7 @@ host=Path(a.host_bootstrap).expanduser().absolute()
 if host.exists():raise SystemExit('Host bootstrap directory must be new; no overwrite of another instance')
 host.parent.mkdir(parents=True,exist_ok=True);shutil.copytree(B/'host-template/HermesUDR',host,symlinks=True)
 sub={'__HERMES_BN_ROOT__':str(BN),'__HERMES_UDR_ROOT__':str(U),'__HERMES_UDR_R_RUNTIME__':str(r),'__USER_HOME__':str(Path.home()),'__CONTACT_EMAIL__':a.contact_email,'__TIMEZONE__':a.timezone,'__UDR_HOST_BOOTSTRAP__':str(Path(a.host_bootstrap).expanduser().absolute())}
-for root in [U,r,host,BN/'data/plugins/bn-udr-host',BN/'data/profiles',BN/'bin/hermes-bn-module-mode.py']:
+for root in [U,r,host,BN/'data/config.yaml',BN/'data/plugins/bn-udr-host',BN/'data/profiles',BN/'bin/hermes-bn-module-mode.py']:
  paths=[root] if root.is_file() else root.rglob('*')
  for q in paths:
   if q.is_symlink():

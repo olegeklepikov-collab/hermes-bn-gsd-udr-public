@@ -36,13 +36,13 @@
     "verification": "official HTTPS download; locally recorded SHA256"
   },
   {
-    "filename": "cpython-3.14.6-macos-arm64.tar.gz",
+    "filename": "cpython-3.14.6-macos-arm64-neutral.tar.gz",
     "url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20260718/cpython-3.14.6%2B20260718-aarch64-apple-darwin-install_only_stripped.tar.gz",
     "digest": null,
     "size": null,
     "local_repack": true,
-    "sha256": "a931d25c06434af1a940d63c272b81d07a6d29ddf210a3ec1fa4024e7afc222c",
-    "bytes": 25615003,
-    "verification": "Local repack of the actual qualified managed Python 3.14.6 installation; upstream archive could not be downloaded again (403/404); not an upstream signature claim"
+    "sha256": "44b4e35d6d82e97557be403ebd436dee3e57a0e9861dbc6ef1076b788cbe1fc9",
+    "bytes": 25521085,
+    "verification": "Qualified local neutral repack; not an upstream signature claim"
   }
 ]

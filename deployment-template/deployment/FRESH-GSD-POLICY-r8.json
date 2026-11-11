@@ -1,0 +1,20 @@
+{
+  "fresh_only": true,
+  "existing_accounts_or_resource_ledger_changed": false,
+  "supplier_GSD_engine_changed": false,
+  "selected_configuration_source": "runtime/Hermes BN/GSD/releases/0.2.13-hermes-0.22.2-r4/configure_profile.py",
+  "before_sha256": "355d9fe17d5e281221d3d6c31f55e077efba11e534a0421a9460a00b7b7234e9",
+  "after_sha256": "d2ae4146af25629257f2c0cc968c78d9e5a348bc311c8c10f94f73b3de869ba5",
+  "limits": {
+    "tokens": null,
+    "model_calls": null,
+    "child_jobs": null,
+    "wall_seconds": null,
+    "output_tokens": 128000,
+    "request_bytes": 8388608,
+    "tool_calls": null,
+    "role_model_calls": null,
+    "budget_mode": "observe"
+  },
+  "reason": "Keep the previously selected observe policy after the r4 configuration generator"
+}

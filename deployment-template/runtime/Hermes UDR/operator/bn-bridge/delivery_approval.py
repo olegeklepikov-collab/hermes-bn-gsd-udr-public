@@ -60,12 +60,15 @@ def authorize_native(host, args, sid):
               str(quote['bytes']) + ' байт, SHA-256 ' + args['expected_sha256'] +
               '. Передаются точные сохранённые байты; выводы исследования этим не принимаются.')
     key = hashlib.sha256(canonical({'sid': sid, **args, **identity})).hexdigest()
-    approval = request_tool_approval('bn_deliver_report', reason, rule_key='bn-owner-file:' + key)
-    if approval.get('approved') is not True:
-        return {'status': 'delivery_not_approved', 'message': approval.get('message', 'Ожидается разрешение владельца.'),
-                'file_sent': False}
-    body = {'sid': sid, **args, **identity, 'expires_at': time.time() + 90,
-            'authorization_source': 'owner-authorized:native-Hermes-tool-approval:' + key}
+    from owner_file_request import from_history
+    proof=from_history(home,quote['request_session_id'],identity,quote['run_created_at'],quote['filename'],sid)
+    if proof is None:
+        approval = request_tool_approval('bn_deliver_report', reason, rule_key='bn-owner-file:' + key)
+        if approval.get('approved') is not True:
+            return {'status': 'delivery_not_approved', 'message': approval.get('message', 'Ожидается разрешение владельца.'),'file_sent': False}
+    source=('owner-authorized:native-owner-file-request:'+str(proof['message_id'])) if proof else 'owner-authorized:native-Hermes-tool-approval:'+key
+    body = {'sid': sid, **args, **identity, 'expires_at': time.time() + 90,'authorization_source':source}
+    if proof:body['owner_request']=proof
     secret = host.key.read_bytes()
     envelope = {'body': body, 'mac': hmac.new(secret, canonical(body), hashlib.sha256).hexdigest()}
     issued = host.rpc('authorize_delivery', sid, approval=envelope)
@@ -74,8 +77,10 @@ def authorize_native(host, args, sid):
 
 def prepare(sid, run_id, artifact_id, expected_sha256):
     from prepared_file import registered
-    _, _, item, raw = registered(sid, run_id, artifact_id, expected_sha256)
-    return {'filename': item['filename'], 'bytes': len(raw), 'sha256': expected_sha256,
+    body, _, item, raw = registered(sid, run_id, artifact_id, expected_sha256)
+    import backend as b
+    run=json.loads((b.root_for(run_id)/'run.json').read_text())
+    return {'filename': item['filename'], 'bytes': len(raw), 'sha256': expected_sha256,'request_session_id':body.get('original_native_sid',sid),'run_created_at':run['created_at'],
             'artifact_id': artifact_id, 'delivery_authorized': False}
 
 
@@ -88,7 +93,7 @@ def issue(sid, approval):
         raise PermissionError('native_delivery_approval_authentication_failed')
     if body['sid'] != sid or not time.time() < body['expires_at'] <= time.time() + 95:
         raise PermissionError('native_delivery_approval_identity_or_expiry_mismatch')
-    if body['user_id'] != body['chat_id'] or not body['authorization_source'].startswith('owner-authorized:native-Hermes-tool-approval:'):
+    if body['user_id'] != body['chat_id'] or not body['authorization_source'].startswith(('owner-authorized:native-Hermes-tool-approval:','owner-authorized:native-owner-file-request:')):
         raise PermissionError('native_owner_delivery_approval_required')
     bn = backend.ROOT.parent / 'Hermes BN'
     home = Path(body['transport_home']).resolve()
@@ -100,6 +105,10 @@ def issue(sid, approval):
     if str(body['user_id']) not in owners(env.get('TELEGRAM_ALLOWED_USERS', '')):
         raise PermissionError('configured_owner_delivery_required')
     quote = prepare(sid, body['run_id'], body['artifact_id'], body['expected_sha256'])
+    if body['authorization_source'].startswith('owner-authorized:native-owner-file-request:'):
+        from owner_file_request import from_history
+        expected_proof=from_history(home,quote['request_session_id'],body,quote['run_created_at'],quote['filename'],sid)
+        if not expected_proof or expected_proof!=body.get('owner_request'):raise PermissionError('native_owner_file_request_changed_or_missing')
     import asyncio
     from telegram import Bot
     token = env.get('TELEGRAM_BOT_TOKEN') or env.get('HERMES_TELEGRAM_BOT_TOKEN')

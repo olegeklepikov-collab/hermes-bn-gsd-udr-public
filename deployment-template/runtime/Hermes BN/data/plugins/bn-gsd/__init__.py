@@ -20,6 +20,7 @@ def register(ctx):
     runtime = Runtime(ctx, ctx.get_config("settings_file"))
     from bn_gsd.sandbox import provider
     ctx.register_terminal_environment_provider(provider(runtime.settings))
+    ctx.register_middleware("tool_request", runtime.source_tool_request)
     ctx.register_execution_control("tool", runtime.tool_control)
     ctx.register_execution_control("tool_result", runtime.result_control)
     ctx.register_execution_control("llm", runtime.model_control)

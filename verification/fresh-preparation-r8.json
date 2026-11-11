@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "steps": [
+    {
+      "step": "BN",
+      "exit_code": 0
+    },
+    {
+      "step": "UDR",
+      "exit_code": 0
+    },
+    {
+      "step": "Memory",
+      "exit_code": 0
+    },
+    {
+      "step": "finalize",
+      "exit_code": 0
+    },
+    {
+      "step": "BN-CLI",
+      "exit_code": 0
+    },
+    {
+      "step": "UDR-CLI",
+      "exit_code": 0
+    }
+  ],
+  "empty_memory_verified": true,
+  "new_independent_memory_key": true,
+  "old_auth_absent": true,
+  "fresh_observe_policy_preserved": true,
+  "compression_high_and_role_specific_controls_verified": true,
+  "UDR_only_GSD_disabled_is_intended": true,
+  "corrected_overbroad_test_assertion": true,
+  "services_started": false,
+  "model_generations": 0,
+  "external_service_authorizations": 0,
+  "scope": "Actual local preparation and CLI; own connections and end-to-end target acceptance remain required",
+  "critical_files_count": 0
+}

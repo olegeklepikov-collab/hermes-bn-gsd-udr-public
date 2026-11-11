@@ -15,7 +15,7 @@ def reseal():
 
 def main():
     p=argparse.ArgumentParser();sub=p.add_subparsers(dest='action',required=True)
-    q=sub.add_parser('register-project');q.add_argument('name');q.add_argument('path');q.add_argument('--languages',default='python')
+    q=sub.add_parser('register-project');q.add_argument('name');q.add_argument('path');q.add_argument('--languages',default='python');q.add_argument('--configure-code',action='store_true',help='Explicitly create Serena metadata in the source directory')
     q=sub.add_parser('snapshot');q.add_argument('destination')
     q=sub.add_parser('verify-snapshot');q.add_argument('path')
     q=sub.add_parser('rebuild');q.add_argument('backend',choices=['agentmemory','graphiti','zvec']);q.add_argument('--max-batches',type=int,default=30);q.add_argument('--resume',action='store_true')
@@ -26,6 +26,8 @@ def main():
         root=Path(a.path)
         if not re.fullmatch('[a-z][a-z0-9-]{0,63}',a.name) or not root.is_absolute() or root.is_symlink() or not root.is_dir():raise ValueError('valid_project_name_and_directory_required')
         root=root.resolve();cfg['projects'][a.name]=str(root);cfg.setdefault('project_languages',{})[str(root)]=a.languages.split(',');CONFIG.write_text(json.dumps(cfg,ensure_ascii=False,indent=2));CONFIG.chmod(0o600);reseal()
+        if not a.configure_code:
+            print(json.dumps({'registered':a.name,'path':str(root),'source_writes':False,'restart_bn_gateway_required':True}));return
         serena=root/'.serena/project.yml';serena.parent.mkdir(exist_ok=True)
         d=yaml.safe_load(serena.read_text()) if serena.exists() else {'project_name':a.name,'encoding':'utf-8'}
         d['language_servers']=a.languages.split(',');d['read_only']=True;d['ignored_paths']=list(dict.fromkeys([*d.get('ignored_paths',[]),'**/.env*','**/auth.json','**/mcp-tokens.json','**/.git/**','**/node_modules/**']))

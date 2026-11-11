@@ -1,0 +1,56 @@
+{
+  "archive_bytes_and_SHA_unchanged": true,
+  "completed_remote_assets_preserved": true,
+  "only_pending_large_parts_changed": [
+    {
+      "original": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part003",
+      "source_sha256": "3dd4767abf77368ae78fb2424ef23117fe9d2424c28830656e176a4da1bbc983",
+      "replacement_count": 4,
+      "bytes_unchanged": true,
+      "resumed_verified_fragments": true
+    },
+    {
+      "original": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part004",
+      "source_sha256": "022c87c6310240426d940a454d845c60d42bdaf7daa12ca27f2fb0ecd87d0960",
+      "replacement_count": 4,
+      "bytes_unchanged": true
+    },
+    {
+      "original": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part005",
+      "source_sha256": "4ec2ca74e78bd27d1124c9f8b60b2ad4b92dbac023b4b61cebb3d781e2652aa3",
+      "replacement_count": 4,
+      "bytes_unchanged": true
+    },
+    {
+      "original": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part006",
+      "source_sha256": "2d072cc8899f5de693e0b57e17b7a9e69f088a0cc4856c53349bdfdc25aab0b1",
+      "replacement_count": 4,
+      "bytes_unchanged": true
+    },
+    {
+      "original": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part007",
+      "source_sha256": "1b174ccbefc13f6d383a4180bc47d7fc89dca9c1b54bea4d8457cb39a06e03a7",
+      "replacement_count": 4,
+      "bytes_unchanged": true
+    },
+    {
+      "original": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part008",
+      "source_sha256": "12d0835cf524d4c3e16244f67fd4514fccef7f74ea696aec53a01926d0e3e664",
+      "replacement_count": 4,
+      "bytes_unchanged": true
+    },
+    {
+      "original": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part009",
+      "source_sha256": "77d0e139398f5417cef5d35df07e9dd322f74753260da650182df4bcf96e604f",
+      "replacement_count": 4,
+      "bytes_unchanged": true
+    },
+    {
+      "original": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part010",
+      "source_sha256": "178cf57c9cf87b0158470617f045ea3a665792cbb852b453e1df42a76959e6fb",
+      "replacement_count": 3,
+      "bytes_unchanged": true
+    }
+  ],
+  "parts": 33
+}

@@ -8,8 +8,11 @@ from hermes_foundation_bridge.errors import BridgeError
 class LocalBeadsAdapter(BeadsAdapter):
     def __init__(self,root,lock_path=None):
         super().__init__(root)
-        self.runtime_lock=Path(lock_path) if lock_path else Path(__file__).resolve().parents[2]/'state/adapters/beads-runtime.json'
+        self.runtime_lock=Path(lock_path) if lock_path else Path(root).resolve().parents[1]/'state/adapters/beads-runtime.json'
     def _run(self,arguments,*,actor='foundation-bridge'):
+        from control_snapshot import lookup
+        snap=lookup(arguments)
+        if snap is not None:return snap
         lock=json.loads(self.runtime_lock.read_text())
         executable=Path(lock['executable'])
         if not executable.is_absolute() or executable.is_symlink() or not executable.is_file():

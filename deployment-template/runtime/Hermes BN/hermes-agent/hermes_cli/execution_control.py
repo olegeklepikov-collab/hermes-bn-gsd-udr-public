@@ -122,15 +122,31 @@ def register_control(plugin_id: str, kind: str, callback: Callable) -> Callable[
     return remove
 
 
-def _bounded(callback: Callable, payload: dict, timeout: float) -> Any:
+def _callback_stack(identity: dict) -> str:
+    # File/function/line only: never payloads, local variables, source text or secrets.
+    import sys
+    frame = sys._current_frames().get(identity.get("thread_id"))
+    frames = []
+    while frame is not None and len(frames) < 24:
+        frames.append(f"{frame.f_code.co_filename}:{frame.f_lineno}:{frame.f_code.co_name}")
+        frame = frame.f_back
+    return " | ".join(frames) or "worker_not_started"
+
+
+def _bounded(callback: Callable, payload: dict, timeout: float, *, controller="", kind="") -> Any:
     global _pool
+    label = f"Required {kind or payload.get('execution_kind', 'unknown')} execution controller '{controller or 'unknown'}'"
+    operation = (payload.get("payload") or {}).get("tool_name") or "model"
     if not _slots.acquire(blocking=False):
-        raise ExecutionControlDenied("Required execution controllers are still busy")
+        raise ExecutionControlDenied(label + " cannot start: execution controllers are still busy")
     context = contextvars.copy_context()
-    deadline=time.time()+timeout
+    deadline = time.time() + timeout
+    started = time.monotonic()
+    identity = {}
     def invoke():
+        identity["thread_id"] = threading.get_ident()
         try:
-            return context.run(callback, **{**payload,'execution_control_deadline':deadline})
+            return context.run(callback, **{**payload, 'execution_control_deadline': deadline})
         finally:
             _slots.release()
     with _lock:
@@ -139,17 +155,30 @@ def _bounded(callback: Callable, payload: dict, timeout: float) -> Any:
             _pool = DaemonThreadPoolExecutor(max_workers=8, thread_name_prefix="execution-control")
         future = _pool.submit(invoke)
     try:
-        return future.result(timeout=timeout)
+        result = future.result(timeout=timeout)
     except BaseException as exc:
-        logging.getLogger(__name__).error("Required controller failed (%s)",type(exc).__name__,exc_info=True)
-        # A late allow is never execution authority. Close its own reservation
-        # after it appears; do not infer zero usage for an executed request.
+        elapsed = time.monotonic() - started
+        finished_failure = future.done() and not future.cancelled() and future.exception() is exc
+        failure = "callback_failed" if finished_failure else "deadline_exceeded"
+        logging.getLogger(__name__).error(
+            "Execution controller failure controller=%s kind=%s operation=%s failure=%s error_type=%s elapsed_seconds=%.3f timeout_seconds=%.3f worker_stack=%s",
+            controller, kind, operation, failure, type(exc).__name__, elapsed, timeout, _callback_stack(identity))
+        # A late admission never starts an executor. Its exact reservation is closed
+        # only when that callback actually returns the matching abort receipt.
         def discard_late(done):
-            try:context.run(_abort_decision,done.result(),'controller_wait_aborted_before_executor')
-            except BaseException:pass
+            try:
+                context.run(_abort_decision, done.result(), 'controller_wait_aborted_before_executor')
+            except BaseException:
+                pass
         future.add_done_callback(discard_late)
-        # The worker owns release: a timed-out worker cannot create unbounded replacements.
-        raise ExecutionControlDenied("Required execution controller failed or timed out") from exc
+        detail = f" failed ({type(exc).__name__})" if finished_failure else f" timed out after {timeout:g}s"
+        raise ExecutionControlDenied(label + detail) from exc
+    elapsed = time.monotonic() - started
+    logging.getLogger(__name__).log(
+        logging.INFO if elapsed >= 1 else logging.DEBUG,
+        "Execution controller completed controller=%s kind=%s operation=%s elapsed_seconds=%.3f allowed=%s",
+        controller, kind, operation, elapsed, isinstance(result, ExecutionDecision) and result.allow is True)
+    return result
 
 
 def authorize(kind: str, payload: dict, **identity: Any) -> tuple[ExecutionDecision, ...]:
@@ -168,7 +197,7 @@ def authorize(kind: str, payload: dict, **identity: Any) -> tuple[ExecutionDecis
             detached = copy.deepcopy(payload)
             data = {**identity, "execution_kind": kind, "payload": detached,
                     "execution_control_version": CONTRACT_VERSION}
-            decision = _bounded(callback, data, settings["timeout_seconds"])
+            decision = _bounded(callback, data, settings["timeout_seconds"], controller=controller, kind=kind)
         except ExecutionControlDenied:
             for earlier in decisions:_abort_decision(earlier,'admission_rejected_before_executor')
             raise

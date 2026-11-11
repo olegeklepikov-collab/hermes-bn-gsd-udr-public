@@ -1,0 +1,25 @@
+{
+  "release": "2026-11-11-r8",
+  "files": [
+    ".DS_Store",
+    "00 — Начать здесь.md",
+    "01 — Действия пользователя.md",
+    "02 — Задания настройщику.md",
+    "03 — Что рассказать об агенте.md",
+    "04 — Приёмка и дальнейшая работа.md",
+    "05 — Исправление установленной копии.md",
+    "06 — Что проверено в r8.md",
+    "Настройщику/00 — Порядок работы.md",
+    "Настройщику/Unix.md",
+    "Настройщику/Windows.md",
+    "Настройщику/macOS.md",
+    "Настройщику/Проверка комплекта.md",
+    "Настройщику/Проверки.json",
+    "Поставка/Hermes-BN-r8-repair.zip",
+    "Поставка/SHA256SUMS",
+    "Поставка/recovery-set.json",
+    "Поставка/restore.py",
+    "Поставка/Прочитать перед загрузкой.md"
+  ],
+  "scope": "User and installer guidance, retrieval tools and existing-instance repair; archive parts downloaded separately"
+}

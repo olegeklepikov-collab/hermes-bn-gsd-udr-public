@@ -1,0 +1,251 @@
+{
+  "format": "hermes-bn-recovery-set/3",
+  "date": "2026-11-11",
+  "mode": "new-user",
+  "base_and_update_both_required": false,
+  "archives": [
+    {
+      "role": "complete",
+      "repository": "olegeklepikov-collab/hermes-bn-gsd-udr-public",
+      "tag": "public-2026-11-11-gsd-udr-full-r8",
+      "archive": {
+        "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst",
+        "bytes": 18371819515,
+        "sha256": "96a069fe07eae1098e2f9741e4e54a191f3fdc39ba77bed9a1f0d7c77b9ec948"
+      },
+      "parts": [
+        {
+          "index": 1,
+          "offset": 0,
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part001",
+          "bytes": 1900000000,
+          "sha256": "79d6a6407f072a2eb60f4ca42e70ad27058a3a9b61cf14925049878285b61151"
+        },
+        {
+          "index": 2,
+          "offset": 1900000000,
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part002",
+          "bytes": 1900000000,
+          "sha256": "a4fc801b92ce05dbcf491787925e71cbbaffcda8d63bccdd8b81856ea9cda94d"
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part003.bounded01",
+          "bytes": 500000000,
+          "offset": 3800000000,
+          "sha256": "2b20c4c68d8d43067bceef0f588e09ba0d274e27091f2cbfdcfe56336098881a",
+          "index": 3
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part003.bounded02",
+          "bytes": 500000000,
+          "offset": 4300000000,
+          "sha256": "efc68e7c7c3a9507b763c46a7b0b1a76f13539e87ffdb620e1814562fee564ae",
+          "index": 4
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part003.bounded03",
+          "bytes": 500000000,
+          "offset": 4800000000,
+          "sha256": "aa1dede245618cf7c842f68f8c51cf268bf5dce7976c31064bf5c36ea7c6039c",
+          "index": 5
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part003.bounded04",
+          "bytes": 400000000,
+          "offset": 5300000000,
+          "sha256": "051bcd2dd940fb475ca4775cbfeb1e3e56a24986e4ecfabec2696c892acd0c3f",
+          "index": 6
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part004.bounded01",
+          "bytes": 500000000,
+          "sha256": "1883402eed1109d320c8d886011e2ab73240522626c52668a75bd882fdd5dee5",
+          "offset": 5700000000,
+          "index": 7
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part004.bounded02",
+          "bytes": 500000000,
+          "sha256": "526df1387320ea8e258a6a14c321ae8f0b623c3b1c9e1777e6e8b32be733295b",
+          "offset": 6200000000,
+          "index": 8
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part004.bounded03",
+          "bytes": 500000000,
+          "sha256": "5a4f95a6ac9f19e4979a604b74e6b76337c429069cc76b07ea6bd84d2eebd18b",
+          "offset": 6700000000,
+          "index": 9
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part004.bounded04",
+          "bytes": 400000000,
+          "sha256": "0301f1b84efe4b8fa66a2c125a87f27ab97983c0ba1178b6752254e7fd681b81",
+          "offset": 7200000000,
+          "index": 10
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part005.bounded01",
+          "bytes": 500000000,
+          "sha256": "f8d06cee041d22e1516f2f04887ce8c35c86d2158bfe455827c91c976fba5e6a",
+          "offset": 7600000000,
+          "index": 11
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part005.bounded02",
+          "bytes": 500000000,
+          "sha256": "5ccbbe41cbf8fbae537caee926f764a25f881bd7d8ca93285f2968a0aea74def",
+          "offset": 8100000000,
+          "index": 12
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part005.bounded03",
+          "bytes": 500000000,
+          "sha256": "922a8069452fba3529a29249ce270e3d7b345f65623c386c791edf1a8e737145",
+          "offset": 8600000000,
+          "index": 13
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part005.bounded04",
+          "bytes": 400000000,
+          "sha256": "cb00cbab7e94f52b032c2f07cd24f423337e50172e769355014d292bb6baa01a",
+          "offset": 9100000000,
+          "index": 14
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part006.bounded01",
+          "bytes": 500000000,
+          "sha256": "1570d4a27d180dd2cde3d000d3e1c8ca359f9106f207ee4a6882e650132dd708",
+          "offset": 9500000000,
+          "index": 15
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part006.bounded02",
+          "bytes": 500000000,
+          "sha256": "68a3a69aae34efa008cdaa6213728b1b2eec32f595a776682adde2a9adf448a3",
+          "offset": 10000000000,
+          "index": 16
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part006.bounded03",
+          "bytes": 500000000,
+          "sha256": "b61a3e6b8762a6ab04a1bf1e944a2474881dca0fdd3a27436601d8ef5a23dbde",
+          "offset": 10500000000,
+          "index": 17
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part006.bounded04",
+          "bytes": 400000000,
+          "sha256": "8be399369f2ffd2e9528fa6c9d44843486672f451e8a478edb4c205a3d0f522c",
+          "offset": 11000000000,
+          "index": 18
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part007.bounded01",
+          "bytes": 500000000,
+          "sha256": "d1ce4f5aa506249e9c31f04bcdc8f3cadcc1265d72d1cdb6befcac09439c1006",
+          "offset": 11400000000,
+          "index": 19
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part007.bounded02",
+          "bytes": 500000000,
+          "sha256": "f32b920a607b021dcf1fe0eaa32a6270d85e9234edeefeefc60be48d6ad9477a",
+          "offset": 11900000000,
+          "index": 20
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part007.bounded03",
+          "bytes": 500000000,
+          "sha256": "9b175c32d21d6fb6c8f4b1409a9fe9597a3aae1163a7bba931bcfe77f1966a30",
+          "offset": 12400000000,
+          "index": 21
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part007.bounded04",
+          "bytes": 400000000,
+          "sha256": "9b3a1e83b37c590000d1dcad349d2fa4b770b05b9a4240d3c5029fa0670698a7",
+          "offset": 12900000000,
+          "index": 22
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part008.bounded01",
+          "bytes": 500000000,
+          "sha256": "bce4119041af799e30f5affe5bbc34570c66dfec10ef09429c2dc745b3454acd",
+          "offset": 13300000000,
+          "index": 23
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part008.bounded02",
+          "bytes": 500000000,
+          "sha256": "4b22da9e33ff9469ea9dfe7f1f75fd15159f9c9c03c4f6893ca60ef58300ac79",
+          "offset": 13800000000,
+          "index": 24
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part008.bounded03",
+          "bytes": 500000000,
+          "sha256": "c953f0b080ef191c98322d66d14439ccbbd94ea57a01abe1b5f8828401760f7e",
+          "offset": 14300000000,
+          "index": 25
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part008.bounded04",
+          "bytes": 400000000,
+          "sha256": "0d0b197c4870ffbbcc28ecc6d2c2148cfc9f8e526dc1fa4ec9006c6410e53d48",
+          "offset": 14800000000,
+          "index": 26
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part009.bounded01",
+          "bytes": 500000000,
+          "sha256": "cab7de35a87d7ca3e8392e31188a077b32bd591120628382b86af9345fd936d7",
+          "offset": 15200000000,
+          "index": 27
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part009.bounded02",
+          "bytes": 500000000,
+          "sha256": "48a662d1af9b2de134039392d70e73ca759c811f21de0aaf41352a1eb1f41f3d",
+          "offset": 15700000000,
+          "index": 28
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part009.bounded03",
+          "bytes": 500000000,
+          "sha256": "3d0be1ca27bfdd45bc8daaf5a5b6c03f5d28b00b60a2e1e7f59a2ec689e8f8cd",
+          "offset": 16200000000,
+          "index": 29
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part009.bounded04",
+          "bytes": 400000000,
+          "sha256": "13813d4b6c8f99667e27e204b6129aeea13a4e7e2a729bf06278ca1726b98a57",
+          "offset": 16700000000,
+          "index": 30
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part010.bounded01",
+          "bytes": 500000000,
+          "sha256": "ff6b803f247dadfe409203d763e926c870409758e8a23fd63816b0fedcdc9bc8",
+          "offset": 17100000000,
+          "index": 31
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part010.bounded02",
+          "bytes": 500000000,
+          "sha256": "4ad59f7adf47186b7f2a1d998097c3c9416b30bf34940900e0b383a9c43f7244",
+          "offset": 17600000000,
+          "index": 32
+        },
+        {
+          "name": "Hermes-BN-GSD-and-UDR-new-user-20261111-r8.tar.zst.part010.bounded03",
+          "bytes": 271819515,
+          "sha256": "8c6960884c7ba79808c3b22c947b1b893328eb7cce9f0b1573b2bf214dec999d",
+          "offset": 18100000000,
+          "index": 33
+        }
+      ]
+    }
+  ]
+}

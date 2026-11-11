@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-25",
+  "mode": "new-user",
+  "standalone": true,
+  "source_files": 38045,
+  "current_memory": "1.4.0",
+  "Identity": "0.1.0",
+  "old_acceptance_inherited": false,
+  "current_installation_sha256": "cec39cdea794fd36f18b46f509bdb76e7ed1e2090e9b9e0430aea64d7ababc58"
+}

@@ -1,0 +1,37 @@
+{
+  "release": "2026-11-11-r8",
+  "Memory": "1.4.2",
+  "parser": "bn-parser/1.0.1",
+  "unit_tests": 12,
+  "fresh_Foundation_state_migrations_and_repeat": true,
+  "fresh_Foundation_uses_existing_owned_services": true,
+  "native_e2e": {
+    "passed": true,
+    "phases": [
+      "plan",
+      "collect",
+      "analyse",
+      "verify",
+      "report"
+    ],
+    "model_delivery_complete": true,
+    "model_api_calls": 5,
+    "report_sha256": "c8d894306e43f0e235737e5eb6606f39e9ba8904882f6301ff91308cb909ac5d",
+    "plan_shape_recovery_performed": true,
+    "synthetic_only": true
+  },
+  "OCR": {
+    "English_and_Russian_real_scan": true,
+    "OS_sandbox_preserved": true,
+    "failed_OCR_reported_separately": true,
+    "original_CoreML_H11_failure_reproduced_on_producer_machine": false
+  },
+  "restart_readback": true,
+  "GSD_only_native_read": true,
+  "UDR_only_native_read": true,
+  "gateway_actual_model_response": true,
+  "portable_test_drivers": "same workflows with environment paths; no automatic acceptance of another target",
+  "signed_SDK_modified": false,
+  "profiles_only_available": true,
+  "old_data_keys_and_accounting_not_reset": true
+}

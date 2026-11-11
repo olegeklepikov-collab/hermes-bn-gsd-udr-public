@@ -10,7 +10,7 @@
     "agent/tool_executor.py": "6a24abd8bb5dfa518f215782eaace3aabf4b0c3c869d93856513604db6d4ac5c",
     "agent/transports/codex.py": "8fa8c7a29cc39d1a70a165ba85a1d902742bb1d595dcfd0b3ef3365181223f2c",
     "agent/turn_api_error.py": "9d9e8aef11b02e36f874de4e87a838d0559aa7aa3a649227d43061aea5507f7b",
-    "hermes_cli/execution_control.py": "3fb53a5076c5ae23edc65f363431e3f07e55ef121606734ecea299c949a2c393",
+    "hermes_cli/execution_control.py": "54ca16ac10faf4dcf06af82b05b2e363b6d17fd8518c1b096ebcfe0e8ba11eee",
     "hermes_cli/middleware.py": "c281b849e67bfa88cab79434f99be97a1a8a60fff12dd77330307825d8fe256e",
     "hermes_cli/plugins.py": "9ab340f73bc920ed46edbd0d942bb197df59887430473019a5050df606b2c1f3",
     "hermes_cli/update_cmd.py": "2c5324436c34cd71c7e641d11356f142abe2b4936de9ee107a08e356d56b6f44",

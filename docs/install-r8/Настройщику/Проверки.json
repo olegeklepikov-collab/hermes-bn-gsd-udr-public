@@ -1,0 +1,7 @@
+{
+  "release": "2026-11-11-r8",
+  "instructions_updated_from_current_code": true,
+  "target_user_accounts_tested": false,
+  "Windows_Unix_full_BN_acceptance": false,
+  "scope": "Documentation consistency; separate factual acceptance report"
+}

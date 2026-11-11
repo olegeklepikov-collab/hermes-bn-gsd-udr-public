@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "mode": "new-user",
+  "archive_sha256": "96a069fe07eae1098e2f9741e4e54a191f3fdc39ba77bed9a1f0d7c77b9ec948",
+  "entries_checked": 378273,
+  "manifest_entries": 378273,
+  "missing": 0,
+  "errors": [],
+  "pipeline_exit_codes": [
+    0
+  ],
+  "all_file_bytes_and_modes_checked": true,
+  "neutral_platform_metadata_rejected": true,
+  "xattrs_included_in_full_archive": "critical extracted subset checked separately; stream checks contents and modes",
+  "critical_files_count": 0
+}
